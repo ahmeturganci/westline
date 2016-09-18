@@ -1,0 +1,26 @@
+﻿<div ng-controller="DetayController">
+   <a class="btn btn-link" href="#/list">Geri</a>
+     <table class="table table-bordered table table-hover">
+        <tr>
+            <td>ID </td>
+            <td>{{uruns.Id}}</td>
+        </tr>
+
+        <tr>
+            <td>Ad </td>
+            <td>{{uruns.UrunAd}}</td>
+        </tr>
+
+        <tr>
+            <td>Miktar </td>
+            <td>{{uruns.UrunMiktar}}</td>
+        </tr>
+
+        <tr>
+            <td>Fiyat </td>
+            <td>{{uruns.UrunFiyat}}</td>
+        </tr>
+    </table>
+    <button class="btn btn-block" ng-click="ekle()">Güncelle</button>
+    <div ng-include="'/Client/Views/ekle.html'"></div>   
+</div>

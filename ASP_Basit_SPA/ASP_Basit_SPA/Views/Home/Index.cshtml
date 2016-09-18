@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Anasayfa";
+}
+@section Scripts{
+
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Client/UrunModul.js"></script>
+<script src="~/Client/ListController.js"></script>
+<script src="~/Client/DetayController.js"></script>
+<script src="~/Scripts/angular-route.min.js"></script>
+    
+<script src="~/Client/EkleController.js"></script>
+<script src="~/Client/UrunServis.js"></script>
+    }
+<br /><br>
+<div class="container" >
+    <div class="row">
+        <div class="col-md-6 col-lg-offset-3">
+            <div data-ng-app="UrunModul">
+                <ng-view>
+                    
+                </ng-view>
+            </div>
+        </div>
+    </div>
+</div>  
+    
