@@ -1,9 +1,18 @@
 ﻿(function (app) {
 
-    var ListController = function ($scope, UrunServis) {
+    var ListController = function ($scope, UrunServis,$http) {
 
         UrunServis.hepsiGetir().success(function (data) {
             $scope.uruns = data;
+
+            //api
+            $http.get("http://eu-api.jotform.com/user?apikey=09c407aeefdcd0b918b282df269fe015").
+                success(function (data) {
+                    console.log(data.content.username);
+                }).error(function (data) {
+                    console.log("hata");
+                });
+
         })
 
         $scope.Olustur = function () {

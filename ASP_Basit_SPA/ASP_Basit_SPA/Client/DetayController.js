@@ -1,8 +1,8 @@
 ﻿(function (app) {
     var DetayController=function($scope,UrunServis,$routeParams)
     {
-        var id = $routeParams.id;
-       UrunServis.idGetir(id) .success(function (data) {
+       var id = $routeParams.id;
+       UrunServis.idGetir(id).success(function (data) {
             $scope.uruns = data;
        });
        $scope.ekle = function () {
