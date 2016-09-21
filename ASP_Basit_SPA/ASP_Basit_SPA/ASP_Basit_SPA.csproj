@@ -165,6 +165,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\AcilDurumController.cs" />
+    <Compile Include="Api\AdresController.cs" />
+    <Compile Include="Api\BelgeController.cs" />
     <Compile Include="Api\KisiController.cs" />
     <Compile Include="Models\AcilDurum.cs" />
     <Compile Include="Models\Adre.cs" />
