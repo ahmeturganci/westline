@@ -184,11 +184,14 @@
   <ItemGroup>
     <Content Include="Client\DetayController.js" />
     <Content Include="Client\EkleController.js" />
+    <Content Include="Client\KisiModul.js" />
     <Content Include="Client\ListController.js" />
     <Content Include="Client\UrunModul.js" />
     <Content Include="Client\UrunServis.js" />
     <Content Include="Client\Views\detay.html" />
     <Content Include="Client\Views\ekle.html" />
+    <Content Include="Client\KisiController.js" />
+    <Content Include="Client\Views\KisiTanima.html" />
     <Content Include="Client\Views\list.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
