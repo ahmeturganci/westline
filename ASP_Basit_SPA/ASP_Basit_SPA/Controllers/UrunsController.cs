@@ -49,7 +49,7 @@ namespace ASP_Basit_SPA.Controllers
                 return BadRequest();
             }
 
-            db.Entry(urun).State = EntityState.Modified;
+            db.Entry(urun).State = System.Data.Entity.EntityState.Modified;
 
             try
             {
