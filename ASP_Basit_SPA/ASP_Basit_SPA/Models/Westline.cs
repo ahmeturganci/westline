@@ -8,7 +8,7 @@ namespace ASP_Basit_SPA
     public partial class Westline : DbContext
     {
         public Westline()
-            : base("name=Westline")
+            : base("name=Westline1")
         {
         }
 
