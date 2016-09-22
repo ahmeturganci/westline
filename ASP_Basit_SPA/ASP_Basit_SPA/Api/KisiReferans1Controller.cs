@@ -21,45 +21,15 @@ namespace ASP_Basit_SPA.Api
         {
             return db.KisiReferans;
         }
-
         // GET: api/KisiReferans1/5
         public KisiReferan GetKisiReferan(int id)
         {
             return db.KisiReferans.FirstOrDefault(x => x.Id == id);
         }
-
         // PUT: api/KisiReferans1/5
-        public IHttpActionResult PutKisiReferan(int id, KisiReferan kisiReferan)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        public void PutKisiReferan(int id, int referansId, int kisiId)
+        {   return StatusCode(HttpStatusCode.NoContent);
 
-            if (id != kisiReferan.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(kisiReferan).State = System.Data.Entity.EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!KisiReferanExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/KisiReferans1

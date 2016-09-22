@@ -15,7 +15,6 @@ namespace ASP_Basit_SPA.Api
     public class UlkesController : ApiController
     {
         private Westline db = new Westline();
-
         // GET: api/Ulkes
         public IQueryable<Ulke> GetUlkes()
         {
@@ -26,7 +25,6 @@ namespace ASP_Basit_SPA.Api
         {
             return db.Ulkes.FirstOrDefault(x => x.Id == id);
         }
-
         // PUT: api/Ulkes/5
         public void PutUlke(int id, string gidilenUlkeId)//burda bişeyler oldu !!! 
         {
@@ -34,7 +32,6 @@ namespace ASP_Basit_SPA.Api
             db.Ulkes.Add(ulke);
             db.SaveChanges();
         }
-
         // POST: api/Ulkes
         public int PostUlke(string gidilenUlkeId)
         {
@@ -46,17 +43,13 @@ namespace ASP_Basit_SPA.Api
 
             return ulke.Id;
         }
-
         // DELETE: api/Ulkes/5
-        
         public void DeleteUlke(int id)
         {
             Ulke ulke= db.Ulkes.FirstOrDefault(x => x.Id == id);
             db.Ulkes.Remove(ulke);
             db.SaveChanges();
         }
-
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -65,7 +58,6 @@ namespace ASP_Basit_SPA.Api
             }
             base.Dispose(disposing);
         }
-
         private bool UlkeExists(int id)
         {
             return db.Ulkes.Count(e => e.Id == id) > 0;
