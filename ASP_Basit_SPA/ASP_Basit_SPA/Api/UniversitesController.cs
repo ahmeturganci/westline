@@ -62,7 +62,7 @@ namespace ASP_Basit_SPA.Api
         public void DeleteUniversite(int id)
         {
             Universite uni= db.Universites.FirstOrDefault(x => x.Id == id);
-            db.Iletisims.Remove(uni);
+            //db.Iletisims.Remove(uni);
             db.SaveChanges();
         }
         protected override void Dispose(bool disposing)

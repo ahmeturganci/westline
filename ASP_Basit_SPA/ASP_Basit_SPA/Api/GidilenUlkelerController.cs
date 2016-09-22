@@ -25,7 +25,7 @@ namespace ASP_Basit_SPA.Api
         // GET: api/GidilenUlkeler/5
         public GidilenUlkeler  GetGidilenUlkeler(int id)
         {
-            return db.GidilenUlkelers.FirstOrDefault(x => Id == id);
+            return db.GidilenUlkelers.FirstOrDefault(x =>x.Id == id);
         }
 
         // PUT: api/GidilenUlkeler/5
@@ -57,12 +57,8 @@ namespace ASP_Basit_SPA.Api
         public void DeleteGidilenUlkeler(int id)
         {
             GidilenUlkeler gu = db.GidilenUlkelers.FirstOrDefault(x=>x.Id==id);
-           
-
             db.GidilenUlkelers.Remove(gu);
             db.SaveChanges();
-
-            
         }
 
         protected override void Dispose(bool disposing)

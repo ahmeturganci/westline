@@ -23,9 +23,9 @@ namespace ASP_Basit_SPA.Api
         }
 
         // GET: api/IngilizceSeviyes/5
-        public int GetIngilizceSeviye(int id)
+        public IngilizceSeviye GetIngilizceSeviye(int id)
         {
-            return db.IngilizceSeviyes.FirstOrDefault(x => x.Id = id);
+            return db.IngilizceSeviyes.FirstOrDefault(x => x.Id == id);
         }
 
         // PUT: api/IngilizceSeviyes/5

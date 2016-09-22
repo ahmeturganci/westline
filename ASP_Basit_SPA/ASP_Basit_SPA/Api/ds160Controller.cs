@@ -23,82 +23,95 @@ namespace ASP_Basit_SPA.Api
         }
 
         // GET: api/ds160/5
-        [ResponseType(typeof(ds160))]
-        public IHttpActionResult Getds160(int id)
+        public ds160 Getds160(int id)
         {
-            ds160 ds160 = db.ds160.Find(id);
-            if (ds160 == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(ds160);
+            return db.ds160.FirstOrDefault(x => x.Id == id);
         }
 
         // PUT: api/ds160/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult Putds160(int id, ds160 ds160)
+        public void Putds160(int id, int dogumYerId,int dogumUlkeId,int vatandasUlkeId,
+            string ikinciUlkeVatandasNo,string abdSsn, bool amerikaBulunma,DateTime amerikaBulunmaTarih,
+            string amerikaBulunduguSure,bool oAmerikaVize, DateTime oAmerikaVizeTarih,
+            string oAmerikaVizeNo,bool oAmerikaRet,string oAmerikaRetNeden,
+            bool amerikaVatandasGocmenBasvur,DateTime babaDogum,bool babaAmerikadami, 
+            DateTime anneDogum, bool anneAmerikadami,string amerikaAkrabaBilgi,int pasportId,
+            bool sonBesYilYurdDisiGittimi,bool askerlik,bool tutuklanmaSicil, int pasId)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            ds160 ds = db.ds160.FirstOrDefault(x => x.Id == id);
+            ds.DogumYeri = dogumYerId;
+            ds.DogumUlke = dogumUlkeId;
+            ds.VatandasUlke = vatandasUlkeId;
+            ds.IkinciUlkeVatandasNo = ikinciUlkeVatandasNo;
+            ds.AbdSsn = abdSsn;
+            ds.AmerikadaBulunduMu = amerikaBulunma;
+            ds.AmerikaBulunduguTarih = amerikaBulunmaTarih;
+            ds.AmerikaBulunduguSure = amerikaBulunduguSure;
+            ds.OncedenAmerikaVizesiAldı = oAmerikaVize;
+            ds.OncedenAmerikaVizesiTarih = oAmerikaVizeTarih;
+            ds.OncedenAmerikaVizeNo = oAmerikaVizeNo;
+            ds.OncedenAmerikaVizeRet = oAmerikaRet;
+            ds.OncedenAmerikaVizeRetNedeni = oAmerikaRetNeden;
+            ds.AmerikaVatandasGocmenBasvuru = amerikaVatandasGocmenBasvur;
+            ds.BabaDogumTarihi = babaDogum;
+            ds.BabaAmerikadaMi = babaAmerikadami;
+            ds.AnneDogumTarihi = anneDogum;
+            ds.AnneAmerikadaMi = anneAmerikadami;
+            ds.PasaportId = pasportId;
+            ds.SonBesYilYurtdisiGitti = sonBesYilYurdDisiGittimi;
+            ds.AskerlikYapti = askerlik;
+            ds.TutuklanmaSicil = tutuklanmaSicil;
+            ds.Pasaport.Id = pasId;
 
-            if (id != ds160.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(ds160).State = System.Data.Entity.EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ds160Exists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            db.ds160.Add(ds);
+            db.SaveChanges();
         }
 
         // POST: api/ds160
-        [ResponseType(typeof(ds160))]
-        public IHttpActionResult Postds160(ds160 ds160)
+        public int Postds160(int dogumYerId, int dogumUlkeId, int vatandasUlkeId,
+            string ikinciUlkeVatandasNo, string abdSsn, bool amerikaBulunma, DateTime amerikaBulunmaTarih,
+            string amerikaBulunduguSure, bool oAmerikaVize, DateTime oAmerikaVizeTarih,
+            string oAmerikaVizeNo, bool oAmerikaRet, string oAmerikaRetNeden,
+            bool amerikaVatandasGocmenBasvur, DateTime babaDogum, bool babaAmerikadami,
+            DateTime anneDogum, bool anneAmerikadami, string amerikaAkrabaBilgi, int pasportId,
+            bool sonBesYilYurdDisiGittimi, bool askerlik, bool tutuklanmaSicil, int pasId)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.ds160.Add(ds160);
+            ds160 ds = new ds160();
+            ds.DogumYeri = dogumYerId;
+            ds.DogumUlke = dogumUlkeId;
+            ds.VatandasUlke = vatandasUlkeId;
+            ds.IkinciUlkeVatandasNo = ikinciUlkeVatandasNo;
+            ds.AbdSsn = abdSsn;
+            ds.AmerikadaBulunduMu = amerikaBulunma;
+            ds.AmerikaBulunduguTarih = amerikaBulunmaTarih;
+            ds.AmerikaBulunduguSure = amerikaBulunduguSure;
+            ds.OncedenAmerikaVizesiAldı = oAmerikaVize;
+            ds.OncedenAmerikaVizesiTarih = oAmerikaVizeTarih;
+            ds.OncedenAmerikaVizeNo = oAmerikaVizeNo;
+            ds.OncedenAmerikaVizeRet = oAmerikaRet;
+            ds.OncedenAmerikaVizeRetNedeni = oAmerikaRetNeden;
+            ds.AmerikaVatandasGocmenBasvuru = amerikaVatandasGocmenBasvur;
+            ds.BabaDogumTarihi = babaDogum;
+            ds.BabaAmerikadaMi = babaAmerikadami;
+            ds.AnneDogumTarihi = anneDogum;
+            ds.AnneAmerikadaMi = anneAmerikadami;
+            ds.PasaportId = pasportId;
+            ds.SonBesYilYurtdisiGitti = sonBesYilYurdDisiGittimi;
+            ds.AskerlikYapti = askerlik;
+            ds.TutuklanmaSicil = tutuklanmaSicil;
+            ds.Pasaport.Id = pasId;
+            db.ds160.Add(ds);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = ds160.Id }, ds160);
+            return ds.Id;
         }
 
         // DELETE: api/ds160/5
-        [ResponseType(typeof(ds160))]
-        public IHttpActionResult Deleteds160(int id)
+        public void Deleteds160(int id)
         {
-            ds160 ds160 = db.ds160.Find(id);
-            if (ds160 == null)
-            {
-                return NotFound();
-            }
-
-            db.ds160.Remove(ds160);
+            ds160 ds = db.ds160.FirstOrDefault(x=>x.Id==id);
+           
+            db.ds160.Remove(ds);
             db.SaveChanges();
-
-            return Ok(ds160);
         }
 
         protected override void Dispose(bool disposing)

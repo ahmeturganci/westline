@@ -23,16 +23,9 @@ namespace ASP_Basit_SPA.Api
         }
 
         // GET: api/Dils/5
-        [ResponseType(typeof(Dil))]
-        public IHttpActionResult GetDil(int id)
+        public Dil GetDil(int id)
         {
-            Dil dil = db.Dils.Find(id);
-            if (dil == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(dil);
+            return db.Dils.FirstOrDefault(x=>x.Id==id);
         }
 
         // PUT: api/Dils/5
