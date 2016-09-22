@@ -15,92 +15,56 @@ namespace ASP_Basit_SPA.Api
     public class UniversitesController : ApiController
     {
         private Westline db = new Westline();
-
         // GET: api/Universites
         public IQueryable<Universite> GetUniversites()
         {
             return db.Universites;
         }
-
         // GET: api/Universites/5
-        [ResponseType(typeof(Universite))]
-        public IHttpActionResult GetUniversite(int id)
+        public Universite GetUniversite(int id)
         {
-            Universite universite = db.Universites.Find(id);
-            if (universite == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(universite);
+            return db.Universites.FirstOrDefault(x => x.Id == id);
         }
-
         // PUT: api/Universites/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutUniversite(int id, Universite universite)
+        public void PutUniversite(int id, string ad,int sinif, string bolum, string okulNo, DateTime acilisT, DateTime kapanisT, string tel, int adresId)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+           Universite u = db.Universites.FirstOrDefault(x => x.Id == id);
+            u.Ad = ad;
+            u.Sinif = sinif;
+            u.Bolum = bolum;
+            u.OkulNo = okulNo;
+            u.AcilisTarihi = acilisT;
+            u.KapanisTarihi = kapanisT;
+            u.Tel = tel;
+            u.Adre.Id = adresId;
 
-            if (id != universite.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(universite).State = System.Data.Entity.EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UniversiteExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            db.Universites.Add(u);
+            db.SaveChanges();
         }
-
         // POST: api/Universites
-        [ResponseType(typeof(Universite))]
-        public IHttpActionResult PostUniversite(Universite universite)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        public int  PostUniversite(string ad, int sinif, string bolum, string okulNo, DateTime acilisT, DateTime kapanisT, string tel, int adresId)
+        { Universite u = new Universite();
+            u.Ad = ad;
+            u.Sinif = sinif;
+            u.Bolum = bolum;
+            u.OkulNo = okulNo;
+            u.AcilisTarihi = acilisT;
+            u.KapanisTarihi = kapanisT;
+            u.Tel = tel;
+            u.Adre.Id = adresId;
 
-            db.Universites.Add(universite);
+            db.Universites.Add(u);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = universite.Id }, universite);
+            return u.Id;
         }
-
         // DELETE: api/Universites/5
-        [ResponseType(typeof(Universite))]
-        public IHttpActionResult DeleteUniversite(int id)
+        public void DeleteUniversite(int id)
         {
-            Universite universite = db.Universites.Find(id);
-            if (universite == null)
-            {
-                return NotFound();
-            }
-
-            db.Universites.Remove(universite);
+            Universite uni= db.Universites.FirstOrDefault(x => x.Id == id);
+            db.Iletisims.Remove(uni);
             db.SaveChanges();
-
-            return Ok(universite);
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -109,7 +73,6 @@ namespace ASP_Basit_SPA.Api
             }
             base.Dispose(disposing);
         }
-
         private bool UniversiteExists(int id)
         {
             return db.Universites.Count(e => e.Id == id) > 0;

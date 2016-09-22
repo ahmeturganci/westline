@@ -21,84 +21,49 @@ namespace ASP_Basit_SPA.Api
         {
             return db.Referans;
         }
-
         // GET: api/Referans/5
-        [ResponseType(typeof(Referan))]
-        public IHttpActionResult GetReferan(int id)
+        public Referan GetReferan(int id)
         {
-            Referan referan = db.Referans.Find(id);
-            if (referan == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(referan);
+            return db.Referans.FirstOrDefault(x => x.Id == id);
         }
 
         // PUT: api/Referans/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutReferan(int id, Referan referan)
+        public void PutReferan(int id,string ad,string soyad,string tel,string email, int adresId )//adamın adresi kayıt olann adresinden farklı
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            Referan r = db.Referans.FirstOrDefault(x => x.Id == id);
+            r.Adi = ad;
+            r.Soyadi = soyad;
+            r.Tel = tel;
+            r.Email = email;
+            r.AdresId = adresId;
 
-            if (id != referan.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(referan).State = System.Data.Entity.EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ReferanExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            db.Referans.Add(r);
+            db.SaveChanges();
         }
 
         // POST: api/Referans
-        [ResponseType(typeof(Referan))]
-        public IHttpActionResult PostReferan(Referan referan)
+        
+        public int PostReferan(string ad, string soyad, string tel, string email, int adresId)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            Referan r = new Referan();
+            r.Adi = ad;
+            r.Soyadi = soyad;
+            r.Tel = tel;
+            r.Email = email;
+            r.AdresId = adresId;
 
-            db.Referans.Add(referan);
+            db.Referans.Add(r);
             db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = referan.Id }, referan);
+            return r.Id;
         }
 
         // DELETE: api/Referans/5
-        [ResponseType(typeof(Referan))]
-        public IHttpActionResult DeleteReferan(int id)
+        
+        public void DeleteReferan(int id)
         {
-            Referan referan = db.Referans.Find(id);
-            if (referan == null)
-            {
-                return NotFound();
-            }
-
-            db.Referans.Remove(referan);
+            Referan r = db.Referans.FirstOrDefault(x => x.Id == id);
+            db.Referans.Remove(r);
             db.SaveChanges();
-
-            return Ok(referan);
         }
 
         protected override void Dispose(bool disposing)

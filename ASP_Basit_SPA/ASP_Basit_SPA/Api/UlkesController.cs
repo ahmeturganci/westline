@@ -21,86 +21,41 @@ namespace ASP_Basit_SPA.Api
         {
             return db.Ulkes;
         }
-
         // GET: api/Ulkes/5
-        [ResponseType(typeof(Ulke))]
-        public IHttpActionResult GetUlke(int id)
+        public Ulke GetUlke(int id)
         {
-            Ulke ulke = db.Ulkes.Find(id);
-            
-            if (ulke == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(ulke);
+            return db.Ulkes.FirstOrDefault(x => x.Id == id);
         }
 
         // PUT: api/Ulkes/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutUlke(int id, Ulke ulke)
+        public void PutUlke(int id, string gidilenUlkeId)//burda bişeyler oldu !!! 
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != ulke.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(ulke).State = System.Data.Entity.EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UlkeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            Ulke ulke = db.Ulkes.FirstOrDefault(x => x.Id == id);
+            db.Ulkes.Add(ulke);
+            db.SaveChanges();
         }
 
         // POST: api/Ulkes
-        [ResponseType(typeof(Ulke))]
-        public IHttpActionResult PostUlke(Ulke ulke)
+        public int PostUlke(string gidilenUlkeId)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            Ulke ulke = new Ulke();
+            
 
             db.Ulkes.Add(ulke);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = ulke.Id }, ulke);
+            return ulke.Id;
         }
 
         // DELETE: api/Ulkes/5
-        [ResponseType(typeof(Ulke))]
-        public IHttpActionResult DeleteUlke(int id)
+        
+        public void DeleteUlke(int id)
         {
-            Ulke ulke = db.Ulkes.Find(id);
-            if (ulke == null)
-            {
-                return NotFound();
-            }
-
+            Ulke ulke= db.Ulkes.FirstOrDefault(x => x.Id == id);
             db.Ulkes.Remove(ulke);
             db.SaveChanges();
-
-            return Ok(ulke);
         }
+
 
         protected override void Dispose(bool disposing)
         {
