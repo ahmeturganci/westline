@@ -12,44 +12,44 @@ using ASP_Basit_SPA;
 
 namespace ASP_Basit_SPA.Api
 {
-    public class GidilenUlkelerController : ApiController
+    public class PasaportsController : ApiController
     {
         private Westline db = new Westline();
 
-        // GET: api/GidilenUlkeler
-        public IQueryable<GidilenUlkeler> GetGidilenUlkelers()
+        // GET: api/Pasaports
+        public IQueryable<Pasaport> GetPasaports()
         {
-            return db.GidilenUlkelers;
+            return db.Pasaports;
         }
 
-        // GET: api/GidilenUlkeler/5
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult GetGidilenUlkeler(int id)
+        // GET: api/Pasaports/5
+        [ResponseType(typeof(Pasaport))]
+        public IHttpActionResult GetPasaport(int id)
         {
-            GidilenUlkeler gidilenUlkeler = db.GidilenUlkelers.Find(id);
-            if (gidilenUlkeler == null)
+            Pasaport pasaport = db.Pasaports.Find(id);
+            if (pasaport == null)
             {
                 return NotFound();
             }
 
-            return Ok(gidilenUlkeler);
+            return Ok(pasaport);
         }
 
-        // PUT: api/GidilenUlkeler/5
+        // PUT: api/Pasaports/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutGidilenUlkeler(int id, GidilenUlkeler gidilenUlkeler)
+        public IHttpActionResult PutPasaport(int id, Pasaport pasaport)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != gidilenUlkeler.Id)
+            if (id != pasaport.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(gidilenUlkeler).State = System.Data.Entity.EntityState.Modified;
+            db.Entry(pasaport).State = System.Data.Entity.EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace ASP_Basit_SPA.Api
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GidilenUlkelerExists(id))
+                if (!PasaportExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +70,35 @@ namespace ASP_Basit_SPA.Api
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/GidilenUlkeler
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult PostGidilenUlkeler(GidilenUlkeler gidilenUlkeler)
+        // POST: api/Pasaports
+        [ResponseType(typeof(Pasaport))]
+        public IHttpActionResult PostPasaport(Pasaport pasaport)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.GidilenUlkelers.Add(gidilenUlkeler);
+            db.Pasaports.Add(pasaport);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = gidilenUlkeler.Id }, gidilenUlkeler);
+            return CreatedAtRoute("DefaultApi", new { id = pasaport.Id }, pasaport);
         }
 
-        // DELETE: api/GidilenUlkeler/5
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult DeleteGidilenUlkeler(int id)
+        // DELETE: api/Pasaports/5
+        [ResponseType(typeof(Pasaport))]
+        public IHttpActionResult DeletePasaport(int id)
         {
-            GidilenUlkeler gidilenUlkeler = db.GidilenUlkelers.Find(id);
-            if (gidilenUlkeler == null)
+            Pasaport pasaport = db.Pasaports.Find(id);
+            if (pasaport == null)
             {
                 return NotFound();
             }
 
-            db.GidilenUlkelers.Remove(gidilenUlkeler);
+            db.Pasaports.Remove(pasaport);
             db.SaveChanges();
 
-            return Ok(gidilenUlkeler);
+            return Ok(pasaport);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,9 +110,9 @@ namespace ASP_Basit_SPA.Api
             base.Dispose(disposing);
         }
 
-        private bool GidilenUlkelerExists(int id)
+        private bool PasaportExists(int id)
         {
-            return db.GidilenUlkelers.Count(e => e.Id == id) > 0;
+            return db.Pasaports.Count(e => e.Id == id) > 0;
         }
     }
 }

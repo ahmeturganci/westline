@@ -12,44 +12,44 @@ using ASP_Basit_SPA;
 
 namespace ASP_Basit_SPA.Api
 {
-    public class GidilenUlkelerController : ApiController
+    public class KisiReferans1Controller : ApiController
     {
         private Westline db = new Westline();
 
-        // GET: api/GidilenUlkeler
-        public IQueryable<GidilenUlkeler> GetGidilenUlkelers()
+        // GET: api/KisiReferans1
+        public IQueryable<KisiReferan> GetKisiReferans()
         {
-            return db.GidilenUlkelers;
+            return db.KisiReferans;
         }
 
-        // GET: api/GidilenUlkeler/5
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult GetGidilenUlkeler(int id)
+        // GET: api/KisiReferans1/5
+        [ResponseType(typeof(KisiReferan))]
+        public IHttpActionResult GetKisiReferan(int id)
         {
-            GidilenUlkeler gidilenUlkeler = db.GidilenUlkelers.Find(id);
-            if (gidilenUlkeler == null)
+            KisiReferan kisiReferan = db.KisiReferans.Find(id);
+            if (kisiReferan == null)
             {
                 return NotFound();
             }
 
-            return Ok(gidilenUlkeler);
+            return Ok(kisiReferan);
         }
 
-        // PUT: api/GidilenUlkeler/5
+        // PUT: api/KisiReferans1/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutGidilenUlkeler(int id, GidilenUlkeler gidilenUlkeler)
+        public IHttpActionResult PutKisiReferan(int id, KisiReferan kisiReferan)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != gidilenUlkeler.Id)
+            if (id != kisiReferan.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(gidilenUlkeler).State = System.Data.Entity.EntityState.Modified;
+            db.Entry(kisiReferan).State = System.Data.Entity.EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace ASP_Basit_SPA.Api
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GidilenUlkelerExists(id))
+                if (!KisiReferanExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +70,35 @@ namespace ASP_Basit_SPA.Api
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/GidilenUlkeler
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult PostGidilenUlkeler(GidilenUlkeler gidilenUlkeler)
+        // POST: api/KisiReferans1
+        [ResponseType(typeof(KisiReferan))]
+        public IHttpActionResult PostKisiReferan(KisiReferan kisiReferan)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.GidilenUlkelers.Add(gidilenUlkeler);
+            db.KisiReferans.Add(kisiReferan);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = gidilenUlkeler.Id }, gidilenUlkeler);
+            return CreatedAtRoute("DefaultApi", new { id = kisiReferan.Id }, kisiReferan);
         }
 
-        // DELETE: api/GidilenUlkeler/5
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult DeleteGidilenUlkeler(int id)
+        // DELETE: api/KisiReferans1/5
+        [ResponseType(typeof(KisiReferan))]
+        public IHttpActionResult DeleteKisiReferan(int id)
         {
-            GidilenUlkeler gidilenUlkeler = db.GidilenUlkelers.Find(id);
-            if (gidilenUlkeler == null)
+            KisiReferan kisiReferan = db.KisiReferans.Find(id);
+            if (kisiReferan == null)
             {
                 return NotFound();
             }
 
-            db.GidilenUlkelers.Remove(gidilenUlkeler);
+            db.KisiReferans.Remove(kisiReferan);
             db.SaveChanges();
 
-            return Ok(gidilenUlkeler);
+            return Ok(kisiReferan);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,9 +110,9 @@ namespace ASP_Basit_SPA.Api
             base.Dispose(disposing);
         }
 
-        private bool GidilenUlkelerExists(int id)
+        private bool KisiReferanExists(int id)
         {
-            return db.GidilenUlkelers.Count(e => e.Id == id) > 0;
+            return db.KisiReferans.Count(e => e.Id == id) > 0;
         }
     }
 }

@@ -12,44 +12,44 @@ using ASP_Basit_SPA;
 
 namespace ASP_Basit_SPA.Api
 {
-    public class GidilenUlkelerController : ApiController
+    public class UniversitesController : ApiController
     {
         private Westline db = new Westline();
 
-        // GET: api/GidilenUlkeler
-        public IQueryable<GidilenUlkeler> GetGidilenUlkelers()
+        // GET: api/Universites
+        public IQueryable<Universite> GetUniversites()
         {
-            return db.GidilenUlkelers;
+            return db.Universites;
         }
 
-        // GET: api/GidilenUlkeler/5
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult GetGidilenUlkeler(int id)
+        // GET: api/Universites/5
+        [ResponseType(typeof(Universite))]
+        public IHttpActionResult GetUniversite(int id)
         {
-            GidilenUlkeler gidilenUlkeler = db.GidilenUlkelers.Find(id);
-            if (gidilenUlkeler == null)
+            Universite universite = db.Universites.Find(id);
+            if (universite == null)
             {
                 return NotFound();
             }
 
-            return Ok(gidilenUlkeler);
+            return Ok(universite);
         }
 
-        // PUT: api/GidilenUlkeler/5
+        // PUT: api/Universites/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutGidilenUlkeler(int id, GidilenUlkeler gidilenUlkeler)
+        public IHttpActionResult PutUniversite(int id, Universite universite)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != gidilenUlkeler.Id)
+            if (id != universite.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(gidilenUlkeler).State = System.Data.Entity.EntityState.Modified;
+            db.Entry(universite).State = System.Data.Entity.EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace ASP_Basit_SPA.Api
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GidilenUlkelerExists(id))
+                if (!UniversiteExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +70,35 @@ namespace ASP_Basit_SPA.Api
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/GidilenUlkeler
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult PostGidilenUlkeler(GidilenUlkeler gidilenUlkeler)
+        // POST: api/Universites
+        [ResponseType(typeof(Universite))]
+        public IHttpActionResult PostUniversite(Universite universite)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.GidilenUlkelers.Add(gidilenUlkeler);
+            db.Universites.Add(universite);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = gidilenUlkeler.Id }, gidilenUlkeler);
+            return CreatedAtRoute("DefaultApi", new { id = universite.Id }, universite);
         }
 
-        // DELETE: api/GidilenUlkeler/5
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult DeleteGidilenUlkeler(int id)
+        // DELETE: api/Universites/5
+        [ResponseType(typeof(Universite))]
+        public IHttpActionResult DeleteUniversite(int id)
         {
-            GidilenUlkeler gidilenUlkeler = db.GidilenUlkelers.Find(id);
-            if (gidilenUlkeler == null)
+            Universite universite = db.Universites.Find(id);
+            if (universite == null)
             {
                 return NotFound();
             }
 
-            db.GidilenUlkelers.Remove(gidilenUlkeler);
+            db.Universites.Remove(universite);
             db.SaveChanges();
 
-            return Ok(gidilenUlkeler);
+            return Ok(universite);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,9 +110,9 @@ namespace ASP_Basit_SPA.Api
             base.Dispose(disposing);
         }
 
-        private bool GidilenUlkelerExists(int id)
+        private bool UniversiteExists(int id)
         {
-            return db.GidilenUlkelers.Count(e => e.Id == id) > 0;
+            return db.Universites.Count(e => e.Id == id) > 0;
         }
     }
 }

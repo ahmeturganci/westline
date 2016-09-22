@@ -12,44 +12,44 @@ using ASP_Basit_SPA;
 
 namespace ASP_Basit_SPA.Api
 {
-    public class GidilenUlkelerController : ApiController
+    public class UlkesController : ApiController
     {
         private Westline db = new Westline();
 
-        // GET: api/GidilenUlkeler
-        public IQueryable<GidilenUlkeler> GetGidilenUlkelers()
+        // GET: api/Ulkes
+        public IQueryable<Ulke> GetUlkes()
         {
-            return db.GidilenUlkelers;
+            return db.Ulkes;
         }
 
-        // GET: api/GidilenUlkeler/5
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult GetGidilenUlkeler(int id)
+        // GET: api/Ulkes/5
+        [ResponseType(typeof(Ulke))]
+        public IHttpActionResult GetUlke(int id)
         {
-            GidilenUlkeler gidilenUlkeler = db.GidilenUlkelers.Find(id);
-            if (gidilenUlkeler == null)
+            Ulke ulke = db.Ulkes.Find(id);
+            if (ulke == null)
             {
                 return NotFound();
             }
 
-            return Ok(gidilenUlkeler);
+            return Ok(ulke);
         }
 
-        // PUT: api/GidilenUlkeler/5
+        // PUT: api/Ulkes/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutGidilenUlkeler(int id, GidilenUlkeler gidilenUlkeler)
+        public IHttpActionResult PutUlke(int id, Ulke ulke)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != gidilenUlkeler.Id)
+            if (id != ulke.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(gidilenUlkeler).State = System.Data.Entity.EntityState.Modified;
+            db.Entry(ulke).State = System.Data.Entity.EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace ASP_Basit_SPA.Api
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GidilenUlkelerExists(id))
+                if (!UlkeExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +70,35 @@ namespace ASP_Basit_SPA.Api
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/GidilenUlkeler
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult PostGidilenUlkeler(GidilenUlkeler gidilenUlkeler)
+        // POST: api/Ulkes
+        [ResponseType(typeof(Ulke))]
+        public IHttpActionResult PostUlke(Ulke ulke)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.GidilenUlkelers.Add(gidilenUlkeler);
+            db.Ulkes.Add(ulke);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = gidilenUlkeler.Id }, gidilenUlkeler);
+            return CreatedAtRoute("DefaultApi", new { id = ulke.Id }, ulke);
         }
 
-        // DELETE: api/GidilenUlkeler/5
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult DeleteGidilenUlkeler(int id)
+        // DELETE: api/Ulkes/5
+        [ResponseType(typeof(Ulke))]
+        public IHttpActionResult DeleteUlke(int id)
         {
-            GidilenUlkeler gidilenUlkeler = db.GidilenUlkelers.Find(id);
-            if (gidilenUlkeler == null)
+            Ulke ulke = db.Ulkes.Find(id);
+            if (ulke == null)
             {
                 return NotFound();
             }
 
-            db.GidilenUlkelers.Remove(gidilenUlkeler);
+            db.Ulkes.Remove(ulke);
             db.SaveChanges();
 
-            return Ok(gidilenUlkeler);
+            return Ok(ulke);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,9 +110,9 @@ namespace ASP_Basit_SPA.Api
             base.Dispose(disposing);
         }
 
-        private bool GidilenUlkelerExists(int id)
+        private bool UlkeExists(int id)
         {
-            return db.GidilenUlkelers.Count(e => e.Id == id) > 0;
+            return db.Ulkes.Count(e => e.Id == id) > 0;
         }
     }
 }

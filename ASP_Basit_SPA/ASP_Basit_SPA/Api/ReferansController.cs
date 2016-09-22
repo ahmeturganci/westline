@@ -12,44 +12,44 @@ using ASP_Basit_SPA;
 
 namespace ASP_Basit_SPA.Api
 {
-    public class GidilenUlkelerController : ApiController
+    public class ReferansController : ApiController
     {
         private Westline db = new Westline();
 
-        // GET: api/GidilenUlkeler
-        public IQueryable<GidilenUlkeler> GetGidilenUlkelers()
+        // GET: api/Referans
+        public IQueryable<Referan> GetReferans()
         {
-            return db.GidilenUlkelers;
+            return db.Referans;
         }
 
-        // GET: api/GidilenUlkeler/5
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult GetGidilenUlkeler(int id)
+        // GET: api/Referans/5
+        [ResponseType(typeof(Referan))]
+        public IHttpActionResult GetReferan(int id)
         {
-            GidilenUlkeler gidilenUlkeler = db.GidilenUlkelers.Find(id);
-            if (gidilenUlkeler == null)
+            Referan referan = db.Referans.Find(id);
+            if (referan == null)
             {
                 return NotFound();
             }
 
-            return Ok(gidilenUlkeler);
+            return Ok(referan);
         }
 
-        // PUT: api/GidilenUlkeler/5
+        // PUT: api/Referans/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutGidilenUlkeler(int id, GidilenUlkeler gidilenUlkeler)
+        public IHttpActionResult PutReferan(int id, Referan referan)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != gidilenUlkeler.Id)
+            if (id != referan.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(gidilenUlkeler).State = System.Data.Entity.EntityState.Modified;
+            db.Entry(referan).State = System.Data.Entity.EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace ASP_Basit_SPA.Api
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GidilenUlkelerExists(id))
+                if (!ReferanExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +70,35 @@ namespace ASP_Basit_SPA.Api
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/GidilenUlkeler
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult PostGidilenUlkeler(GidilenUlkeler gidilenUlkeler)
+        // POST: api/Referans
+        [ResponseType(typeof(Referan))]
+        public IHttpActionResult PostReferan(Referan referan)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.GidilenUlkelers.Add(gidilenUlkeler);
+            db.Referans.Add(referan);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = gidilenUlkeler.Id }, gidilenUlkeler);
+            return CreatedAtRoute("DefaultApi", new { id = referan.Id }, referan);
         }
 
-        // DELETE: api/GidilenUlkeler/5
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult DeleteGidilenUlkeler(int id)
+        // DELETE: api/Referans/5
+        [ResponseType(typeof(Referan))]
+        public IHttpActionResult DeleteReferan(int id)
         {
-            GidilenUlkeler gidilenUlkeler = db.GidilenUlkelers.Find(id);
-            if (gidilenUlkeler == null)
+            Referan referan = db.Referans.Find(id);
+            if (referan == null)
             {
                 return NotFound();
             }
 
-            db.GidilenUlkelers.Remove(gidilenUlkeler);
+            db.Referans.Remove(referan);
             db.SaveChanges();
 
-            return Ok(gidilenUlkeler);
+            return Ok(referan);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,9 +110,9 @@ namespace ASP_Basit_SPA.Api
             base.Dispose(disposing);
         }
 
-        private bool GidilenUlkelerExists(int id)
+        private bool ReferanExists(int id)
         {
-            return db.GidilenUlkelers.Count(e => e.Id == id) > 0;
+            return db.Referans.Count(e => e.Id == id) > 0;
         }
     }
 }
