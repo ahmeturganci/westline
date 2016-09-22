@@ -71,18 +71,17 @@ namespace ASP_Basit_SPA.Api
         }
 
         // POST: api/Iletisims
-        [ResponseType(typeof(Iletisim))]
-        public IHttpActionResult PostIletisim(Iletisim iletisim)
+        public int PostIletisim(string tel, int adresId, string skype, string email)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Iletisims.Add(iletisim);
+            Iletisim i = new Iletisim();
+            i.Telefon = tel;
+            i.AdresId = adresId;
+            i.Skype = skype;
+            i.Email = email;
+            
+            db.Iletisims.Add(i);
             db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = iletisim.Id }, iletisim);
+            return i.Id;
         }
 
         // DELETE: api/Iletisims/5
