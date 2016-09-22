@@ -15,7 +15,6 @@ namespace ASP_Basit_SPA.Api
     public class ReferansController : ApiController
     {
         private Westline db = new Westline();
-
         // GET: api/Referans
         public IQueryable<Referan> GetReferans()
         {
@@ -26,7 +25,6 @@ namespace ASP_Basit_SPA.Api
         {
             return db.Referans.FirstOrDefault(x => x.Id == id);
         }
-
         // PUT: api/Referans/5
         public void PutReferan(int id,string ad,string soyad,string tel,string email, int adresId )//adamın adresi kayıt olann adresinden farklı
         {
@@ -40,9 +38,7 @@ namespace ASP_Basit_SPA.Api
             db.Referans.Add(r);
             db.SaveChanges();
         }
-
         // POST: api/Referans
-        
         public int PostReferan(string ad, string soyad, string tel, string email, int adresId)
         {
             Referan r = new Referan();
@@ -56,16 +52,13 @@ namespace ASP_Basit_SPA.Api
             db.SaveChanges();
             return r.Id;
         }
-
         // DELETE: api/Referans/5
-        
         public void DeleteReferan(int id)
         {
             Referan r = db.Referans.FirstOrDefault(x => x.Id == id);
             db.Referans.Remove(r);
             db.SaveChanges();
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -74,7 +67,6 @@ namespace ASP_Basit_SPA.Api
             }
             base.Dispose(disposing);
         }
-
         private bool ReferanExists(int id)
         {
             return db.Referans.Count(e => e.Id == id) > 0;

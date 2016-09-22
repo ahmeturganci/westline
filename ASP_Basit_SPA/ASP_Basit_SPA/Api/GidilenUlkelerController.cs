@@ -23,82 +23,46 @@ namespace ASP_Basit_SPA.Api
         }
 
         // GET: api/GidilenUlkeler/5
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult GetGidilenUlkeler(int id)
+        public GidilenUlkeler  GetGidilenUlkeler(int id)
         {
-            GidilenUlkeler gidilenUlkeler = db.GidilenUlkelers.Find(id);
-            if (gidilenUlkeler == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(gidilenUlkeler);
+            return db.GidilenUlkelers.FirstOrDefault(x => Id == id);
         }
 
         // PUT: api/GidilenUlkeler/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutGidilenUlkeler(int id, GidilenUlkeler gidilenUlkeler)
+        public void PutGidilenUlkeler(int id, int kisiId ,int ulkeId)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            GidilenUlkeler gu = db.GidilenUlkelers.FirstOrDefault(x => x.Id == id);
 
-            if (id != gidilenUlkeler.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(gidilenUlkeler).State = System.Data.Entity.EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!GidilenUlkelerExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            gu.KisiId = kisiId;
+            gu.UlkeId = ulkeId;
+            db.GidilenUlkelers.Add(gu);
+            db.SaveChanges();
         }
 
         // POST: api/GidilenUlkeler
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult PostGidilenUlkeler(GidilenUlkeler gidilenUlkeler)
+        
+        public int PostGidilenUlkeler(int kisiId, int ulkeId)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            GidilenUlkeler gu = new GidilenUlkeler();
+            gu.KisiId = kisiId;
+            gu.UlkeId = ulkeId;
 
-            db.GidilenUlkelers.Add(gidilenUlkeler);
+            db.GidilenUlkelers.Add(gu);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = gidilenUlkeler.Id }, gidilenUlkeler);
+            return gu.Id;
         }
 
         // DELETE: api/GidilenUlkeler/5
-        [ResponseType(typeof(GidilenUlkeler))]
-        public IHttpActionResult DeleteGidilenUlkeler(int id)
+        public void DeleteGidilenUlkeler(int id)
         {
-            GidilenUlkeler gidilenUlkeler = db.GidilenUlkelers.Find(id);
-            if (gidilenUlkeler == null)
-            {
-                return NotFound();
-            }
+            GidilenUlkeler gu = db.GidilenUlkelers.FirstOrDefault(x=>x.Id==id);
+           
 
-            db.GidilenUlkelers.Remove(gidilenUlkeler);
+            db.GidilenUlkelers.Remove(gu);
             db.SaveChanges();
 
-            return Ok(gidilenUlkeler);
+            
         }
 
         protected override void Dispose(bool disposing)

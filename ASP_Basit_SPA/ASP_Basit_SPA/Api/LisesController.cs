@@ -15,94 +15,50 @@ namespace ASP_Basit_SPA.Api
     public class LisesController : ApiController
     {
         private Westline db = new Westline();
-
         // GET: api/Lises
         public IQueryable<Lise> GetLises()
         {
             return db.Lises;
         }
-
         // GET: api/Lises/5
-        [ResponseType(typeof(Lise))]
-        public IHttpActionResult GetLise(int id)
+        public Lise GetLise(int id)
         {
-            Lise lise = db.Lises.Find(id);
-            if (lise == null)
-            {
-                return NotFound();
-            }
-            
-
-            return Ok(lise);
+            return db.Lises.FirstOrDefault(x => x.Id == id);
         }
-
         // PUT: api/Lises/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutLise(int id, Lise lise)
+        public void PutLise(int id, string liseAd, int liseAdresId, string mezunYil, string alan)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            Lise l = db.Lises.FirstOrDefault(x => x.Id == id);
+            l.Ad = liseAd;
+            l.AdresId = liseAdresId;
+            l.MezunYilAralik = mezunYil;
+            l.Alan = alan;
 
-            if (id != lise.Id)
-            {
-                return BadRequest();
-            }
+            db.Lises.Add(l);
+            db.SaveChanges();
 
-            db.Entry(lise).State = System.Data.Entity.EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LiseExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
         }
-
         // POST: api/Lises
-        [ResponseType(typeof(Lise))]
-        public IHttpActionResult PostLise(Lise lise)//;
-
+        public int PostLise(string liseAd, int liseAdresId, string mezunYil, string alan)//;
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            Lise l = new Lise();
+            l.Ad = liseAd;
+            l.AdresId = liseAdresId;
+            l.MezunYilAralik = mezunYil;
+            l.Alan = alan;
 
-            db.Lises.Add(lise);
+            db.Lises.Add(l);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = lise.Id }, lise);
+            return l.Id;
         }
-
         // DELETE: api/Lises/5
-        [ResponseType(typeof(Lise))]
-        public IHttpActionResult DeleteLise(int id)
+        public void DeleteLise(int id)
         {
-            Lise lise = db.Lises.Find(id);
-            if (lise == null)
-            {
-                return NotFound();
-            }
-
-            db.Lises.Remove(lise);
+            Lise l = db.Lises.FirstOrDefault(x => x.Id == id);
+            db.Lises.Remove(l);
             db.SaveChanges();
-
-            return Ok(lise);
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -111,7 +67,6 @@ namespace ASP_Basit_SPA.Api
             }
             base.Dispose(disposing);
         }
-
         private bool LiseExists(int id)
         {
             return db.Lises.Count(e => e.Id == id) > 0;

@@ -23,20 +23,12 @@ namespace ASP_Basit_SPA.Api
         }
 
         // GET: api/KisiReferans1/5
-        [ResponseType(typeof(KisiReferan))]
-        public IHttpActionResult GetKisiReferan(int id)
+        public KisiReferan GetKisiReferan(int id)
         {
-            KisiReferan kisiReferan = db.KisiReferans.Find(id);
-            if (kisiReferan == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(kisiReferan);
+            return db.KisiReferans.FirstOrDefault(x => x.Id == id);
         }
 
         // PUT: api/KisiReferans1/5
-        [ResponseType(typeof(void))]
         public IHttpActionResult PutKisiReferan(int id, KisiReferan kisiReferan)
         {
             if (!ModelState.IsValid)
@@ -86,7 +78,7 @@ namespace ASP_Basit_SPA.Api
         }
 
         // DELETE: api/KisiReferans1/5
-        [ResponseType(typeof(KisiReferan))]
+        
         public IHttpActionResult DeleteKisiReferan(int id)
         {
             KisiReferan kisiReferan = db.KisiReferans.Find(id);

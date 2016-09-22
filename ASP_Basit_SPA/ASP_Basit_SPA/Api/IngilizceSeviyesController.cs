@@ -23,82 +23,37 @@ namespace ASP_Basit_SPA.Api
         }
 
         // GET: api/IngilizceSeviyes/5
-        [ResponseType(typeof(IngilizceSeviye))]
-        public IHttpActionResult GetIngilizceSeviye(int id)
+        public int GetIngilizceSeviye(int id)
         {
-            IngilizceSeviye ingilizceSeviye = db.IngilizceSeviyes.Find(id);
-            if (ingilizceSeviye == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(ingilizceSeviye);
+            return db.IngilizceSeviyes.FirstOrDefault(x => x.Id = id);
         }
 
         // PUT: api/IngilizceSeviyes/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutIngilizceSeviye(int id, IngilizceSeviye ingilizceSeviye)
+        public void PutIngilizceSeviye(int id, string seviyeAd)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != ingilizceSeviye.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(ingilizceSeviye).State = System.Data.Entity.EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!IngilizceSeviyeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            IngilizceSeviye ingS = db.IngilizceSeviyes.FirstOrDefault(x => x.Id == id);
+            ingS.SeviyeAdi = seviyeAd;
+            db.IngilizceSeviyes.Add(ingS);
+            db.SaveChanges();
         }
 
         // POST: api/IngilizceSeviyes
-        [ResponseType(typeof(IngilizceSeviye))]
-        public IHttpActionResult PostIngilizceSeviye(IngilizceSeviye ingilizceSeviye)
+        public int PostIngilizceSeviye(string seviyeAde)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.IngilizceSeviyes.Add(ingilizceSeviye);
+            IngilizceSeviye ingS = new IngilizceSeviye { SeviyeAdi = seviyeAde };
+            db.IngilizceSeviyes.Add(ingS);
             db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = ingilizceSeviye.Id }, ingilizceSeviye);
+            return ingS.Id;
         }
 
         // DELETE: api/IngilizceSeviyes/5
         [ResponseType(typeof(IngilizceSeviye))]
-        public IHttpActionResult DeleteIngilizceSeviye(int id)
+        public void DeleteIngilizceSeviye(int id)
         {
-            IngilizceSeviye ingilizceSeviye = db.IngilizceSeviyes.Find(id);
-            if (ingilizceSeviye == null)
-            {
-                return NotFound();
-            }
-
-            db.IngilizceSeviyes.Remove(ingilizceSeviye);
+            IngilizceSeviye ingS = db.IngilizceSeviyes.FirstOrDefault(x=>x.Id==id);
+            db.IngilizceSeviyes.Remove(ingS);
             db.SaveChanges();
 
-            return Ok(ingilizceSeviye);
         }
 
         protected override void Dispose(bool disposing)

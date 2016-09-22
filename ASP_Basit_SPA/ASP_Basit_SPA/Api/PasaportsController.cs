@@ -15,92 +15,62 @@ namespace ASP_Basit_SPA.Api
     public class PasaportsController : ApiController
     {
         private Westline db = new Westline();
-
         // GET: api/Pasaports
         public IQueryable<Pasaport> GetPasaports()
         {
             return db.Pasaports;
         }
-
         // GET: api/Pasaports/5
-        [ResponseType(typeof(Pasaport))]
-        public IHttpActionResult GetPasaport(int id)
+        public Pasaport GetPasaport(int id)
         {
-            Pasaport pasaport = db.Pasaports.Find(id);
-            if (pasaport == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(pasaport);
+            return db.Pasaports.FirstOrDefault(x => x.Id == id);
         }
-
         // PUT: api/Pasaports/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutPasaport(int id, Pasaport pasaport)
+        public void PutPasaport(int id, string pasNo, int aldigiUlke, string aldigiSehir,DateTime pasBaslangic,DateTime pasBittis, bool pasKayip, string pasUcretKisi, string pasUcretKisiAkraba,string pasKisiAkrabaNo)
+
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            Pasaport p = db.Pasaports.FirstOrDefault(x => x.Id == id);
+            p.No = pasNo;
+            p.AldigiUlke = aldigiUlke;
+            p.AldigiSehir = aldigiSehir;
+            p.PasaportBaslangic = pasBaslangic;
+            p.PasaportBitis = pasBittis;
+            p.PasaportKayipCalinti = pasKayip;
+            p.PasaportUcretKisi = pasUcretKisi;
+            p.PasaportUcretKisiAkraba = pasUcretKisiAkraba;
+            p.PasaportUcretKisiAkrabaNo = pasKisiAkrabaNo;
 
-            if (id != pasaport.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(pasaport).State = System.Data.Entity.EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PasaportExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            db.Pasaports.Add(p);
+            db.SaveChanges();
         }
-
         // POST: api/Pasaports
-        [ResponseType(typeof(Pasaport))]
-        public IHttpActionResult PostPasaport(Pasaport pasaport)
+        public int PostPasaport(string pasNo, int aldigiUlke, string aldigiSehir, DateTime pasBaslangic, DateTime pasBittis, bool pasKayip, string pasUcretKisi, string pasUcretKisiAkraba, string pasKisiAkrabaNo)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            db.Pasaports.Add(pasaport);
+            Pasaport p = new Pasaport();
+            p.No = pasNo;
+            p.AldigiUlke = aldigiUlke;
+            p.AldigiSehir = aldigiSehir;
+            p.PasaportBaslangic = pasBaslangic;
+            p.PasaportBitis = pasBittis;
+            p.PasaportKayipCalinti = pasKayip;
+            p.PasaportUcretKisi = pasUcretKisi;
+            p.PasaportUcretKisiAkraba = pasUcretKisiAkraba;
+            p.PasaportUcretKisiAkrabaNo = pasKisiAkrabaNo;
+
+            db.Pasaports.Add(p);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = pasaport.Id }, pasaport);
+            return p.Id;
         }
-
         // DELETE: api/Pasaports/5
-        [ResponseType(typeof(Pasaport))]
-        public IHttpActionResult DeletePasaport(int id)
+        public void DeletePasaport(int id)
         {
-            Pasaport pasaport = db.Pasaports.Find(id);
-            if (pasaport == null)
-            {
-                return NotFound();
-            }
-
-            db.Pasaports.Remove(pasaport);
+            Pasaport p = db.Pasaports.FirstOrDefault(x => x.Id == id);  
+            db.Pasaports.Remove(p);
             db.SaveChanges();
 
-            return Ok(pasaport);
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
