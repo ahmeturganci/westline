@@ -27,6 +27,7 @@ namespace ASP_Basit_SPA.Api
         public IHttpActionResult GetUlke(int id)
         {
             Ulke ulke = db.Ulkes.Find(id);
+            
             if (ulke == null)
             {
                 return NotFound();

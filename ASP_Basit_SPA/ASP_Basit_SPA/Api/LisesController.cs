@@ -31,6 +31,7 @@ namespace ASP_Basit_SPA.Api
             {
                 return NotFound();
             }
+            
 
             return Ok(lise);
         }
@@ -72,7 +73,8 @@ namespace ASP_Basit_SPA.Api
 
         // POST: api/Lises
         [ResponseType(typeof(Lise))]
-        public IHttpActionResult PostLise(Lise lise)
+        public IHttpActionResult PostLise(Lise lise)//;
+
         {
             if (!ModelState.IsValid)
             {

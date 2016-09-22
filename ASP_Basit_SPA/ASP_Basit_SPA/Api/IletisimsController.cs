@@ -23,51 +23,53 @@ namespace ASP_Basit_SPA.Api
         }
 
         // GET: api/Iletisims/5
-        [ResponseType(typeof(Iletisim))]
-        public IHttpActionResult GetIletisim(int id)
+        public Iletisim GetIletisim(int id)
         {
-            Iletisim iletisim = db.Iletisims.Find(id);
-            if (iletisim == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(iletisim);
+            return db.Iletisims.FirstOrDefault(x => x.Id == id);
         }
 
         // PUT: api/Iletisims/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutIletisim(int id, Iletisim iletisim)
+        public void PutIletisim(int id,string email, string telefon,string skype, int adresId)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            Iletisim i = db.Iletisims.FirstOrDefault(x => x.Id == id);
+            i.Email = email;
+            i.Telefon = telefon;
+            i.Skype = skype;
+            i.AdresId = adresId;
 
-            if (id != iletisim.Id)
-            {
-                return BadRequest();
-            }
+            db.Iletisims.Add(i);
+            db.SaveChanges();
 
-            db.Entry(iletisim).State = System.Data.Entity.EntityState.Modified;
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!IletisimExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    if (id != iletisim.Id)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
+        //    db.Entry(iletisim).State = System.Data.Entity.EntityState.Modified;
+
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!IletisimExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
+
+        //    return StatusCode(HttpStatusCode.NoContent);
+        
         }
 
         // POST: api/Iletisims
@@ -85,19 +87,14 @@ namespace ASP_Basit_SPA.Api
         }
 
         // DELETE: api/Iletisims/5
-        [ResponseType(typeof(Iletisim))]
-        public IHttpActionResult DeleteIletisim(int id)
+        
+        public void DeleteIletisim(int id)
         {
-            Iletisim iletisim = db.Iletisims.Find(id);
-            if (iletisim == null)
-            {
-                return NotFound();
-            }
-
+            Iletisim iletisim = db.Iletisims.FirstOrDefault(x => x.Id == id);
             db.Iletisims.Remove(iletisim);
             db.SaveChanges();
 
-            return Ok(iletisim);
+            
         }
 
         protected override void Dispose(bool disposing)
