@@ -18,8 +18,6 @@
                 })
             }
         }
-    
-
         $scope.goster = function () {
             
             return $scope.ekle && $scope.ekle.uruns;

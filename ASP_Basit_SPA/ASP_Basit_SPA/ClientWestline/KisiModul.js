@@ -1,13 +1,21 @@
-﻿(function () {
-    var app = angular.module("KisiModul", "ngRoute");
+﻿(function(){
+    
+    var app = angular.module('KisiModul', ["ngRoute"]);
 
+
+  
     var config = (function ($routeProvider) {
         $routeProvider
          .when("/kisitanima", {
-             templateUrl: "/ClientWestline/Views/kisitanima.html"
+             templateUrl: "/ClientWestline/ViewsWestline/kisitanima.html"
          })
+         
          .otherwise({
-             redirectTo: "/list"
+             redirectTo: "/kisitanima"
          });
     });
-})
+    
+    
+    app.constant("kisiUrl", "/api/kisis/");
+    app.config(config);
+}())

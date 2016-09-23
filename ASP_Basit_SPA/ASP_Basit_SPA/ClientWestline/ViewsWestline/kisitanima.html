@@ -1,18 +1,33 @@
 ﻿<div ng-controller="KisiTanimaController">
+<h1>Adım 1 </h1>
     <form>
         <fieldset>
+            <!-- required html5 o input dolu olack :D -->
             <div class="form-group">
-                <label class="UrunAd" for="form-group-input">İsim</label>
-                <input type="text" class="form-control" id="UrunAd" ng-model="ekle.uruns.UrunAd" placeholder="İsim" required>
+                <label class="Ad" for="form-group-input">Ad</label>
+                <input type="text" class="form-control" id="Ad" ng-model="ekle.kisis.Ad" placeholder="Adınız. . ." required>
             </div>
+
             <div class="form-group">
-                <label class="UrunMiktar" for="form-group-input">Miktar</label>
-                <input type="text" class="form-control" id="UrunMiktar" ng-model="ekle.uruns.UrunMiktar" placeholder="Miktar" required>
+                <label class="OrtaAd" for="form-group-input">Orta Ad </label>
+                <input type="text" class="form-control" id="OrtaAd" ng-model="ekle.kisi.OrtaAd" placeholder="Orta Ad . . . " required>
             </div>
+
             <div class="form-group">
-                <label class="UrunFiyat" for="form-group-input">Fiyat</label>
-                <input type="text" class="form-control" id="UrunFiyat" ng-model="ekle.uruns.UrunFiyat" placeholder="Fiyar" required min="50" max="5000">
+                <label class="Soyad" for="form-group-input">Soyad</label>
+                <input type="text" class="form-control" id="Soyad" ng-model="ekle.kisis.Soyad" placeholder="Soyad . . . " required>
             </div>
+
+            <div class="form-group">
+                <label class="Email" for="form-group-input">Email</label>
+                <input type="text" class="form-control" id="Email" ng-model="ekle.kisis.Iletisim.Email" placeholder="E mail . . . " required>
+            </div>
+
+            <div class="form-group">
+                <label class="Telefon" for="form-group-input">Telefon</label>
+                <input type="text" class="form-control" id="Telefon" ng-model="ekle.kisis.Iletisim.Telefon" placeholder="Telefon . . . " required>
+            </div>
+
         </fieldset>
         <button ng-click="kaydet()">Kaydet</button>
         <button ng-click="vazgec()">Vazgeç</button>
