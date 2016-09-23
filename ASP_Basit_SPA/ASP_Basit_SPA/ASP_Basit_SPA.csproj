@@ -217,7 +217,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClientWestline\KisiModul.js" />
-    <Content Include="ClientWestline\KisiServis.js" />
     <Content Include="ClientWestline\KisiTanimaController.js" />
     <Content Include="ClientWestline\ViewsWestline\basla.html" />
     <Content Include="ClientWestline\ViewsWestline\kisitanima.html" />

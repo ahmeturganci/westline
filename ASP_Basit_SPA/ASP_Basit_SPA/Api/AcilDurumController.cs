@@ -20,7 +20,7 @@ namespace ASP_Basit_SPA.Api
         }
 
         // POST api/<controller>
-        public int Post(string ad, string soyad, string tel)
+        public int Post(string ad = "", string soyad = "", string tel = "")
         {
             AcilDurum a = new AcilDurum();
             a.Ad = ad;

@@ -3,11 +3,10 @@
     var KisiTanimaController= function ($scope, $http) {
         $scope.kaydet = function () {
          
-            
             //api
-            $http.post("http://localhost:11226/Api/AcilDurum?ad=ertugrul&soyad=ungor&tel=111111111").
+            $http.post("http://localhost:11226/Api/Kisi?tcKimlikNo=" +$scope.tc+ "&ad="+$scope.ad+"&ortaAd="+$scope.ortaAd+"&soyad="+$scope.soyad+"&email="+$scope.email+"&tel="+$scope.tel).
                 success(function (data) {
-                    console.log(data.content.username);
+                    console.log("başarılı");
                 }).error(function (data) {
                     console.log("hata");
                 });

@@ -19,29 +19,22 @@ namespace ASP_Basit_SPA.Api
             return context.Kisis.FirstOrDefault(x=>x.Id == id);
         }
         // POST api/<controller>
-        public void Post(string ad, string ortaAd, string soyad, bool pasaport, DateTime dogumTarihi, int ingSeviyeId,string tcKimlikNo,string anneAdi, string babaAdi, int isTercihi,int iletisimId,int acilDurumId, int universiteId, int belgeId,int liseId, int dsId)
+        public void Post(string ad="", string ortaAd = "", string soyad = "", string tcKimlikNo = "", string email = "", string tel="")
         {
+           
             Kisi k = new Kisi();
             k.Ad = ad;
             k.OrtaAd = ortaAd;
             k.Soyad = soyad;
-            k.AcilDurumId = acilDurumId;
-            k.AnneAdi = anneAdi;
-            k.BabaAdi = babaAdi;
-            k.BelgeId = belgeId;
-            k.DogumTarihi = dogumTarihi;
-            //burada sonu id ile bitenler için çözüm:
-            //örneğin ilk olarak iletisim apisi kullanılarak bir veri kayıt edilecek
-            //daha sonra onun id'si alınıp buraya eklenecek
-            k.DsId = dsId;
-            k.IletisimId = iletisimId;
-            k.IngilizceSeviyeId = ingSeviyeId;
-            k.IsTercihi = isTercihi;
-            k.LiseId = liseId;
-            k.Pasaport = pasaport;
             k.TcKimlikNo = tcKimlikNo;
-            k.UniversiteId = universiteId;
 
+            /*Iletisim i = new Iletisim();
+            i.Email = email;
+            i.Telefon = tel;
+
+            context.Iletisims.Add(i);
+
+            k.IletisimId = i.Id;*/
             context.Kisis.Add(k);
             context.SaveChanges();
         }
