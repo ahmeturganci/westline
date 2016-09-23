@@ -9,15 +9,15 @@
             return $http.get(kisiUrl + id);//api/uruns/3 ürünlerden 3 idliyi gerirmek
         };
 
-        var guncelle = function (kisis) {
-            return $http.put(kisiUrl + kisis.Id, kisis);
+        var guncelle = function (kisi) {
+            return $http.put(kisiUrl + kisi.Id, kisis;
         };
-        var ekle = function (kisis) {
-            return $http.post(kisiUrl, kisis);
+        var ekle = function (kisi) {
+            return $http.post(kisiUrl, kisi);
         };
-        var destroy = function (kisis)//id de olur 
+        var destroy = function (kisi)//id de olur 
         {
-            return $http.delete(kisiUrl + kisis.Id);
+            return $http.delete(kisiUrl + kisi.Id);
         };
         return {
             hepsiGetir: hepsiGetir,
