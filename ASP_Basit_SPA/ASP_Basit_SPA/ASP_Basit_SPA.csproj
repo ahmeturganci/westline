@@ -181,6 +181,7 @@
     <Compile Include="Api\ReferansController.cs" />
     <Compile Include="Api\UlkesController.cs" />
     <Compile Include="Api\UniversitesController.cs" />
+    <Compile Include="Controllers\SayfaBirTestController.cs" />
     <Compile Include="Models\AcilDurum.cs" />
     <Compile Include="Models\Adre.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -215,15 +216,17 @@
     <Compile Include="Models\Westline.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClientWestline\KisiModul.js" />
+    <Content Include="ClientWestline\KisiTanimaController.js" />
+    <Content Include="ClientWestline\ViewsWestline\basla.html" />
+    <Content Include="ClientWestline\ViewsWestline\kisitanima.html" />
     <Content Include="Client\DetayController.js" />
     <Content Include="Client\EkleController.js" />
-    <Content Include="Client\KisiModul.js" />
     <Content Include="Client\ListController.js" />
     <Content Include="Client\UrunModul.js" />
     <Content Include="Client\UrunServis.js" />
     <Content Include="Client\Views\detay.html" />
     <Content Include="Client\Views\ekle.html" />
-    <Content Include="Client\KisiController.js" />
     <Content Include="Client\Views\KisiTanima.html" />
     <Content Include="Client\Views\list.html" />
     <Content Include="Content\bootstrap.css" />
@@ -270,6 +273,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\SayfaBirTest\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
