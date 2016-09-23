@@ -1,4 +1,4 @@
-﻿(function (app) {
+﻿/*(function (app) {
 
     var kisiservis = function ($http, kisiUrl) {
         //DETAY GİDERKEN ÜRÜNÜN İD Sİ 
@@ -30,3 +30,4 @@
     }
     app.factory("KisiServis", kisiservis)
 }(angular.module("KisiModul")))
+*/
