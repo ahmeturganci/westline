@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace ASP_Basit_SPA.Api
@@ -19,7 +16,7 @@ namespace ASP_Basit_SPA.Api
         // GET api/<controller>/5
         public KisiReferan Get(int id)
         {
-            return context.KisiReferans.FirstOrDefault(x=>x.Id==id);
+            return context.KisiReferans.FirstOrDefault(x => x.Id == id);
         }
 
         // POST api/<controller>
@@ -37,11 +34,10 @@ namespace ASP_Basit_SPA.Api
         // PUT api/<controller>/5
         public void Put(int id, int kisiId, int refId)
         {
-            KisiReferan kr = context.KisiReferans.FirstOrDefault(x=>x.Id==id);
+            KisiReferan kr = context.KisiReferans.FirstOrDefault(x => x.Id == id);
             kr.KisiId = kisiId;
             kr.ReferansId = refId;
-
-            context.KisiReferans.Add(kr);
+            
             context.SaveChanges();
         }
 

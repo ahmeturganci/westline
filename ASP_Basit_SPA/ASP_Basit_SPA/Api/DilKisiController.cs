@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace ASP_Basit_SPA.Api
@@ -40,8 +37,7 @@ namespace ASP_Basit_SPA.Api
             DilKisi dk = context.DilKisis.FirstOrDefault(x=>x.Id == id);
             dk.DilId = dilId;
             dk.KisiId = kisiId;
-
-            context.DilKisis.Add(dk);
+            
             context.SaveChanges();
         }
 

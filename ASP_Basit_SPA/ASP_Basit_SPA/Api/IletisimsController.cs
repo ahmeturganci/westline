@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Linq;
 using System.Web.Http;
-using System.Web.Http.Description;
-using ASP_Basit_SPA;
 
 namespace ASP_Basit_SPA.Api
 {
@@ -36,39 +27,8 @@ namespace ASP_Basit_SPA.Api
             i.Telefon = telefon;
             i.Skype = skype;
             i.AdresId = adresId;
-
-            db.Iletisims.Add(i);
+            
             db.SaveChanges();
-
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    if (id != iletisim.Id)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    db.Entry(iletisim).State = System.Data.Entity.EntityState.Modified;
-
-        //    try
-        //    {
-        //        db.SaveChanges();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!IletisimExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return StatusCode(HttpStatusCode.NoContent);
         
         }
 

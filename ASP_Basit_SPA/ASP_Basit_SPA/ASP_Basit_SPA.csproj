@@ -175,7 +175,7 @@
     <Compile Include="Api\IletisimsController.cs" />
     <Compile Include="Api\IngilizceSeviyesController.cs" />
     <Compile Include="Api\KisiController.cs" />
-    <Compile Include="Api\KisiReferans1Controller.cs" />
+    <Compile Include="Api\KisiReferansController.cs" />
     <Compile Include="Api\LisesController.cs" />
     <Compile Include="Api\PasaportsController.cs" />
     <Compile Include="Api\ReferansController.cs" />

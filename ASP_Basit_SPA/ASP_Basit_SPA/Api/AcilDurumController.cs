@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace ASP_Basit_SPA.Api
@@ -43,8 +40,7 @@ namespace ASP_Basit_SPA.Api
             a.Ad = ad;
             a.Soyad = soyad;
             a.Telefon = tel;
-
-            context.AcilDurums.Add(a);
+            
             context.SaveChanges();
             
         }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace ASP_Basit_SPA.Api
@@ -44,8 +41,7 @@ namespace ASP_Basit_SPA.Api
             b.TranskriptUrl = transkriptUrl;
             b.SabikaKaydiUrl = sabikaKaydiUrl;
             b.FotografUrl = fotoUrl;
-
-            context.Belges.Add(b);
+            
             context.SaveChanges();
         }
 

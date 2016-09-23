@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Linq;
 using System.Web.Http;
-using System.Web.Http.Description;
-using ASP_Basit_SPA;
 
 namespace ASP_Basit_SPA.Api
 {
@@ -29,7 +20,7 @@ namespace ASP_Basit_SPA.Api
         public void PutUlke(int id, string gidilenUlkeId)//burda bişeyler oldu !!! 
         {
             Ulke ulke = db.Ulkes.FirstOrDefault(x => x.Id == id);
-            db.Ulkes.Add(ulke);
+           
             db.SaveChanges();
         }
         // POST: api/Ulkes

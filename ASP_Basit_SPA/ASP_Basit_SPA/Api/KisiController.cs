@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace ASP_Basit_SPA.Api
@@ -67,8 +65,7 @@ namespace ASP_Basit_SPA.Api
             k.Pasaport = pasaport;
             k.TcKimlikNo = tcKimlikNo;
             k.UniversiteId = universiteId;
-
-            context.Kisis.Add(k);
+            
             context.SaveChanges();
         }
         // DELETE api/<controller>/5
