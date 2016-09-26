@@ -28,9 +28,6 @@ namespace westline_alfa.Models
         [StringLength(50)]
         public string Soyad { get; set; }
 
-        [StringLength(80)]
-        public string Email { get; set; }
-
         public bool? Pasaport { get; set; }
 
         [Column(TypeName = "date")]

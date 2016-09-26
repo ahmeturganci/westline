@@ -22,6 +22,9 @@ namespace westline_alfa.Models
 
         public int? AdresId { get; set; }
 
+        [StringLength(80)]
+        public string Email { get; set; }
+
         [StringLength(70)]
         public string Skype { get; set; }
 
