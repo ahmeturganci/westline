@@ -14,7 +14,7 @@ namespace westline_alfa.helper
             {
                 if (i is string )
                 {
-                    if ((string)i == "")
+                    if ((string)i == "undefined")
                     {
                         kontrol = false;
                         break;
