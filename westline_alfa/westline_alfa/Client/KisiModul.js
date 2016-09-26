@@ -11,7 +11,5 @@
          });
     });
 
-
-    
     app.config(config);
 }())
