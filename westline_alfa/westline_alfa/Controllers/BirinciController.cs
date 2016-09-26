@@ -30,6 +30,7 @@ namespace westline_alfa.Controllers
 
                 k.Iletisim = i;
                 db.Kisis.Add(k);
+                db.SaveChanges();
                 return 1;
             }
             else
