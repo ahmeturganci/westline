@@ -23,7 +23,14 @@ namespace westline_alfa.Controllers
                 
 
                 Iletisim i = new Iletisim();
-                
+                i.Email = email;
+                i.Telefon = tel;
+
+                db.Iletisims.Add(i);
+
+                k.Iletisim = i;
+                db.Kisis.Add(k);
+                return 1;
             }
             else
             {
