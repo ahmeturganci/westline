@@ -6,6 +6,9 @@
          .when("/BirinciSayfa", {
              templateUrl: "/Client/Views/BirinciSayfa.html"
          })
+            .when("/IkinciSayfa", {
+                templateUrl: "/Client/Views/IkinciSayfa.html"
+            })
          .otherwise({
              redirectTo: "/BirinciSayfa"
          });
