@@ -181,6 +181,7 @@
     <Compile Include="Api\ReferansController.cs" />
     <Compile Include="Api\UlkesController.cs" />
     <Compile Include="Api\UniversitesController.cs" />
+    <Compile Include="Controllers\KisiController.cs" />
     <Compile Include="Controllers\SayfaBirTestController.cs" />
     <Compile Include="Models\AcilDurum.cs" />
     <Compile Include="Models\Adre.cs" />
@@ -277,6 +278,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Kisi\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
