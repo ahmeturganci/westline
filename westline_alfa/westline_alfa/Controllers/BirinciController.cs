@@ -4,13 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using westline_alfa.Models;
+using System.Web.Script.Serialization;
+
 
 namespace westline_alfa.Controllers
 {
     public class BirinciController : Controller
     {
         westlineDB db = new westlineDB();
-        public int KisiEkle(string tc = "", string ad = "", string ortaAd="", string soyad = "", string email = "", string tel = "")
+        public JsonResult KisiEkle(string tc = "", string ad = "", string ortaAd="", string soyad = "", string email = "", string tel = "")
         {
             helper.helper h = new helper.helper();
             if(h.FormKontrol(tc, ad, soyad, email, tel))
@@ -31,11 +33,26 @@ namespace westline_alfa.Controllers
                 k.Iletisim = i;
                 db.Kisis.Add(k);
                 db.SaveChanges();
-                return 1;
+
+                var jsonModel = new
+                {
+                    success = 1,
+                    id = k.Id,
+                    ad = k.Ad,
+                    ortaAd = k.OrtaAd,
+                    soyad = k.Soyad,
+                    mail = i.Email,
+                    telefon = i.Telefon
+                };
+                return Json(jsonModel, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return 0;
+                var jsonModel = new
+                {
+                    success = 0
+                };
+                return Json(jsonModel, JsonRequestBehavior.AllowGet); ;
             }
         }
     }
