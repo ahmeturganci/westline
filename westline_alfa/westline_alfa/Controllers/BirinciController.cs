@@ -22,7 +22,6 @@ namespace westline_alfa.Controllers
                 k.Ad = ad;
                 k.OrtaAd = ortaAd;
                 k.Soyad = soyad;
-                
 
                 Iletisim i = new Iletisim();
                 i.Email = email;
@@ -36,7 +35,7 @@ namespace westline_alfa.Controllers
 
                 var jsonModel = new
                 {
-                    success = 1,
+                    basari = 1,
                     id = k.Id,
                     ad = k.Ad,
                     ortaAd = k.OrtaAd,
@@ -50,7 +49,7 @@ namespace westline_alfa.Controllers
             {
                 var jsonModel = new
                 {
-                    success = 0
+                    basari = 0
                 };
                 return Json(jsonModel, JsonRequestBehavior.AllowGet); ;
             }
