@@ -35,6 +35,10 @@ namespace westline_alfa.Models
 
         public int? UlkeId { get; set; }
 
+        public virtual Eyalet Eyalet { get; set; }
+
+        public virtual Ulke Ulke { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Iletisim> Iletisims { get; set; }
 

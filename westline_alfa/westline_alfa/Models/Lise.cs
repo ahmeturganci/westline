@@ -22,8 +22,11 @@ namespace westline_alfa.Models
 
         public int? AdresId { get; set; }
 
-        [StringLength(50)]
-        public string MezunYilAralik { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime? Baslangic { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? Bitis { get; set; }
 
         [StringLength(50)]
         public string Alan { get; set; }

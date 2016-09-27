@@ -133,6 +133,7 @@
     <Compile Include="Controllers\BirinciController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IkinciController.cs" />
+    <Compile Include="Controllers\UcuncuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -143,6 +144,7 @@
     <Compile Include="Models\Dil.cs" />
     <Compile Include="Models\DilKisi.cs" />
     <Compile Include="Models\ds160.cs" />
+    <Compile Include="Models\Eyalet.cs" />
     <Compile Include="Models\GidilenUlkeler.cs" />
     <Compile Include="Models\Iletisim.cs" />
     <Compile Include="Models\Kisi.cs" />
@@ -207,6 +209,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Ikinci\" />
+    <Folder Include="Views\Ucuncu\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

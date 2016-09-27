@@ -18,6 +18,7 @@ namespace westline_alfa.Models
         public virtual DbSet<Dil> Dils { get; set; }
         public virtual DbSet<DilKisi> DilKisis { get; set; }
         public virtual DbSet<ds160> ds160 { get; set; }
+        public virtual DbSet<Eyalet> Eyalets { get; set; }
         public virtual DbSet<GidilenUlkeler> GidilenUlkelers { get; set; }
         public virtual DbSet<Iletisim> Iletisims { get; set; }
         public virtual DbSet<Kisi> Kisis { get; set; }
@@ -60,6 +61,14 @@ namespace westline_alfa.Models
                 .HasMany(e => e.KisiReferans)
                 .WithOptional(e => e.Referan)
                 .HasForeignKey(e => e.ReferansId);
+
+            modelBuilder.Entity<Ulke>()
+                .Property(e => e.Ad)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Ulke>()
+                .Property(e => e.UlkeOrj)
+                .IsUnicode(false);
         }
     }
 }
