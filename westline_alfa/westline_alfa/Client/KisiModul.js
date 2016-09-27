@@ -1,6 +1,7 @@
 ﻿(function () {
+    var app = angular.module("KisiModul", ["ngRoute"]);
 
-    var app = angular.module('KisiModul', ["ngRoute"]);
+
     var config = (function ($routeProvider) {
         $routeProvider
          .when("/BirinciSayfa", {
@@ -8,7 +9,10 @@
          })
             .when("/IkinciSayfa", {
                 templateUrl: "/Client/Views/IkinciSayfa.html"
-            })
+            }).
+       when("/UcuncuSayfa",{
+        templateUrl: "/Client/Views/UcuncuSayfa.html"
+    })
          .otherwise({
              redirectTo: "/BirinciSayfa"
          });

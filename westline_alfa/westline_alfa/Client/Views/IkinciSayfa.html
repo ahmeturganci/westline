@@ -1,46 +1,142 @@
 ﻿<div ng-controller="IkinciSayfaController">
     <h1>Adım 2 </h1>
-    <div class="panel">
-        <div class="panel-body">
-            <div class="panel-heading">asdasd</div>
-            <form>
-                <fieldset>
-                    <!-- required html5 o input dolu olack :D -->
-                    <div class="form-group">
-                        <label class="BabaAd" for="form-group-input">Baba Ad</label>
-                        <input type="text" class="form-control" ng-model="tc" id="tc" placeholder="TC Kimlik No . . ." required>
-                    </div>
-                    <div class="form-group">
-                        <label class="Ad" for="form-group-input">Ad</label>
-                        <input type="text" class="form-control" ng-model="ad" id="Ad" placeholder="Adınız. . ." required>
-                    </div>
+    <!--iLETİŞİM-->
+    <div class="container">
+        <h2>İletişim</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">İletişim Bilgileri </div>
+            <div class="panel-body">
+                <form>
+                    <fieldset>
+                        <!-- required html5 o input dolu olack :D -->
+                        <div class="form-group">
+                            <label class="Telefon" for="form-group-input">Telefon</label>
+                            <input type="text" class="form-control" ng-model="tel" id="Telefon" placeholder="Telefon Numarası. . ." required>
+                        </div>
 
-                    <div class="form-group">
-                        <label class="OrtaAd" for="form-group-input">Orta Ad </label>
-                        <input type="text" class="form-control" ng-model="ortaAd" id="OrtaAd" placeholder="Orta Ad . . . " required>
-                    </div>
+                        <div class="form-group">
+                            <label class="Email" for="form-group-input">Email</label>
+                            <input type="text" class="form-control" ng-model="email" id="Email" placeholder="Email Adresi. . ." required>
+                        </div>
 
-                    <div class="form-group">
-                        <label class="Soyad" for="form-group-input">Soyad</label>
-                        <input type="text" class="form-control" ng-model="soyad" id="Soyad" placeholder="Soyad . . . " required>
-                    </div>
+                        <div class="form-group">
+                            <label class="Skype" for="form-group-input">Skype</label>
+                            <input type="text" class="form-control" ng-model="skype" id="Skaype" placeholder="Skype Adresi. . ." required>
+                        </div>
 
-                    <div class="form-group">
-                        <label class="Email" for="form-group-input">Email</label>
-                        <input type="text" class="form-control" ng-model="email" id="Email" placeholder="E mail . . . " required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="Telefon" for="form-group-input">Telefon</label>
-                        <input type="text" class="form-control" ng-model="tel" id="Telefon" placeholder="Telefon . . . " required>
-                    </div>
-
-                </fieldset>
-                
-                <button ng-click="UcuncuSayfa()"><a href="#/UcuncuSayfa ">Devam Et</a></button>
-
-
-            </form>
+                        </fieldset>
+                </form>
+            </div>
         </div>
     </div>
+    <!--İletişim Son-->
+
+    <!--İletişim - Adres Bilgi-->
+    <div class="container">
+        <h2>Adres</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">Adres Bilgileri </div>
+            <div class="panel-body">
+                <form>
+                    <fieldset>
+                        <!-- required html5 o input dolu olack :D -->
+                        <div class="form-group"><!--Adres-->
+                            <label class="Adres" for="form-group-input"> Tam Adres</label>
+                            <input type="text" class="form-control" ng-model="tamAdres" id="tamAdres" placeholder="Tam Adres . . ." required>
+                        </div>
+
+                        <div class="form-group">
+                            <!--Adres-->
+                            <label class="AdresDevam" for="form-group-input">Adres Devam (Satır İki )</label>
+                            <input type="text" class="form-control" ng-model="adresIki" id="adresIki" placeholder="Adres Devam (Satır Iki) . . ." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="Eyalet" for="form-group-input">Eyalet </label>
+                            <select class="combobox" ng-model="eyalet">
+                                <option></option>
+                                <option value="1">asd</option>
+                                <option value="2">asd</option>
+                                <option value="3">asd</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="PostaKodu" for="form-group-input">Posta Kodu</label>
+                            <input type="number" class="form-control" ng-model="postaKod" id="postaKodu" placeholder="Posta Kodu. . ." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="Ulke" for="form-group-input">Ülke </label>
+                            <select class="combobox" ng-model="ulke">
+                                <option></option>
+                                <option value="1">asd</option>
+                                <option value="2">asd</option>
+                                <option value="3">asd</option>
+                            </select>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--İletişim - Adre Bilgi SON-->
+    <!--Kisisel Detay Bilgi-->
+    <div class="container">
+        <h2>Kişisel Bilgi Detay</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">Kişisel Bilgi Detay</div>
+            <div class="panel-body">
+                <form>
+                    <fieldset>
+                        <!-- required html5 o input dolu olack :D -->
+                        <div class="form-group">
+                            <!--Adres-->
+                            <label class="AnneAdSoyad" for="form-group-input"> Anne Ad </label>
+                           
+                             <input type="text" class="form-control" ng-model="anneAd" id="anneAd" placeholder="Anne Ad. . ." required>
+
+                            <input type="text" class="form-control" ng-model="anneSoyad" id="anneSoyad" placeholder="Anne Soyad. . ." required>
+                        </div>
+
+                        <div class="form-group">
+                           
+                            <label class="BabaAd" for="form-group-input">Baba Ad </label>
+                            <input type="text" class="form-control" ng-model="babaAd" id="babaAd" placeholder="Baba Ad . . ." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="Eyalet" for="form-group-input">Eyalet </label>
+                            <select class="combobox" ng-model="eyalet">
+                                <option></option>
+                                <option value="1">asd</option>
+                                <option value="2">asd</option>
+                                <option value="3">asd</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="PostaKodu" for="form-group-input">Posta Kodu</label>
+                            <input type="number" class="form-control" ng-model="postaKod" id="postaKodu" placeholder="Posta Kodu. . ." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="Ulke" for="form-group-input">Ülke </label>
+                            <select class="combobox" ng-model="ulke">
+                                <option></option>
+                                <option value="1">ülke gelecek .</option>
+                                <option value="2">asd</option>
+                                <option value="3">asd</option>
+                            </select>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--Kisisel Detay-->
+
+    
 </div>

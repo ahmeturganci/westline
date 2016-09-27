@@ -1,9 +1,12 @@
 ﻿(function (app) {
     var IkinciSayfaController = function ($scope, $http) {
-        $scope.kaydet = function () {
-            $http.post("Birinci/KisiEkle?tc=" + $scope.tc + "&ad=" + $scope.ad + "&ortaAd=" + $scope.ortaAd + "&soyad=" + $scope.soyad + "&email=" + $scope.email + "&tel=" + $scope.tel).
+        $scope.IkinciSayfa = function () {
+            $http.post("").
                 success(function (data) {
                     console.log(data.basari);
+                    if (data.basari == 1) {
+                        $window.location.href = '#/UcuncuSayfa';
+                    }
                 }).error(function (data) {
                     console.log(data);
                 });
