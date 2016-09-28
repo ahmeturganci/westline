@@ -1,5 +1,5 @@
 ﻿<div ng-controller="IkinciSayfaController">
-    <h1>Adım 2 </h1>
+    <h1>Adım 2 - {{deneme}}</h1>
     <!--iLETİŞİM-->
     <div class="container">
         <h2>İletişim</h2>
@@ -54,10 +54,7 @@
                         <div class="form-group">
                             <label class="Eyalet" for="form-group-input">Eyalet </label>
                             <select class="combobox" ng-model="eyalet">
-                                <option></option>
-                                <option value="1">asd</option>
-                                <option value="2">asd</option>
-                                <option value="3">asd</option>
+                               
                             </select>
                         </div>
 
@@ -69,10 +66,7 @@
                         <div class="form-group">
                             <label class="Ulke" for="form-group-input">Ülke </label>
                             <select class="combobox" ng-model="ulke">
-                                <option></option>
-                                <option value="1">asd</option>
-                                <option value="2">asd</option>
-                                <option value="3">asd</option>
+                                <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
                             </select>
                         </div>
 
