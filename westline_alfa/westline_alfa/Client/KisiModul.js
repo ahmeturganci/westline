@@ -17,7 +17,7 @@
             templateUrl: "/Client/Views/DorduncuSayfa.html"
         })
          .otherwise({
-             redirectTo: "/DorduncuSayfa"
+             redirectTo: "/BirinciSayfa"
          });
     });
 

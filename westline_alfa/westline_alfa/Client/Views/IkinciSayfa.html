@@ -1,5 +1,5 @@
-﻿<div ng-controller="IkinciSayfaController">
-    <h1>Adım 2 - {{deneme}}</h1>
+﻿<div ng-controller="KisiTanimaController">
+    <h1 ng-model="deneme">Adım 2{{deneme}} </h1>
     <!--iLETİŞİM-->
     <div class="container">
         <h2>İletişim</h2>
@@ -125,6 +125,10 @@
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <label class="IngilisceSeviye" for="form-group-input">ingilizce sebiye</label>
+                            <input type="text" class="form-control" ng-model="ingilizceSeviye" id="ingilizceSeviye" placeholder="ingilizceSeviye. . ." required>
+                        </div>
                     </fieldset>
                 </form>
             </div>

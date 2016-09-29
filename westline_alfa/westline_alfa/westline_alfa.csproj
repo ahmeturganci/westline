@@ -162,7 +162,6 @@
   <ItemGroup>
     <Content Include="Client\DorduncuSayfaController.js" />
     <Content Include="Client\UcuncuSayfaController.js" />
-    <Content Include="Client\IkinciSayfaController.js" />
     <Content Include="Client\KisiModul.js" />
     <Content Include="Client\KisiTanimaController.js" />
     <Content Include="Client\Views\BirinciSayfa.html" />
@@ -211,6 +210,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
     <Folder Include="Views\Ucuncu\" />
   </ItemGroup>
   <ItemGroup>
