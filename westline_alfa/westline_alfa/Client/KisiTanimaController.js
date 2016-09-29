@@ -16,8 +16,8 @@
         }
         //2.sayfa
         $scope.IkinciSayfa = function () {
-            $http.post("/Ikinci/KisiDetayEkle?babaAd=" + $scope.babaAd + "&anneAd=" + $scope.anneAd + "&ingilizceSeviye=" + $scope.ingilizceSeviye + "&pasaport=" + $scope.pasaport + "&dogumTarih=" + $scope.dogumTarih + "&skype=" + $scope.skype + "&adresIkinciSatir=" + $scope.adresIkinciSatir + "&sehir=" + $scope.sehir + "&eyalet=" + $scope.eyalet + "&postaKod=" + $scope.postaKod + "&ulkeId=" + $scope.ulkeId + "&acilAd=" + $scope.acilAd + "&acilSoyad=" + $scope.acilSoyad + "&acilTel=" + $scope.acilTel)
-            success(function (data) {
+            $http.post("/Ikinci/KisiDetayEkle?babaAd=" + $scope.babaAd + "&anneAdSoyad=" + $scope.anneAd + "&ingilizceSeviye=" + $scope.ingilizceSeviye + "&pasaport=" + $scope.pasaport + "&dogumTarih=" + $scope.dogumTarih + "&skype=" + $scope.skype + "&tamAdres=" + $scope.tamAdres + "&adresIkinciSatir=" + $scope.adresIkinciSatir + "&eyalet=" + $scope.bilgiEyalet + "&postaKod=" + $scope.bilgiPostaKod + "&ulkeId=" + $scope.bilgiUlke + "&acilAd=" + $scope.acilAd + "&acilSoyad=" + $scope.acilSoyad + "&acilTel=" + $scope.acilTel + "&adresEyaletId=" + $scope.adresEyalet + "&adresUlkeId=" + $scope.adresUlke)
+                .success(function (data) {
                 console.log(data.basari);
                 if (data.basari == 1) {
                     $window.location.href = '#/UcuncuSayfa';
@@ -29,6 +29,12 @@
         }
         $http.get("/Ikinci/UlkeCek").success(function (data) {
             $scope.ulkes = data;
+        }).error(function (data) {
+            console.log(data);
+        });
+
+        $http.get("/Ikinci/EyaletCek").success(function (data) {
+            $scope.eyalets = data;
         }).error(function (data) {
             console.log(data);
         });

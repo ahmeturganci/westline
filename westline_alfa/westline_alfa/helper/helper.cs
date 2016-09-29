@@ -16,6 +16,11 @@ namespace westline_alfa.helper
             return Json(db.Ulkes, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult Eyaletler()
+        {
+            return Json(db.Eyalets,JsonRequestBehavior.AllowGet);
+        }
+
         public bool FormKontrol(params object[] elemanlar)
         {
             bool kontrol = true;
