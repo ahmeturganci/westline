@@ -10,11 +10,14 @@
             .when("/IkinciSayfa", {
                 templateUrl: "/Client/Views/IkinciSayfa.html"
             }).
-       when("/UcuncuSayfa",{
-        templateUrl: "/Client/Views/UcuncuSayfa.html"
-    })
+       when("/UcuncuSayfa", {
+           templateUrl: "/Client/Views/UcuncuSayfa.html"
+       }).
+        when("/DorduncuSayfa", {
+            templateUrl: "/Client/Views/DorduncuSayfa.html"
+        })
          .otherwise({
-             redirectTo: "/BirinciSayfa"
+             redirectTo: "/DorduncuSayfa"
          });
     });
 
