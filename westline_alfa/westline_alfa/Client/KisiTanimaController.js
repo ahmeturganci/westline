@@ -9,7 +9,6 @@
                     if (data.basari == 1) {
                         $window.location.href = '#/IkinciSayfa';
                     }
-                    
                 }).error(function (data) {
                     console.log(data);
                 });

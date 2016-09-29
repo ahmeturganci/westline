@@ -33,6 +33,7 @@ namespace westline_alfa.Controllers
                 db.Kisis.Add(k);
                 db.SaveChanges();
 
+                Session["id"] = k.Id;
                 var jsonModel = new
                 {
                     basari = 1,

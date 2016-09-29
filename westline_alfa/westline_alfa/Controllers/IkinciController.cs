@@ -13,14 +13,14 @@ namespace westline_alfa.Controllers
         helper.helper h = new helper.helper();
 
         // GET: Ikinci
-        public JsonResult KisiDetayEkle(int id = -1,string babaAd = "", string anneAdSoyad = "", int ingilizceSeviye=-1, 
+        public JsonResult KisiDetayEkle(string babaAd = "", string anneAdSoyad = "", int ingilizceSeviye=-1, 
             bool pasaport = false, DateTime? dogumTarih = null, string skype="", 
             string tamAdres="", string adresIkinciSatir = "", string sehir = "", int eyalet = -1,
             string postaKodu = "", int ulkeId = -1, string acilAd = "", string acilSoyad = "",string acilTel = "")
         {
-            if (h.FormKontrol(id, babaAd, anneAdSoyad, ingilizceSeviye, tamAdres, sehir, acilAd, acilSoyad, acilTel))
+            if (h.FormKontrol(babaAd, anneAdSoyad, ingilizceSeviye, tamAdres, sehir, acilAd, acilSoyad, acilTel))
             {
-                Kisi k = db.Kisis.Find(id);
+                Kisi k = db.Kisis.Find(Session["id"]);
                 k.BabaAdi = babaAd;
                 k.AnneAdi = anneAdSoyad;
                 k.IngilizceSeviye = ingilizceSeviye;
