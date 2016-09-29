@@ -1,6 +1,7 @@
 ﻿(function (app) {
     var KisiTanimaController = function ($scope, $http,$location,$window) {
         $scope.deneme = "asd";
+        //1.Sayfa
         $scope.BirinciSayfa = function () {
             $http.post("Birinci/KisiEkle?tc=" + $scope.tc + "&ad=" + $scope.ad + "&ortaAd=" + $scope.ortaAd + "&soyad=" + $scope.soyad + "&email=" + $scope.email + "&tel=" + $scope.tel).
                 
@@ -13,6 +14,7 @@
                     console.log(data);
                 });
         }
+        //2.sayfa
         $scope.IkinciSayfa = function () {
             $http.post("/Ikinci/KisiDetayEkle?babaAd=" + $scope.babaAd + "&anneAd=" + $scope.anneAd + "&ingilizceSeviye=" + $scope.ingilizceSeviye + "&pasaport=" + $scope.pasaport + "&dogumTarih=" + $scope.dogumTarih + "&skype=" + $scope.skype + "&adresIkinciSatir=" + $scope.adresIkinciSatir + "&sehir=" + $scope.sehir + "&eyalet=" + $scope.eyalet + "&postaKod=" + $scope.postaKod + "&ulkeId=" + $scope.ulkeId + "&acilAd=" + $scope.acilAd + "&acilSoyad=" + $scope.acilSoyad + "&acilTel=" + $scope.acilTel)
             success(function (data) {

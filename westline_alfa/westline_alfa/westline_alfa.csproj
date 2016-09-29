@@ -160,8 +160,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Client\DorduncuSayfaController.js" />
-    <Content Include="Client\UcuncuSayfaController.js" />
     <Content Include="Client\KisiModul.js" />
     <Content Include="Client\KisiTanimaController.js" />
     <Content Include="Client\Views\BirinciSayfa.html" />
