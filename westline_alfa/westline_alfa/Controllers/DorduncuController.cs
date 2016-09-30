@@ -4,34 +4,46 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using westline_alfa.Models;
 
 namespace westline_alfa.Controllers
 {
     public class DorduncuController : Controller
     {
-        public JsonResult Upload(int uID)
+        public JsonResult SaveFiles(string description)
         {
-            try
+            string Message, fileName, actualFileName;
+            Message = fileName = actualFileName = string.Empty;
+            bool flag = false;
+            if (Request.Files != null)
             {
-                for (int i = 0; i < Request.Files.Count; i++)
-                {
-                    var file = Request.Files[i];
-                    var fileName = Path.GetFileName(file.FileName);
-                    string strMappath = Server.MapPath("~/App_Data/" + uID + "/");
-                    if (!Directory.Exists(strMappath))
-                    {
-                        DirectoryInfo di = Directory.CreateDirectory(strMappath);
-                    }
-                    var path = Path.Combine(strMappath, "1.zip");
-                    file.SaveAs(path);
-                }
-                return Json("ftp://user:sifre@site.com/1.zip");
-            }
-            catch (Exception ex)
-            {
-                return Json("-" + ex.Message);
-            }
-        }
+                var file = Request.Files[0];
+                actualFileName = file.FileName;
+                fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                int size = file.ContentLength;
 
+                try
+                {
+                    file.SaveAs(Path.Combine(Server.MapPath("~/Images"), fileName));
+
+                    Belge f = new Belge();
+
+                    using (westlineDB dc = new westlineDB())
+                    {
+                        dc.Belges.Add((Belge)f);
+
+                        dc.SaveChanges();
+                        Message = "File uploaded successfully";
+                        flag = true;
+                    }
+                }
+                catch (Exception)
+                {
+                    Message = "File upload failed! Please try again";
+                }
+
+            }
+            return new JsonResult { Data = new { Message = Message, Status = flag } };
+        }
     }
 }

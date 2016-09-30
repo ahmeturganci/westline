@@ -13,7 +13,17 @@ namespace westline_alfa.helper
 
         public JsonResult Ulkeler()
         {
-            return Json(db.Ulkes, JsonRequestBehavior.AllowGet);
+            List<Object> jsonModelList = new List<object>();
+            foreach (var i in db.Ulkes)
+            {
+                var jsonModel = new
+                {
+                    Id = i.Id,
+                    Ad = i.Ad
+                };
+                jsonModelList.Add(jsonModel);
+            }
+            return Json(jsonModelList, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult Eyaletler()

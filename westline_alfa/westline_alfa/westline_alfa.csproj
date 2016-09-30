@@ -162,6 +162,7 @@
   <ItemGroup>
     <Content Include="Client\KisiModul.js" />
     <Content Include="Client\KisiTanimaController.js" />
+    <Content Include="Client\Part8Controller.js" />
     <Content Include="Client\Views\BirinciSayfa.html" />
     <Content Include="Client\Views\DorduncuSayfa.html" />
     <Content Include="Client\Views\IkinciSayfa.html" />
