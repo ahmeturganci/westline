@@ -29,15 +29,16 @@ namespace westline_alfa.Controllers
                 k.DogumTarihi = dogumTarih;
                 k.Iletisim.Skype = skype;
 
-                k.Iletisim.Adre.TamAdres = tamAdres;
-                k.Iletisim.Adre.AdresSatirIki = adresIkinciSatir;
-                k.Iletisim.Adre.Eyalet = db.Eyalets.Find(adresEyaletId);
-                k.Iletisim.Adre.Ulke = db.Ulkes.Find(adresUlkeId);
+                Adre a = new Adre();
+                a.TamAdres = tamAdres;
+                a.AdresSatirIki = adresIkinciSatir;
+                a.Eyalet = db.Eyalets.Find(adresEyaletId);
+                a.Ulke = db.Ulkes.Find(adresUlkeId);
+                a.Eyalet = db.Eyalets.Find(adresEyaletId);
+                a.PostaKodu = postaKodu;
 
-                //find eyalet
-
-                k.Iletisim.Adre.PostaKodu = postaKodu;
-
+                db.Adres.Add(a);
+                k.Iletisim.Adre = a;
                 
 
                 db.SaveChanges();

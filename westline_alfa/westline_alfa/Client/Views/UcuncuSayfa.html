@@ -1,4 +1,4 @@
-﻿<div ng-controller="UcuncuSayfaController">
+﻿<div ng-controller="KisiTanimaController">
     <h1>Adım 3 </h1>
     <div class="panel">
         <div class="panel-body">
@@ -8,39 +8,128 @@
                     <!-- required html5 o input dolu olack :D -->
                     <div class="form-group">
                         <label class="BabaAd" for="form-group-input">Baba Ad</label>
-                        <input type="text" class="form-control" ng-model="tc" id="tc" placeholder="TC Kimlik No . . ." required>
+                        <input type="text" class="form-control" ng-model="liseAd" id="tc" placeholder="Lise Adı . . ." required>
                     </div>
                     <div class="form-group">
                         <label class="Ad" for="form-group-input">Ad</label>
-                        <input type="text" class="form-control" ng-model="ad" id="Ad" placeholder="Adınız. . ." required>
+                        <input type="text" class="form-control" ng-model="liseBaslangic" id="Ad" placeholder="lise Başlangıç . . ." required>
                     </div>
 
                     <div class="form-group">
                         <label class="OrtaAd" for="form-group-input">Orta Ad </label>
-                        <input type="text" class="form-control" ng-model="ortaAd" id="OrtaAd" placeholder="Orta Ad . . . " required>
+                        <input type="text" class="form-control" ng-model="liseBitis" id="OrtaAd" placeholder="Lise Bitiş . . . " required>
                     </div>
 
                     <div class="form-group">
                         <label class="Soyad" for="form-group-input">Soyad</label>
-                        <input type="text" class="form-control" ng-model="soyad" id="Soyad" placeholder="Soyad . . . " required>
+                        <input type="text" class="form-control" ng-model="liseAlan" id="Soyad" placeholder="Lise Alan . . . " required>
                     </div>
 
                     <div class="form-group">
-                        <label class="Email" for="form-group-input">Email</label>
-                        <input type="text" class="form-control" ng-model="email" id="Email" placeholder="E mail . . . " required>
+                        <!--Adres-->
+                        <label class="Adres" for="form-group-input"> Tam Adres</label>
+                        <input type="text" class="form-control" ng-model="liseTamAdres" id="tamAdres" placeholder="Tam Adres . . ." required>
                     </div>
 
                     <div class="form-group">
-                        <label class="Telefon" for="form-group-input">Telefon</label>
-                        <input type="text" class="form-control" ng-model="tel" id="Telefon" placeholder="Telefon . . . " required>
+                        <!--Adres-->
+                        <label class="AdresDevam" for="form-group-input">Adres Devam (Satır İki )</label>
+                        <input type="text" class="form-control" ng-model="liseAdresIki" id="adresIki" placeholder="Adres Devam (Satır Iki) . . ." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="Eyalet" for="form-group-input">Eyalet </label>
+                        <select class="combobox">
+                            <option ng-model="liseAdresEyalet" ng-repeat="e in eyalets" value="{{e.Id}}">{{e.sehir}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="PostaKodu" for="form-group-input">Posta Kodu</label>
+                        <input type="number" class="form-control" ng-model="liseAdresPostaKod" id="postaKodu" placeholder="Posta Kodu. . ." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="Ulke" for="form-group-input">Ülke </label>
+                        <select class="combobox" ng-model="liseAdresUlke">
+                            <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
+                        </select>
                     </div>
 
                 </fieldset>
 
-                <button ng-click="UcuncuSayfa()"><a href="#/UcuncuSayfa ">Devam Et</a></button>
+                <fieldset>
+                    <!-- required html5 o input dolu olack :D -->
+                    <div class="form-group">
+                        <label class="BabaAd" for="form-group-input">Baba Ad</label>
+                        <input type="text" class="form-control" ng-model="universiteAd" id="tc" placeholder="Üniversite Adı . . ." required>
+                    </div>
+                    <div class="form-group">
+                        <label class="Ad" for="form-group-input">Ad</label>
+                        <input type="text" class="form-control" ng-model="universiteBaslangic" id="Ad" placeholder="Üniversite Başlangıç . . ." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="OrtaAd" for="form-group-input">Orta Ad </label>
+                        <input type="text" class="form-control" ng-model="universitekapanis" id="OrtaAd" placeholder="Üniversite Kapanış . . . " required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="Soyad" for="form-group-input">Soyad</label>
+                        <input type="text" class="form-control" ng-model="universiteSinif" id="Soyad" placeholder="Üniversite Sınıf . . . " required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="Soyad" for="form-group-input">Soyad</label>
+                        <input type="text" class="form-control" ng-model="universiteNo" id="Soyad" placeholder="Üniversite No . . . " required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="Soyad" for="form-group-input">Soyad</label>
+                        <input type="text" class="form-control" ng-model="universiteBölüm" id="Soyad" placeholder="Üniversite Bölüm . . . " required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="Soyad" for="form-group-input">Soyad</label>
+                        <input type="text" class="form-control" ng-model="universiteTel" id="Soyad" placeholder="Üniversite Telefon . . . " required>
+                    </div>
+
+                    <div class="form-group">
+                        <!--Adres-->
+                        <label class="Adres" for="form-group-input"> Tam Adres</label>
+                        <input type="text" class="form-control" ng-model="universiteTamAdres" id="tamAdres" placeholder="Tam Adres . . ." required>
+                    </div>
+
+                    <div class="form-group">
+                        <!--Adres-->
+                        <label class="AdresDevam" for="form-group-input">Adres Devam (Satır İki )</label>
+                        <input type="text" class="form-control" ng-model="universiteAdresIki" id="adresIki" placeholder="Adres Devam (Satır Iki) . . ." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="Eyalet" for="form-group-input">Eyalet </label>
+                        <select class="combobox">
+                            <option ng-model="universiteAdresEyalet" ng-repeat="e in eyalets" value="{{e.Id}}">{{e.sehir}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="PostaKodu" for="form-group-input">Posta Kodu</label>
+                        <input type="number" class="form-control" ng-model="universiteAdresPostaKod" id="postaKodu" placeholder="Posta Kodu. . ." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="Ulke" for="form-group-input">Ülke </label>
+                        <select class="combobox" ng-model="universiteAdresUlke">
+                            <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
+                        </select>
+                    </div>
+                    </fieldset>
+
+                    <button ng-click="UcuncuSayfa()"><a href="#/UcuncuSayfa ">Devam Et</a></button>
 
 
-            </form>
+</form>
         </div>
     </div>
 </div>

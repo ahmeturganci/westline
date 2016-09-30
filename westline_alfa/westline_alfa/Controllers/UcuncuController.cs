@@ -11,10 +11,10 @@ namespace westline_alfa.Controllers
     {
         westlineDB db = new westlineDB(); 
         public JsonResult EgitimEkle(string liseAd = "", DateTime? baslangic = null, DateTime? bitis = null, 
-            string alan = "",string liseTamAdres = "", string liseAdresIkinciSatir = "", string liseSehir = "", 
-            int liseEyalet = -1, string lisePostaKodu = "", int liseUlkeId = -1,
-            string universiteAd = "", string sinif = "", string bolum = "", string okulNo="", DateTime? acilis=null,
-            DateTime? kapanis = null, string uniTamAdres = "", string uniAdresIkinciSatir = "", string uniSehir = "",
+            string alan = "",string liseTamAdres = "", string liseAdresIkinciSatir = "", int liseEyalet = -1, 
+            string lisePostaKodu = "", int liseUlkeId = -1,
+            string universiteAd = "", int sinif = -1, string bolum = "", string okulNo="", DateTime? acilis=null,
+            DateTime? kapanis = null, string uniTel = "", string uniTamAdres = "", string uniAdresIkinciSatir = "",
             int uniEyalet = -1, string uniPostaKodu = "", int uniUlkeId = -1)
         {
             Lise l = new Lise();
@@ -26,7 +26,6 @@ namespace westline_alfa.Controllers
             Adre a = new Adre();
             a.TamAdres = liseTamAdres;
             a.AdresSatirIki = liseAdresIkinciSatir;
-            a.Sehir = liseSehir;
             a.Eyalet = db.Eyalets.Find(liseEyalet);
             a.PostaKodu = lisePostaKodu;
             a.Ulke = db.Ulkes.Find(liseUlkeId);
@@ -35,7 +34,32 @@ namespace westline_alfa.Controllers
             l.AdresId = a.Id;
 
             Universite u = new Universite();
-            //buraya üniversite id alınacak
+            u.Ad = universiteAd;
+            u.Sinif = sinif;
+            u.Bolum = bolum;
+            u.OkulNo = okulNo;
+            u.AcilisTarihi = acilis;
+            u.KapanisTarihi = kapanis;
+            u.Tel = uniTel;
+
+            Adre uniA = new Adre();
+            uniA.TamAdres = uniTamAdres;
+            uniA.AdresSatirIki = uniAdresIkinciSatir;
+            uniA.Eyalet = db.Eyalets.Find(uniEyalet);
+            uniA.PostaKodu = uniPostaKodu;
+            uniA.Ulke = db.Ulkes.Find(uniUlkeId);
+
+            db.Adres.Add(uniA);
+            u.Adre = uniA;
+
+            db.Lises.Add(l);
+            db.Universites.Add(u);
+
+            Kisi k = db.Kisis.Find(Session["id"]);
+            k.Lise = l;
+            k.Universite = u;
+
+            db.SaveChanges();
 
             var jsonModel = new
             {
