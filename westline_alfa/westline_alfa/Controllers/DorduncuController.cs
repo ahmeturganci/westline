@@ -9,15 +9,29 @@ namespace westline_alfa.Controllers
 {
     public class DorduncuController : Controller
     {
-        public int BelgeEkle(HttpPostedFileBase file)
+        public JsonResult Upload(int uID)
         {
-            if (file != null && file.ContentLength > 0)
+            try
             {
-                var fileName = Path.GetFileName(file.FileName);
-                var path = Path.Combine(Server.MapPath("~/Images/"), fileName);
-                file.SaveAs(path);
+                for (int i = 0; i < Request.Files.Count; i++)
+                {
+                    var file = Request.Files[i];
+                    var fileName = Path.GetFileName(file.FileName);
+                    string strMappath = Server.MapPath("~/App_Data/" + uID + "/");
+                    if (!Directory.Exists(strMappath))
+                    {
+                        DirectoryInfo di = Directory.CreateDirectory(strMappath);
+                    }
+                    var path = Path.Combine(strMappath, "1.zip");
+                    file.SaveAs(path);
+                }
+                return Json("ftp://user:sifre@site.com/1.zip");
             }
-            return 0;
+            catch (Exception ex)
+            {
+                return Json("-" + ex.Message);
+            }
         }
+
     }
 }

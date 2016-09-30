@@ -28,6 +28,7 @@ namespace westline_alfa.Controllers
                 k.Pasaport = pasaport == 1 ? true : false;
                 k.DogumTarihi = dogumTarih;
                 k.Iletisim.Skype = skype;
+
                 k.Iletisim.Adre.TamAdres = tamAdres;
                 k.Iletisim.Adre.AdresSatirIki = adresIkinciSatir;
                 k.Iletisim.Adre.Eyalet = db.Eyalets.Find(adresEyaletId);

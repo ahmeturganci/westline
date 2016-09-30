@@ -2,9 +2,40 @@
 
 
     <div ng-controller="fupController">
-        <input type="file" id="file1" name="file" multiple
-               ng-files="getTheFiles($files)" />
+        <input type="file" id="FileUpload" name="file" />
     </div>
+<h1 id="link"></h1>
 
-    <input type="button" ng-click="uploadFiles()" value="Upload" />
+    <input type="submit" id="Upload" value="Upload" />
 
+<script src="../../Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $("#Upload").click(function () {
+        console.log("dasd");
+            var formData = new FormData();
+            var totalFiles = document.getElementById("FileUpload").files.length;
+            for (var i = 0; i < totalFiles; i++) {
+                var file = document.getElementById("FileUpload").files[i];
+                formData.append("FileUpload", file);
+            }
+            $.ajax({
+                type: "POST",
+                url: '/Dorduncu/Upload',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+
+                    if (response[0] != '-')
+                        $("#link").html('<a class="btn btn-danger" href="#">Dosya Yüklendi.</a>');
+                    else
+                        alert("Dosya yüklenemedi");
+                },
+                error: function (error) {
+
+                    alert("Dosya yüklenemedi");
+                }
+            });
+        });
+ </script>
