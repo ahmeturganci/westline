@@ -10,6 +10,7 @@ namespace westline_alfa.Controllers
 {
     public class DorduncuController : Controller
     {
+
         public JsonResult SaveFiles(string description)
         {
             string Message, fileName, actualFileName;
@@ -48,5 +49,6 @@ namespace westline_alfa.Controllers
             }
             return new JsonResult { Data = new { Message = Message, Status = flag } };
         }
+
     }
 }

@@ -137,6 +137,34 @@
         </div>
     </div>
     <!--İletişim - Adre Bilgi SON-->
+    <div class="container">
+        <h2>Acil Durum Kişi</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">Acil Durum Kişi Bilgileri </div>
+            <div class="panel-body">
+                <form>
+                    <fieldset>
+                        <!-- required html5 o input dolu olack :D -->
+                        <div class="form-group">
+                            <!--Adres-->
+                            <label class="AcilAd" for="form-group-input"> Acil Durum Kişi Ad</label>
+                            <input type="text" class="form-control" ng-model="acilAd" id="acilKisiAd" placeholder="Acil Kişi Ad. . ." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="AcilSoyad" for="form-group-input">Acil Durum Kişi Soyad</label>
+                            <input type="text" class="form-control" ng-model="acilSoyad" id="acilKisiSoyad" placeholder=">Acil Durum Kişi Soyad" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="AcilEmail" for="form-group-input">Acil Durum Tel</label>
+                            <input type="number" class="form-control" ng-model="acilTel" id="acilKisiTel" placeholder="Acil Durum Tel. . ." required>
+                        </div>
+                        
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <button ng-click="IkinciSayfa()">Devam Et </button>
 </div>

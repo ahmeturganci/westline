@@ -17,7 +17,7 @@ namespace westline_alfa.Controllers
             int pasaport = -1, DateTime? dogumTarih = null, string skype="", 
             string tamAdres="", string adresIkinciSatir = "", int eyalet = -1,
             string postaKodu = "", int ulkeId = -1,
-            int adresEyaletId = -1, int adresUlkeId = -1)
+            int adresEyaletId = -1, int adresUlkeId = -1,string acilAd="",string acilSoyad="",string acilTel="")
         {
             if (h.FormKontrol(babaAd, anneAdSoyad, ingilizceSeviye, tamAdres))
             {
@@ -36,6 +36,12 @@ namespace westline_alfa.Controllers
                 a.Ulke = db.Ulkes.Find(adresUlkeId);
                 a.Eyalet = db.Eyalets.Find(adresEyaletId);
                 a.PostaKodu = postaKodu;
+
+                AcilDurum ac = new AcilDurum();
+                ac.Ad = acilAd;
+                ac.Soyad = acilSoyad;
+                ac.Telefon = acilTel;
+                db.AcilDurums.Add(ac);
 
                 db.Adres.Add(a);
                 k.Iletisim.Adre = a;
