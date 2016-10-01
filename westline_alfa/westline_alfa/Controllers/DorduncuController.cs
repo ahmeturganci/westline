@@ -21,8 +21,9 @@ namespace westline_alfa.Controllers
                 actualFileName = file.FileName;
                 fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
                 int size = file.ContentLength;
+                try
+                {
 
-                
                     file.SaveAs(Path.Combine(Server.MapPath("~/Images"), fileName));
 
 
@@ -39,7 +40,11 @@ namespace westline_alfa.Controllers
                         Message = "File uploaded successfully";
                         flag = true;
                     }
-
+                }
+                catch (Exception)
+                {
+                    Message = "File upload failed! Please try again";
+                }
             }
             return new JsonResult { Data = new { Message = Message, Status = flag } };
         }
