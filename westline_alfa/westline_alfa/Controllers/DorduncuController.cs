@@ -22,25 +22,23 @@ namespace westline_alfa.Controllers
                 fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
                 int size = file.ContentLength;
 
-                try
-                {
+                
                     file.SaveAs(Path.Combine(Server.MapPath("~/Images"), fileName));
 
-                    Belge f = new Belge();
 
                     using (westlineDB dc = new westlineDB())
                     {
-                        dc.Belges.Add((Belge)f);
+                        Belge f = new Belge();
+                        f.FotografUrl = fileName;
+                        dc.Belges.Add(f);
+
+                        Kisi k = dc.Kisis.Find(Session["id"]);
+                        k.Belge = f;
 
                         dc.SaveChanges();
                         Message = "File uploaded successfully";
                         flag = true;
                     }
-                }
-                catch (Exception)
-                {
-                    Message = "File upload failed! Please try again";
-                }
 
             }
             return new JsonResult { Data = new { Message = Message, Status = flag } };
