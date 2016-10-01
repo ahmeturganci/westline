@@ -24,7 +24,7 @@ namespace westline_alfa.Controllers
                 Kisi k = db.Kisis.Find(Session["id"]);
                 k.BabaAdi = babaAd;
                 k.AnneAdi = anneAdSoyad;
-                k.IngilizceSeviye = ingilizceSeviye;
+                k.IngilizceSeviye = db.IngilizceSeviyes.Find(ingilizceSeviye);
                 k.Pasaport = pasaport == 1 ? true : false;
                 k.DogumTarihi = dogumTarih;
                 k.Iletisim.Skype = skype;
@@ -68,6 +68,11 @@ namespace westline_alfa.Controllers
         public JsonResult EyaletCek()
         {
             return h.Eyaletler();
+        }
+
+        public JsonResult IngilizceCek()
+        {
+            return h.IngilizceSeviyeler();
         }
     }
 }

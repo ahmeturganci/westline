@@ -21,6 +21,7 @@ namespace westline_alfa.Models
         public virtual DbSet<Eyalet> Eyalets { get; set; }
         public virtual DbSet<GidilenUlkeler> GidilenUlkelers { get; set; }
         public virtual DbSet<Iletisim> Iletisims { get; set; }
+        public virtual DbSet<IngilizceSeviye> IngilizceSeviyes { get; set; }
         public virtual DbSet<Kisi> Kisis { get; set; }
         public virtual DbSet<KisiReferan> KisiReferans { get; set; }
         public virtual DbSet<Lise> Lises { get; set; }

@@ -51,6 +51,12 @@
         }).error(function (data) {
             console.log(data);
         });
+
+        $http.get("/Ikinci/IngilizceCek").success(function (data) {
+            $scope.ingilizces = data;
+        }).error(function (data) {
+            console.log(data);
+        });
         
        
     }

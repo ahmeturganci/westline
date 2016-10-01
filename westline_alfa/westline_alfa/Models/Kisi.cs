@@ -33,7 +33,7 @@ namespace westline_alfa.Models
         [Column(TypeName = "date")]
         public DateTime? DogumTarihi { get; set; }
 
-        public int? IngilizceSeviye { get; set; }
+        public int? IngilizceSeviyeId { get; set; }
 
         [StringLength(50)]
         public string TcKimlikNo { get; set; }
@@ -71,6 +71,8 @@ namespace westline_alfa.Models
         public virtual ICollection<GidilenUlkeler> GidilenUlkelers { get; set; }
 
         public virtual Iletisim Iletisim { get; set; }
+
+        public virtual IngilizceSeviye IngilizceSeviye { get; set; }
 
         public virtual Lise Lise { get; set; }
 

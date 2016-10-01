@@ -11,6 +11,20 @@ namespace westline_alfa.helper
     {
         westlineDB db = new westlineDB();
 
+        public JsonResult IngilizceSeviyeler() {
+            List<Object> jsonModelList = new List<object>();
+            foreach (var i in db.IngilizceSeviyes)
+            {
+                var jsonModel = new
+                {
+                    Id = i.Id,
+                    Aciklama = i.Aciklama
+                };
+                jsonModelList.Add(jsonModel);
+            }
+            return Json(jsonModelList, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult Ulkeler()
         {
             List<Object> jsonModelList = new List<object>();

@@ -148,6 +148,7 @@
     <Compile Include="Models\Eyalet.cs" />
     <Compile Include="Models\GidilenUlkeler.cs" />
     <Compile Include="Models\Iletisim.cs" />
+    <Compile Include="Models\IngilizceSeviye.cs" />
     <Compile Include="Models\Kisi.cs" />
     <Compile Include="Models\KisiReferan.cs" />
     <Compile Include="Models\Lise.cs" />
