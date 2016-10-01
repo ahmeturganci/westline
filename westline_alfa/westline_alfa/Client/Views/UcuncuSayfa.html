@@ -2,7 +2,7 @@
     <h1>Adım 3 </h1>
     <div class="panel">
         <div class="panel-body">
-            <div class="panel-heading">{{ert}}</div>
+            <div class="panel-heading">asdas</div>
             <form>
                 <fieldset>
                     <!-- required html5 o input dolu olack :D -->
@@ -39,8 +39,8 @@
 
                     <div class="form-group">
                         <label class="Eyalet" for="form-group-input">Eyalet </label>
-                        <select class="combobox">
-                            <option ng-model="liseAdresEyalet" ng-repeat="e in eyalets" value="{{e.Id}}">{{e.sehir}}</option>
+                        <select class="combobox" ng-model="liseAdresEyalet">
+                            <option ng-repeat="e in eyalets" value="{{e.Id}}">{{e.sehir}}</option>
                         </select>
                     </div>
 
@@ -86,7 +86,7 @@
 
                     <div class="form-group">
                         <label class="Soyad" for="form-group-input">Soyad</label>
-                        <input type="text" class="form-control" ng-model="universiteBölüm" id="Soyad" placeholder="Üniversite Bölüm . . . " required>
+                        <input type="text" class="form-control" ng-model="universiteBolum" id="Soyad" placeholder="Üniversite Bölüm . . . " required>
                     </div>
 
                     <div class="form-group">
@@ -108,8 +108,8 @@
 
                     <div class="form-group">
                         <label class="Eyalet" for="form-group-input">Eyalet </label>
-                        <select class="combobox">
-                            <option ng-model="universiteAdresEyalet" ng-repeat="e in eyalets" value="{{e.Id}}">{{e.sehir}}</option>
+                        <select class="combobox" ng-model="universiteAdresEyalet">
+                            <option ng-repeat="e in eyalets" value="{{e.Id}}">{{e.sehir}}</option>
                         </select>
                     </div>
 

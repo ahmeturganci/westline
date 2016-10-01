@@ -27,6 +27,19 @@
             });
         }
 
+        //3. sayfa
+        $scope.UcuncuSayfa = function () {
+            $http.post("/Ucuncu/EgitimEkle?liseAd=" + $scope.liseAd + "&baslangic=" + $scope.liseBaslangic + "&bitis=" + $scope.liseBitis + "&alan=" + $scope.liseAlan + "&liseTamAdres=" + $scope.liseTamAdres + "&liseAdresIkinciSatir=" + $scope.liseAdresIki + "&liseEyalet=" + $scope.liseAdresEyalet + "&lisePostaKodu=" + $scope.liseAdresPostaKod + "&liseUlkeId=" + $scope.liseAdresUlke + "&universiteAd=" + $scope.universiteAd + "&sinif=" + $scope.universiteSinif + "&bolum=" + $scope.universiteBolum + "&okulNo=" + $scope.universiteNo + "&acilis=" + $scope.universiteBaslangic + "&kapanis=" + $scope.universitekapanis + "&uniTel=" + $scope.universiteTel + "&uniTamAdres=" + $scope.universiteTamAdres + "&uniAdresIkinciSatir=" + $scope.universiteAdresIki + "&uniEyalet=" + $scope.universiteAdresEyalet + "&uniPostaKodu=" + $scope.universiteAdresPostaKod + "&uniUlkeId=" + $scope.universiteAdresUlke)
+                .success(function (data) {
+                        console.log(data.basari);
+                        if (data.basari == 1) {
+                                $window.location.href = '#/DorduncuSayfa';
+                            }
+                    }).error(function (data) {
+                            console.log(data);
+                        });
+        };
+
         $http.get("/Ikinci/UlkeCek").success(function (data) {
             $scope.ulkes = data;
         }).error(function (data) {
@@ -39,12 +52,7 @@
             console.log(data);
         });
         
-        //Ucuncu sayfa
-        $scope.UcuncuSayfa = function () {
-            console.log("dd");
-        };
-
-        $scope.ert = "deneme";
+       
     }
     app.controller("KisiTanimaController", KisiTanimaController);
 }(angular.module("KisiModul")))

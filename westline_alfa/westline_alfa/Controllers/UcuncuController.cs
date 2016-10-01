@@ -23,6 +23,8 @@ namespace westline_alfa.Controllers
             l.Bitis = bitis;
             l.Alan = alan;
 
+            
+
             Adre a = new Adre();
             a.TamAdres = liseTamAdres;
             a.AdresSatirIki = liseAdresIkinciSatir;
@@ -31,7 +33,7 @@ namespace westline_alfa.Controllers
             a.Ulke = db.Ulkes.Find(liseUlkeId);
 
             db.Adres.Add(a);
-            l.AdresId = a.Id;
+            l.Adre = a;
 
             Universite u = new Universite();
             u.Ad = universiteAd;
