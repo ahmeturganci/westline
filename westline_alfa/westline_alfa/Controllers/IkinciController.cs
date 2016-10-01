@@ -14,7 +14,7 @@ namespace westline_alfa.Controllers
 
         // GET: Ikinci
         public JsonResult KisiDetayEkle(string babaAd = "", string anneAdSoyad = "", int ingilizceSeviye=-1, 
-            int pasaport = -1, DateTime? dogumTarih = null, string skype="", 
+            int pasaport = -1,string dogumTarih = "", string skype="", 
             string tamAdres="", string adresIkinciSatir = "", int eyalet = -1,
             string postaKodu = "", int ulkeId = -1,
             int adresEyaletId = -1, int adresUlkeId = -1,string acilAd="",string acilSoyad="",string acilTel="")
@@ -26,7 +26,7 @@ namespace westline_alfa.Controllers
                 k.AnneAdi = anneAdSoyad;
                 k.IngilizceSeviye = db.IngilizceSeviyes.Find(ingilizceSeviye);
                 k.Pasaport = pasaport == 1 ? true : false;
-                k.DogumTarihi = dogumTarih;
+                k.DogumTarihi = Convert.ToDateTime(dogumTarih) ;
                 k.Iletisim.Skype = skype;
 
                 Adre a = new Adre();
