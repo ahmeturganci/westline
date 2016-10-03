@@ -16,7 +16,7 @@ namespace westline_alfa.Controllers
         public JsonResult KisiDetayEkle(string babaAd = "", string anneAdSoyad = "", int ingilizceSeviye=-1, 
             int pasaport = -1,string dogumTarih = "", string skype="", 
             string tamAdres="", string adresIkinciSatir = "", int eyalet = -1,
-            string postaKodu = "", int ulkeId = -1,
+            string postaKodu = "", 
             int adresEyaletId = -1, int adresUlkeId = -1,string acilAd="",string acilSoyad="",string acilTel="")
         {
             if (h.FormKontrol(babaAd, anneAdSoyad, ingilizceSeviye, tamAdres))
@@ -32,9 +32,7 @@ namespace westline_alfa.Controllers
                 Adre a = new Adre();
                 a.TamAdres = tamAdres;
                 a.AdresSatirIki = adresIkinciSatir;
-                a.Eyalet = db.Eyalets.Find(adresEyaletId);
-                a.Ulke = db.Ulkes.Find(adresUlkeId);
-                a.Eyalet = db.Eyalets.Find(adresEyaletId);
+                a.Il = db.Ils.Find(adresEyaletId);
                 a.PostaKodu = postaKodu;
 
                 AcilDurum ac = new AcilDurum();
@@ -71,9 +69,9 @@ namespace westline_alfa.Controllers
             return h.Ulkeler();
         }
 
-        public JsonResult EyaletCek()
+        public JsonResult EyaletCek(int id)
         {
-            return h.Eyaletler();
+            return h.Iller(id);
         }
 
         public JsonResult IngilizceCek()

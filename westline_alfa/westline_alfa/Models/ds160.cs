@@ -54,16 +54,10 @@ namespace westline_alfa.Models
 
         public bool? AmerikaVatandasGocmenBasvuru { get; set; }
 
-        [StringLength(50)]
-        public string BabaAdi { get; set; }
-
         [Column(TypeName = "date")]
         public DateTime? BabaDogumTarihi { get; set; }
 
         public bool? BabaAmerikadaMi { get; set; }
-
-        [StringLength(50)]
-        public string AnneAdSoyad { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? AnneDogumTarihi { get; set; }
