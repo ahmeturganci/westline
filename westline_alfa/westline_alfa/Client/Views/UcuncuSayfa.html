@@ -5,36 +5,33 @@
             <div class="panel-heading">asdas</div>
             <form>
                 <fieldset>
-                    <!-- required html5 o input dolu olack :D -->
                     <div class="form-group">
-                        <label class="BabaAd" for="form-group-input">Baba Ad</label>
-                        <input type="text" class="form-control" ng-model="liseAd" id="tc" placeholder="Lise Adı . . ." required>
+                        <label class="LiseAd" for="form-group-input">Lise Ad</label>
+                        <input type="text" class="form-control" ng-model="liseAd" id="lisAd" placeholder="Lise Adı . . ." required>
                     </div>
                     <div class="form-group">
-                        <label class="Ad" for="form-group-input">Ad</label>
-                        <input type="text" class="form-control" ng-model="liseBaslangic" id="Ad" placeholder="lise Başlangıç . . ." required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="OrtaAd" for="form-group-input">Orta Ad </label>
-                        <input type="text" class="form-control" ng-model="liseBitis" id="OrtaAd" placeholder="Lise Bitiş . . . " required>
+                        <label class="LiseBaslangic" for="form-group-input">Lise Baslangıç</label>
+                        <input type="date" class="form-control" ng-model="liseBaslangic" id="liseBaslangic" placeholder="lise Başlangıç . . ." required>
                     </div>
 
                     <div class="form-group">
-                        <label class="Soyad" for="form-group-input">Soyad</label>
-                        <input type="text" class="form-control" ng-model="liseAlan" id="Soyad" placeholder="Lise Alan . . . " required>
+                        <label class="LiseBitis" for="form-group-input">Lise Bitiş </label>
+                        <input type="date" class="form-control" ng-model="liseBitis" id="liseBitis" placeholder="Lise Bitiş . . . " required>
                     </div>
 
                     <div class="form-group">
-                        <!--Adres-->
-                        <label class="Adres" for="form-group-input"> Tam Adres</label>
-                        <input type="text" class="form-control" ng-model="liseTamAdres" id="tamAdres" placeholder="Tam Adres . . ." required>
+                        <label class="LiseAlan" for="form-group-input">Soyad</label>
+                        <input type="text" class="form-control" ng-model="liseAlan" id="liseAlan" placeholder="Lise Alan . . . " required>
                     </div>
 
                     <div class="form-group">
-                        <!--Adres-->
-                        <label class="AdresDevam" for="form-group-input">Adres Devam (Satır İki )</label>
-                        <input type="text" class="form-control" ng-model="liseAdresIki" id="adresIki" placeholder="Adres Devam (Satır Iki) . . ." required>
+                        <label class="LiseTamAdres" for="form-group-input">Lise Tam Adres</label>
+                        <input type="text" class="form-control" ng-model="liseTamAdres" id="liseTamAdres" placeholder="Lise Tam Adres . . ." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="LiseAdresDevam" for="form-group-input">Lise Adres Devam (Satır İki )</label>
+                        <input type="text" class="form-control" ng-model="liseAdresIki" id="liseAdresIki" placeholder="Lise Adres Devam (Satır Iki) . . ." required>
                     </div>
 
                     <div class="form-group">
@@ -45,8 +42,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="PostaKodu" for="form-group-input">Posta Kodu</label>
-                        <input type="number" class="form-control" ng-model="liseAdresPostaKod" id="postaKodu" placeholder="Posta Kodu. . ." required>
+                        <label class="LisePostaKodu" for="form-group-input">Lise Posta Kodu</label>
+                        <input type="number" class="form-control" ng-model="liseAdresPostaKod" id="lisePostaKodu" placeholder="Lise Posta Kodu. . ." required>
                     </div>
 
                     <div class="form-group">
@@ -61,49 +58,47 @@
                 <fieldset>
                     <!-- required html5 o input dolu olack :D -->
                     <div class="form-group">
-                        <label class="BabaAd" for="form-group-input">Baba Ad</label>
-                        <input type="text" class="form-control" ng-model="universiteAd" id="tc" placeholder="Üniversite Adı . . ." required>
+                        <label class="UniversiteAd" for="form-group-input">Üniversite Ad</label>
+                        <input type="text" class="form-control" ng-model="universiteAd" id="uniAd" placeholder="Üniversite Adı . . ." required>
                     </div>
                     <div class="form-group">
-                        <label class="Ad" for="form-group-input">Ad</label>
-                        <input type="text" class="form-control" ng-model="universiteBaslangic" id="Ad" placeholder="Üniversite Başlangıç . . ." required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="OrtaAd" for="form-group-input">Orta Ad </label>
-                        <input type="text" class="form-control" ng-model="universitekapanis" id="OrtaAd" placeholder="Üniversite Kapanış . . . " required>
+                        <label class="UniversiteBaslama" for="form-group-input">Universite başlama</label>
+                        <input type="date" class="form-control" ng-model="universiteBaslangic" id="uniBaslama" placeholder="Üniversite Başlangıç . . ." required>
                     </div>
 
                     <div class="form-group">
-                        <label class="Soyad" for="form-group-input">Soyad</label>
-                        <input type="text" class="form-control" ng-model="universiteSinif" id="Soyad" placeholder="Üniversite Sınıf . . . " required>
+                        <label class="UniversiteKapanma" for="form-group-input">Üniversite Kapanma</label>
+                        <input type="text" class="form-control" ng-model="universitekapanis" id="uniKapanma" placeholder="Üniversite Kapanış . . . " required>
                     </div>
 
                     <div class="form-group">
-                        <label class="Soyad" for="form-group-input">Soyad</label>
-                        <input type="text" class="form-control" ng-model="universiteNo" id="Soyad" placeholder="Üniversite No . . . " required>
+                        <label class="UniversiteSinif" for="form-group-input">Üniversite Sınıf</label>
+                        <input type="number" class="form-control" ng-model="universiteSinif" id="uniSinif" placeholder="Üniversite Sınıf . . . " required>
                     </div>
 
                     <div class="form-group">
-                        <label class="Soyad" for="form-group-input">Soyad</label>
-                        <input type="text" class="form-control" ng-model="universiteBolum" id="Soyad" placeholder="Üniversite Bölüm . . . " required>
+                        <label class="UniversiteNo" for="form-group-input">Üniversite No</label>
+                        <input type="text" class="form-control" ng-model="universiteNo" id="uniNo" placeholder="Üniversite No . . . " required>
                     </div>
 
                     <div class="form-group">
-                        <label class="Soyad" for="form-group-input">Soyad</label>
-                        <input type="text" class="form-control" ng-model="universiteTel" id="Soyad" placeholder="Üniversite Telefon . . . " required>
+                        <label class="UniversiteBolum" for="form-group-input">Üniversite Bölüm</label>
+                        <input type="text" class="form-control" ng-model="universiteBolum" id="uniBolum" placeholder="Üniversite Bölüm . . . " required>
                     </div>
 
                     <div class="form-group">
-                        <!--Adres-->
-                        <label class="Adres" for="form-group-input"> Tam Adres</label>
-                        <input type="text" class="form-control" ng-model="universiteTamAdres" id="tamAdres" placeholder="Tam Adres . . ." required>
+                        <label class="UniversiteTel" for="form-group-input">Üniversite Telefon</label>
+                        <input type="text" class="form-control" ng-model="universiteTel" id="uniTel" placeholder="Üniversite Telefon . . . " required>
                     </div>
 
                     <div class="form-group">
-                        <!--Adres-->
-                        <label class="AdresDevam" for="form-group-input">Adres Devam (Satır İki )</label>
-                        <input type="text" class="form-control" ng-model="universiteAdresIki" id="adresIki" placeholder="Adres Devam (Satır Iki) . . ." required>
+                        <label class="UniversiteAdres" for="form-group-input">Üniversite Tam Adres</label>
+                        <input type="text" class="form-control" ng-model="universiteTamAdres" id="uniTamAdres" placeholder="Tam Adres . . ." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="UniversiteAdresIki" for="form-group-input">Üniversite Adres Devam (Satır İki )</label>
+                        <input type="text" class="form-control" ng-model="universiteAdresIki" id="uniAdresIki" placeholder="Üniversite Adres Devam (Satır Iki) . . ." required>
                     </div>
 
                     <div class="form-group">
@@ -114,12 +109,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="PostaKodu" for="form-group-input">Posta Kodu</label>
-                        <input type="number" class="form-control" ng-model="universiteAdresPostaKod" id="postaKodu" placeholder="Posta Kodu. . ." required>
+                        <label class="UniversitePostaKodu" for="form-group-input"> Üniversite Posta Kodu</label>
+                        <input type="number" class="form-control" ng-model="universiteAdresPostaKod" id="uniPostaKodu" placeholder="Üniversite Posta Kodu. . ." required>
                     </div>
 
                     <div class="form-group">
-                        <label class="Ulke" for="form-group-input">Ülke </label>
+                        <label class="UniversiteUlke" for="form-group-input">Ülke </label>
                         <select class="combobox" ng-model="universiteAdresUlke">
                             <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
                         </select>
@@ -130,6 +125,17 @@
 
 
 </form>
-        </div>
-    </div>
+        
 </div>
+        <script>
+     $("#liseAdresPostaKod,#uniSinif,#uniNo,#uniTel,#uniPostaKodu").keyup(function () {
+        if (this.value.match(/[^0-9]/g)) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        }
+    });//rakam
+     $("#liseAd, #liseAlan,#liseTamAdres,#liseAdresIki,#uniAd,#universiteBolum,#uniTamAdres,#uniAdresIki").keyup(function () {
+        if (this.value.match(/[^a-zA-Z]/g)) {
+            this.value = this.value.replace(/[^a-zA-Z]/g, '');
+        }
+    });//harf
+        </script>
