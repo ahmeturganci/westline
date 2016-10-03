@@ -22,7 +22,7 @@ angular.module('KisiModul') // extending angular module from first part
     $scope.ChechFileValid = function (file) {
         var isValid = false;
         if ($scope.SelectedFileForUpload != null) {
-            if ((file.type == 'image/png' || file.type == 'image/jpeg' || file.type == 'image/gif') && file.size <= (512 * 1024)) {
+            if ((file.type == 'image/png' || file.type == 'image/jpeg' || file.type.indexOf("pdf") > -1 || file.type == 'image/gif') && file.size <= (512 * 1024)) {
                 $scope.FileInvalidMessage = "";
                 isValid = true;
             }
