@@ -1,11 +1,11 @@
 ﻿<div ng-controller="KisiTanimaController">
-    <h1  ng-model="deneme" >Adım 1{{deneme}} </h1>
+    <h1 ng-model="deneme">Adım 1{{deneme}} </h1>
     <form>
         <fieldset>
             <!-- required html5 o input dolu olack :D -->
             <div class="form-group">
-                <label class="Ad" for="form-group-input">Ad</label>
-                <input type="text" class="form-control" ng-model="tc" id="tc" placeholder="TC Kimlik No . . ." required>
+                <label class="TC" for="form-group-input">TC</label>
+                <input type="text" class="form-control" maxlength="11" ng-model="tc" id="tc" size="11" placeholder="TC Kimlik No . . ." required>
             </div>
             <div class="form-group">
                 <label class="Ad" for="form-group-input">Ad</label>
@@ -33,10 +33,23 @@
             </div>
 
         </fieldset>
-        
+
         <button ng-click="BirinciSayfa()">Devam Et </button>
-       
+
 
 
     </form>
 </div>
+<script>
+    $("#tc, #Telefon").keyup(function () {
+        if (this.value.match(/[^0-9]/g)) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        }
+    });//rakam
+    $("#Ad,#OrtaAd,#Soyad").keyup(function () {
+        if (this.value.match(/[^a-zA-Z]/g)) {
+            this.value = this.value.replace(/[^a-zA-Z]/g, '');
+        }
+    });//harf
+
+</script>
