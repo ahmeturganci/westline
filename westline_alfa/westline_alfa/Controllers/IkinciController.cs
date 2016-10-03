@@ -26,7 +26,7 @@ namespace westline_alfa.Controllers
                 k.AnneAdi = anneAdSoyad;
                 k.IngilizceSeviye = db.IngilizceSeviyes.Find(ingilizceSeviye);
                 k.Pasaport = pasaport == 1 ? true : false;
-                k.DogumTarihi = Convert.ToDateTime(dogumTarih) ;
+               // k.DogumTarihi = Convert.ToDateTime(dogumTarih) ;
                 k.Iletisim.Skype = skype;
 
                 Adre a = new Adre();

@@ -7,7 +7,7 @@
                 <fieldset>
                     <div class="form-group">
                         <label class="LiseAd" for="form-group-input">Lise Ad</label>
-                        <input type="text" class="form-control" ng-model="liseAd" id="lisAd" placeholder="Lise Adı . . ." required>
+                        <input type="text" class="form-control" ng-model="liseAd" id="liseAd" placeholder="Lise Adı . . ." required>
                     </div>
                     <div class="form-group">
                         <label class="LiseBaslangic" for="form-group-input">Lise Baslangıç</label>
@@ -133,7 +133,7 @@
             this.value = this.value.replace(/[^0-9]/g, '');
         }
     });//rakam
-     $("#liseAd, #liseAlan,#liseTamAdres,#liseAdresIki,#uniAd,#universiteBolum,#uniTamAdres,#uniAdresIki").keyup(function () {
+     $("#liseAd,#liseAlan,#liseTamAdres,#liseAdresIki,#uniAd,#universiteBolum,#uniTamAdres,#uniAdresIki").keyup(function () {
         if (this.value.match(/[^a-zA-Z]/g)) {
             this.value = this.value.replace(/[^a-zA-Z]/g, '');
         }

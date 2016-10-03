@@ -1,0 +1,65 @@
+﻿<div ng-controller="KisiTanimaController">
+    <h1 ng-model="deneme">Adım 2{{deneme}} </h1>
+    <!--Kisisel Detay Bilgi-->
+    <div class="container">
+        <h2>Kişisel Bilgi Detay</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">Kişisel Bilgi Detay</div>
+            <div class="panel-body">
+                <form>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="BabaAd" for="form-group-input">Baba Ad </label>
+                            <input type="text" class="form-control" ng-model="babaAd" id="babaAd" placeholder="Baba Ad . . ." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="AnneAdSoyad" for="form-group-input"> Anne Ad </label>
+                            <input type="text" class="form-control" ng-model="anneAd" id="anneAdSoyad" placeholder="Anne Ad. . ." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="Eyalet" for="form-group-input">Ingilizce seviyesi </label>
+                            <select class="combobox" ng-model="ingilizceSeviye">
+                                <option ng-repeat="i in ingilizces" value="{{i.Id}}">{{i.Aciklama}}</option>
+                            </select>
+                        </div>
+
+
+                        <!--Burda Kaldım Radio lar yapılcak-->
+                        <div class="form-group">
+                            <label class="PasaportVarMi" for="form-group-input">Pasaport Var Mı.</label>
+                            <input type="radio" ng-model="pasaport" value="1" id="radio" /> Evet, Var
+                            <input type="radio" ng-model="pasaport" value="0" /> Hayır, Yok
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label class="Eyalet" for="form-group-input">Eyalet </label>
+                            <select class="combobox" ng-model="bilgiEyalet">
+                                <option ng-repeat="e in eyalets" value="{{e.Id}}">{{e.sehir}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="PostaKodu" for="form-group-input">Posta Kodu</label>
+                            <input type="number" class="form-control" ng-model="bilgiPostaKod" id="postaKodu" placeholder="Posta Kodu. . ." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="Ulke" for="form-group-input">Ülke </label>
+                            <select class="combobox" ng-model="bilgiUlke">
+                                <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
+                            </select>
+                        </div>
+
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--Kisisel Detay-->
+
+</div>

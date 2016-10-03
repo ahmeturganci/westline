@@ -11,7 +11,7 @@
                         $window.location.href = '#/IkinciSayfa';
                     }
                 }).error(function (data) {
-                    console.log(data);
+                    alert("hata");
                 });
         }
         //2.sayfa
@@ -39,6 +39,18 @@
                 console.log(data);
             });
         };
+        //5. sayfa
+        $scope.BesinciSayfa = function () {
+            $http.post()
+                .success(function (data) {
+                    console.log(data.basari);
+                    if (data.basari == 1) {
+                        $window.location.href = '#/AltinciSayfa';
+                    }
+                }).error(function (data) {
+                    console.log(data);
+                });
+        }
 
         $http.get("/Ikinci/UlkeCek").success(function (data) {
             $scope.ulkes = data;
