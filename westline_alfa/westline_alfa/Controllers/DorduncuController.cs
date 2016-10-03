@@ -50,5 +50,14 @@ namespace westline_alfa.Controllers
             return new JsonResult { Data = new { Message = Message, Status = flag } };
         }
 
+        // yeni eklenen upload (evrakSayfa olay)
+
+        [HttpPost]
+        public void upload(System.Web.HttpPostedFileBase aFile)
+        {
+            string file = aFile.FileName;
+            string path = Server.MapPath("../Upload//");
+            aFile.SaveAs(path + Guid.NewGuid() + "." + file.Split('.')[1]);
+        }
     }
 }

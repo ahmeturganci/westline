@@ -16,6 +16,10 @@
         when("/DorduncuSayfa", {
             templateUrl: "/Client/Views/DorduncuSayfa.html"
         })
+            .when("/EvrakSayfasi",{
+                templateUrl: "/Client/Views/EvrakSayfasi.html"
+            })
+            
          .otherwise({
              redirectTo: "/BirinciSayfa"
          });

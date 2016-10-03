@@ -166,6 +166,7 @@
     <Content Include="Client\Part8Controller.js" />
     <Content Include="Client\Views\BirinciSayfa.html" />
     <Content Include="Client\Views\DorduncuSayfa.html" />
+    <Content Include="Client\Views\EvrakSayfasi.html" />
     <Content Include="Client\Views\IkinciSayfa.html" />
     <Content Include="Client\Views\UcuncuSayfa.html" />
     <Content Include="Content\bootstrap.css" />
@@ -177,6 +178,7 @@
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-upload.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -184,6 +186,7 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\btnUpload.min.css" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -194,6 +197,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\uploadButton.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -211,6 +215,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
+    <Folder Include="Upload\" />
     <Folder Include="Views\Ucuncu\" />
   </ItemGroup>
   <ItemGroup>
