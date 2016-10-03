@@ -25,19 +25,12 @@ namespace westline_alfa.Models
         [StringLength(200)]
         public string AdresSatirIki { get; set; }
 
-        [StringLength(50)]
-        public string Sehir { get; set; }
-
         public int? EyaletId { get; set; }
 
         [StringLength(50)]
         public string PostaKodu { get; set; }
 
-        public int? UlkeId { get; set; }
-
-        public virtual Eyalet Eyalet { get; set; }
-
-        public virtual Ulke Ulke { get; set; }
+        public virtual Il Il { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Iletisim> Iletisims { get; set; }

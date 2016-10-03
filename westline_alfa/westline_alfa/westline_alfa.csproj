@@ -145,8 +145,9 @@
     <Compile Include="Models\Dil.cs" />
     <Compile Include="Models\DilKisi.cs" />
     <Compile Include="Models\ds160.cs" />
-    <Compile Include="Models\Eyalet.cs" />
     <Compile Include="Models\GidilenUlkeler.cs" />
+    <Compile Include="Models\Il.cs" />
+    <Compile Include="Models\Ilce.cs" />
     <Compile Include="Models\Iletisim.cs" />
     <Compile Include="Models\IngilizceSeviye.cs" />
     <Compile Include="Models\Kisi.cs" />

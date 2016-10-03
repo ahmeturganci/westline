@@ -40,9 +40,19 @@ namespace westline_alfa.helper
             return Json(jsonModelList, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Eyaletler()
+        public JsonResult Iller(int id)
         {
-            return Json(db.Eyalets,JsonRequestBehavior.AllowGet);
+            List<Object> jsonModelList = new List<object>();
+            foreach (var i in db.Ils.Where(x => x.UlkeId == id))
+            {
+                var jsonModel = new
+                {
+                    Id = i.Id,
+                    Ad = i.Ad
+                };
+                jsonModelList.Add(jsonModel);
+            }
+            return Json(jsonModelList, JsonRequestBehavior.AllowGet);
         }
 
         public bool FormKontrol(params object[] elemanlar)

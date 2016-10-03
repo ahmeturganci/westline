@@ -18,8 +18,9 @@ namespace westline_alfa.Models
         public virtual DbSet<Dil> Dils { get; set; }
         public virtual DbSet<DilKisi> DilKisis { get; set; }
         public virtual DbSet<ds160> ds160 { get; set; }
-        public virtual DbSet<Eyalet> Eyalets { get; set; }
         public virtual DbSet<GidilenUlkeler> GidilenUlkelers { get; set; }
+        public virtual DbSet<Il> Ils { get; set; }
+        public virtual DbSet<Ilce> Ilces { get; set; }
         public virtual DbSet<Iletisim> Iletisims { get; set; }
         public virtual DbSet<IngilizceSeviye> IngilizceSeviyes { get; set; }
         public virtual DbSet<Kisi> Kisis { get; set; }
@@ -58,6 +59,19 @@ namespace westline_alfa.Models
                 .WithOptional(e => e.ds160)
                 .HasForeignKey(e => e.DsId);
 
+            modelBuilder.Entity<Il>()
+                .Property(e => e.Ad)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Il>()
+                .HasMany(e => e.Adres)
+                .WithOptional(e => e.Il)
+                .HasForeignKey(e => e.EyaletId);
+
+            modelBuilder.Entity<Ilce>()
+                .Property(e => e.Ad)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Referan>()
                 .HasMany(e => e.KisiReferans)
                 .WithOptional(e => e.Referan)
@@ -68,7 +82,11 @@ namespace westline_alfa.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Ulke>()
-                .Property(e => e.UlkeOrj)
+                .Property(e => e.tr_TR)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Ulke>()
+                .Property(e => e.en_US)
                 .IsUnicode(false);
         }
     }

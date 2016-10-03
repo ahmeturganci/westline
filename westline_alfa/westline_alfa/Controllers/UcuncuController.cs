@@ -12,10 +12,10 @@ namespace westline_alfa.Controllers
         westlineDB db = new westlineDB(); 
         public JsonResult EgitimEkle(string liseAd = "", DateTime? baslangic = null, DateTime? bitis = null, 
             string alan = "",string liseTamAdres = "", string liseAdresIkinciSatir = "", int liseEyalet = -1, 
-            string lisePostaKodu = "", int liseUlkeId = -1,
+            string lisePostaKodu = "", 
             string universiteAd = "", int sinif = -1, string bolum = "", string okulNo="", DateTime? acilis=null,
             DateTime? kapanis = null, string uniTel = "", string uniTamAdres = "", string uniAdresIkinciSatir = "",
-            int uniEyalet = -1, string uniPostaKodu = "", int uniUlkeId = -1)
+            int uniEyalet = -1, string uniPostaKodu = "")
         {
             Lise l = new Lise();
             l.Ad = liseAd;
@@ -28,9 +28,8 @@ namespace westline_alfa.Controllers
             Adre a = new Adre();
             a.TamAdres = liseTamAdres;
             a.AdresSatirIki = liseAdresIkinciSatir;
-            a.Eyalet = db.Eyalets.Find(liseEyalet);
+            a.Il = db.Ils.Find(liseEyalet);
             a.PostaKodu = lisePostaKodu;
-            a.Ulke = db.Ulkes.Find(liseUlkeId);
 
             db.Adres.Add(a);
             l.Adre = a;
@@ -47,9 +46,8 @@ namespace westline_alfa.Controllers
             Adre uniA = new Adre();
             uniA.TamAdres = uniTamAdres;
             uniA.AdresSatirIki = uniAdresIkinciSatir;
-            uniA.Eyalet = db.Eyalets.Find(uniEyalet);
+            uniA.Il = db.Ils.Find(uniEyalet);
             uniA.PostaKodu = uniPostaKodu;
-            uniA.Ulke = db.Ulkes.Find(uniUlkeId);
 
             db.Adres.Add(uniA);
             u.Adre = uniA;
