@@ -40,7 +40,7 @@
         };
         //5. sayfa
         $scope.BesinciSayfa = function () {
-            $http.post()
+            $http.post()//ayvayı yedik net.
                 .success(function (data) {
                     console.log(data.basari);
                     if (data.basari == 1) {

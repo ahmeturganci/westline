@@ -64,8 +64,23 @@
 
 
                         <div class="form-group">
-                            <label class="OncedenAmerikaVizesiTarih" for="form-group-input">Onceden Amerika Vizesi Tarih</label>
-                            <input type="date" class="form-control" ng-model="oncedenAmerikaVizesiTarih" id="oncedenAmerikaVizesiTarih" placeholder="Onceden Amerika Vizesi Tarih . . ." required>
+                            <label class="OncedenAmerikaVizeRet" for="form-group-input">Onceden Amerika Vize Ret.</label>
+                            <input type="radio" ng-model="OncedenAmerikaVizeRet" value="1" id="radio" /> Evet, Var
+                            <input type="radio" ng-model="OncedenAmerikaVizeRet" value="0" /> Hayır, Yok
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="OncedenAmerikaVizeRetNedeni" for="form-group-input">Onceden Amerika Vize Ret Nedeni</label>
+                            <input type="text" class="form-control" ng-model="oncedenAmerikaVizeRetNedeni" id="oncedenAmerikaVizeRetNedeni" placeholder="Onceden Amerika Vizesi Ret Neden . . ." required>
+                        </div>
+
+
+                        
+                        <div class="form-group">
+                            <label class="AmerikaVatandasGocmenBasvuru" for="form-group-input">Amerika Vatandas Gocmen Basvuru.</label>
+                            <input type="radio" ng-model="amerikaVatandasGocmenBasvuru" value="1" id="radio" /> Evet, Var
+                            <input type="radio" ng-model="amerikaVatandasGocmenBasvuru" value="0" /> Hayır, Yok
                         </div>
 
                         <div class="form-group">
@@ -77,9 +92,36 @@
 
 
 
+                        
+                        <div class="form-group">
+                            <label class="BabaDogumTarihi" for="form-group-input">Baba Dogum Tarihi</label>
+                            <input type="date" class="form-control" ng-model="babaDogumTarihi" id="babaDogumTarihi" placeholder="Baba Dogum Tarihi. . ." required>
+                        </div>   
+                        <div class="form-group">
+                            <label class="BabaAmerikadaMi" for="form-group-input">Baba Amerikada Mi.</label>
+                            <input type="radio" ng-model="amerikaVatandasGocmenBasvuru" value="1" id="radio" /> Evet, Var
+                            <input type="radio" ng-model="amerikaVatandasGocmenBasvuru" value="0" /> Hayır, Yok
+                        </div>
+                        
+
+                        <div class="form-group">
+                            <label class="AskerlikYapti" for="form-group-input">Askerlik Yapti Mi.</label>
+                            <input type="radio" ng-model="AskerlikYapti" value="1" id="radio" /> Evet, Var
+                            <input type="radio" ng-model="AskerlikYapti" value="0" /> Hayır, Yok
+                        </div>
+
+
+                        
+                        <div class="form-group">
+                            <label class="SonBesYilYurtdisiGitti" for="form-group-input">Son Bes Yil Yurt disi Gitti.</label>
+                            <input type="radio" ng-model="sonBesYil" value="1" id="radio" /> Evet, Var
+                            <input type="radio" ng-model="sonBesYil" value="0" /> Hayır, Yok
+                        </div>
 
 
 
+
+                        <!--// AmerikaAkrabaBilgi gelecek sadece -->
                         <div class="form-group">
                             <label class="Eyalet" for="form-group-input">Eyalet </label>
                             <select class="combobox" ng-model="bilgiEyalet">
