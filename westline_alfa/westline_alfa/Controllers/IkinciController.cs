@@ -55,7 +55,7 @@ namespace westline_alfa.Controllers
                 return Json(jsonModel, JsonRequestBehavior.AllowGet);
             }
             else
-            {
+            { 
                 var jsonModel = new
                 {
                     basari = 0
