@@ -130,6 +130,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BesinciController.cs" />
     <Compile Include="Controllers\BirinciController.cs" />
     <Compile Include="Controllers\DorduncuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -218,6 +219,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
     <Folder Include="Upload\" />
+    <Folder Include="Views\Besinci\" />
     <Folder Include="Views\Ucuncu\" />
   </ItemGroup>
   <ItemGroup>

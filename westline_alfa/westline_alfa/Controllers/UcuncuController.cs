@@ -22,7 +22,7 @@ namespace westline_alfa.Controllers
             l.Baslangic = baslangic;
             l.Bitis = bitis;
             l.Alan = alan;
-
+            
             
 
             Adre a = new Adre();
