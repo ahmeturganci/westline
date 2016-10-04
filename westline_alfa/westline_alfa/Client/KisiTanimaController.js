@@ -8,6 +8,8 @@
                     console.log(data.basari);
                     if (data.basari == 1) {
                         $window.location.href = '#/IkinciSayfa';
+                    } else {
+                        $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
                     }
                 }).error(function (data) {
                     alert("hata");
@@ -15,11 +17,13 @@
         }
         //2.sayfa
         $scope.IkinciSayfa = function () {
-            $http.post("/Ikinci/KisiDetayEkle?babaAd=" + $scope.babaAd + "&anneAdSoyad=" + $scope.anneAd + "&ingilizceSeviye=" + $scope.ingilizceSeviye + "&pasaport=" + $scope.pasaport + "&dogumTarih=" + $scope.dogumTarih + "&skype=" + $scope.skype + "&tamAdres=" + $scope.tamAdres + "&adresIkinciSatir=" + $scope.adresIkinciSatir + "&eyalet=" + $scope.bilgiEyalet + "&postaKod=" + $scope.bilgiPostaKod + "&ulkeId=" + $scope.bilgiUlke + "&acilAd=" + $scope.acilAd + "&acilSoyad=" + $scope.acilSoyad + "&acilTel=" + $scope.acilTel + "&adresEyaletId=" + $scope.adresEyalet)
+            $http.post("/Ikinci/KisiDetayEkle?babaAd=" + $scope.babaAd + "&anneAdSoyad=" + $scope.anneAd + "&ingilizceSeviye=" + $scope.ingilizceSeviye + "&pasaport=" + $scope.pasaport + "&dogumTarih=" + $scope.dogumTarih + "&skype=" + $scope.skype + "&tamAdres=" + $scope.tamAdres + "&adresIkinciSatir=" + $scope.adresIki + "&eyalet=" + $scope.bilgiEyalet + "&postaKodu=" + $scope.bilgiPostaKod + "&acilAd=" + $scope.acilAd + "&acilSoyad=" + $scope.acilSoyad + "&acilTel=" + $scope.acilTel + "&adresEyaletId=" + $scope.adresEyalet)
                 .success(function (data) {
                 console.log(data.basari);
                 if (data.basari == 1) {
                     $window.location.href = '#/UcuncuSayfa';
+                } else {
+                    $scope.ikinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
                 }
             }).error(function (data) {
                 console.log(data);

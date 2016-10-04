@@ -17,16 +17,17 @@ namespace westline_alfa.Controllers
             int pasaport = -1,string dogumTarih = "", string skype="", 
             string tamAdres="", string adresIkinciSatir = "", int eyalet = -1,
             string postaKodu = "", 
-            int adresEyaletId = -1, int adresUlkeId = -1,string acilAd="",string acilSoyad="",string acilTel="")
+            int adresEyaletId = -1,string acilAd="",string acilSoyad="",string acilTel="")
         {
-            if (h.FormKontrol(babaAd, anneAdSoyad, ingilizceSeviye, tamAdres))
+            if (h.FormKontrol(babaAd, anneAdSoyad, ingilizceSeviye, tamAdres, pasaport, dogumTarih, tamAdres, eyalet, postaKodu, 
+                adresEyaletId,acilAd,acilSoyad,acilTel))
             {
                 Kisi k = db.Kisis.Find(Session["id"]);
                 k.BabaAdi = babaAd;
                 k.AnneAdi = anneAdSoyad;
                 k.IngilizceSeviye = db.IngilizceSeviyes.Find(ingilizceSeviye);
                 k.Pasaport = pasaport == 1 ? true : false;
-               // k.DogumTarihi = Convert.ToDateTime(dogumTarih) ;
+                //k.DogumTarihi = Convert.ToDateTime(dogumTarih) ;
                 k.Iletisim.Skype = skype;
 
                 Adre a = new Adre();

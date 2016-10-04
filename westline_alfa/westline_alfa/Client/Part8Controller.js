@@ -91,6 +91,7 @@ angular.module('KisiModul') // extending angular module from first part
             })
         .success(function (d) {
             defer.resolve(d);
+            $window.location.href = '#/BesinciSayfa';
         })
         .error(function () {
             defer.reject("File Upload Failed!");
