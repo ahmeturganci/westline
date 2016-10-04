@@ -1,5 +1,6 @@
 ﻿<div ng-controller="KisiTanimaController">
-    <h1 ng-model="deneme">Adım 2{{deneme}} </h1>
+    <h1 ng-model="deneme">Adım 2 </h1>
+    <h2>{{ikinciMesaj}}</h2>
     <!--Kisisel Detay Bilgi-->
     <div class="container">
         <h2>Kişisel Bilgi Detay</h2>
@@ -9,17 +10,22 @@
                 <form>
                     <fieldset>
                         <div class="form-group">
-                            <label class="BabaAd" for="form-group-input">Baba Ad </label>
+                            <label class="DogumTarihi" for="form-group-input">Doğum Tarihi* </label>
+                            <input type="date" class="form-control" ng-model="dogumTarih" id="dogumTarihi" placeholder="Doğum Tarihi . . . " required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="BabaAd" for="form-group-input">Baba Ad* </label>
                             <input type="text" class="form-control" ng-model="babaAd" id="babaAd" placeholder="Baba Ad . . ." required>
                         </div>
 
                         <div class="form-group">
-                            <label class="AnneAdSoyad" for="form-group-input"> Anne Ad </label>
+                            <label class="AnneAdSoyad" for="form-group-input"> Anne Adı ve soyadı* </label>
                             <input type="text" class="form-control" ng-model="anneAd" id="anneAdSoyad" placeholder="Anne Ad. . ." required>
                         </div>
 
                         <div class="form-group">
-                            <label class="Eyalet" for="form-group-input">Ingilizce seviyesi </label>
+                            <label class="Eyalet" for="form-group-input">Ingilizce seviyesi* </label>
                             <select class="combobox" ng-model="ingilizceSeviye">
                                 <option ng-repeat="i in ingilizces" value="{{i.Id}}">{{i.Aciklama}}</option>
                             </select>
@@ -28,27 +34,27 @@
 
                         <!--Burda Kaldım Radio lar yapılcak-->
                         <div class="form-group">
-                            <label class="PasaportVarMi" for="form-group-input">Pasaport Var Mı.</label>
-                            <input type="radio" ng-model="pasaport" value="1" id="radio"/> Evet, Var
+                            <label class="PasaportVarMi" for="form-group-input">Pasaport Var Mı* </label>
+                            <input type="radio" ng-model="pasaport" value="1" id="radio" /> Evet, Var
                             <input type="radio" ng-model="pasaport" value="0" /> Hayır, Yok
                         </div>
-                        
+
 
 
                         <div class="form-group">
-                            <label class="PostaKodu" for="form-group-input">Posta Kodu</label>
+                            <label class="PostaKodu" for="form-group-input">Posta Kodu* </label>
                             <input type="number" class="form-control" ng-model="bilgiPostaKod" id="postaKodu" placeholder="Posta Kodu. . ." required>
                         </div>
 
                         <div class="form-group">
-                            <label class="Ulke" for="form-group-input">Ülke </label>
+                            <label class="Ulke" for="form-group-input">Ülke* </label>
                             <select class="combobox" ng-change="updateIls()" ng-model="bilgiUlke">
                                 <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label class="Eyalet" for="form-group-input">İl </label>
+                            <label class="Eyalet" for="form-group-input">İl* </label>
                             <select class="combobox" ng-model="bilgiEyalet">
                                 <option ng-repeat="e in bilgiEyalets" value="{{e.Id}}">{{e.Ad}}</option>
                             </select>
@@ -70,12 +76,12 @@
                     <fieldset>
                         <!-- required html5 o input dolu olack :D -->
                         <div class="form-group">
-                            <label class="Telefon" for="form-group-input">Telefon</label>
+                            <label class="Telefon" for="form-group-input">Telefon* </label>
                             <input type="text" class="form-control" ng-model="tel" id="Telefon" placeholder="Telefon Numarası. . ." required>
                         </div>
 
                         <div class="form-group">
-                            <label class="Email" for="form-group-input">Email</label>
+                            <label class="Email" for="form-group-input">Email* </label>
                             <input type="text" class="form-control" ng-model="email" id="Email" placeholder="Email Adresi. . ." required>
                         </div>
 
@@ -101,32 +107,32 @@
                         <!-- required html5 o input dolu olack :D -->
                         <div class="form-group">
                             <!--Adres-->
-                            <label class="Adres" for="form-group-input"> Tam Adres</label>
+                            <label class="Adres" for="form-group-input">Tam Adres* </label>
                             <input type="text" class="form-control" ng-model="tamAdres" id="tamAdres" placeholder="Tam Adres . . ." required>
                         </div>
 
                         <div class="form-group">
                             <!--Adres-->
-                            <label class="AdresDevam" for="form-group-input">Adres Devam (Satır İki )</label>
+                            <label class="AdresDevam" for="form-group-input">Adres Devam (Satır İki) </label>
                             <input type="text" class="form-control" ng-model="adresIki" id="adresIki" placeholder="Adres Devam (Satır Iki) . . ." required>
                         </div>
 
                         <div class="form-group">
-                            <label class="PostaKodu" for="form-group-input">Posta Kodu</label>
+                            <label class="PostaKodu" for="form-group-input">Posta Kodu* </label>
                             <input type="number" class="form-control" ng-model="adresPostaKod" id="postaKodu" placeholder="Posta Kodu. . ." required>
                         </div>
 
                         <div class="form-group">
-                            <label class="Ulke" for="form-group-input">Ülke </label>
+                            <label class="Ulke" for="form-group-input">Ülke* </label>
                             <select class="combobox" ng-change="updateAdresIl()" ng-model="adresUlke">
                                 <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label class="Eyalet" for="form-group-input">Eyalet </label>
+                            <label class="Eyalet" for="form-group-input">Eyalet* </label>
                             <select class="combobox" ng-model="adresEyalet">
-                                <option  ng-repeat="e in adresEyalets" value="{{e.Id}}">{{e.Ad}}</option>
+                                <option ng-repeat="e in adresEyalets" value="{{e.Id}}">{{e.Ad}}</option>
                             </select>
                         </div>
 
@@ -146,19 +152,19 @@
                         <!-- required html5 o input dolu olack :D -->
                         <div class="form-group">
                             <!--Adres-->
-                            <label class="AcilAd" for="form-group-input"> Acil Durum Kişi Ad</label>
+                            <label class="AcilAd" for="form-group-input"> Acil Durum Kişi Ad* </label>
                             <input type="text" class="form-control" ng-model="acilAd" id="acilKisiAd" placeholder="Acil Kişi Ad. . ." required>
                         </div>
                         <div class="form-group">
-                            <label class="AcilSoyad" for="form-group-input">Acil Durum Kişi Soyad</label>
-                            <input type="text" class="form-control" ng-model="acilSoyad" id="acilKisiSoyad" placeholder=">Acil Durum Kişi Soyad" required>
+                            <label class="AcilSoyad" for="form-group-input">Acil Durum Kişi Soyad* </label>
+                            <input type="text" class="form-control" ng-model="acilSoyad" id="acilKisiSoyad" placeholder="Acil Durum Kişi Soyad" required>
                         </div>
 
                         <div class="form-group">
-                            <label class="AcilEmail" for="form-group-input">Acil Durum Tel</label>
+                            <label class="AcilEmail" for="form-group-input">Acil Durum Tel* </label>
                             <input type="number" class="form-control" ng-model="acilTel" id="acilKisiTel" placeholder="Acil Durum Tel. . ." required>
                         </div>
-                        
+
                     </fieldset>
                 </form>
             </div>

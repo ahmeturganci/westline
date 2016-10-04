@@ -1,14 +1,15 @@
 ﻿<div ng-controller="KisiTanimaController">
     <h1 ng-model="deneme">Adım 1</h1>
+    <h3>{{birinciMesaj}}</h3>
     <form>
         <fieldset>
             <!-- required html5 o input dolu olack :D -->
             <div class="form-group">
-                <label class="TC" for="form-group-input">TC</label>
+                <label class="TC" for="form-group-input">TC* </label>
                 <input type="text" class="form-control" maxlength="11" ng-model="tc" id="tc" size="11" placeholder="TC Kimlik No . . ." required>
             </div>
             <div class="form-group">
-                <label class="Ad" for="form-group-input">Ad</label>
+                <label class="Ad" for="form-group-input">Ad* </label>
                 <input type="text" class="form-control" ng-model="ad" id="Ad" placeholder="Adınız. . ." required>
             </div>
 
@@ -18,17 +19,17 @@
             </div>
 
             <div class="form-group">
-                <label class="Soyad" for="form-group-input">Soyad</label>
+                <label class="Soyad" for="form-group-input">Soyad* </label>
                 <input type="text" class="form-control" ng-model="soyad" id="Soyad" placeholder="Soyad . . . " required>
             </div>
 
             <div class="form-group">
-                <label class="Email" for="form-group-input">Email</label>
+                <label class="Email" for="form-group-input">Email* </label>
                 <input type="text" class="form-control" ng-model="email" id="Email" placeholder="E mail . . . " required>
             </div>
 
             <div class="form-group">
-                <label class="Telefon" for="form-group-input">Telefon</label>
+                <label class="Telefon" for="form-group-input">Telefon* </label>
                 <input type="text" class="form-control" ng-model="tel" id="Telefon" placeholder="Telefon . . . " required>
             </div>
 
@@ -51,5 +52,4 @@
             this.value = this.value.replace(/[^a-zA-Z]/g, '');
         }
     });//harf
-
 </script>
