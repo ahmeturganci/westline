@@ -1,4 +1,5 @@
-﻿(function () {
+﻿
+(function () {
     var app = angular.module("KisiModul", ["ngRoute"]);
 
 
@@ -19,6 +20,9 @@
             .when("/EvrakSayfasi",{
                 templateUrl: "/Client/Views/EvrakSayfasi.html"
             })
+             .when("/BesinciSayfa", {
+                 templateUrl: "/Client/Views/BesinciSayfa.html"
+             })
             
          .otherwise({
              redirectTo: "/BirinciSayfa"
