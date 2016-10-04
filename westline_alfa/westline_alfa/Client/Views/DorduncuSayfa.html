@@ -3,23 +3,69 @@
         <div style="color: red">{{Message}}</div>
         <table>
             <tr>
-                <td>Select File : </td>
+                <td>Fotoğraf  Dosyası: </td>
                 <td>
-                    <input type="file" name="file" accept="image/*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+                    <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
                     <span class="error" ng-show="(f1.file.$dirty || IsFormSubmitted) && f1.file.$error.required">Image required!</span>
                     <span class="error">{{FileInvalidMessage}}</span>
                 </td>
             </tr>
             <tr>
-                <td>Description : </td>
+                <td>Açıklama : </td>
                 <td>
                     <input type="text" name="uFileDescription" ng-model="FileDescription" class="{{(IsFormSubmitted?'ng-dirty' + (f1.uFileDescription.$invalid?' ng-invalid':''):'')}}" autofocus />
                 </td>
             </tr>
+
+            <tr>
+                <td>Sabıka Kaydı  Dosyası: </td>
+                <td>
+                    <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+                    <span class="error" ng-show="(f1.file.$dirty || IsFormSubmitted) && f1.file.$error.required">Image required!</span>
+                    <span class="error">{{FileInvalidMessage}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Açıklama : </td>
+                <td>
+                    <input type="text" name="uFileDescription" ng-model="FileDescription" class="{{(IsFormSubmitted?'ng-dirty' + (f1.uFileDescription.$invalid?' ng-invalid':''):'')}}" autofocus />
+                </td>
+            </tr>
+
+            <tr>
+                <td> Transkript  Dosyası: </td>
+                <td>
+                    <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+                    <span class="error" ng-show="(f1.file.$dirty || IsFormSubmitted) && f1.file.$error.required">Image required!</span>
+                    <span class="error">{{FileInvalidMessage}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Açıklama : </td>
+                <td>
+                    <input type="text" name="uFileDescription" ng-model="FileDescription" class="{{(IsFormSubmitted?'ng-dirty' + (f1.uFileDescription.$invalid?' ng-invalid':''):'')}}" autofocus />
+                </td>
+            </tr>
+
+            <tr>
+                <td> Öğrenci Belgesi  Dosyası: </td>
+                <td>
+                    <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+                    <span class="error" ng-show="(f1.file.$dirty || IsFormSubmitted) && f1.file.$error.required">Image required!</span>
+                    <span class="error">{{FileInvalidMessage}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Açıklama : </td>
+                <td>
+                    <input type="text" name="uFileDescription" ng-model="FileDescription" class="{{(IsFormSubmitted?'ng-dirty' + (f1.uFileDescription.$invalid?' ng-invalid':''):'')}}" autofocus />
+                </td>
+            </tr>
+
             <tr>
                 <td></td>
                 <td>
-                    <input type="submit" value="Upload File" />
+                    <input type="submit" value="Dosya Kaydet" />
                 </td>
             </tr>
         </table>
@@ -27,11 +73,8 @@
         
 
     </form>
-    <form method="post" enctype="multipart/form-data">
-        <input type="file" name="yuklenecekDosya" />
-        <input type="submit" value="Yükle" />
-    </form>
-    <!--http://www.ugurkizmaz.com/YazilimMakale-1862-Asp-Net-MVC-File-Upload--Dosya-Yukleme--Islemi.aspx-->
+
+
 
    
 </div>
