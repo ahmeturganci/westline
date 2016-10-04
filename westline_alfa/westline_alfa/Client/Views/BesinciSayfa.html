@@ -121,3 +121,18 @@
             </div>
         </div>
     </div>
+
+    <button ng-click="AltinciSayfa()">Devam Et </button>
+    <script>
+        $("#vatandasNo,#ikiVatandasNo,#amerikadaKalmaSure,#oncedenAmerikaVizeNo").keyup(function () {
+        if (this.value.match(/[^0-9]/g)) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        }
+    });//rakam
+        $("#dogumYeri,#dogumUlke,#vatandasUlke,#AbdSsn,#OncedenAmerikaVizeRetNedenid").keyup(function () {
+        if (this.value.match(/[^a-zA-Z]/g)) {
+            this.value = this.value.replace(/[^a-zA-Z]/g, '');
+        }
+    });//harf
+
+    </script>
