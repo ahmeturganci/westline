@@ -1,34 +1,32 @@
 ﻿<div ng-controller="Part8Controller">
     <form novalidate name="f1" ng-submit="SaveFile()">
         <div style="color: red">{{Message}}</div>
-        <table>
+        <table style="margin:10px;">
             <tr>
                 <td>Fotoğraf  Dosyası: </td>
                 <td>
-                    <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-                    <span class="error" ng-show="(f1.file.$dirty || IsFormSubmitted) && f1.file.$error.required">Image required!</span>
-                    <span class="error">{{FileInvalidMessage}}</span>
+                    <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)"  required />
                 </td>
             </tr>
+           
             <tr>
-                <td>Açıklama : </td>
+                <td></td>
                 <td>
-                    <input type="text" name="uFileDescription" ng-model="FileDescription" class="{{(IsFormSubmitted?'ng-dirty' + (f1.uFileDescription.$invalid?' ng-invalid':''):'')}}" autofocus />
+                    <input type="submit" value="Fotoğraf Kaydet" class="btn btn-danger" />
                 </td>
             </tr>
-
             <tr>
+                
                 <td>Sabıka Kaydı  Dosyası: </td>
                 <td>
                     <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-                    <span class="error" ng-show="(f1.file.$dirty || IsFormSubmitted) && f1.file.$error.required">Image required!</span>
-                    <span class="error">{{FileInvalidMessage}}</span>
                 </td>
             </tr>
+            
             <tr>
-                <td>Açıklama : </td>
+                <td></td>
                 <td>
-                    <input type="text" name="uFileDescription" ng-model="FileDescription" class="{{(IsFormSubmitted?'ng-dirty' + (f1.uFileDescription.$invalid?' ng-invalid':''):'')}}" autofocus />
+                    <input type="submit" class="btn btn-default" value="Sabıka Kaydı Dosyası Kaydet" />
                 </td>
             </tr>
 
@@ -36,14 +34,14 @@
                 <td> Transkript  Dosyası: </td>
                 <td>
                     <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-                    <span class="error" ng-show="(f1.file.$dirty || IsFormSubmitted) && f1.file.$error.required">Image required!</span>
-                    <span class="error">{{FileInvalidMessage}}</span>
+                    
                 </td>
             </tr>
+           
             <tr>
-                <td>Açıklama : </td>
+                <td></td>
                 <td>
-                    <input type="text" name="uFileDescription" ng-model="FileDescription" class="{{(IsFormSubmitted?'ng-dirty' + (f1.uFileDescription.$invalid?' ng-invalid':''):'')}}" autofocus />
+                    <input type="submit" value="Transkript Kaydet" class="btn btn-danger"/>
                 </td>
             </tr>
 
@@ -51,21 +49,13 @@
                 <td> Öğrenci Belgesi  Dosyası: </td>
                 <td>
                     <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-                    <span class="error" ng-show="(f1.file.$dirty || IsFormSubmitted) && f1.file.$error.required">Image required!</span>
-                    <span class="error">{{FileInvalidMessage}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>Açıklama : </td>
-                <td>
-                    <input type="text" name="uFileDescription" ng-model="FileDescription" class="{{(IsFormSubmitted?'ng-dirty' + (f1.uFileDescription.$invalid?' ng-invalid':''):'')}}" autofocus />
                 </td>
             </tr>
 
             <tr>
                 <td></td>
                 <td>
-                    <input type="submit" value="Dosya Kaydet" />
+                    <input type="submit" value="Dosya Kaydet" class="btn btn-danger" />
                 </td>
             </tr>
         </table>

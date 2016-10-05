@@ -34,7 +34,7 @@ namespace westline_alfa.Controllers
                         f.FotografUrl = fileName;
                         dc.Belges.Add(f);
 
-                        Kisi k = dc.Kisis.Find(Session["id"]);
+                        Kisi k = dc.Kisis.Find(1);
                         k.Belge = f;
 
                         dc.SaveChanges();

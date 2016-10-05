@@ -169,7 +169,6 @@
     <Content Include="Client\Views\BesinciSayfa.html" />
     <Content Include="Client\Views\BirinciSayfa.html" />
     <Content Include="Client\Views\DorduncuSayfa.html" />
-    <Content Include="Client\Views\EvrakSayfasi.html" />
     <Content Include="Client\Views\IkinciSayfa.html" />
     <Content Include="Client\Views\UcuncuSayfa.html" />
     <Content Include="Content\bootstrap.css" />
@@ -244,7 +243,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>65200</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

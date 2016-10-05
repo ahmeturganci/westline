@@ -27,6 +27,20 @@
             }).error(function (data) {
                 console.log(data);
             });
+
+
+            $scope.date = new Date();
+            
+            $scope.$watch('date', function (date) {
+                console.log("hop dedik");
+                $scope.dogumTarih = dateFilter(date, 'yyyy-MM-dd');
+            });
+
+            $scope.$watch('dogumTarih', function (dogumTarih) {
+                console.log("hop dedik");
+                $scope.date = new Date(dogumTarih);
+            });
+
         }
 
         //3. sayfa
