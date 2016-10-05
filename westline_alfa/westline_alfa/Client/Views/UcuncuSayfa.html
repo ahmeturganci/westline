@@ -17,12 +17,12 @@
 
                     <div class="form-group">
                         <label class="LiseBaslangic" for="form-group-input">Lise Baslangıç* </label>
-                        <input type="date" class="form-control" ng-model="liseBaslangic" id="liseBaslangic" placeholder="lise Başlangıç . . ." required>
+                        <input type="date" class="form-control" ng-model="liseBaslangic" min="1980-01-01" max="2000-01-01" id="liseBaslangic" placeholder="lise Başlangıç . . ." required>
                     </div>
 
                     <div class="form-group">
                         <label class="LiseBitis" for="form-group-input">Lise Bitiş* </label>
-                        <input type="date" class="form-control" ng-model="liseBitis" id="liseBitis" placeholder="Lise Bitiş . . . " required>
+                        <input type="date" class="form-control" ng-model="liseBitis" min="1980-01-01" max="2000-01-01" id="liseBitis" placeholder="Lise Bitiş . . . " required>
                     </div>
 
                     <div class="form-group">
@@ -141,5 +141,13 @@
         if (this.value.match(/[^a-zA-Z]/g)) {
             this.value = this.value.replace(/[^a-zA-Z]/g, '');
         }
-    });//harf
+     });//harf
+
+ //Tarih büyüklük ve küçüklük kontrolü için max min kontrolleri
+     $(document).ready(function () {
+         var utc = new Date().toJSON().slice(0,10);
+
+         document.getElementById("liseBaslangic").max = utc;
+         document.getElementById("liseBitis").max = utc;
+     });
         </script>

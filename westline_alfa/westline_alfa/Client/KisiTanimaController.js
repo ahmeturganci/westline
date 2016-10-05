@@ -17,18 +17,19 @@
         }
         //2.sayfa
         $scope.IkinciSayfa = function () {
-            $http.post("/Ikinci/KisiDetayEkle?babaAd=" + $scope.babaAd + "&anneAdSoyad=" + $scope.anneAd + "&ingilizceSeviye=" + $scope.ingilizceSeviye + "&pasaport=" + $scope.pasaport + "&dogumTarih=" + $scope.dogumTarih + "&skype=" + $scope.skype + "&tamAdres=" + $scope.tamAdres + "&adresIkinciSatir=" + $scope.adresIki + "&eyalet=" + $scope.bilgiEyalet + "&postaKodu=" + $scope.bilgiPostaKod + "&acilAd=" + $scope.acilAd + "&acilSoyad=" + $scope.acilSoyad + "&acilTel=" + $scope.acilTel + "&adresEyaletId=" + $scope.adresEyalet).success(function (data) {
-                console.log(data.basari);
-                if (data.basari == 1) {
-                    $window.location.href = '#/UcuncuSayfa';
-                }else {
-                    $scope.ikinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
-                }
-            }).error(function (data) {
-                console.log(data);
-            });
-
-
+            
+          
+                $http.post("/Ikinci/KisiDetayEkle?babaAd=" + $scope.babaAd + "&anneAdSoyad=" + $scope.anneAd + "&ingilizceSeviye=" + $scope.ingilizceSeviye + "&pasaport=" + $scope.pasaport + "&dogumTarih=" + $scope.dogumTarih + "&skype=" + $scope.skype + "&tamAdres=" + $scope.tamAdres + "&adresIkinciSatir=" + $scope.adresIki + "&eyalet=" + $scope.bilgiEyalet + "&postaKodu=" + $scope.bilgiPostaKod + "&acilAd=" + $scope.acilAd + "&acilSoyad=" + $scope.acilSoyad + "&acilTel=" + $scope.acilTel + "&adresEyaletId=" + $scope.adresEyalet).success(function (data) {
+                    console.log(data.basari);
+                    if (data.basari == 1) {
+                        $window.location.href = '#/UcuncuSayfa';
+                    } else {
+                        $scope.ikinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                    }
+                }).error(function (data) {
+                    console.log(data);
+                });
+            
             $scope.date = new Date();
             
             $scope.$watch('date', function (date) {
@@ -45,15 +46,28 @@
 
         //3. sayfa
         $scope.UcuncuSayfa = function () {
-            $http.post("/Ucuncu/EgitimEkle?liseAd=" + $scope.liseAd + "&baslangic=" + $scope.liseBaslangic + "&bitis=" + $scope.liseBitis + "&alan=" + $scope.liseAlan + "&liseTamAdres=" + $scope.liseTamAdres + "&liseAdresIkinciSatir=" + $scope.liseAdresIki + "&liseEyalet=" + $scope.liseAdresEyalet + "&lisePostaKodu=" + $scope.liseAdresPostaKod + "&universiteAd=" + $scope.universiteAd + "&sinif=" + $scope.universiteSinif + "&bolum=" + $scope.universiteBolum + "&okulNo=" + $scope.universiteNo + "&acilis=" + $scope.universiteBaslangic + "&kapanis=" + $scope.universitekapanis + "&uniTel=" + $scope.universiteTel + "&uniTamAdres=" + $scope.universiteTamAdres + "&uniAdresIkinciSatir=" + $scope.universiteAdresIki + "&uniEyalet=" + $scope.universiteAdresEyalet + "&uniPostaKodu=" + $scope.universiteAdresPostaKod)
-                .success(function (data) {
-                console.log(data.basari);
-                if (data.basari == 1) {
-                    $window.location.href = '#/DorduncuSayfa';
-                }
-            }).error(function (data) {
-                console.log(data);
-            });
+            if ($scope.liseBaslangic >= $scope.liseBitis )
+            {
+                alert('Lise başlangıc ve bitiş tarihlerini lütfen kontrol ediniz.');
+            }
+    else if($scope.universiteBaslangic>$scope.universitekapanis)
+        {
+        alert('Universite başlangıc ve bitiş tarihlerini lütfen kontrol ediniz.');
+
+            }
+            else
+            {
+                $http.post("/Ucuncu/EgitimEkle?liseAd=" + $scope.liseAd + "&baslangic=" + $scope.liseBaslangic + "&bitis=" + $scope.liseBitis + "&alan=" + $scope.liseAlan + "&liseTamAdres=" + $scope.liseTamAdres + "&liseAdresIkinciSatir=" + $scope.liseAdresIki + "&liseEyalet=" + $scope.liseAdresEyalet + "&lisePostaKodu=" + $scope.liseAdresPostaKod + "&universiteAd=" + $scope.universiteAd + "&sinif=" + $scope.universiteSinif + "&bolum=" + $scope.universiteBolum + "&okulNo=" + $scope.universiteNo + "&acilis=" + $scope.universiteBaslangic + "&kapanis=" + $scope.universitekapanis + "&uniTel=" + $scope.universiteTel + "&uniTamAdres=" + $scope.universiteTamAdres + "&uniAdresIkinciSatir=" + $scope.universiteAdresIki + "&uniEyalet=" + $scope.universiteAdresEyalet + "&uniPostaKodu=" + $scope.universiteAdresPostaKod)
+                                .success(function (data) {
+                                    console.log(data.basari);
+                                    if (data.basari == 1) {
+                                        $window.location.href = '#/DorduncuSayfa';
+                                    }
+                                }).error(function (data) {
+                                    console.log(data);
+                                });
+            }
+            
         };
         //5. sayfa
         $scope.BesinciSayfa = function () {
