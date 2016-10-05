@@ -2,20 +2,20 @@
     <form novalidate name="f1" ng-submit="SaveFile()">
         <div style="color: red">{{Message}}</div>
         <table style="margin:10px;">
-            <tr>
+            <tr ng-hide="foto">
                 <td>Fotoğraf  Dosyası: </td>
                 <td>
                     <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)"  required />
                 </td>
             </tr>
            
-            <tr>
+            <tr ng-hide="foto">
                 <td></td>
                 <td>
                     <input type="submit" value="Fotoğraf Kaydet" class="btn btn-danger" />
                 </td>
             </tr>
-            <tr>
+            <tr ng-hide="sabika">
                 
                 <td>Sabıka Kaydı  Dosyası: </td>
                 <td>
@@ -23,14 +23,14 @@
                 </td>
             </tr>
             
-            <tr>
+            <tr ng-hide="sabika">
                 <td></td>
                 <td>
-                    <input type="submit" class="btn btn-default" value="Sabıka Kaydı Dosyası Kaydet" />
+                    <input type="submit" class="btn btn-danger" value="Sabıka Kaydı Dosyası Kaydet" />
                 </td>
             </tr>
 
-            <tr>
+            <tr ng-hide="transkript">
                 <td> Transkript  Dosyası: </td>
                 <td>
                     <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
@@ -38,7 +38,7 @@
                 </td>
             </tr>
            
-            <tr>
+            <tr ng-hide="transkript">
                 <td></td>
                 <td>
                     <input type="submit" value="Transkript Kaydet" class="btn btn-danger"/>

@@ -1,6 +1,6 @@
 ﻿
 angular.module('KisiModul') // extending angular module from first part
-.controller('Part8Controller', function ($scope, FileUploadService) {
+.controller('Part8Controller', function ($scope, FileUploadService, $window) {
     // Ekran Değerleri
     $scope.Message = "";
     $scope.FileInvalidMessage = "";
@@ -41,7 +41,7 @@ angular.module('KisiModul') // extending angular module from first part
         $scope.SelectedFileForUpload = file[0];
     }
     //----------------------------------------------------------------------------------------
-
+    var sayac = 0;
     //Save File
     $scope.SaveFile = function () {
         $scope.IsFormSubmitted = true;
@@ -51,6 +51,17 @@ angular.module('KisiModul') // extending angular module from first part
             FileUploadService.UploadFile($scope.SelectedFileForUpload, $scope.FileDescription).then(function (d) {
                 alert(d.Message);
                 ClearForm();
+                sayac++;
+                if (sayac == 1) {
+                    $scope.foto = true;
+                } else if (sayac == 2) {
+                    $scope.sabika = true;
+                } else if (sayac == 3) {
+                    $scope.transkript = true;
+                }
+                else if (sayac == 4) {
+                    $window.location.href = '#/BesinciSayfa';
+                }
             }, function (e) {
                 alert(e);
             });
@@ -70,6 +81,7 @@ angular.module('KisiModul') // extending angular module from first part
 
         $scope.f1.$setPristine();
         $scope.IsFormSubmitted = false;
+        
     }
 
 })
@@ -91,7 +103,6 @@ angular.module('KisiModul') // extending angular module from first part
             })
         .success(function (d) {
             defer.resolve(d);
-            $window.location.href = '#/BesinciSayfa';
         })
         .error(function () {
             defer.reject("File Upload Failed!");
