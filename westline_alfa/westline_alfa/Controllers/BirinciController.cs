@@ -15,7 +15,7 @@ namespace westline_alfa.Controllers
         public JsonResult KisiEkle(string tc = "", string ad = "", string ortaAd="", string soyad = "", string email = "", string tel = "")
         {
             helper.helper h = new helper.helper();
-            if(h.FormKontrol(tc, ad, soyad, email, tel))
+            if(h.FormKontrol(tc, ad, soyad, email, tel) || Session["id"] != null)
             {
                 Kisi k = new Kisi();
                 k.TcKimlikNo = tc;
