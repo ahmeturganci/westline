@@ -135,6 +135,7 @@
     <Compile Include="Controllers\DorduncuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IkinciController.cs" />
+    <Compile Include="Controllers\PasaportController.cs" />
     <Compile Include="Controllers\UcuncuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

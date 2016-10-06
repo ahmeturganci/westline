@@ -20,7 +20,7 @@ namespace westline_alfa.Controllers
             int adresEyaletId = -1, string acilAd = "", string acilSoyad = "", string acilTel = "")
         {
             if (h.FormKontrol(babaAd, anneAdSoyad, ingilizceSeviye, tamAdres, pasaport, dogumTarih, tamAdres, eyalet, postaKodu,
-                adresEyaletId, acilAd, acilSoyad, acilTel))
+                adresEyaletId, acilAd, acilSoyad, acilTel) || Session["id"] != null)
             {
                 Kisi k = db.Kisis.Find(Session["id"]);
                 k.BabaAdi = babaAd;
