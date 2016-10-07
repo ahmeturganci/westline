@@ -133,6 +133,7 @@
     <Compile Include="Controllers\BesinciController.cs" />
     <Compile Include="Controllers\BirinciController.cs" />
     <Compile Include="Controllers\DorduncuController.cs" />
+    <Compile Include="Controllers\GirisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IkinciController.cs" />
     <Compile Include="Controllers\PasaportController.cs" />
@@ -216,9 +217,11 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Giris\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Admin\" />
     <Folder Include="Images\" />
     <Folder Include="Upload\" />
     <Folder Include="Views\Besinci\" />
