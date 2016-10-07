@@ -24,7 +24,7 @@
                     if (data.basari == 1) {
                         $window.location.href = '#/IkinciSayfa';
                     } else {
-                        $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                        $scope.aktivasyonMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
                     }
                 }).error(function (data) {
                     alert("hata");
@@ -85,6 +85,22 @@
             }
             
         };
+
+        //Uçak bilgi
+        $scope.UcakBilgi = function () {
+            $http.post("Ucak/Ekle?agidisTarih=" + $scope.AgidisTarih + "&bgidisTarih=" + $scope.BgidisTarih + "&agidisSehir=" + $scope.AgidisSehir + "&bgidisSehir=" + $scope.BgidisSehir + "&ahavaKod=" + $scope.AhavaKod + "&bhavaKod=" + $scope.BhavaKod + "&avarisSehir=" + $scope.AvarisSehir + "&bvarisSehir=" + $scope.BvarisSehir + "&avarisKod=" + $scope.AvarisKod + "&bvarisKod=" + $scope.BvarisKod + "&aucusKod=" + $scope.AucusKod + "&bucusKod=" + $scope.BucusKod + "&akalkisSaat=" + $scope.AkalkisSaat + "&bkalkisSaat=" + $scope.BkalkisSaat + "&avarisSaat=" + $scope.AvarisSaat + "&bvarisSaat=" + $scope.BvarisSaat + "&agunDegisim=" + $scope.AgunDegisim + "&bgunDegisim=" + $scope.BgunDegisim).
+                success(function (data) {
+                    console.log(data.basari);
+                    if (data.basari == 1) {
+                        $window.location.href = '#/IkinciSayfa';
+                    } else {
+                        $scope.aktivasyonMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                    }
+                }).error(function (data) {
+                    alert("hata");
+                });
+        }
+
         //5. sayfa
         $scope.BesinciSayfa = function () {
             $http.post()//ayvayı yedik net.

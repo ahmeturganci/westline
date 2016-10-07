@@ -5,7 +5,7 @@
         <fieldset>
             <!-- required html5 o input dolu olack :D -->
             <div class="form-group">
-                <label class="TC" for="form-group-input">TC* </label>
+                <label class="TC" for="form-group-input">Aktivasyon Kodu* </label>
                 <input type="text" class="form-control" maxlength="5" ng-model="kod" id="kod" size="5" placeholder="Aktivasyon kodu . . ." required>
             </div>
 
@@ -18,7 +18,7 @@
     </form>
 </div>
 <script>
-    $("#tc,#Telefon").keyup(function () {
+    $("#kod").keyup(function () {
         if (this.value.match(/[^0-9]/g)) {
             this.value = this.value.replace(/[^0-9]/g, '');
         }
