@@ -170,6 +170,7 @@
     <Content Include="Client\Views\BirinciSayfa.html" />
     <Content Include="Client\Views\DorduncuSayfa.html" />
     <Content Include="Client\Views\IkinciSayfa.html" />
+    <Content Include="Client\Views\Pasaport.html" />
     <Content Include="Client\Views\UcuncuSayfa.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

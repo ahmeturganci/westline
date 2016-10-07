@@ -1,0 +1,91 @@
+﻿<div ng-controller="KisiTanimaController">
+    <h1 ng-model="deneme">Adım 2 </h1>
+    <h2>{{PasaportMesaj}}</h2>
+    <!--Kisisel Detay Bilgi-->
+    <div class="container">
+        <h2>Kişisel Bilgi Detay</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">Kişisel Bilgi Detay</div>
+            <div class="panel-body">
+                <form>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="PasaportVarMi" for="form-group-input">Pasaport Var Mı* </label>
+                          <br />  <input type="radio" ng-model="pasaport" value="1" id="radio" /> Evet, Var <br />
+                            <input type="radio" ng-model="pasaport" value="0" /> Hayır, Yok
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="pasaportno" for="form-group-input">Baba Ad* </label>
+                            <input type="text" class="form-control" ng-model="pasaportno" id="pasaportno" placeholder="Pasaport No . . ." required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="Ulke" for="form-group-input">Ülke Seçimiz* </label>
+                            <select class="combobox" ng-change="updateIls()" ng-model="bilgiUlke">
+                                <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="ilce" for="form-group-input">Alınan Yer/Makam* </label>
+                            <input type="text" class="form-control" ng-model="ilce" id="ilce" placeholder="Alınan Yer/Makam . . ." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="pasBaslangic" for="form-group-input">Pasaport Başlangıç Tarihi* </label>
+                            <input type="date" class="form-control" ng-model="pasBaslangic" id="pasBaslangic" placeholder="Pasaport Başlangıç Tarihi . . . " required>
+                        </div>
+                        <div class="form-group">
+                            <label class="pasBitis" for="form-group-input">Pasaport Bitiş* </label>
+                            <input type="date" class="form-control" ng-model="pasBitis" id="pasBitis" placeholder="Pasaport Bitiş. . . " required>
+                        </div>
+                        <div class="form-group">
+                            <label class="Eyalet" for="form-group-input">Ingilizce seviyesi* </label>
+                            <select class="combobox" ng-model="PasaportCalinmaDurum">
+                                <option value="1">Evet</option>
+                                <option value="0">Hayır</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="programUcret" for="form-group-input">Program ücreti karşılayan kişi* </label>
+                            <input type="text" class="form-control" ng-model="programUcret" id="programUcret" placeholder="Ucret Durum. . ." required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="ucretYakinlik" for="form-group-input">Program ücreti karşılayan kişinin yakınlığını giriniz* </label>
+                            <input type="text" class="form-control" ng-model="ucretYakinlik" id="ucretYakinlik" placeholder="Ucret veren kişi yakınlıgı. . ." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="ucretTelefon" for="form-group-input">Program ücreti karşılayan kişinin telefonu* </label>
+                            <input type="number" class="form-control" ng-model="ucretTelefon" id="ucretTelefon" placeholder="Ucret veren kişi telefonu. . ." required>
+                        </div>
+
+
+                        
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+    <button ng-click="Pasaport()">Devam Et </button>
+</div>
+<script>
+    $("#postaKodu, #Telefon,#adresPostaKod,#acilTel").keyup(function () {
+        if (this.value.match(/[^0-9]/g)) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        }
+    });//rakam
+     $("#babaAd,#anneAdSoyad,#tamAdres,#adresIki,#acilAd,#acilSoyad").keyup(function () {
+        if (this.value.match(/[^a-zA-Z]/g)) {
+            this.value = this.value.replace(/[^a-zA-Z]/g, '');
+        }
+     });//harf
+
+</script>
