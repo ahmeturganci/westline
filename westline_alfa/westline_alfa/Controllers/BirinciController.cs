@@ -44,6 +44,16 @@ namespace westline_alfa.Controllers
                     mail = i.Email,
                     telefon = i.Telefon
                 };
+                /*helper.smsapi sms = new helper.smsapi("5399706684","03011995e","ILETI MRKZI");
+                if (sms.SendSMS(new string[] { "5350560103" }, "DENEME MESAJI"))
+                {
+                    // Mesaj Gönderildi
+                }
+                else
+                {
+                    // Mesaj Gönderilemedi
+                }*/
+               
                 return Json(jsonModel, JsonRequestBehavior.AllowGet);
             }
             else

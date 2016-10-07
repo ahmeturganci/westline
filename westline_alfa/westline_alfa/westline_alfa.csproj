@@ -141,6 +141,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="helper\helper.cs" />
+    <Compile Include="helper\smsapi.cs" />
     <Compile Include="Models\AcilDurum.cs" />
     <Compile Include="Models\Adre.cs" />
     <Compile Include="Models\Belge.cs" />
