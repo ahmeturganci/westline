@@ -1,0 +1,26 @@
+﻿<div ng-controller="KisiTanimaController">
+    <h1 ng-model="deneme">Aktivasyon kodu</h1>
+    <h3>{{aktivasyonMesaj}}</h3>
+    <form>
+        <fieldset>
+            <!-- required html5 o input dolu olack :D -->
+            <div class="form-group">
+                <label class="TC" for="form-group-input">TC* </label>
+                <input type="text" class="form-control" maxlength="5" ng-model="kod" id="kod" size="5" placeholder="Aktivasyon kodu . . ." required>
+            </div>
+
+        </fieldset>
+
+        <button ng-click="Aktivasyon()">Devam Et </button>
+
+
+
+    </form>
+</div>
+<script>
+    $("#tc,#Telefon").keyup(function () {
+        if (this.value.match(/[^0-9]/g)) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        }
+    });//rakam
+</script>

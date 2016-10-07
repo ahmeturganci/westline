@@ -12,6 +12,7 @@ namespace westline_alfa.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Kisi()
         {
+            Aktivasyons = new HashSet<Aktivasyon>();
             DilKisis = new HashSet<DilKisi>();
             GidilenUlkelers = new HashSet<GidilenUlkeler>();
             KisiReferans = new HashSet<KisiReferan>();
@@ -61,6 +62,9 @@ namespace westline_alfa.Models
         public bool? kendiIsBuldu { get; set; }
 
         public virtual AcilDurum AcilDurum { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Aktivasyon> Aktivasyons { get; set; }
 
         public virtual Belge Belge { get; set; }
 

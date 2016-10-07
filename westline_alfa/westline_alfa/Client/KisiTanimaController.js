@@ -7,6 +7,21 @@
                 success(function (data) {
                     console.log(data.basari);
                     if (data.basari == 1) {
+                        $window.location.href = '#/Aktivasyon';
+                    } else {
+                        $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                    }
+                }).error(function (data) {
+                    alert("hata");
+                });
+        }
+
+        //Aktivasyon
+        $scope.Aktivasyon = function () {
+            $http.post("Birinci/Kontrol?kod=" + $scope.kod).
+                success(function (data) {
+                    console.log(data.basari);
+                    if (data.basari == 1) {
                         $window.location.href = '#/IkinciSayfa';
                     } else {
                         $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
@@ -15,6 +30,7 @@
                     alert("hata");
                 });
         }
+
         //2.sayfa
         $scope.IkinciSayfa = function () {
             

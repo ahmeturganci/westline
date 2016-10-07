@@ -146,6 +146,7 @@
     <Compile Include="helper\smsapi.cs" />
     <Compile Include="Models\AcilDurum.cs" />
     <Compile Include="Models\Adre.cs" />
+    <Compile Include="Models\Aktivasyon.cs" />
     <Compile Include="Models\Belge.cs" />
     <Compile Include="Models\Dil.cs" />
     <Compile Include="Models\DilKisi.cs" />
@@ -170,6 +171,7 @@
     <Content Include="Client\KisiModul.js" />
     <Content Include="Client\KisiTanimaController.js" />
     <Content Include="Client\Part8Controller.js" />
+    <Content Include="Client\Views\Aktivasyon.html" />
     <Content Include="Client\Views\BesinciSayfa.html" />
     <Content Include="Client\Views\BirinciSayfa.html" />
     <Content Include="Client\Views\DorduncuSayfa.html" />
@@ -351,6 +353,7 @@
     <Folder Include="Content\Admin\dist\img\" />
     <Folder Include="Images\" />
     <Folder Include="Upload\" />
+    <Folder Include="Views\Aktivasyon\" />
     <Folder Include="Views\Besinci\" />
     <Folder Include="Views\Ucuncu\" />
   </ItemGroup>

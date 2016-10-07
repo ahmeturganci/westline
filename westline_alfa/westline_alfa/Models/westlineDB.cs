@@ -14,6 +14,7 @@ namespace westline_alfa.Models
 
         public virtual DbSet<AcilDurum> AcilDurums { get; set; }
         public virtual DbSet<Adre> Adres { get; set; }
+        public virtual DbSet<Aktivasyon> Aktivasyons { get; set; }
         public virtual DbSet<Belge> Belges { get; set; }
         public virtual DbSet<Dil> Dils { get; set; }
         public virtual DbSet<DilKisi> DilKisis { get; set; }

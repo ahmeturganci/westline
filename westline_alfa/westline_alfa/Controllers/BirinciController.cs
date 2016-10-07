@@ -11,11 +11,12 @@ namespace westline_alfa.Controllers
 {
     public class BirinciController : Controller
     {
+        helper.helper h = new helper.helper();
         westlineDB db = new westlineDB();
-        public JsonResult KisiEkle(string tc = "", string ad = "", string ortaAd="", string soyad = "", string email = "", string tel = "", int kendiIs = -1)
+        public JsonResult KisiEkle(string tc = "", string ad = "", string ortaAd = "", string soyad = "", string email = "", string tel = "", int kendiIs = -1)
         {
             helper.helper h = new helper.helper();
-            if(h.FormKontrol(tc, ad, soyad, email, tel, kendiIs) || Session["id"] != null)
+            if (h.FormKontrol(tc, ad, soyad, email, tel, kendiIs) || Session["id"] != null)
             {
                 Kisi k = new Kisi();
                 k.TcKimlikNo = tc;
@@ -45,6 +46,9 @@ namespace westline_alfa.Controllers
                     mail = i.Email,
                     telefon = i.Telefon
                 };
+
+                h.AktivasyonEkle(k.Id);
+
                 /*helper.smsapi sms = new helper.smsapi("5399706684","03011995e","ILETI MRKZI");
                 if (sms.SendSMS(new string[] { "5350560103" }, "DENEME MESAJI"))
                 {
@@ -54,8 +58,29 @@ namespace westline_alfa.Controllers
                 {
                     // Mesaj Gönderilemedi
                 }*/
-               
+
                 return Json(jsonModel, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var jsonModel = new
+                {
+                    basari = 0
+                };
+                return Json(jsonModel, JsonRequestBehavior.AllowGet); ;
+            }
+        }
+
+        public JsonResult Kontrol(string kod)
+        {
+            int id = Convert.ToInt32(Session["id"]);
+            if (db.Aktivasyons.Any(x => x.KisiId == id && x.Kod == kod))
+            {
+                var jsonModel = new
+                {
+                    basari = 1
+                };
+                return Json(jsonModel, JsonRequestBehavior.AllowGet); ;
             }
             else
             {

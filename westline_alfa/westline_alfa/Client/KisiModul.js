@@ -7,6 +7,8 @@
         $routeProvider
          .when("/Profil", {
              templateUrl: "/Client/Views/BirinciSayfa.html"
+         }).when("/Aktivasyon", {
+             templateUrl: "/Client/Views/Aktivasyon.html"
          })
             .when("/IkinciSayfa", {
                 templateUrl: "/Client/Views/IkinciSayfa.html"

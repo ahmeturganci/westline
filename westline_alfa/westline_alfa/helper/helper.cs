@@ -80,5 +80,21 @@ namespace westline_alfa.helper
 
             return kontrol;
         } 
+
+        public void AktivasyonEkle(int id)
+        {
+            Random rnd = new Random();
+            string kod = rnd.Next(10000,99999).ToString();
+            Kisi k = db.Kisis.Find(id);
+
+            Aktivasyon a = new Aktivasyon();
+            a.Kisi = k;
+            a.Kod = kod;
+            a.Tarih = DateTime.Now;
+
+            k.Aktivasyons.Add(a);
+
+            db.SaveChanges();
+        }
     }
 }
