@@ -176,6 +176,8 @@
     <Content Include="Client\Views\IkinciSayfa.html" />
     <Content Include="Client\Views\Pasaport.html" />
     <Content Include="Client\Views\UcuncuSayfa.html" />
+    <Content Include="Content\Admin\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\Admin\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\Admin\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Admin\bootstrap\js\npm.js" />
     <Content Include="Content\Admin\dist\css\AdminLTE.css" />
@@ -213,9 +215,6 @@
     <Content Include="Content\Admin\dist\js\pages\dashboard2.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\plugins\jQueryUI\jquery-ui.js" />
-    <Content Include="Content\plugins\jQueryUI\jquery-ui.min.js" />
-    <Content Include="Content\plugins\jQuery\jquery-2.2.3.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
