@@ -19,7 +19,7 @@ namespace westline_alfa.Controllers
         {
             helper.helper h = new helper.helper();
             if (h.FormKontrol(liseAd, baslangic, bitis, alan, liseTamAdres, liseEyalet, lisePostaKodu, universiteAd, sinif,
-                bolum, okulNo, acilis, kapanis, uniTel, uniTamAdres, uniEyalet, uniPostaKodu))
+                bolum, okulNo, acilis, kapanis, uniTel, uniTamAdres, uniEyalet, uniPostaKodu) || Session["id"] != null)
             {
 
                 Lise l = new Lise();

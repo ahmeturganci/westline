@@ -15,7 +15,7 @@ namespace westline_alfa.Controllers
         public JsonResult KisiEkle(string tc = "", string ad = "", string ortaAd="", string soyad = "", string email = "", string tel = "")
         {
             helper.helper h = new helper.helper();
-            if(h.FormKontrol(tc, ad, soyad, email, tel))
+            if(h.FormKontrol(tc, ad, soyad, email, tel) || Session["id"] != null)
             {
                 Kisi k = new Kisi();
                 k.TcKimlikNo = tc;
@@ -44,6 +44,16 @@ namespace westline_alfa.Controllers
                     mail = i.Email,
                     telefon = i.Telefon
                 };
+                /*helper.smsapi sms = new helper.smsapi("5399706684","03011995e","ILETI MRKZI");
+                if (sms.SendSMS(new string[] { "5350560103" }, "DENEME MESAJI"))
+                {
+                    // Mesaj Gönderildi
+                }
+                else
+                {
+                    // Mesaj Gönderilemedi
+                }*/
+               
                 return Json(jsonModel, JsonRequestBehavior.AllowGet);
             }
             else

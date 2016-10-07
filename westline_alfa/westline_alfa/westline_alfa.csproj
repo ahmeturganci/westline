@@ -135,11 +135,13 @@
     <Compile Include="Controllers\DorduncuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IkinciController.cs" />
+    <Compile Include="Controllers\PasaportController.cs" />
     <Compile Include="Controllers\UcuncuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="helper\helper.cs" />
+    <Compile Include="helper\smsapi.cs" />
     <Compile Include="Models\AcilDurum.cs" />
     <Compile Include="Models\Adre.cs" />
     <Compile Include="Models\Belge.cs" />
