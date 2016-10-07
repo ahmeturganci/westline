@@ -125,8 +125,12 @@
                 console.log(data);
             });
         };
-        
-
+        //İŞLERİN CEKILMESINI SAGLAYAN FONKSİYON
+        $http.get("/Isler/IsCek").success(function (data) {
+            $scope.islers = data;
+        }).error(function (data) {
+            console.log(data);
+        });
         $http.get("/Ikinci/UlkeCek").success(function (data) {
             $scope.ulkes = data;
         }).error(function (data) {

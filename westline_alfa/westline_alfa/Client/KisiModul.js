@@ -15,8 +15,8 @@
             }).
        when("/UcuncuSayfa", {
            templateUrl: "/Client/Views/UcuncuSayfa.html"
-       }).when("/Pasaport", {
-           templateUrl: "/Client/Views/Pasaport.html"
+       }).when("/isler", {
+           templateUrl: "/Client/Views/isler.html"
        }).
         when("/DorduncuSayfa", {
             templateUrl: "/Client/Views/DorduncuSayfa.html"

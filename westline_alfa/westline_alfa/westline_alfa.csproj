@@ -180,7 +180,7 @@
     <Content Include="Client\Views\cv.html" />
     <Content Include="Client\Views\DorduncuSayfa.html" />
     <Content Include="Client\Views\IkinciSayfa.html" />
-    <Content Include="Client\Views\Pasaport.html" />
+    <Content Include="Client\Views\isler.html" />
     <Content Include="Client\Views\UcakBilgi.html" />
     <Content Include="Client\Views\UcuncuSayfa.html" />
     <Content Include="Content\Admin\bootstrap\css\bootstrap.css" />

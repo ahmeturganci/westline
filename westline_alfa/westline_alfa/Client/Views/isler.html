@@ -1,0 +1,49 @@
+﻿<div ng-controller="KisiTanimaController">
+    <h1 ng-model="deneme"></h1>
+    <h3>{{islerMesaj}}</h3>
+    <form>
+        <fieldset>
+            <!-- required html5 o input dolu olack :D -->
+            <div class="form-group" id="islerDiv" ng-repeat="i in islers">
+                <input type="radio" ng-model="kendiIs" value="{{i.id}}" id="radio" onclick="isSecildi(this);" />{{i.isAdi}}
+                <label class="TC" for="form-group-input">{{i.isAciklama}} </label>
+            </div>
+
+        </fieldset>
+        <button id="buton1" ng-click="Isler()">Devam Et </button>
+
+    </form>
+</div>
+<script>
+    $("#tc,#Telefon").keyup(function () {
+        if (this.value.match(/[^0-9]/g)) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        }
+    });//rakam
+    $("#Ad,#OrtaAd,#Soyad").keyup(function () {
+        if (this.value.match(/[^a-zA-Z]/g)) {
+            this.value = this.value.replace(/[^a-zA-Z]/g, '');
+        }
+    });//harf
+    var sayi = 0;
+    function isSecildi(secim)
+    {
+        sayi++;
+        if (sayi.value == 0)
+            document.getElementById('buton1').disabled = true;
+        else if (sayi.value == 4) {
+            alert('Son Seçiminizi yapıyorsunuz.');
+        }
+        else if (sayi.value == 5) {
+            alert('Son Seçimi yaptınız');
+            document.getElementById('buton1').disabled = true;
+
+        }
+        else
+            document.getElementById('buton1').disabled = false;
+
+    }
+    $(document).ready(function () {
+        document.getElementById('buton1').disabled = true;
+    });
+</script>
