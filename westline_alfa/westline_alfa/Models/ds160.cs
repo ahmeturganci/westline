@@ -75,6 +75,8 @@ namespace westline_alfa.Models
 
         public bool? TutuklanmaSicil { get; set; }
 
+        public virtual Il Il { get; set; }
+
         public virtual Pasaport Pasaport { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

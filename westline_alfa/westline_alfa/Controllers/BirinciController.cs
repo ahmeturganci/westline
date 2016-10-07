@@ -12,16 +12,17 @@ namespace westline_alfa.Controllers
     public class BirinciController : Controller
     {
         westlineDB db = new westlineDB();
-        public JsonResult KisiEkle(string tc = "", string ad = "", string ortaAd="", string soyad = "", string email = "", string tel = "")
+        public JsonResult KisiEkle(string tc = "", string ad = "", string ortaAd="", string soyad = "", string email = "", string tel = "", int kendiIs = -1)
         {
             helper.helper h = new helper.helper();
-            if(h.FormKontrol(tc, ad, soyad, email, tel) || Session["id"] != null)
+            if(h.FormKontrol(tc, ad, soyad, email, tel, kendiIs) || Session["id"] != null)
             {
                 Kisi k = new Kisi();
                 k.TcKimlikNo = tc;
                 k.Ad = ad;
                 k.OrtaAd = ortaAd;
                 k.Soyad = soyad;
+                k.kendiIsBuldu = kendiIs == 0 ? false : true;
 
                 Iletisim i = new Iletisim();
                 i.Email = email;

@@ -58,6 +58,8 @@ namespace westline_alfa.Models
 
         public int? DsId { get; set; }
 
+        public bool? kendiIsBuldu { get; set; }
+
         public virtual AcilDurum AcilDurum { get; set; }
 
         public virtual Belge Belge { get; set; }

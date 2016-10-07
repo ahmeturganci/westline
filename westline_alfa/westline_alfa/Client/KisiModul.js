@@ -5,7 +5,7 @@
 
     var config = (function ($routeProvider) {
         $routeProvider
-         .when("/BirinciSayfa", {
+         .when("/Profil", {
              templateUrl: "/Client/Views/BirinciSayfa.html"
          })
             .when("/IkinciSayfa", {
@@ -24,7 +24,7 @@
              })
             
          .otherwise({
-             redirectTo: "/BirinciSayfa"
+             redirectTo: "/Profil"
          });
     });
 

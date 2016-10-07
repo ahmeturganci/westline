@@ -68,6 +68,11 @@ namespace westline_alfa.Models
                 .WithOptional(e => e.Il)
                 .HasForeignKey(e => e.EyaletId);
 
+            modelBuilder.Entity<Il>()
+                .HasMany(e => e.ds160)
+                .WithOptional(e => e.Il)
+                .HasForeignKey(e => e.DogumYeri);
+
             modelBuilder.Entity<Ilce>()
                 .Property(e => e.Ad)
                 .IsUnicode(false);

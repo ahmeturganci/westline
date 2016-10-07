@@ -13,6 +13,7 @@ namespace westline_alfa.Models
         public Il()
         {
             Adres = new HashSet<Adre>();
+            ds160 = new HashSet<ds160>();
             Ilces = new HashSet<Ilce>();
         }
 
@@ -27,6 +28,9 @@ namespace westline_alfa.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Adre> Adres { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ds160> ds160 { get; set; }
 
         public virtual Ulke Ulke { get; set; }
 
