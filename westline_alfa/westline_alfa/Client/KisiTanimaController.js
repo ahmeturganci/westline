@@ -98,6 +98,19 @@
                 });
         };
 
+        $scope.CvKaydet = function () {
+            $http.post("/CvController/cvAdre?=" + $scope.cvAdes + "&cvGsm=" + $scope.cvGsm + "&cvEvTel?=" + $scope.cvEvTel + "&cvAdres?=" + $scope.cvAdres + "&cvEmail?=" + $scope.cvEmail + "&cvHedef?=" + $scope.cvHedef + "&cvCalismaIstek?=" + $scope.cvCalismaIstek + "&cvYabanciDil?=" + $scope.cvYabanciDil + "&cvDogumTarih?=" + $scope.cvDogumTarih + "&cvAskerlik?=" + $scope.cvAskerlik + "&cvMedeni?=" + $scope.cvMedeni + "&cvPcBilgi?=" + $scope.cvPcBilgi + "&cvHobiler?=" + $scope.cvHobiler + "&cvRefTel?=" + $scope.cvRefTel+"&cvRefAdSoyad?="+$scope.cvRefAdSoyad)
+            .success(function (data) {
+                console.log(data.basari);
+                if (data.basari == 1) {
+                    $window.location.href = '#/UcuncuSayfa';
+                }
+            }).error(function (data) {
+                console.log(data);
+            });
+        };
+        
+
         $http.get("/Ikinci/UlkeCek").success(function (data) {
             $scope.ulkes = data;
         }).error(function (data) {
