@@ -24,9 +24,13 @@
              .when("/BesinciSayfa", {
                  templateUrl: "/Client/Views/BesinciSayfa.html"
              })
+            .when("/UcakBilgi", {
+                templateUrl: "/Client/Views/UcakBilgi.html"
+             })
+
             
          .otherwise({
-             redirectTo: "/Profil"
+             redirectTo: "/UcakBilgi"
          });
     });
 

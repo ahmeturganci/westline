@@ -26,10 +26,12 @@ namespace westline_alfa.Models
         public virtual DbSet<IngilizceSeviye> IngilizceSeviyes { get; set; }
         public virtual DbSet<Kisi> Kisis { get; set; }
         public virtual DbSet<KisiReferan> KisiReferans { get; set; }
+        public virtual DbSet<KisiUcu> KisiUcus { get; set; }
         public virtual DbSet<Lise> Lises { get; set; }
         public virtual DbSet<Pasaport> Pasaports { get; set; }
         public virtual DbSet<Referan> Referans { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Ucu> Ucus { get; set; }
         public virtual DbSet<Ulke> Ulkes { get; set; }
         public virtual DbSet<Universite> Universites { get; set; }
 
@@ -82,6 +84,11 @@ namespace westline_alfa.Models
                 .HasMany(e => e.KisiReferans)
                 .WithOptional(e => e.Referan)
                 .HasForeignKey(e => e.ReferansId);
+
+            modelBuilder.Entity<Ucu>()
+                .HasMany(e => e.KisiUcus)
+                .WithOptional(e => e.Ucu)
+                .HasForeignKey(e => e.UcusId);
 
             modelBuilder.Entity<Ulke>()
                 .Property(e => e.Ad)
