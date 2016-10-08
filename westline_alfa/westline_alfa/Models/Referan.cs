@@ -12,6 +12,7 @@ namespace westline_alfa.Models
         public Referan()
         {
             CvReferans = new HashSet<CvReferan>();
+            KisiReferans = new HashSet<KisiReferan>();
         }
 
         public int Id { get; set; }
@@ -34,5 +35,8 @@ namespace westline_alfa.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CvReferan> CvReferans { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KisiReferan> KisiReferans { get; set; }
     }
 }

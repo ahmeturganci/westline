@@ -18,6 +18,7 @@ namespace westline_alfa.Models
             DilKisis = new HashSet<DilKisi>();
             GidilenUlkelers = new HashSet<GidilenUlkeler>();
             KisiIs = new HashSet<KisiI>();
+            KisiReferans = new HashSet<KisiReferan>();
             KisiUcus = new HashSet<KisiUcu>();
             Randevus = new HashSet<Randevu>();
         }
@@ -96,6 +97,9 @@ namespace westline_alfa.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KisiI> KisiIs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KisiReferan> KisiReferans { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KisiUcu> KisiUcus { get; set; }

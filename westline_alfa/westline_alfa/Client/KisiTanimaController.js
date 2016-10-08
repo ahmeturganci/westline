@@ -141,6 +141,16 @@
             });
         };
 
+        $scope.fn_load = function () {
+            $http.get("Cv/cvCeken").
+                 success(function (data) {
+                     console.log(data.basari);
+                   
+                 }).error(function (data) {
+                     alert("hata");
+                 });
+        };
+
         $http.get("/Ikinci/UlkeCek").success(function (data) {
             $scope.ulkes = data;
         }).error(function (data) {

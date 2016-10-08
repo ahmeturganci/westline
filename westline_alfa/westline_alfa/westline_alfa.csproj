@@ -149,6 +149,7 @@
     <Compile Include="helper\helper.cs" />
     <Compile Include="helper\smsapi.cs" />
     <Compile Include="Models\AcilDurum.cs" />
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Adre.cs" />
     <Compile Include="Models\Aktivasyon.cs" />
     <Compile Include="Models\Belge.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="Models\Isler.cs" />
     <Compile Include="Models\Kisi.cs" />
     <Compile Include="Models\KisiI.cs" />
+    <Compile Include="Models\KisiReferan.cs" />
     <Compile Include="Models\KisiUcu.cs" />
     <Compile Include="Models\Lise.cs" />
     <Compile Include="Models\Pasaport.cs" />
@@ -366,13 +368,6 @@
     <Folder Include="Content\Admin\dist\img\" />
     <Folder Include="Images\" />
     <Folder Include="Upload\" />
-    <Folder Include="Views\Aktivasyon\" />
-    <Folder Include="Views\Besinci\" />
-    <Folder Include="Views\Cv\" />
-    <Folder Include="Views\Isler\" />
-    <Folder Include="Views\Randevu\" />
-    <Folder Include="Views\Ucak\" />
-    <Folder Include="Views\Ucuncu\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

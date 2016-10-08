@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using westline_alfa.Models;
@@ -17,7 +19,7 @@ namespace westline_alfa.helper
             Kisi k = db.Kisis.Find(Session["id"]);
             var jsonModel = new
             {
-                csKisiAd = k.Ad,
+                cvKisiAd = k.Ad,
                 cvAdres = i.Adre.TamAdres = "adresss",
                 cvGsm = i.Telefon,
                 cvEmail = i.Email,
@@ -25,7 +27,7 @@ namespace westline_alfa.helper
 
             };
             return Json(jsonModel, JsonRequestBehavior.AllowGet);
-        }//!
+        }
         public JsonResult IngilizceSeviyeler() {
             List<Object> jsonModelList = new List<object>();
             foreach (var i in db.IngilizceSeviyes)
@@ -126,6 +128,29 @@ namespace westline_alfa.helper
                 jsonModelList.Add(jsonModel);
             }
             return Json(jsonModelList, JsonRequestBehavior.AllowGet);
+        }
+
+        public string MD5Sifrele(string metin)
+        {
+            // MD5CryptoServiceProvider nesnenin yeni bir instance'sını oluşturalım.
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+
+            //Girilen veriyi bir byte dizisine dönüştürelim ve hash hesaplamasını yapalım.
+            byte[] btr = Encoding.UTF8.GetBytes(metin);
+            btr = md5.ComputeHash(btr);
+
+            //byte'ları biriktirmek için yeni bir StringBuilder ve string oluşturalım.
+            StringBuilder sb = new StringBuilder();
+
+
+            //hash yapılmış her bir byte'ı dizi içinden alalım ve her birini hexadecimal string olarak formatlayalım.
+            foreach (byte ba in btr)
+            {
+                sb.Append(ba.ToString("x2").ToLower());
+            }
+
+            //hexadecimal(onaltılık) stringi geri döndürelim.
+            return sb.ToString();
         }
     }
 }
