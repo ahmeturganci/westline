@@ -138,6 +138,7 @@
     <Compile Include="Controllers\IkinciController.cs" />
     <Compile Include="Controllers\IslerController.cs" />
     <Compile Include="Controllers\PasaportController.cs" />
+    <Compile Include="Controllers\RandevuController.cs" />
     <Compile Include="Controllers\UcakController.cs" />
     <Compile Include="Controllers\UcuncuController.cs" />
     <Compile Include="Controllers\YonetimPanelController.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="Models\KisiUcu.cs" />
     <Compile Include="Models\Lise.cs" />
     <Compile Include="Models\Pasaport.cs" />
+    <Compile Include="Models\Randevu.cs" />
     <Compile Include="Models\Referan.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\Ucu.cs" />
@@ -184,6 +186,7 @@
     <Content Include="Client\Views\DorduncuSayfa.html" />
     <Content Include="Client\Views\IkinciSayfa.html" />
     <Content Include="Client\Views\isler.html" />
+    <Content Include="Client\Views\RandevuAl.html" />
     <Content Include="Client\Views\UcakBilgi.html" />
     <Content Include="Client\Views\UcuncuSayfa.html" />
     <Content Include="Content\Admin\bootstrap\css\bootstrap.css" />
@@ -364,6 +367,7 @@
     <Folder Include="Views\Aktivasyon\" />
     <Folder Include="Views\Besinci\" />
     <Folder Include="Views\Isler\" />
+    <Folder Include="Views\Randevu\" />
     <Folder Include="Views\Ucak\" />
     <Folder Include="Views\Ucuncu\" />
   </ItemGroup>

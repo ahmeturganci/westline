@@ -20,6 +20,9 @@
        }).
         when("/DorduncuSayfa", {
             templateUrl: "/Client/Views/DorduncuSayfa.html"
+        }).
+        when("/RandevuAl", {
+            templateUrl: "/Client/Views/RandevuAl.html"
         })
              .when("/BesinciSayfa", {
                  templateUrl: "/Client/Views/BesinciSayfa.html"
@@ -30,7 +33,7 @@
 
             
          .otherwise({
-             redirectTo: "/UcakBilgi"
+             redirectTo: "/RandevuAl"
          });
     });
 

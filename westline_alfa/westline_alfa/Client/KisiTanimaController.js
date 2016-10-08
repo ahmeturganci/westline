@@ -101,6 +101,21 @@
                 });
         }
 
+        //vize ekle
+        $scope.RandevuAl = function () {
+            $http.post("Randevu/Ekle?altBir=" + $scope.birinciAlternatif + "&altIki=" + $scope.ikinciAlternatif).
+               success(function (data) {
+                   console.log(data.basari);
+                   if (data.basari == 1) {
+
+                   } else {
+                       $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                   }
+               }).error(function (data) {
+                   alert("hata");
+               });
+        }
+
         //5. sayfa
         $scope.BesinciSayfa = function () {
             $http.post()//ayvayı yedik net.
