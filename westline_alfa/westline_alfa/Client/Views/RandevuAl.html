@@ -1,0 +1,24 @@
+﻿<div ng-controller="KisiTanimaController">
+    <h1 ng-model="deneme">Randevu Al</h1>
+    <h3>{{randevuMesaj}}</h3>
+    <form>
+        <fieldset>
+
+            <div class="form-group">
+                <label class="DogumTarihi" for="form-group-input">Birinci Alternatif* </label>
+                <input type="date" class="form-control" ng-model="birinciAlternatif" id="birinciAlternatif"  required>
+            </div>
+
+            <div class="form-group">
+                <label class="DogumTarihi" for="form-group-input">İkinci Alternatif* </label>
+                <input type="date" class="form-control" ng-model="ikinciAlternatif" id="ikinciAlternatif" required>
+            </div>
+
+        </fieldset>
+
+        <button ng-click="RandevuAl()">Devam Et </button>
+
+
+
+    </form>
+</div>

@@ -32,6 +32,7 @@ namespace westline_alfa.Models
         public virtual DbSet<KisiUcu> KisiUcus { get; set; }
         public virtual DbSet<Lise> Lises { get; set; }
         public virtual DbSet<Pasaport> Pasaports { get; set; }
+        public virtual DbSet<Randevu> Randevus { get; set; }
         public virtual DbSet<Referan> Referans { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Ucu> Ucus { get; set; }
