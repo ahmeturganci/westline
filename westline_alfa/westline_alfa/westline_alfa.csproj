@@ -136,6 +136,7 @@
     <Compile Include="Controllers\GirisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IkinciController.cs" />
+    <Compile Include="Controllers\IslerController.cs" />
     <Compile Include="Controllers\PasaportController.cs" />
     <Compile Include="Controllers\UcakController.cs" />
     <Compile Include="Controllers\UcuncuController.cs" />
@@ -157,7 +158,9 @@
     <Compile Include="Models\Ilce.cs" />
     <Compile Include="Models\Iletisim.cs" />
     <Compile Include="Models\IngilizceSeviye.cs" />
+    <Compile Include="Models\Isler.cs" />
     <Compile Include="Models\Kisi.cs" />
+    <Compile Include="Models\KisiI.cs" />
     <Compile Include="Models\KisiReferan.cs" />
     <Compile Include="Models\KisiUcu.cs" />
     <Compile Include="Models\Lise.cs" />
@@ -360,6 +363,7 @@
     <Folder Include="Upload\" />
     <Folder Include="Views\Aktivasyon\" />
     <Folder Include="Views\Besinci\" />
+    <Folder Include="Views\Isler\" />
     <Folder Include="Views\Ucak\" />
     <Folder Include="Views\Ucuncu\" />
   </ItemGroup>

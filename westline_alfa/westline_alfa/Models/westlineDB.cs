@@ -24,7 +24,9 @@ namespace westline_alfa.Models
         public virtual DbSet<Ilce> Ilces { get; set; }
         public virtual DbSet<Iletisim> Iletisims { get; set; }
         public virtual DbSet<IngilizceSeviye> IngilizceSeviyes { get; set; }
+        public virtual DbSet<Isler> Islers { get; set; }
         public virtual DbSet<Kisi> Kisis { get; set; }
+        public virtual DbSet<KisiI> KisiIs { get; set; }
         public virtual DbSet<KisiReferan> KisiReferans { get; set; }
         public virtual DbSet<KisiUcu> KisiUcus { get; set; }
         public virtual DbSet<Lise> Lises { get; set; }
@@ -79,6 +81,11 @@ namespace westline_alfa.Models
             modelBuilder.Entity<Ilce>()
                 .Property(e => e.Ad)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Isler>()
+                .HasMany(e => e.KisiIs)
+                .WithOptional(e => e.Isler)
+                .HasForeignKey(e => e.IsId);
 
             modelBuilder.Entity<Referan>()
                 .HasMany(e => e.KisiReferans)

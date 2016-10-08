@@ -96,5 +96,21 @@ namespace westline_alfa.helper
 
             db.SaveChanges();
         }
+
+        public JsonResult IsGetir()
+        {
+            List<Object> jsonModelList = new List<object>();
+            foreach (var i in db.Islers)
+            {
+                var jsonModel = new
+                {
+                    Id = i.Id,
+                    isAdi = i.Ad,
+                    isAciklama = i.Aciklama
+                };
+                jsonModelList.Add(jsonModel);
+            }
+            return Json(jsonModelList, JsonRequestBehavior.AllowGet);
+        }
     }
 }
