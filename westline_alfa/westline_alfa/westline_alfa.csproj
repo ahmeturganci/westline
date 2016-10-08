@@ -132,6 +132,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BesinciController.cs" />
     <Compile Include="Controllers\BirinciController.cs" />
+    <Compile Include="Controllers\CvController.cs" />
     <Compile Include="Controllers\DorduncuController.cs" />
     <Compile Include="Controllers\GirisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -150,6 +151,8 @@
     <Compile Include="Models\Adre.cs" />
     <Compile Include="Models\Aktivasyon.cs" />
     <Compile Include="Models\Belge.cs" />
+    <Compile Include="Models\Cv.cs" />
+    <Compile Include="Models\CvReferan.cs" />
     <Compile Include="Models\Dil.cs" />
     <Compile Include="Models\DilKisi.cs" />
     <Compile Include="Models\ds160.cs" />
@@ -161,7 +164,6 @@
     <Compile Include="Models\Isler.cs" />
     <Compile Include="Models\Kisi.cs" />
     <Compile Include="Models\KisiI.cs" />
-    <Compile Include="Models\KisiReferan.cs" />
     <Compile Include="Models\KisiUcu.cs" />
     <Compile Include="Models\Lise.cs" />
     <Compile Include="Models\Pasaport.cs" />
@@ -180,7 +182,7 @@
     <Content Include="Client\Views\Aktivasyon.html" />
     <Content Include="Client\Views\BesinciSayfa.html" />
     <Content Include="Client\Views\BirinciSayfa.html" />
-    <Content Include="Client\Views\cv.html" />
+    <Content Include="Client\Views\Cv.html" />
     <Content Include="Client\Views\DorduncuSayfa.html" />
     <Content Include="Client\Views\IkinciSayfa.html" />
     <Content Include="Client\Views\isler.html" />
@@ -363,6 +365,7 @@
     <Folder Include="Upload\" />
     <Folder Include="Views\Aktivasyon\" />
     <Folder Include="Views\Besinci\" />
+    <Folder Include="Views\Cv\" />
     <Folder Include="Views\Isler\" />
     <Folder Include="Views\Ucak\" />
     <Folder Include="Views\Ucuncu\" />

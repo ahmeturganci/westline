@@ -10,6 +10,9 @@
          }).when("/Aktivasyon", {
              templateUrl: "/Client/Views/Aktivasyon.html"
          })
+            .when("/Cv", {
+                templateUrl: "/Client/Views/Cv.html"
+            })
             .when("/IkinciSayfa", {
                 templateUrl: "/Client/Views/IkinciSayfa.html"
             }).

@@ -1,30 +1,15 @@
-﻿<div ng-controller="KisiTanimaController">
+﻿<div ng-controller="KisiTanimaController" data-ng-init="fn_load()">
     <h1 ng-model="deneme">Özgeçmiş  / CV </h1>
     <form>
         <fieldset>
+            asd {{cvGsm}}
+            sad {{cvTel}}
+            asd {{cvEmail}}
+            asd  {{cvAdres}}
+            Ad :  {{cdKisiAd}}
             <div class="panel panel-default">
                 <div class="panel-heading">Adım 1</div>
                 <div class="panel-body">
-                    <div class="form-group">
-                        <label class="Adres" for="form-group-input">Adres* </label>
-                        <input type="text" class="form-control" ng-model="cvAdres" id="cvAdres" placeholder="Adres. . ." required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="Gsm" for="form-group-input">GSM* </label>
-                        <input type="number" class="form-control" ng-model="cvGsm" id="cvGsm" placeholder="GSM. . ." required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="EvTel" for="form-group-input">Ev Telefon</label>
-                        <input type="text" class="form-control" ng-model="cvEvTel" id="cvEvTel" placeholder="Ev Telefon . . . " required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="Email" for="form-group-input">Email* </label>
-                        <input type="text" class="form-control" ng-model="cvEmail" id="cvEmail" placeholder="E mail . . . " required>
-                    </div>
-
                     <div class="form-group">
                         <label class="KariyerHedef" for="form-group-input"> Kariyer Hedef : </label>
                         <textarea class="form-control" rows="5" ng-model="cvHedef" id="cvHedef"></textarea>
@@ -36,10 +21,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="YabanciDil" for="form-group-input">Yabancı Dil Biliyormusunzu ? * </label><br />
-                        <input type="radio" ng-model="cvYabanciDil" value="1" id="radio" /> Evet, Çok iyi
-                        <input type="radio" ng-model="cvYabanciDil" value="1" id="radio" /> Evet, Orta Seviye
-                        <input type="radio" ng-model="cvYabanciDil" value="0" /> Hayır, Bilmiyorum
+                        <label class="Eyalet" for="form-group-input">Ingilizce seviyesi* </label>
+                        <select class="combobox" ng-model="ingilizceSeviye">
+                            <option ng-repeat="i in ingilizces" value="{{i.Id}}">{{i.Aciklama}}</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -61,7 +46,7 @@
                         <label class="MedeniDurum" for="form-group-input">Medeni Durumu* </label><br />
                         <input type="radio" ng-model="cvMedeni" value="1" /> Evli
                         <input type="radio" ng-model="cvMedeni" value="0" /> Dul
-                        <input type="radio" ng-model="cvMedeni" value="0" /> Bekar
+                        <input type="radio" ng-model="cvMedeni" value="2" /> Bekar
                     </div>
 
                     <div class="form-group">
@@ -102,3 +87,6 @@
         <button ng-click="CvKaydet()">Cv Kaydet</button>
     </form>
 </div>
+
+
+

@@ -16,6 +16,8 @@ namespace westline_alfa.Models
         public virtual DbSet<Adre> Adres { get; set; }
         public virtual DbSet<Aktivasyon> Aktivasyons { get; set; }
         public virtual DbSet<Belge> Belges { get; set; }
+        public virtual DbSet<Cv> Cvs { get; set; }
+        public virtual DbSet<CvReferan> CvReferans { get; set; }
         public virtual DbSet<Dil> Dils { get; set; }
         public virtual DbSet<DilKisi> DilKisis { get; set; }
         public virtual DbSet<ds160> ds160 { get; set; }
@@ -27,7 +29,6 @@ namespace westline_alfa.Models
         public virtual DbSet<Isler> Islers { get; set; }
         public virtual DbSet<Kisi> Kisis { get; set; }
         public virtual DbSet<KisiI> KisiIs { get; set; }
-        public virtual DbSet<KisiReferan> KisiReferans { get; set; }
         public virtual DbSet<KisiUcu> KisiUcus { get; set; }
         public virtual DbSet<Lise> Lises { get; set; }
         public virtual DbSet<Pasaport> Pasaports { get; set; }
@@ -87,8 +88,18 @@ namespace westline_alfa.Models
                 .WithOptional(e => e.Isler)
                 .HasForeignKey(e => e.IsId);
 
+            modelBuilder.Entity<Kisi>()
+                .HasMany(e => e.Cvs)
+                .WithOptional(e => e.Kisi)
+                .HasForeignKey(e => e.KisiId);
+
+            modelBuilder.Entity<Kisi>()
+                .HasMany(e => e.Cvs1)
+                .WithOptional(e => e.Kisi1)
+                .HasForeignKey(e => e.KisiId);
+
             modelBuilder.Entity<Referan>()
-                .HasMany(e => e.KisiReferans)
+                .HasMany(e => e.CvReferans)
                 .WithOptional(e => e.Referan)
                 .HasForeignKey(e => e.ReferansId);
 

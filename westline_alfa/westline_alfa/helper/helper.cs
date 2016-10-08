@@ -10,7 +10,22 @@ namespace westline_alfa.helper
     public class helper : Controller
     {
         westlineDB db = new westlineDB();
+        public JsonResult CvCek()
+        {
+            int id = Convert.ToInt32(Session["id"]);
+            Iletisim i = db.Iletisims.Find(Session["id"]);
+            Kisi k = db.Kisis.Find(Session["id"]);
+            var jsonModel = new
+            {
+                csKisiAd = k.Ad,
+                cvAdres = i.Adre.TamAdres = "adresss",
+                cvGsm = i.Telefon,
+                cvEmail = i.Email,
+                cvDogumTarihi = k.DogumTarihi,
 
+            };
+            return Json(jsonModel, JsonRequestBehavior.AllowGet);
+        }//!
         public JsonResult IngilizceSeviyeler() {
             List<Object> jsonModelList = new List<object>();
             foreach (var i in db.IngilizceSeviyes)

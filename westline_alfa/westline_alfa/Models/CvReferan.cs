@@ -6,15 +6,15 @@ namespace westline_alfa.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class KisiReferan
+    public partial class CvReferan
     {
         public int Id { get; set; }
 
-        public int? KisiId { get; set; }
-
         public int? ReferansId { get; set; }
 
-        public virtual Kisi Kisi { get; set; }
+        public int? CvId { get; set; }
+
+        public virtual Cv Cv { get; set; }
 
         public virtual Referan Referan { get; set; }
     }

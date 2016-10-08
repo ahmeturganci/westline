@@ -13,10 +13,11 @@ namespace westline_alfa.Models
         public Kisi()
         {
             Aktivasyons = new HashSet<Aktivasyon>();
+            Cvs = new HashSet<Cv>();
+            Cvs1 = new HashSet<Cv>();
             DilKisis = new HashSet<DilKisi>();
             GidilenUlkelers = new HashSet<GidilenUlkeler>();
             KisiIs = new HashSet<KisiI>();
-            KisiReferans = new HashSet<KisiReferan>();
             KisiUcus = new HashSet<KisiUcu>();
         }
 
@@ -71,6 +72,12 @@ namespace westline_alfa.Models
         public virtual Belge Belge { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cv> Cvs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cv> Cvs1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DilKisi> DilKisis { get; set; }
 
         public virtual ds160 ds160 { get; set; }
@@ -88,9 +95,6 @@ namespace westline_alfa.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KisiI> KisiIs { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KisiReferan> KisiReferans { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KisiUcu> KisiUcus { get; set; }

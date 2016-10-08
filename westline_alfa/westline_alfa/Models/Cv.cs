@@ -6,31 +6,37 @@ namespace westline_alfa.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Referan
+    [Table("Cv")]
+    public partial class Cv
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Referan()
+        public Cv()
         {
             CvReferans = new HashSet<CvReferan>();
         }
 
         public int Id { get; set; }
 
-        [StringLength(50)]
-        public string Adi { get; set; }
+        public int? KisiId { get; set; }
 
         [StringLength(50)]
-        public string Soyadi { get; set; }
+        public string Hedef { get; set; }
 
         [StringLength(50)]
-        public string Tel { get; set; }
+        public string CalismakIstenilenIs { get; set; }
+
+        public bool? Askerlik { get; set; }
+
+        public bool? MedeniDurum { get; set; }
 
         [StringLength(50)]
-        public string Email { get; set; }
+        public string Hobiler { get; set; }
 
-        public int? AdresId { get; set; }
+        public int? ReferansId { get; set; }
 
-        public virtual Adre Adre { get; set; }
+        public virtual Kisi Kisi { get; set; }
+
+        public virtual Kisi Kisi1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CvReferan> CvReferans { get; set; }
