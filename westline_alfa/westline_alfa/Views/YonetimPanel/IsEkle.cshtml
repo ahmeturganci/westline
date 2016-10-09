@@ -4,9 +4,47 @@
     Layout = "~/Views/Shared/_YonetimLayout.cshtml";
 }
 
-<form action="/YonetimPanel/Is" method="post">
-    <input type="text" name="ad" placeholder="İş adı"/>
-    <input type="text" name="aciklama" placeholder="Açıklama" />
-    <input type="submit" value="Ekle"/>
-</form>
 
+    <div class="container">
+        <h2>5.1 Adım</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <form>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="isAdi" for="form-group-input">İş Adi* </label>
+                            <input type="text" class="form-control"  id="isAdi" placeholder="İş Adi . . ." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="isAciklama" for="form-group-input">İş Açıklama* </label>
+                            <input type="text" class="form-control" id="isAciklama" placeholder="İş Açıklaması . . ." required>
+                        </div>
+                    </fieldset>
+                    <button onclick="isEkle();">Devam Et </button>
+                </form>
+            </div>
+        </div>
+    </div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    function isEkle() {
+        var isAdi = document.getElementById('isAdi').value;
+        var isAciklama = document.getElementById('isAciklama').value;
+        if (isAdi == "" || isAciklama == "")
+        {
+            alert('Değerler Boş Geçilemez.');
+        }
+        else {
+            $.post('../YonetimPanel/Is', { ad: isAdi, aciklama:isAciklama}, function (data) {
+                if (data == "Başarılı")
+                    alert('İş Başarıyla Eklendi.');
+                else
+                    alert('İş Eklemede Sorun Oluştu');
+            });
+        }
+
+        }
+   
+</script>
