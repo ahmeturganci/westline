@@ -17,6 +17,10 @@ namespace westline_alfa.Models
 
         public int? KisiId { get; set; }
 
+        public bool? Onay { get; set; }
+
+        public DateTime? SecilenTarih { get; set; }
+
         public virtual Kisi Kisi { get; set; }
     }
 }

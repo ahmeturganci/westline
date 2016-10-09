@@ -21,6 +21,11 @@ namespace westline_alfa.Controllers
             return View();
         }
 
+        public ActionResult Randevu()
+        {
+            return View(db.Kisis);
+        }
+
         public ActionResult Is(string ad, string aciklama)
         {
             Isler i = new Isler();
@@ -37,6 +42,18 @@ namespace westline_alfa.Controllers
             k.AdminOnay = true;
             db.SaveChanges();
             return RedirectToAction("Index", "YonetimPanel");
+        }
+
+        public ActionResult RandevuOnay(string id, string secim)
+        {
+            Randevu r = db.Randevus.Find(Convert.ToInt32(id));
+            r.Onay = true;
+            if (secim == "0")
+                r.SecilenTarih = r.AlternatifBir;
+            else
+                r.SecilenTarih = r.AlternatifIki;
+            db.SaveChanges();
+            return RedirectToAction("Randevu", "YonetimPanel");
         }
 
     }

@@ -364,6 +364,7 @@
     <Content Include="Views\Shared\_YonetimLayout.cshtml" />
     <Content Include="Views\YonetimPanel\Index.cshtml" />
     <Content Include="Views\YonetimPanel\IsEkle.cshtml" />
+    <Content Include="Views\YonetimPanel\Randevu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

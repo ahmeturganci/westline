@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Randevu";
+    Layout = "~/Views/Shared/_YonetimLayout.cshtml";
+}
+
+@model IEnumerable<westline_alfa.Models.Kisi>
+
+<h4>Randevu isteği yollayan öğrenciler</h4>
+
+<form action="/YonetimPanel/RandevuOnay" method="post">
+    @foreach (var i in Model)
+    {
+        foreach (var r in i.Randevus.Where(x=>x.Onay == false))
+        {
+            <input type="hidden" name="id" value="@r.Id" />
+            <h6>@i.Ad @i.Soyad / @r.AlternatifBir - @r.AlternatifIki</h6>
+            <select name="secim">
+                <option value="0">@r.AlternatifBir</option>
+                <option value="1">@r.AlternatifIki</option>
+            </select>
+            <input type="submit" value="Onayla" />
+        }
+    }
+</form>
+
+<h4>Randevu isteği onaylanan öğrenciler</h4>
+@foreach (var i in Model)
+{
+    foreach (var r in i.Randevus.Where(x => x.Onay == true))
+    {
+        <input type="hidden" name="id" value="@r.Id" />
+            <h6>@i.Ad @i.Soyad / @r.SecilenTarih</h6>
+    }
+}
+

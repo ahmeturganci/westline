@@ -18,6 +18,7 @@ namespace westline_alfa.Controllers
                 Randevu r = new Randevu();
                 //r.AlternatifBir = Convert.ToDateTime(altBir);
                 //r.AlternatifIki = Convert.ToDateTime(altIki);
+                r.Onay = false;
                 r.Kisi = db.Kisis.Find(Session["id"]);
 
                 var jsonModel = new
