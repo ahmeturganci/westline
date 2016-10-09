@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "İş Ekle";
+    Layout = "~/Views/Shared/_YonetimLayout.cshtml";
+}
+
+<form action="/YonetimPanel/Is" method="post">
+    <input type="text" name="ad" placeholder="İş adı"/>
+    <input type="text" name="aciklama" placeholder="Açıklama" />
+    <input type="submit" value="Ekle"/>
+</form>
+

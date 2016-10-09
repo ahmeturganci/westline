@@ -16,6 +16,21 @@ namespace westline_alfa.Controllers
             return View(db.Kisis);
         }
 
+        public ActionResult IsEkle()
+        {
+            return View();
+        }
+
+        public ActionResult Is(string ad, string aciklama)
+        {
+            Isler i = new Isler();
+            i.Ad = ad;
+            i.Aciklama = aciklama;
+            db.Islers.Add(i);
+            db.SaveChanges();
+            return RedirectToAction("IsEkle", "YonetimPanel");
+        }
+
         public ActionResult OnayVer(string id)
         {
             Kisi k = db.Kisis.Find(Convert.ToInt32(id));
