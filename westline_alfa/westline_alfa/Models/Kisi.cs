@@ -66,6 +66,10 @@ namespace westline_alfa.Models
 
         public bool? kendiIsBuldu { get; set; }
 
+        public bool? AktivasyonOnay { get; set; }
+
+        public bool? AdminOnay { get; set; }
+
         public virtual AcilDurum AcilDurum { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

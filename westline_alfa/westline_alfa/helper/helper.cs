@@ -108,6 +108,8 @@ namespace westline_alfa.helper
             a.Kisi = k;
             a.Kod = kod;
             a.Tarih = DateTime.Now;
+            k.AktivasyonOnay = false;
+            k.AdminOnay = false;
 
             k.Aktivasyons.Add(a);
 
