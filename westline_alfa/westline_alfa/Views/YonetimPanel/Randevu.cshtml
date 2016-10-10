@@ -3,34 +3,96 @@
     ViewBag.Title = "Randevu";
     Layout = "~/Views/Shared/_YonetimLayout.cshtml";
 }
-
 @model IEnumerable<westline_alfa.Models.Kisi>
-
-<h4>Randevu isteği yollayan öğrenciler</h4>
-
-<form action="/YonetimPanel/RandevuOnay" method="post">
-    @foreach (var i in Model)
-    {
-        foreach (var r in i.Randevus.Where(x=>x.Onay == false))
-        {
-            <input type="hidden" name="id" value="@r.Id" />
-            <h6>@i.Ad @i.Soyad / @r.AlternatifBir - @r.AlternatifIki</h6>
-            <select name="secim">
-                <option value="0">@r.AlternatifBir</option>
-                <option value="1">@r.AlternatifIki</option>
-            </select>
-            <input type="submit" value="Onayla" />
-        }
+<style>
+    hr.stil1 {
+        height: 10px;
+        border-style: inset;
+        color: black;
+        margin-top: -10px;
     }
-</form>
 
-<h4>Randevu isteği onaylanan öğrenciler</h4>
-@foreach (var i in Model)
-{
-    foreach (var r in i.Randevus.Where(x => x.Onay == true))
-    {
-        <input type="hidden" name="id" value="@r.Id" />
-            <h6>@i.Ad @i.Soyad / @r.SecilenTarih</h6>
+    hr.stil2 {
+        height: 10px;
+        border-style: inset;
+        margin-left: -1px;
+        width: 340px;
+        color: black;
+        margin-top: -7px;
     }
-}
+</style>
+<hr class="stil1">
 
+<div class="container">
+    <h4>Randevu isteği yollayan öğrenciler</h4>
+    <hr class="stil2">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Onay verilcek kişi id</th>
+
+                <th>Onay verilcek kişi</th>
+                <th>Alternatif 1</th>
+                <th>Alternatif 2</th>
+                <th>Onay ver</th>
+            </tr>
+        </thead>
+        <tbody>
+            <form action="/YonetimPanel/RandevuOnay" method="post">
+                @foreach (var i in Model)
+                {
+                    foreach (var r in i.Randevus.Where(x => x.Onay == false))
+                    {
+                        <tr>
+                            <td><label style="padding-top:-25px;">@r.Id</label></td>
+
+                            <td><h5 style="float:left; font-size:15px;">Onay bekleyen Kullanici : @i.Ad @i.Soyad</h5></td>
+                            <td><h5 style="float:left; font-size:15px;">Birinci Tarih : @r.AlternatifBir </h5></td>
+
+                            <td><h5 style="float:left; font-size:15px;">İkinci Tarih : @r.AlternatifIki </h5></td>
+
+                            <td>
+                                <select name="secim">
+                                    <option value="0">@r.AlternatifBir</option>
+                                    <option value="1">@r.AlternatifIki</option>
+                                </select>
+                            </td>
+
+                            <td><button style="margin-left:20px; margin-top:5px;" type="submit" class="btn btn-success">Onay Ver</button></td>
+                        </tr>
+
+
+                    }
+                }
+            </form>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <h4>Randevu isteği onaylanan öğrenciler</h4>
+    <hr class="stil2">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Onay verilcek kişi id</th>
+
+                <th>Onay verilcek kişi</th>
+                <th>Tarih</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in Model)
+            {
+                foreach (var r in i.Randevus.Where(x => x.Onay == true))
+                {
+                    <tr>
+                        <td><label style="padding-top:-25px;">@r.Id</label></td>
+                        <td><h5 style="float:left; font-size:15px;">Onay bekleyen Kullanici : @i.Ad @i.Soyad</h5></td>
+                        <td><h5 style="float:left; font-size:15px;">Seçilen Tarih : @r.SecilenTarih </h5></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
