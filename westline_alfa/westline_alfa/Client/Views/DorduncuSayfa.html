@@ -124,14 +124,20 @@
     //sayfa yuklendiginde yapılcaklar
     $(document).ready(function () {
         document.getElementById('pasaportDiv').style.visibility = 'hidden';
+        document.getElementById('pasaportDiv').style.height = 0;
     });
 
     var currentValue = 0;
     function tiklama(myRadio) {
-        if (myRadio.value == 1)
+        if (myRadio.value == 1) {
             document.getElementById('pasaportDiv').style.visibility = 'visible';
-        else
-            document.getElementById('pasaportDiv').style.visibility ='hidden';
+            document.getElementById('pasaportDiv').style.height = "";
+        }
+        else {
+            document.getElementById('pasaportDiv').style.visibility = 'hidden';
+            document.getElementById('pasaportDiv').style.height = 0;
+        }
+            
        
     }
 </script>
