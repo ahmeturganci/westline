@@ -45,14 +45,14 @@
                 </td>
             </tr>
 
-            <tr>
+            <tr ng-hide="ogrBelge">
                 <td> Öğrenci Belgesi  Dosyası: </td>
                 <td>
                     <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
                 </td>
             </tr>
 
-            <tr>
+            <tr ng-hide="ogrBelge">
                 <td></td>
                 <td>
                     <input type="submit" value="Dosya Kaydet" class="btn btn-danger" />
@@ -75,10 +75,18 @@
 
             <div class="form-group">
                 <label class="Ulke" for="form-group-input">Ülke Seçimiz* </label>
-                <select class="combobox" ng-change="updateIls()" ng-model="bilgiUlke">
+                <select class="combobox" ng-change="updatePasIls()" ng-model="pasUlke">
                     <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
                 </select>
             </div>
+
+            <div class="form-group">
+                <label class="Eyalet" for="form-group-input">İl* </label>
+                <select class="combobox" ng-model="pasIl">
+                    <option ng-repeat="e in pasEyalets" value="{{e.Id}}">{{e.Ad}}</option>
+                </select>
+            </div>
+
 
             <div class="form-group">
                 <label class="ilce" for="form-group-input">Alınan Yer/Makam* </label>
@@ -100,22 +108,22 @@
                 </select>
             </div>
             <div class="form-group">
-                <label class="programUcret" for="form-group-input">Program ücreti karşılayan kişi* </label>
-                <input type="text" class="form-control" ng-model="programUcret" id="programUcret" placeholder="Ucret Durum. . ." required>
+                <label class="programUcret" for="form-group-input">Pasaport ücreti karşılayan kişi* </label>
+                <input type="text" class="form-control" ng-model="pasKisi" id="pasKisi" placeholder="Pasaport ücreti karşılayan kişi. . ." required>
             </div>
 
             <div class="form-group">
-                <label class="ucretYakinlik" for="form-group-input">Program ücreti karşılayan kişinin yakınlığını giriniz* </label>
+                <label class="ucretYakinlik" for="form-group-input">Pasaport ücreti karşılayan kişinin yakınlığını giriniz* </label>
                 <input type="text" class="form-control" ng-model="ucretYakinlik" id="ucretYakinlik" placeholder="Ucret veren kişi yakınlıgı. . ." required>
             </div>
             <div class="form-group">
-                <label class="ucretTelefon" for="form-group-input">Program ücreti karşılayan kişinin telefonu* </label>
+                <label class="ucretTelefon" for="form-group-input">Pasaport ücreti karşılayan kişinin telefonu* </label>
                 <input type="number" class="form-control" ng-model="ucretTelefon" id="ucretTelefon" placeholder="Ucret veren kişi telefonu. . ." required>
             </div>
         </div>
     </form>
 
-    <button ng-click="UcuncuSayfa()">Devam Et </button>
+    <button ng-click="PasaportEkle()">Devam Et </button>
 
 
    

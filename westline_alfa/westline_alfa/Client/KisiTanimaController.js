@@ -86,6 +86,22 @@
             
         };
 
+        //4.Sayfa
+        $scope.DorduncuSayfa = function () {
+            $http.post("Birinci/KisiEkle?tc=" + $scope.tc + "&ad=" + $scope.ad + "&ortaAd=" + $scope.ortaAd + "&soyad=" + $scope.soyad + "&email=" + $scope.email + "&tel=" + $scope.tel + "&kendiIs=" + $scope.kendiIs).
+
+                success(function (data) {
+                    console.log(data.basari);
+                    if (data.basari == 1) {
+                        $window.location.href = '#/Aktivasyon';
+                    } else {
+                        $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                    }
+                }).error(function (data) {
+                    alert("hata");
+                });
+        }
+
         //vize ekle
                 $scope.RandevuAl = function () {
                         $http.post("Randevu/Ekle?altBir=" + $scope.birinciAlternatif + "&altIki=" + $scope.ikinciAlternatif).
@@ -191,6 +207,14 @@
         $scope.updateUniIl = function () {
             $http.get("/Ikinci/EyaletCek?id=" + $scope.universiteAdresUlke).success(function (data) {
                 $scope.uniEyalets = data;
+            }).error(function (data) {
+                console.log(data);
+            });
+        };
+
+        scope.updatePasIls = function () {
+            $http.get("/Ikinci/EyaletCek?id=" + $scope.pasUlke).success(function (data) {
+                $scope.pasEyalets = data;
             }).error(function (data) {
                 console.log(data);
             });

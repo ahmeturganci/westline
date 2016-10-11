@@ -15,6 +15,26 @@ angular.module('KisiModul') // extending angular module from first part
         $scope.IsFormValid = isValid;
     });
 
+    var sayac = 0;
+    $scope.PasaportEkle = function () {
+        if (sayac == 4) {
+            if ($scope.pasaport == 1) {
+                $http.post("Pasaport/PasaportEkle?no=" + $scope.pasaportno + "&il=" + $scope.pasIl + "&ilce=" + $scope.ilce + "&baslangicTarih=" + $scope.pasBaslangic + "&bitisTarih=" + $scope.pasBitis + "&calindiMi=" + $scope.PasaportCalinmaDurum + "&ucretKarsilayan=" + $scope.pasKisi + "&akrabalikIliski=" + $scope.ucretYakinlik + "&ucretKarsilayanTel=" + $scope.ucretTelefon).
+                success(function (data) {
+                    console.log(data.basari);
+                    if (data.basari == 1) {
+                        $window.location.href = '#/BesinciSayfa';
+                    } else {
+                        $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                    }
+                }).error(function (data) {
+                    alert("hata");
+                });
+            }
+        } else {
+            $scope.Message = "Lütfen eksik belgelerinizi tamamlayın";
+        }
+    };
 
     // THIS IS REQUIRED AS File Control is not supported 2 way binding features of Angular
     // ------------------------------------------------------------------------------------
@@ -41,7 +61,7 @@ angular.module('KisiModul') // extending angular module from first part
         $scope.SelectedFileForUpload = file[0];
     }
     //----------------------------------------------------------------------------------------
-    var sayac = 0;
+   
     //Save File
     $scope.SaveFile = function () {
         $scope.IsFormSubmitted = true;
@@ -60,7 +80,7 @@ angular.module('KisiModul') // extending angular module from first part
                     $scope.transkript = true;
                 }
                 else if (sayac == 4) {
-                    $window.location.href = '#/BesinciSayfa';
+                    $scope.ogrBelge = true;
                 }
             }, function (e) {
                 alert(e);
