@@ -3,148 +3,150 @@
     <h2>{{ikinciMesaj}}</h2>
 
     <div class="container">
-        <h2>DS160 - Vize Evrak Sayfası</h2>
-        <div class="panel panel-default">
-            <div class="panel-heading">DS160.1</div>
-            <div class="panel-body">
-                <form>
-                    <fieldset>
-                        <label class="DogumUlke" for="form-group-input">Vize harcı Eklenme Durumu : buraya tık felan koyarız</label>
-                        <div class="form-group">
-                            <label class="DogumYeri" for="form-group-input">Doğum Yeri* </label>
-                            <input type="text" class="form-control" ng-model="dogumYeri" id="dogumTarihi" placeholder="Doğum Yeri . . . " required>
-                        </div>
+        
+    <div class="panel panel-default">
+        <div class="panel-heading">DS160.1</div>
+        <div class="panel-body">
+            <form>
+                <fieldset>
+                    <input name="disabled" value="Vize Harç Yatırlımamış." disabled style="background-color:#f44336; color:white;     padding: 5px;"><br /><br />
+                    <input name="disabled" value="Servis Harç Yatırılmış." disabled style="background-color:#3CBC8D; color:white;     padding: 5px;"><br /><br />,
+                    <!--Deneme amaçlı yapıldı-->
+                    <div class="form-group">
+                        <label class="DogumYeri" for="form-group-input">Doğum Yeri* </label>
+                        <input type="text" class="form-control" ng-model="dogumYeri" id="dogumTarihi" placeholder="Doğum Yeri . . . " required>
+                    </div>
 
-                      
 
-                        <div class="form-group">
-                            <label class="DogumUlke" for="form-group-input">Doğum Ulke* </label>
-                            <input type="text" class="form-control" ng-model="dogumUlke" id="dogumTarihi" placeholder="Doğum Ulke . . . " required>
-                        </div>
-                        <div class="form-group">
-                            <label class="VatandasNo" for="form-group-input">Vatandas No* </label>
-                            <input type="number" class="form-control" ng-model="vatandasNo" id="vatandasNo" placeholder="Vatandas No . . .  " required>
-                        </div>
-                        <div class="form-group">
-                            <label class="IkinciVatandasNo" for="form-group-input">İkinci Vatandas No* </label>
-                            <input type="number" class="form-control" ng-model="ikinciVatandasNo" id="ikinciVatandasNo" placeholder="İkinvci Vatandas No . . .  " required>
-                        </div>
-                        <div class="form-group">
-                            <label class="AbdSsn" for="form-group-input">AbdSsn* </label>
-                            <input type="text class="form-control" ng-model="AbdSsn" id="AbdSsn" placeholder="AbdSsn. . .  " required>
-                        </div>
 
-                    </fieldset>
-                </form>
-            </div>
+                    <div class="form-group">
+                        <label class="DogumUlke" for="form-group-input">Doğum Ulke* </label>
+                        <input type="text" class="form-control" ng-model="dogumUlke" id="dogumTarihi" placeholder="Doğum Ulke . . . " required>
+                    </div>
+                    <div class="form-group">
+                        <label class="VatandasNo" for="form-group-input">Vatandas No* </label>
+                        <input type="number" class="form-control" ng-model="vatandasNo" id="vatandasNo" placeholder="Vatandas No . . .  " required>
+                    </div>
+                    <div class="form-group">
+                        <label class="IkinciVatandasNo" for="form-group-input">İkinci Vatandas No* </label>
+                        <input type="number" class="form-control" ng-model="ikinciVatandasNo" id="ikinciVatandasNo" placeholder="İkinvci Vatandas No . . .  " required>
+                    </div>
+                    <div class="form-group">
+                        <label class="AbdSsn" for="form-group-input">AbdSsn* </label>
+                        <input type="text class="form-control" ng-model="AbdSsn" id="AbdSsn" placeholder="AbdSsn. . .  " required>
+                    </div>
+
+                </fieldset>
+            </form>
         </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">DS160.2 - Amerikada İle İlgili</div>
-            <div class="panel-body">
-                <form>
-                    <fieldset>
-                        <div class="form-group">
-                            <label class="UsaBulunmaDurum" for="form-group-input">Önceden Amerikada Bulundun mu ? * </label><br />
-                            <input type="radio" ng-model="amerikadaBulunduMu" value="1" id="cvAskerlik" /> Evet, Bulundum
-                            <input type="radio" ng-model="amerikadaBulunduMu" value="0" /> Hayır, Bulunmadım.
-                        </div>
-
-                        <div class="form-group">
-                            <label class="UsaBulunmaTarih" for="form-group-input">USA Bulunma Tarih* </label><!--Kontrol yazılacak-->
-                            <input type="date" class="form-control" ng-model="amerikaBulunmaTarih" id="usaBulunmaTarih" placeholder="USA Bulunma Tarih. . . " required>
-                        </div>
-                        <div class="form-group">
-                            <label class="UsaBulunmaSure" for="form-group-input">USA Bulunma Süre* </label><!--Kontrol yazılacak-->
-                            <input type="number" class="form-control" ng-model="amerikaBulunduguSure" id="amerikaBulunduguSure" placeholder="USA Bulunma Süre. . . " required>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="OncedenAmerikaVizesi" for="form-group-input">Önceden Amerikada Vizesi ? * </label><br />
-                            <input type="radio" ng-model="oncedenAmerikaVizesi" value="1" /> Evet, var
-                            <input type="radio" ng-model="oncedenAmerikaVizesi" value="0" /> Hayır. Yok
-                        </div>
-
-                        <div class="form-group">
-                            <label class="OncedenAmerikaVizesiRet" for="form-group-input">Önceden Amerikada Vizesi Ret ? * </label><br />
-                            <input type="radio" ng-model="oncedenAmerikaVizeRet" value="1" /> Evet
-                            <input type="radio" ng-model="oncedenAmerikaVizeRet" value="0" /> Hayır
-                        </div>
-
-                        <div class="form-group">
-                            <label class="OncedenAmerikaVizesiRetNeden" for="form-group-input">Önceden Amerikada Vizesi Ret Neden ? * </label><br />
-                            <input type="number" class="form-control" ng-model="oncedenAmerikaVizeRetNedeni" id="oncedenAmerikaVizeRetNedeni" placeholder="Önceden Amerikada Vizesi Ret Neden . . . " required>
-                        </div>
-                        <div class="form-group">
-                            <label class="AmerikaVatandasGocmenBasvuru" for="form-group-input"> Amerika Göçmen Başvurusu Yaptınız mı ? * </label><br />
-                            <input type="radio" ng-model="amerikaVatandasGocmenBasvuru" value="1" /> Evet
-                            <input type="radio" ng-model="amerikaVatandasGocmenBasvuru" value="0" /> Hayır
-                        </div>
-
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">DS160.2</div>
-            <div class="panel-body">
-                <form>
-                    <fieldset>
-                        <div class="form-group">
-                            <label class="BabaDogumTarih" for="form-group-input">Baba Doğum Tarih* </label>
-                            <input type="date" class="form-control" ng-model="babaDogumTarihi" id="babaDogumTarihi" placeholder="Baba Doğum Tarih. . . " required>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="BabaAmerikadaMi" for="form-group-input">Baba Amerikada Mi? * </label><br />
-                            <input type="radio" ng-model="babaAmerikadaMi" value="1" /> Evet
-                            <input type="radio" ng-model="babaAmerikadaMi" value="0" /> Hayır
-                        </div>
-                        <div class="form-group">
-                            <label class="AskerlikDurum" for="form-group-input">Askerlik Durumu* </label><br />
-                            <input type="radio" ng-model="askerlikYapti" value="1" id="cvAskerlik" /> Yaptı
-                            <input type="radio" ng-model="askerlikYapti" value="0" /> Yapmadı
-                        </div><!--CV de de alıyoruz acaba babasının askerlik yapıp yapmadığınımı soruyor.-->
-
-                        <div class="form-group">
-                            <label class="SonBesSene" for="form-group-input">Son Bes Senede Yurd Dışına Çıktınız mı ? * </label><br />
-                            <input type="radio" ng-model="sonBesYil" value="1" /> Evet
-                            <input type="radio" ng-model="sonBesYil" value="0" /> Hayır
-                        </div>
-
-
-                        <div class="form-group">
-                            <label class="AnneDogumTarih" for="form-group-input">Anne Doğum Tarih* </label>
-                            <input type="date" class="form-control" ng-model="anneDogumTarihi" id="anneDogumTarihi" placeholder="Anne Doğum Tarih. . . " required>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="AnneAmerikadaMi" for="form-group-input">Anne Amerikada Mi? * </label><br />
-                            <input type="radio" ng-model="anneAmerikadaMi" value="1" /> Evet
-                            <input type="radio" ng-model="anneAmerikadaMi" value="0" /> Hayır
-                        </div>
-
-
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">DS160.4 Amerikadaki Akraba Bilgi</div>
-            <div class="panel-body">
-                <form>
-                    <fieldset>
-                        <div class="form-group">
-                            <label class="AmerikadakiAkrabaBilgi" for="form-group-input">Amerikadaki Aktaba Bilgi* </label>
-                            <input type="text" class="form-control" ng-model="amerikaAkrabaBilgi" id="amerikaAkrabaBilgi" placeholder="Amerikadaki Aktaba Bilgi. . . " required>
-                        </div>
-
-
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-
-        <button ng-click="BesinciSayfa()">Devam Et </button>
-
     </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">DS160.2 - Amerikada İle İlgili</div>
+        <div class="panel-body">
+            <form>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="UsaBulunmaDurum" for="form-group-input">Önceden Amerikada Bulundun mu ? * </label><br />
+                        <input type="radio" ng-model="amerikadaBulunduMu" value="1" id="cvAskerlik" /> Evet, Bulundum
+                        <input type="radio" ng-model="amerikadaBulunduMu" value="0" /> Hayır, Bulunmadım.
+                    </div>
+
+                    <div class="form-group">
+                        <label class="UsaBulunmaTarih" for="form-group-input">USA Bulunma Tarih* </label><!--Kontrol yazılacak-->
+                        <input type="date" class="form-control" ng-model="amerikaBulunmaTarih" id="usaBulunmaTarih" placeholder="USA Bulunma Tarih. . . " required>
+                    </div>
+                    <div class="form-group">
+                        <label class="UsaBulunmaSure" for="form-group-input">USA Bulunma Süre* </label><!--Kontrol yazılacak-->
+                        <input type="number" class="form-control" ng-model="amerikaBulunduguSure" id="amerikaBulunduguSure" placeholder="USA Bulunma Süre. . . " required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="OncedenAmerikaVizesi" for="form-group-input">Önceden Amerikada Vizesi ? * </label><br />
+                        <input type="radio" ng-model="oncedenAmerikaVizesi" value="1" /> Evet, var
+                        <input type="radio" ng-model="oncedenAmerikaVizesi" value="0" /> Hayır. Yok
+                    </div>
+
+                    <div class="form-group">
+                        <label class="OncedenAmerikaVizesiRet" for="form-group-input">Önceden Amerikada Vizesi Ret ? * </label><br />
+                        <input type="radio" ng-model="oncedenAmerikaVizeRet" value="1" /> Evet
+                        <input type="radio" ng-model="oncedenAmerikaVizeRet" value="0" /> Hayır
+                    </div>
+
+                    <div class="form-group">
+                        <label class="OncedenAmerikaVizesiRetNeden" for="form-group-input">Önceden Amerikada Vizesi Ret Neden ? * </label><br />
+                        <input type="number" class="form-control" ng-model="oncedenAmerikaVizeRetNedeni" id="oncedenAmerikaVizeRetNedeni" placeholder="Önceden Amerikada Vizesi Ret Neden . . . " required>
+                    </div>
+                    <div class="form-group">
+                        <label class="AmerikaVatandasGocmenBasvuru" for="form-group-input"> Amerika Göçmen Başvurusu Yaptınız mı ? * </label><br />
+                        <input type="radio" ng-model="amerikaVatandasGocmenBasvuru" value="1" /> Evet
+                        <input type="radio" ng-model="amerikaVatandasGocmenBasvuru" value="0" /> Hayır
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">DS160.2</div>
+        <div class="panel-body">
+            <form>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="BabaDogumTarih" for="form-group-input">Baba Doğum Tarih* </label>
+                        <input type="date" class="form-control" ng-model="babaDogumTarihi" id="babaDogumTarihi" placeholder="Baba Doğum Tarih. . . " required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="BabaAmerikadaMi" for="form-group-input">Baba Amerikada Mi? * </label><br />
+                        <input type="radio" ng-model="babaAmerikadaMi" value="1" /> Evet
+                        <input type="radio" ng-model="babaAmerikadaMi" value="0" /> Hayır
+                    </div>
+                    <div class="form-group">
+                        <label class="AskerlikDurum" for="form-group-input">Askerlik Durumu* </label><br />
+                        <input type="radio" ng-model="askerlikYapti" value="1" id="cvAskerlik" /> Yaptı
+                        <input type="radio" ng-model="askerlikYapti" value="0" /> Yapmadı
+                    </div><!--CV de de alıyoruz acaba babasının askerlik yapıp yapmadığınımı soruyor.-->
+
+                    <div class="form-group">
+                        <label class="SonBesSene" for="form-group-input">Son Bes Senede Yurd Dışına Çıktınız mı ? * </label><br />
+                        <input type="radio" ng-model="sonBesYil" value="1" /> Evet
+                        <input type="radio" ng-model="sonBesYil" value="0" /> Hayır
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="AnneDogumTarih" for="form-group-input">Anne Doğum Tarih* </label>
+                        <input type="date" class="form-control" ng-model="anneDogumTarihi" id="anneDogumTarihi" placeholder="Anne Doğum Tarih. . . " required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="AnneAmerikadaMi" for="form-group-input">Anne Amerikada Mi? * </label><br />
+                        <input type="radio" ng-model="anneAmerikadaMi" value="1" /> Evet
+                        <input type="radio" ng-model="anneAmerikadaMi" value="0" /> Hayır
+                    </div>
+
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">DS160.4 Amerikadaki Akraba Bilgi</div>
+        <div class="panel-body">
+            <form>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="AmerikadakiAkrabaBilgi" for="form-group-input">Amerikadaki Aktaba Bilgi* </label>
+                        <input type="text" class="form-control" ng-model="amerikaAkrabaBilgi" id="amerikaAkrabaBilgi" placeholder="Amerikadaki Aktaba Bilgi. . . " required>
+                    </div>
+
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <button ng-click="BesinciSayfa()">Devam Et </button>
+
 </div>
+        </div>
