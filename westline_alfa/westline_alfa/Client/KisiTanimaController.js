@@ -134,7 +134,7 @@
 
         //5. sayfa
         $scope.BesinciSayfa = function () {
-            $http.post()//ayvayı yedik net.
+            $http.post("Besinci/BesinciSayfa?dogumYeri=" + $scope.dogumYeri + "&dogumUlke=" + $scope.dogumUlke + "&vatandasNo=" + $scope.vatandasNo + "&ikinciVatandasNo=" + $scope.ikinciVatandasNo + "&AbdSsn=" + $scope.AbdSsn + "&amerikadaBulunduMu=" + $scope.amerikadaBulunduMu + "&amerikaBulunmaTarih=" + $scope.amerikaBulunmaTarih + "&amerikaBulunduguSure=" + $scope.amerikaBulunduguSure + "&oncedenAmerikaVizesi=" + $scope.oncedenAmerikaVizesi + "&oncedenAmerikaVizeRet=" + $scope.oncedenAmerikaVizeRet + "&oncedenAmerikaVizeRetNedeni=" + $scope.oncedenAmerikaVizeRetNedeni + "&amerikaVatandasGocmenBasvuru=" + $scope.amerikaVatandasGocmenBasvuru + "&babaDogumTarihi=" + $scope.babaDogumTarihi + "&babaAmerikadaMi=" + $scope.babaAmerikadaMi + "&askerlikYapti=" + $scope.askerlikYapti + "&sonBesYil=" + $scope.sonBesYil + "&anneDogumTarihi=" + $scope.anneDogumTarihi + "&anneAmerikadaMi=" + $scope.anneAmerikadaMi + "&amerikaAkrabaBilgi=" + $scope.amerikaAkrabaBilgi)
                 .success(function (data) {
                     console.log(data.basari);
                     if (data.basari == 1) {
@@ -212,7 +212,7 @@
             });
         };
 
-        scope.updatePasIls = function () {
+        $scope.updatePasIls = function () {
             $http.get("/Ikinci/EyaletCek?id=" + $scope.pasUlke).success(function (data) {
                 $scope.pasEyalets = data;
             }).error(function (data) {

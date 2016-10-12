@@ -11,31 +11,53 @@ namespace westline_alfa.Controllers
     {
         // GET: Besinci
 
-    //    westlineDB db = new westlineDB();
-    //    helper.helper h = new helper.helper();
+        westlineDB db = new westlineDB();
+        helper.helper h = new helper.helper();
 
-    //    public JsonResult BesinciSayfaBildi(string dogumYeri = "", string dogumUlke = "", string vatandasUlke = "", int vatandasNo = -1, int ikiVatandasNo = -1, string AbdSsn = "", bool amerikadaBulunduMu, string amerikadaBulunmaTarih = "", int amerikaBulunduguSure, bool oncedenAmerikaVizesi, bool oncedenAmerikaVizeRet, string oncedenAmerikaVizeRetNedeni = "", bool amerikaVatandasGocmenBasvuru, string babaDogumTarihi = "", bool babaAmerikadaMi, bool askerlikYapti, bool sonBesYil, string anneDogumTarihi = "", bool anneAmerikadaMi)
-    //    {
+        public JsonResult BesinciSayfa(string dogumYeri = "", string dogumUlke = "", string vatandasUlke = "", int vatandasNo = -1, int ikiVatandasNo = -1, string AbdSsn = "", int amerikadaBulunduMu=-1, string amerikadaBulunmaTarih = "", int amerikaBulunduguSure=0, int oncedenAmerikaVizesi = -1, int oncedenAmerikaVizeRet = -1, string oncedenAmerikaVizeRetNedeni = "", int amerikaVatandasGocmenBasvuru=-1, string babaDogumTarihi = "", int babaAmerikadaMi = -1, int askerlikYapti = -1, int sonBesYil = -1, string anneDogumTarihi = "", int anneAmerikadaMi = -1,string amerikaAkrabaBilgi=""){
 
-    //        if (h.FormKontrol(dogumYeri, dogumUlke, vatandasUlke, vatandasNo, ikiVatandasNo, AbdSsn, anneAmerikadaMi, amerikadaBulunduMu))
-    //        {
-    //            Kisi k = db.Kisis.Find(Session["id"]);
-    //            //Burayo nasıl yapacam bilmiyom tam :) 
-    //            var jsonModel = new
-    //            {
-    //                basari = 1
-    //            };
-    //            return Json(jsonModel, JsonRequestBehavior.AllowGet);
-    //        }
-    //        else
-    //        {
-    //            var jsonModel = new
-    //            {
-    //                basari = 0
-    //            };
-    //            return Json(jsonModel, JsonRequestBehavior.AllowGet);
-    //        }
+            if (h.FormKontrol(dogumYeri, dogumUlke, vatandasUlke, vatandasNo, ikiVatandasNo, AbdSsn, anneAmerikadaMi, amerikadaBulunduMu))
+            {
+                Kisi k = db.Kisis.Find(Session["id"]);
+                ds160 ds = new ds160();
+                ds.AbdSsn = AbdSsn;
+                ds.AmerikaAkrabaBilgi = amerikaAkrabaBilgi;
+                ds.AmerikaBulunduguSure = amerikaBulunduguSure.ToString();
+                //ds.AmerikaBulunduguTarih = amerikadaBulunmaTarih.ToDateTime();
+                ds.AmerikadaBulunduMu = amerikadaBulunduMu == 1 ? true : false; ;
+                ds.AmerikaVatandasGocmenBasvuru= amerikaVatandasGocmenBasvuru == 1 ? true : false;
+                ds.AnneAmerikadaMi= anneAmerikadaMi == 1 ? true : false;
+                ds.BabaAmerikadaMi= babaAmerikadaMi == 1 ? true : false;
+                //ds.AnneDogumTarihi = anneDogumTarihi;
+                //ds.BabaDogumTarihi = babaDogumTarihi;
+                //ds.DogumUlke = dogumUlke;
+                // ds.DogumYeri = dogumYeri;
+                ds.VatandasNo = vatandasNo.ToString();
+                ds.IkinciUlkeVatandasNo = ikiVatandasNo.ToString();
+                ds.OncedenAmerikaVizesiAldı = oncedenAmerikaVizesi == 1 ? true : false;
+                ds.OncedenAmerikaVizeRet = oncedenAmerikaVizeRet == 1 ? true : false;
+                ds.OncedenAmerikaVizeRetNedeni = oncedenAmerikaVizeRetNedeni;
+                ds.AmerikaVatandasGocmenBasvuru = amerikaVatandasGocmenBasvuru == 1 ? true : false;
+                //eksik olabilir.
+                db.ds160.Add(ds);
+                db.SaveChanges();
 
-    //    }
+
+                var jsonModel = new
+                {
+                    basari = 1
+                };
+                return Json(jsonModel, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var jsonModel = new
+                {
+                    basari = 0
+                };
+                return Json(jsonModel, JsonRequestBehavior.AllowGet);
+            }
+
+        }
     }
 }
