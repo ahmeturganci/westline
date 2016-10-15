@@ -1,0 +1,182 @@
+﻿
+@{
+    Layout = null;
+}
+@model westline_alfa.Models.Kisi
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/pdf.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+
+        @*kisisel bilgiler*@
+        <div class="kutu">
+            <div class="icerik-1-sol">
+                <div class="icerik-baslik">Kişisel Bilgiler</div>
+                <div class="icerik-kutu">
+                    <span class="baslik">Ad Soyad</span><span>:</span><span class="icerik">@Model.Ad</span>
+                </div>
+
+                <div class="icerik-kutu">
+                    <span class="baslik">TC Kimlik No</span><span>:</span><span class="icerik">@Model.TcKimlikNo</span>
+                </div>
+                <div class="icerik-kutu">
+                    <span class="baslik">Doğum Tarihi</span><span>:</span><span class="icerik">@Model.DogumTarihi</span>
+                </div>
+                <div class="icerik-kutu">
+                    <span class="baslik">E-mail</span><span>:</span><span class="icerik">@Model.Iletisim.Email</span>
+                </div>
+                <div class="icerik-kutu">
+                    <span class="baslik">Telefon</span><span>:</span><span class="icerik">@Model.Iletisim.Telefon</span>
+                </div>
+                <div class="icerik-kutu">
+                    <span class="baslik">Skype</span><span>:</span><span class="icerik">@Model.Iletisim.Skype</span>
+                </div>
+            </div>
+            <div class="icerik-1-sag">
+                <img width="153" src="~/Images/ertugrulungor.jpg" />
+            </div>
+        </div>
+
+        @*Adres*@
+        <div class="kutu">
+            <div class="icerik-baslik">Adres Bilgileri</div>
+            <div class="icerik-kutu">
+                <span class="baslik">Tam Adres</span><span>:</span><span class="icerik">@Model.Iletisim.Adre.TamAdres</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Adres satır 2</span><span>:</span><span class="icerik">@Model.Iletisim.Adre.AdresSatirIki</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Şehir</span><span>:</span><span class="icerik">@Model.Iletisim.Adre.Il</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Ülke</span><span>:</span><span class="icerik">@Model.Iletisim.Adre.Il.Ulke</span>
+            </div>
+        </div>
+
+        @*Eğitim*@
+        <div class="kutu">
+            <div class="icerik-baslik">Üniversite Bilgileri</div>
+            <div class="icerik-kutu">
+                <span class="baslik">Üniversite Adı</span><span>:</span><span class="icerik">@Model.Universite.Ad</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Üniversite Bölüm</span><span>:</span><span class="icerik">@Model.Universite.Bolum</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Üniversite Sınıf</span><span>:</span><span class="icerik">@Model.Universite.Sinif. Sınıf</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Üniversite Numara</span><span>:</span><span class="icerik">@Model.Universite.OkulNo</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Üniversite Açılış</span><span>:</span><span class="icerik">@Model.Universite.AcilisTarihi</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Üniversite Kapanış</span><span>:</span><span class="icerik">@Model.Universite.KapanisTarihi</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Üniversite Tam Adres</span><span>:</span><span class="icerik">@Model.Universite.Adre.TamAdres</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Üniversite Adres satır 2</span><span>:</span><span class="icerik">@Model.Universite.Adre.AdresSatirIki</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Üniversite Üniversiteİl</span><span>:</span><span class="icerik">@Model.Universite.Adre.Il</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Üniversite Ülke</span><span>:</span><span class="icerik">@Model.Universite.Adre.Il.Ulke</span>
+            </div>
+
+            <div class="icerik-baslik">Lise Bilgileri</div>
+            <div class="icerik-kutu">
+                <span class="baslik">Lise Adı</span><span>:</span><span class="icerik">@Model.Lise.Ad</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Lise Başlangıç</span><span>:</span><span class="icerik">@Model.Lise.Baslangic</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Lise Bitiş</span><span>:</span><span class="icerik">@Model.Lise.Bitis</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Lise Alan</span><span>:</span><span class="icerik">@Model.Lise.Alan</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Lise Tam Adres</span><span>:</span><span class="icerik">@Model.Lise.Adre.TamAdres</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Lise Adres satır 2</span><span>:</span><span class="icerik">@Model.Lise.Adre.AdresSatirIki</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Lise Üniversiteİl</span><span>:</span><span class="icerik">@Model.Lise.Adre.Il</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Lise Ülke</span><span>:</span><span class="icerik">@Model.Lise.Adre.Il.Ulke</span>
+            </div>
+        </div>
+
+        @*cv*@
+        <div class="kutu">
+            <div class="icerik-baslik">CV</div>
+            <div class="icerik-kutu">
+                <span class="baslik">Hedef</span><span>:</span><span class="icerik">Yok</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Çalışmak İstenilen İş</span><span>:</span><span class="icerik">Yok</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Askerlik</span><span>:</span><span class="icerik">Muaf</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Medeni Durum</span><span>:</span><span class="icerik">Bekar</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Hobiler</span><span>:</span><span class="icerik">Yok</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Refanslar</span><span>:</span><span class="icerik">Yok</span>
+            </div>
+        </div>
+
+        @*Pasaport*@
+        <div class="kutu">
+            <div class="icerik-baslik">Pasaport</div>
+            <div class="icerik-kutu">
+                <span class="baslik">Pasaport No</span><span>:</span><span class="icerik">@Model.ds160.Pasaport.No</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Pasaport Aldığı Ülke</span><span>:</span><span class="icerik">@Model.ds160.Pasaport.AldigiUlke</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Pasaport Aldığı Sehir</span><span>:</span><span class="icerik">@Model.ds160.Pasaport.AldigiSehir</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Pasaport Başlangıç</span><span>:</span><span class="icerik">@Model.ds160.Pasaport.PasaportBaslangic</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Pasaport Bitiş</span><span>:</span><span class="icerik">@Model.ds160.Pasaport.PasaportBitis</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Pasaport Kayıp/Çalıntı</span><span>:</span><span class="icerik">@{Model.ds160.Pasaport.PasaportKayipCalinti==true?"Evet":"Hayır"}</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Pasaport Ücretini Ödeyen</span><span>:</span><span class="icerik">@Model.ds160.Pasaport.PasaportUcretKisi</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Pasaport Ücret Ödeyen İlişki</span><span>:</span><span class="icerik">@Model.ds160.Pasaport.PasaportUcretKisiAkraba</span>
+            </div>
+            <div class="icerik-kutu">
+                <span class="baslik">Pasaport Ücret Ödeyen No</span><span>:</span><span class="icerik">@Model.ds160.Pasaport.PasaportUcretKisiAkrabaNo</span>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

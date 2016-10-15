@@ -36,8 +36,6 @@ namespace westline_alfa.Models
 
         public virtual Kisi Kisi { get; set; }
 
-        public virtual Kisi Kisi1 { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CvReferan> CvReferans { get; set; }
     }

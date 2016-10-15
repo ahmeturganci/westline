@@ -139,6 +139,7 @@
     <Compile Include="Controllers\IkinciController.cs" />
     <Compile Include="Controllers\IslerController.cs" />
     <Compile Include="Controllers\PasaportController.cs" />
+    <Compile Include="Controllers\PdfController.cs" />
     <Compile Include="Controllers\RandevuController.cs" />
     <Compile Include="Controllers\UcakController.cs" />
     <Compile Include="Controllers\UcuncuController.cs" />
@@ -232,10 +233,12 @@
     <Content Include="Content\Admin\dist\js\pages\dashboard2.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\pdf.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\ertugrulungor.jpg" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
@@ -365,11 +368,11 @@
     <Content Include="Views\YonetimPanel\Index.cshtml" />
     <Content Include="Views\YonetimPanel\IsEkle.cshtml" />
     <Content Include="Views\YonetimPanel\Randevu.cshtml" />
+    <Content Include="Views\Pdf\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Admin\dist\img\" />
-    <Folder Include="Images\" />
     <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>

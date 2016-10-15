@@ -91,16 +91,6 @@ namespace westline_alfa.Models
                 .WithOptional(e => e.Isler)
                 .HasForeignKey(e => e.IsId);
 
-            modelBuilder.Entity<Kisi>()
-                .HasMany(e => e.Cvs)
-                .WithOptional(e => e.Kisi)
-                .HasForeignKey(e => e.KisiId);
-
-            modelBuilder.Entity<Kisi>()
-                .HasMany(e => e.Cvs1)
-                .WithOptional(e => e.Kisi1)
-                .HasForeignKey(e => e.KisiId);
-
             modelBuilder.Entity<Referan>()
                 .HasMany(e => e.CvReferans)
                 .WithOptional(e => e.Referan)
