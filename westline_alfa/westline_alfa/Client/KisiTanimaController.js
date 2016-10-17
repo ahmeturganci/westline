@@ -1,5 +1,5 @@
 ﻿(function (app) {
-    var KisiTanimaController = function ($scope, $http,$location,$window) {
+    var KisiTanimaController = function ($scope, $http, $location, $window, $filter) {
         //1.Sayfa
         $scope.BirinciSayfa = function () {
             $http.post("Birinci/KisiEkle?tc=" + $scope.tc + "&ad=" + $scope.ad + "&ortaAd=" + $scope.ortaAd + "&soyad=" + $scope.soyad + "&email=" + $scope.email + "&tel=" + $scope.tel + "&kendiIs=" + $scope.kendiIs).
@@ -32,6 +32,10 @@
         }
 
         //2.sayfa
+        $scope.$watch('dogumTarih', function (newValue) {
+            $scope.dogumTarih = $filter('date')(newValue, 'yyyy/MM/dd');
+        });
+
         $scope.IkinciSayfa = function () {
             
           
@@ -61,15 +65,30 @@
         }
 
         //3. sayfa
+        $scope.$watch('liseBaslangic', function (newValue) {
+            $scope.liseBaslangic = $filter('date')(newValue, 'yyyy/MM/dd');
+        });
+
+        $scope.$watch('liseBitis', function (newValue) {
+            $scope.liseBitis = $filter('date')(newValue, 'yyyy/MM/dd');
+        });
+
+        $scope.$watch('universiteBaslangic', function (newValue) {
+            $scope.universiteBaslangic = $filter('date')(newValue, 'yyyy/MM/dd');
+        });
+
+        $scope.$watch('universitekapanis', function (newValue) {
+            $scope.universitekapanis = $filter('date')(newValue, 'yyyy/MM/dd');
+        });
+
         $scope.UcuncuSayfa = function () {
             if ($scope.liseBaslangic >= $scope.liseBitis )
             {
                 alert('Lise başlangıc ve bitiş tarihlerini lütfen kontrol ediniz.');
             }
-    else if($scope.universiteBaslangic>$scope.universitekapanis)
-        {
-        alert('Universite başlangıc ve bitiş tarihlerini lütfen kontrol ediniz.');
-
+            else if($scope.universiteBaslangic>$scope.universitekapanis)
+            {
+                alert('Universite başlangıc ve bitiş tarihlerini lütfen kontrol ediniz.');
             }
             else
             {
@@ -86,38 +105,39 @@
             
         };
 
-        //4.Sayfa
-        $scope.DorduncuSayfa = function () {
-            $http.post("Birinci/KisiEkle?tc=" + $scope.tc + "&ad=" + $scope.ad + "&ortaAd=" + $scope.ortaAd + "&soyad=" + $scope.soyad + "&email=" + $scope.email + "&tel=" + $scope.tel + "&kendiIs=" + $scope.kendiIs).
+        //vize ekle
+        $scope.$watch('birinciAlternatif', function (newValue) {
+            $scope.birinciAlternatif = $filter('date')(newValue, 'yyyy/MM/dd');
+        });
 
+        $scope.$watch('ikinciAlternatif', function (newValue) {
+            $scope.ikinciAlternatif = $filter('date')(newValue, 'yyyy/MM/dd');
+        });
+
+        $scope.RandevuAl = function () {
+            $http.post("Randevu/Ekle?altBir=" + $scope.birinciAlternatif + "&altIki=" + $scope.ikinciAlternatif).
                 success(function (data) {
                     console.log(data.basari);
                     if (data.basari == 1) {
-                        $window.location.href = '#/Aktivasyon';
-                    } else {
+                   
+                    }
+                    else {
                         $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
                     }
-                }).error(function (data) {
+             }).error(function (data) {
                     alert("hata");
-                });
+               });
         }
 
-        //vize ekle
-                $scope.RandevuAl = function () {
-                        $http.post("Randevu/Ekle?altBir=" + $scope.birinciAlternatif + "&altIki=" + $scope.ikinciAlternatif).
-                          success(function (data) {
-                                 console.log(data.basari);
-                                 if (data.basari == 1) {
-                   
-                                      } else {
-                                  $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
-                                  }
-                           }).error(function (data) {
-                                   alert("hata");
-                               });
-                }
-
         //Uçak bilgi
+        $scope.$watch('AgidisTarih', function (newValue) {
+            $scope.AgidisTarih = $filter('date')(newValue, 'yyyy/MM/dd');
+        });
+
+        $scope.$watch('BgidisTarih', function (newValue) {
+            $scope.BgidisTarih = $filter('date')(newValue, 'yyyy/MM/dd');
+        });
+
         $scope.UcakBilgi = function () {
             $http.post("Ucak/Ekle?agidisTarih=" + $scope.AgidisTarih + "&bgidisTarih=" + $scope.BgidisTarih + "&agidisSehir=" + $scope.AgidisSehir + "&bgidisSehir=" + $scope.BgidisSehir + "&ahavaKod=" + $scope.AhavaKod + "&bhavaKod=" + $scope.BhavaKod + "&avarisSehir=" + $scope.AvarisSehir + "&bvarisSehir=" + $scope.BvarisSehir + "&avarisKod=" + $scope.AvarisKod + "&bvarisKod=" + $scope.BvarisKod + "&aucusKod=" + $scope.AucusKod + "&bucusKod=" + $scope.BucusKod + "&akalkisSaat=" + $scope.AkalkisSaat + "&bkalkisSaat=" + $scope.BkalkisSaat + "&avarisSaat=" + $scope.AvarisSaat + "&bvarisSaat=" + $scope.BvarisSaat + "&agunDegisim=" + $scope.AgunDegisim + "&bgunDegisim=" + $scope.BgunDegisim).
                 success(function (data) {
@@ -133,8 +153,20 @@
         }
 
         //5. sayfa
+        $scope.$watch('amerikaBulunmaTarih', function (newValue) {
+            $scope.amerikaBulunmaTarih = $filter('date')(newValue, 'yyyy/MM/dd');
+        });
+
+        $scope.$watch('babaDogumTarihi', function (newValue) {
+            $scope.babaDogumTarihi = $filter('date')(newValue, 'yyyy/MM/dd');
+        });
+
+        $scope.$watch('anneDogumTarihi', function (newValue) {
+            $scope.anneDogumTarihi = $filter('date')(newValue, 'yyyy/MM/dd');
+        });
+
         $scope.BesinciSayfa = function () {
-            $http.post("Besinci/BesinciSayfa?dogumYeri=" + $scope.dogumYeri + "&dogumUlke=" + $scope.dogumUlke + "&vatandasNo=" + $scope.vatandasNo + "&ikinciVatandasNo=" + $scope.ikinciVatandasNo + "&AbdSsn=" + $scope.AbdSsn + "&amerikadaBulunduMu=" + $scope.amerikadaBulunduMu + "&amerikaBulunmaTarih=" + $scope.amerikaBulunmaTarih + "&amerikaBulunduguSure=" + $scope.amerikaBulunduguSure + "&oncedenAmerikaVizesi=" + $scope.oncedenAmerikaVizesi + "&oncedenAmerikaVizeRet=" + $scope.oncedenAmerikaVizeRet + "&oncedenAmerikaVizeRetNedeni=" + $scope.oncedenAmerikaVizeRetNedeni + "&amerikaVatandasGocmenBasvuru=" + $scope.amerikaVatandasGocmenBasvuru + "&babaDogumTarihi=" + $scope.babaDogumTarihi + "&babaAmerikadaMi=" + $scope.babaAmerikadaMi + "&askerlikYapti=" + $scope.askerlikYapti + "&sonBesYil=" + $scope.sonBesYil + "&anneDogumTarihi=" + $scope.anneDogumTarihi + "&anneAmerikadaMi=" + $scope.anneAmerikadaMi + "&amerikaAkrabaBilgi=" + $scope.amerikaAkrabaBilgi)
+            $http.post("Besinci/BesinciSayfa?dogumYeri=" + $scope.dogumYeri + "&vatandasNo=" + $scope.vatandasNo + "&ikinciVatandasNo=" + $scope.ikinciVatandasNo + "&AbdSsn=" + $scope.AbdSsn + "&amerikadaBulunduMu=" + $scope.amerikadaBulunduMu + "&amerikaBulunmaTarih=" + $scope.amerikaBulunmaTarih + "&amerikaBulunduguSure=" + $scope.amerikaBulunduguSure + "&oncedenAmerikaVizesi=" + $scope.oncedenAmerikaVizesi + "&oncedenAmerikaVizeRet=" + $scope.oncedenAmerikaVizeRet + "&oncedenAmerikaVizeRetNedeni=" + $scope.oncedenAmerikaVizeRetNedeni + "&amerikaVatandasGocmenBasvuru=" + $scope.amerikaVatandasGocmenBasvuru + "&babaDogumTarihi=" + $scope.babaDogumTarihi + "&babaAmerikadaMi=" + $scope.babaAmerikadaMi + "&askerlikYapti=" + $scope.askerlikYapti + "&sonBesYil=" + $scope.sonBesYil + "&anneDogumTarihi=" + $scope.anneDogumTarihi + "&anneAmerikadaMi=" + $scope.anneAmerikadaMi + "&amerikaAkrabaBilgi=" + $scope.amerikaAkrabaBilgi)
                 .success(function (data) {
                     console.log(data.basari);
                     if (data.basari == 1) {

@@ -18,8 +18,6 @@ namespace westline_alfa.Models
 
         public int? DogumYeri { get; set; }
 
-        public int? DogumUlke { get; set; }
-
         public int? VatandasUlke { get; set; }
 
         [StringLength(50)]

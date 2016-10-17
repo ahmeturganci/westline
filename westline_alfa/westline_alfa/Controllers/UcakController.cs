@@ -21,7 +21,7 @@ namespace westline_alfa.Controllers
                 //TimeSpan Varistime = TimeSpan.Parse(akalkisSaat);
                 Ucu gidis = new Ucu()
                 {
-                    //GidisTarih = Convert.ToDateTime(agidisTarih),
+                    GidisTarih = Convert.ToDateTime(agidisTarih),
                     GidisSehir = agidisSehir,
                     GidisHavaalaniKod = ahavaKod,
                     VarisSehir = avarisSehir,
@@ -47,7 +47,7 @@ namespace westline_alfa.Controllers
                 //TimeSpan DVaristime = TimeSpan.Parse(bkalkisSaat);
                 Ucu donus = new Ucu()
                 {
-                    //GidisTarih = Convert.ToDateTime(agidisTarih),
+                    GidisTarih = Convert.ToDateTime(agidisTarih),
                     GidisSehir = bgidisSehir,
                     GidisHavaalaniKod = bhavaKod,
                     VarisSehir = bvarisSehir,

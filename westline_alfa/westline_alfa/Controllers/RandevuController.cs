@@ -16,8 +16,8 @@ namespace westline_alfa.Controllers
             if (h.FormKontrol(altBir, altIki) || Session["id"] != null)
             {
                 Randevu r = new Randevu();
-                //r.AlternatifBir = Convert.ToDateTime(altBir);
-                //r.AlternatifIki = Convert.ToDateTime(altIki);
+                r.AlternatifBir = Convert.ToDateTime(altBir);
+                r.AlternatifIki = Convert.ToDateTime(altIki);
                 r.Onay = false;
                 r.Kisi = db.Kisis.Find(Session["id"]);
 

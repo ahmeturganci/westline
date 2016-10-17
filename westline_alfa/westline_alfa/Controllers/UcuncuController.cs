@@ -24,8 +24,8 @@ namespace westline_alfa.Controllers
 
                 Lise l = new Lise();
                 l.Ad = liseAd;
-                //l.Baslangic = Convert.ToDateTime(baslangic);
-                //l.Bitis = Convert.ToDateTime(bitis);
+                l.Baslangic = Convert.ToDateTime(baslangic);
+                l.Bitis = Convert.ToDateTime(bitis);
                 l.Alan = alan;
 
                 Adre a = new Adre();
@@ -42,8 +42,8 @@ namespace westline_alfa.Controllers
                 u.Sinif = sinif;
                 u.Bolum = bolum;
                 u.OkulNo = okulNo;
-                //u.AcilisTarihi = Convert.ToDateTime(acilis);
-                //u.KapanisTarihi = Convert.ToDateTime(kapanis);
+                u.AcilisTarihi = Convert.ToDateTime(acilis);
+                u.KapanisTarihi = Convert.ToDateTime(kapanis);
                 u.Tel = uniTel;
 
                 Adre uniA = new Adre();

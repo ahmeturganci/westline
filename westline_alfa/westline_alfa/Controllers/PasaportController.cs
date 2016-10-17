@@ -22,6 +22,8 @@ namespace westline_alfa.Controllers
                 p.PasaportUcretKisi = ucretKarsilayan;
                 p.PasaportUcretKisiAkraba = akrabalikIliski;
                 p.PasaportUcretKisiAkrabaNo = ucretKarsilayanTel;
+                p.PasaportBaslangic = Convert.ToDateTime(baslangicTarih);
+                p.PasaportBitis = Convert.ToDateTime(bitisTarih);
                 db.Pasaports.Add(p);
 
                 Kisi k = db.Kisis.Find(Session["id"]);
