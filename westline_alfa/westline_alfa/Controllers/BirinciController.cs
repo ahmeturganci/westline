@@ -26,11 +26,21 @@ namespace westline_alfa.Controllers
                     else if (sayac == 1) id = Request.QueryString[i];
                     else
                     {
-                        Deger d = new Deger();
-                        d.InputId = Convert.ToInt32(id);
-                        d.Icerik = icerik;
-                        d.KisiId = 1;
-                        db.Degers.Add(d);
+                        Deger d;
+                        int inputId = Convert.ToInt32(id);
+                        if (db.Degers.Any(x=>x.KisiId ==1 && x.InputId == inputId))
+                        {
+                            d = db.Degers.FirstOrDefault(x=> x.KisiId == 1 && x.InputId == inputId);
+                            d.Icerik = icerik;
+                        }
+                        else
+                        {
+                            d = new Deger();
+                            d.InputId = Convert.ToInt32(id);
+                            d.Icerik = icerik;
+                            d.KisiId = 1;
+                            db.Degers.Add(d);
+                        }
                         sayac = 0;
                         continue;
                     }
@@ -94,6 +104,14 @@ namespace westline_alfa.Controllers
             var jsonModel = (object)null;
             foreach (var i in db.Inputs.Where(x => x.Sayfa == sayfa))
             {
+                bool kontrol = false;
+                string icerik = "";
+                if(db.Degers.Any(x=>x.InputId == i.Id && x.KisiId == 1))
+                {
+                    kontrol = true;
+                    icerik = db.Degers.FirstOrDefault(x => x.InputId == i.Id && x.KisiId == 1).Icerik;
+                }
+
                 if(i.Tur.Id != 4)
                 {
                     jsonModel = new
@@ -104,18 +122,22 @@ namespace westline_alfa.Controllers
                         iTur = i.Tur.Ad,
                         Zorunlu = i.Zorunlu == true ? "*" : "",
                         Name = i.Zorunlu == true ? "1" : "0",
-                        Max = i.Maxlength != null ? i.Maxlength : 1000
+                        Max = i.Maxlength != null ? i.Maxlength : 1000,
+                        Icerik = kontrol == true ? icerik : ""
                     };
                 }
                 else
                 {
                     List<Object> secenekler = new List<object>();
+                    int icerikId = 0;
+                    if (kontrol) icerikId = Convert.ToInt32(db.Degers.FirstOrDefault(x => x.KisiId == 1 && x.InputId == i.Id).Icerik);
                     foreach (var j in db.Seceneks.Where(x=>x.InputId==i.Id))
                     {
                         var jsonSecenekModel = new
                         {
                             Id = j.Id,
-                            secenek = j.Icerik
+                            secenek = j.Icerik,
+                            Secili = kontrol == true ? icerikId == 0 ? 0 : j.Id == icerikId ? 1 : 0 : 0
                         };
                         secenekler.Add(jsonSecenekModel);
                     }

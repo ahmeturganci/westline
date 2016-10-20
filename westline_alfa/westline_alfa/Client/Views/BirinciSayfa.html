@@ -1,7 +1,6 @@
 ﻿
 <div class="tab-pane" id="birincisayfa">
     <div ng-controller="KisiTanimaController">
-        <h1 ng-model="deneme">Adım 1</h1>
         <h3>{{birinciMesaj}}</h3>
         <form id="profile">
             <fieldset>
@@ -9,10 +8,15 @@
                 <!-- required html5 o input dolu olack :D -->
                 <div class="form-group" ng-repeat="n in birinciElemans">
                     <label for="form-group-input">{{n.Aciklama}}{{n.Zorunlu}} </label>
-                    <input ng-if="n.iTur !== 'radio'" type="{{n.iTur}}" id="{{n.Id}}" name="{{n.Name}}" class="form-control" maxlength="{{n.Max}}" placeholder="{{n.Placeholder}}" required>
+                    <input ng-if="n.iTur !== 'radio'" type="{{n.iTur}}" id="{{n.Id}}" name="{{n.Name}}" class="form-control" maxlength="{{n.Max}}" placeholder="{{n.Placeholder}}" value="{{n.Icerik}}" required>
                     <br />
                     <span ng-if="n.iTur === 'radio'" ng-repeat="s in n.Secenek">
-                        <input type="{{n.iTur}}" id="{{n.Id}}" value="{{s.Id}}" name="rd" /> {{s.secenek}}
+                        <span ng-if="s.Secili === 0">
+                            <input type="{{n.iTur}}" id="{{n.Id}}" value="{{s.Id}}" name="rd" /> {{s.secenek}}
+                        </span>
+                        <span ng-if="s.Secili === 1">
+                            <input type="{{n.iTur}}" id="{{n.Id}}" value="{{s.Id}}" name="rd" checked/> {{s.secenek}}
+                        </span>
                     </span>
                 </div>
             </fieldset>
