@@ -181,6 +181,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\gsdk-base.css" />
+    <Content Include="assets\img\default-avatar.png" />
+    <Content Include="assets\img\favicon.ico" />
+    <Content Include="assets\img\new_logo.png" />
+    <Content Include="assets\img\thumb_list_boat.png" />
+    <Content Include="assets\img\thumb_list_place.png" />
+    <Content Include="assets\img\thumb_register.png" />
+    <Content Include="assets\img\tim_80x80.png" />
+    <Content Include="assets\img\wizard-boat.jpg" />
+    <Content Include="assets\img\wizard-city.jpg" />
+    <Content Include="assets\img\wizard.jpg" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\jquery-1.10.2.js" />
+    <Content Include="assets\js\jquery.bootstrap.wizard.js" />
+    <Content Include="assets\js\jquery.validate.min.js" />
+    <Content Include="assets\js\wizard.js" />
     <Content Include="Client\KisiModul.js" />
     <Content Include="Client\KisiTanimaController.js" />
     <Content Include="Client\Part8Controller.js" />
@@ -337,6 +354,9 @@
     <Content Include="Content\Admin\build\less\timeline.less" />
     <Content Include="Content\Admin\build\less\users-list.less" />
     <Content Include="Content\Admin\build\less\variables.less" />
+    <Content Include="assets\css\.DS_Store" />
+    <Content Include="assets\img\.DS_Store" />
+    <Content Include="assets\js\.DS_Store" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\btnUpload.min.css" />
     <Content Include="Scripts\jquery-1.10.2.js" />
