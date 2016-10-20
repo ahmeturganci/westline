@@ -19,6 +19,7 @@ namespace westline_alfa.Models
         public virtual DbSet<Belge> Belges { get; set; }
         public virtual DbSet<Cv> Cvs { get; set; }
         public virtual DbSet<CvReferan> CvReferans { get; set; }
+        public virtual DbSet<Deger> Degers { get; set; }
         public virtual DbSet<Dil> Dils { get; set; }
         public virtual DbSet<DilKisi> DilKisis { get; set; }
         public virtual DbSet<ds160> ds160 { get; set; }
@@ -27,6 +28,7 @@ namespace westline_alfa.Models
         public virtual DbSet<Ilce> Ilces { get; set; }
         public virtual DbSet<Iletisim> Iletisims { get; set; }
         public virtual DbSet<IngilizceSeviye> IngilizceSeviyes { get; set; }
+        public virtual DbSet<Input> Inputs { get; set; }
         public virtual DbSet<Isler> Islers { get; set; }
         public virtual DbSet<Kisi> Kisis { get; set; }
         public virtual DbSet<KisiI> KisiIs { get; set; }
@@ -36,7 +38,9 @@ namespace westline_alfa.Models
         public virtual DbSet<Pasaport> Pasaports { get; set; }
         public virtual DbSet<Randevu> Randevus { get; set; }
         public virtual DbSet<Referan> Referans { get; set; }
+        public virtual DbSet<Secenek> Seceneks { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Tur> Turs { get; set; }
         public virtual DbSet<Ucu> Ucus { get; set; }
         public virtual DbSet<Ulke> Ulkes { get; set; }
         public virtual DbSet<Universite> Universites { get; set; }

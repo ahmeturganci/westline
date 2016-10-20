@@ -28,6 +28,10 @@ namespace westline_alfa.helper
             };
             return Json(jsonModel, JsonRequestBehavior.AllowGet);
         }
+         
+
+
+
         public JsonResult IngilizceSeviyeler() {
             List<Object> jsonModelList = new List<object>();
             foreach (var i in db.IngilizceSeviyes)

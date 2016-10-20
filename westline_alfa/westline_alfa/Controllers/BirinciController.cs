@@ -91,5 +91,51 @@ namespace westline_alfa.Controllers
                 return Json(jsonModel, JsonRequestBehavior.AllowGet); ;
             }
         }
+
+        public JsonResult ElemanCek(int sayfa)
+        {
+            List<Object> jsonModelList = new List<object>();
+            var jsonModel = (object)null;
+            foreach (var i in db.Inputs.Where(x => x.Sayfa == sayfa))
+            {
+                if(i.Tur.Id != 4)
+                {
+                    jsonModel = new
+                    {
+                        Aciklama = i.Aciklama,
+                        Placeholder = i.Placeholder,
+                        iTur = i.Tur.Ad,
+                        Zorunlu = i.Zorunlu == true ? "*" : "",
+                        Name = i.Zorunlu == true ? "zorunlu" : "",
+                        Max = i.Maxlength != null ? i.Maxlength : 1000
+                    };
+                }
+                else
+                {
+                    List<Object> secenekler = new List<object>();
+                    foreach (var j in db.Seceneks.Where(x=>x.InputId==i.Id))
+                    {
+                        var jsonSecenekModel = new
+                        {
+                            Id = j.Id,
+                            secenek = j.Icerik
+                        };
+                        secenekler.Add(jsonSecenekModel);
+                    }
+
+                    jsonModel = new
+                    {
+                        Aciklama = i.Aciklama,
+                        iTur = i.Tur.Ad,
+                        Zorunlu = i.Zorunlu == true ? "*" : "",
+                        Name = i.Zorunlu == true ? "zorunlu" : "",
+                        Secenek = secenekler
+                    };
+                }
+                
+                jsonModelList.Add(jsonModel);
+            }
+            return Json(jsonModelList, JsonRequestBehavior.AllowGet);
+        }
     }
 }

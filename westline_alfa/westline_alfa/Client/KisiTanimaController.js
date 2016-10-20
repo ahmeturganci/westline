@@ -259,6 +259,14 @@
             console.log(data);
         });
 
+
+        //Birinci sayfa eleman cek
+        $http.get("/Birinci/ElemanCek?sayfa=1").success(function (data) {
+            console.log(data);
+            $scope.birinciElemans = data;
+        }).error(function (data) {
+            console.log(data);
+        });
     }
     app.controller("KisiTanimaController", KisiTanimaController);
 }(angular.module("KisiModul")))

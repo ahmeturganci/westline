@@ -156,6 +156,7 @@
     <Compile Include="Models\Belge.cs" />
     <Compile Include="Models\Cv.cs" />
     <Compile Include="Models\CvReferan.cs" />
+    <Compile Include="Models\Deger.cs" />
     <Compile Include="Models\Dil.cs" />
     <Compile Include="Models\DilKisi.cs" />
     <Compile Include="Models\ds160.cs" />
@@ -164,6 +165,7 @@
     <Compile Include="Models\Ilce.cs" />
     <Compile Include="Models\Iletisim.cs" />
     <Compile Include="Models\IngilizceSeviye.cs" />
+    <Compile Include="Models\Input.cs" />
     <Compile Include="Models\Isler.cs" />
     <Compile Include="Models\Kisi.cs" />
     <Compile Include="Models\KisiI.cs" />
@@ -173,7 +175,9 @@
     <Compile Include="Models\Pasaport.cs" />
     <Compile Include="Models\Randevu.cs" />
     <Compile Include="Models\Referan.cs" />
+    <Compile Include="Models\Secenek.cs" />
     <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\Tur.cs" />
     <Compile Include="Models\Ucu.cs" />
     <Compile Include="Models\Ulke.cs" />
     <Compile Include="Models\Universite.cs" />
