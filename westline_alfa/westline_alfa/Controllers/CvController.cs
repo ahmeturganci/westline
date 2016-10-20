@@ -14,8 +14,7 @@ namespace westline_alfa.Controllers
         public JsonResult CvEkle(string cvHedef = "", string cvCalismaIstek = "", int cvYabanciDil = -1, int cvAskerlik = -1, int cvMedeni = -1, int cvPcBilgi = -1, string cvHobiler = "", string cvRefTel = "", string cvRefAdSoyad = "")
         {
             helper.helper h = new helper.helper();
-            if (h.FormKontrol(cvYabanciDil, cvRefAdSoyad, cvRefTel) || Session["id"] != null)
-            {
+            
 
                 Kisi k = new Kisi();
                 Cv cv = new Cv();
@@ -48,15 +47,7 @@ namespace westline_alfa.Controllers
 
 
                 return Json(jsonModel, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                var jsonModel = new
-                {
-                    basari = 0
-                };
-                return Json(jsonModel, JsonRequestBehavior.AllowGet);
-            }
+            
         }
         public JsonResult cvCeken()
         {

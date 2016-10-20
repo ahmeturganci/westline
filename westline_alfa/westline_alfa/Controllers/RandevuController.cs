@@ -13,8 +13,7 @@ namespace westline_alfa.Controllers
         helper.helper h = new helper.helper();
         public JsonResult Ekle(string altBir = "", string altIki = "")
         {
-            if (h.FormKontrol(altBir, altIki) || Session["id"] != null)
-            {
+          
                 Randevu r = new Randevu();
                 r.AlternatifBir = Convert.ToDateTime(altBir);
                 r.AlternatifIki = Convert.ToDateTime(altIki);
@@ -27,15 +26,6 @@ namespace westline_alfa.Controllers
                 };
                 return Json(jsonModel, JsonRequestBehavior.AllowGet);
 
-            }
-            else
-            {
-                var jsonModel = new
-                {
-                    basari = 0
-                };
-                return Json(jsonModel, JsonRequestBehavior.AllowGet);
-            }
         }
     }
 }

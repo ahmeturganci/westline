@@ -13,8 +13,7 @@ namespace westline_alfa.Controllers
         helper.helper h = new helper.helper();
         public JsonResult PasaportEkle(string no = "", int il = -1 ,string ilce = "", string baslangicTarih = "", string bitisTarih = "", int calindiMi = -1, string ucretKarsilayan = "", string akrabalikIliski = "", string ucretKarsilayanTel = "")
         {
-            if(h.FormKontrol(no,ilce,baslangicTarih,bitisTarih,calindiMi,ucretKarsilayan,akrabalikIliski) || Session["id"] != null)
-            {
+           
                 Pasaport p = new Pasaport();
                 p.No = no;
                 //baslangic ve bitis
@@ -33,14 +32,7 @@ namespace westline_alfa.Controllers
                     basari = 1
                 };
                 return Json(jsonModel, JsonRequestBehavior.AllowGet);
-            }
-            else{
-                var jsonModel = new
-                {
-                    basari = 0
-                };
-                return Json(jsonModel, JsonRequestBehavior.AllowGet);
-            }
+          
         }
     }
 }

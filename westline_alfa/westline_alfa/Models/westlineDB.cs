@@ -34,6 +34,7 @@ namespace westline_alfa.Models
         public virtual DbSet<KisiI> KisiIs { get; set; }
         public virtual DbSet<KisiReferan> KisiReferans { get; set; }
         public virtual DbSet<KisiUcu> KisiUcus { get; set; }
+        public virtual DbSet<Kullanici> Kullanicis { get; set; }
         public virtual DbSet<Lise> Lises { get; set; }
         public virtual DbSet<Pasaport> Pasaports { get; set; }
         public virtual DbSet<Randevu> Randevus { get; set; }
@@ -94,6 +95,11 @@ namespace westline_alfa.Models
                 .HasMany(e => e.KisiIs)
                 .WithOptional(e => e.Isler)
                 .HasForeignKey(e => e.IsId);
+
+            modelBuilder.Entity<Kullanici>()
+                .HasMany(e => e.Degers)
+                .WithOptional(e => e.Kullanici)
+                .HasForeignKey(e => e.KisiId);
 
             modelBuilder.Entity<Referan>()
                 .HasMany(e => e.CvReferans)

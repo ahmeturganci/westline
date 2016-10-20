@@ -13,52 +13,36 @@ namespace westline_alfa.Controllers
     {
         helper.helper h = new helper.helper();
         westlineDB db = new westlineDB();
-        public JsonResult KisiEkle(string tc = "", string ad = "", string ortaAd = "", string soyad = "", string email = "", string tel = "", int kendiIs = -1)
+        public JsonResult KisiEkle()
         {
             helper.helper h = new helper.helper();
-            if (h.FormKontrol(tc, ad, soyad, email, tel, kendiIs) || Session["id"] != null)
+            int sayac = 0;
+            string icerik = "", id = "";
+            if (h.FormKontrol(Request.QueryString))
             {
-                Kisi k = new Kisi();
-                k.TcKimlikNo = tc;
-                k.Ad = ad;
-                k.OrtaAd = ortaAd;
-                k.Soyad = soyad;
-                k.kendiIsBuldu = kendiIs == 0 ? false : true;
+                for (int i = 0; i < Request.QueryString.Count; i++)
+                {
+                    if (sayac == 0) icerik = Request.QueryString[i];
+                    else if (sayac == 1) id = Request.QueryString[i];
+                    else
+                    {
+                        Deger d = new Deger();
+                        d.InputId = Convert.ToInt32(id);
+                        d.Icerik = icerik;
+                        d.KisiId = 1;
+                        db.Degers.Add(d);
+                        sayac = 0;
+                        continue;
+                    }
+                    sayac++;
+                }
 
-                Iletisim i = new Iletisim();
-                i.Email = email;
-                i.Telefon = tel;
-
-                db.Iletisims.Add(i);
-
-                k.Iletisim = i;
-                db.Kisis.Add(k);
                 db.SaveChanges();
 
-                Session["id"] = k.Id;
                 var jsonModel = new
                 {
-                    basari = 1,
-                    id = k.Id,
-                    ad = k.Ad,
-                    ortaAd = k.OrtaAd,
-                    soyad = k.Soyad,
-                    mail = i.Email,
-                    telefon = i.Telefon
+                    basari = 1
                 };
-
-                h.AktivasyonEkle(k.Id);
-
-                /*helper.smsapi sms = new helper.smsapi("5399706684","03011995e","ILETI MRKZI");
-                if (sms.SendSMS(new string[] { "5350560103" }, "DENEME MESAJI"))
-                {
-                    // Mesaj Gönderildi
-                }
-                else
-                {
-                    // Mesaj Gönderilemedi
-                }*/
-
                 return Json(jsonModel, JsonRequestBehavior.AllowGet);
             }
             else
@@ -67,8 +51,20 @@ namespace westline_alfa.Controllers
                 {
                     basari = 0
                 };
-                return Json(jsonModel, JsonRequestBehavior.AllowGet); 
+                return Json(jsonModel, JsonRequestBehavior.AllowGet);
             }
+            
+            /*helper.smsapi sms = new helper.smsapi("5399706684","03011995e","ILETI MRKZI");
+            if (sms.SendSMS(new string[] { "5350560103" }, "DENEME MESAJI"))
+            {
+                // Mesaj Gönderildi
+            }
+            else
+            {
+                // Mesaj Gönderilemedi
+            }*/
+
+
         }
 
         public JsonResult Kontrol(string kod)
@@ -102,11 +98,12 @@ namespace westline_alfa.Controllers
                 {
                     jsonModel = new
                     {
+                        Id = i.Id,
                         Aciklama = i.Aciklama,
                         Placeholder = i.Placeholder,
                         iTur = i.Tur.Ad,
                         Zorunlu = i.Zorunlu == true ? "*" : "",
-                        Name = i.Zorunlu == true ? "zorunlu" : "",
+                        Name = i.Zorunlu == true ? "1" : "0",
                         Max = i.Maxlength != null ? i.Maxlength : 1000
                     };
                 }
@@ -125,10 +122,11 @@ namespace westline_alfa.Controllers
 
                     jsonModel = new
                     {
+                        Id = i.Id,
                         Aciklama = i.Aciklama,
                         iTur = i.Tur.Ad,
                         Zorunlu = i.Zorunlu == true ? "*" : "",
-                        Name = i.Zorunlu == true ? "zorunlu" : "",
+                        Name = i.Zorunlu == true ? "1" : "0",
                         Secenek = secenekler
                     };
                 }

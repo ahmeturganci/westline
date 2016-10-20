@@ -1,8 +1,8 @@
 ﻿(function (app) {
     var KisiTanimaController = function ($scope, $http, $location, $window, $filter) {
         //1.Sayfa
-        $scope.BirinciSayfa = function () {
-            $http.post("Birinci/KisiEkle?tc=" + $scope.tc + "&ad=" + $scope.ad + "&ortaAd=" + $scope.ortaAd + "&soyad=" + $scope.soyad + "&email=" + $scope.email + "&tel=" + $scope.tel + "&kendiIs=" + $scope.kendiIs).
+        function Birinci(link) {
+            $http.post("Birinci/KisiEkle?" + link).
                 
                 success(function (data) {
                     console.log(data.basari);
@@ -267,6 +267,43 @@
         }).error(function (data) {
             console.log(data);
         });
+
+        var elemanSayac = 0;
+        var link = "";
+        $scope.profilSayfa = function (formId) {
+            elemanSayac = 0;
+            link = "";
+            $('#profile').find('input').each(function (idx, input) {
+                // Do your DOM manipulation here
+                if ($(input).attr('type') != "radio") {
+                    if (elemanSayac == 0) {
+                        link += elemanSayac + "=" + $(input).val();
+                    } else {
+                        link += "&" + elemanSayac + "=" + $(input).val();
+                    }
+                    elemanSayac++;
+                    link += "&" + elemanSayac + "=" + $(input).attr('id');
+                    elemanSayac++;
+                    link += "&" + elemanSayac + "=" + $(input).attr('name');
+                    elemanSayac++;
+                } else {
+                    if ($(input).is(':checked')) {
+                        if (elemanSayac == 0) {
+                            link += elemanSayac + "=" + $(input).val();
+                        } else {
+                            link += "&" + elemanSayac + "=" + $(input).val();
+                        }
+                        elemanSayac++;
+                        link += "&" + elemanSayac + "=" + $(input).attr('id');
+                        elemanSayac++;
+                        link += "&" + elemanSayac + "=" + $(input).attr('name');
+                        elemanSayac++;
+                    }
+                }
+            });
+            console.log(link);
+            Birinci(link);
+        };
     }
     app.controller("KisiTanimaController", KisiTanimaController);
 }(angular.module("KisiModul")))

@@ -20,6 +20,6 @@ namespace westline_alfa.Models
 
         public virtual Input Input { get; set; }
 
-        public virtual Kisi Kisi { get; set; }
+        public virtual Kullanici Kullanici { get; set; }
     }
 }

@@ -19,9 +19,6 @@ namespace westline_alfa.Controllers
             string postaKodu = "",
             int adresEyaletId = -1, string acilAd = "", string acilSoyad = "", string acilTel = "")
         {
-            if (h.FormKontrol(babaAd, anneAdSoyad, ingilizceSeviye, tamAdres, pasaport, dogumTarih, tamAdres, eyalet, postaKodu,
-                adresEyaletId, acilAd, acilSoyad, acilTel) || Session["id"] != null)
-            {
                 Kisi k = db.Kisis.Find(Session["id"]);
                 k.BabaAdi = babaAd;
                 k.AnneAdi = anneAdSoyad;
@@ -53,15 +50,7 @@ namespace westline_alfa.Controllers
                     basari = 1
                 };
                 return Json(jsonModel, JsonRequestBehavior.AllowGet);
-            }
-            else
-            { 
-                var jsonModel = new
-                {
-                    basari = 0
-                };
-                return Json(jsonModel, JsonRequestBehavior.AllowGet);
-            }
+            
 
         }
 

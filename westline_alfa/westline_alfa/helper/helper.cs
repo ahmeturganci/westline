@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -28,9 +29,6 @@ namespace westline_alfa.helper
             };
             return Json(jsonModel, JsonRequestBehavior.AllowGet);
         }
-         
-
-
 
         public JsonResult IngilizceSeviyeler() {
             List<Object> jsonModelList = new List<object>();
@@ -76,27 +74,25 @@ namespace westline_alfa.helper
             return Json(jsonModelList, JsonRequestBehavior.AllowGet);
         }
 
-        public bool FormKontrol(params object[] elemanlar)
+        public bool FormKontrol(NameValueCollection elemanlar)
         {
             bool kontrol = true;
-            foreach (object i in elemanlar)
+            int sayac = 0;
+            string icerik = "";
+            for (int i = 0; i <elemanlar.Count; i++)
             {
-                if (i is string )
+                if (sayac == 0) icerik = elemanlar[i];
+                else if(sayac == 2)
                 {
-                    if ((string)i == "undefined")
+                    if(elemanlar[i] == "1" && icerik == "")
                     {
                         kontrol = false;
                         break;
                     }
+                    sayac = 0;
+                    continue;
                 }
-                else
-                {
-                    if((int)i == -1)
-                    {
-                        kontrol = false;
-                        break;
-                    }
-                }
+                sayac++;
             }
 
             return kontrol;

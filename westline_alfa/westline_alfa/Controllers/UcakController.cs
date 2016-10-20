@@ -13,8 +13,7 @@ namespace westline_alfa.Controllers
         westlineDB db = new westlineDB();
         public JsonResult Ekle(string agidisTarih = "", string bgidisTarih = "", string agidisSehir = "", string bgidisSehir = "", string ahavaKod = "", string bhavaKod = "", string avarisSehir = "", string bvarisSehir = "", string avarisKod = "", string bvarisKod = "", string aucusKod = "", string bucusKod = "", string akalkisSaat = "", string bkalkisSaat = "", string avarisSaat = "", string bvarisSaat = "", int agunDegisim = -1, int bgunDegisim = -1)
         {
-            if (h.FormKontrol(agidisTarih, bgidisTarih, agidisSehir, bgidisSehir, ahavaKod, bhavaKod, avarisSehir, bvarisSehir, avarisKod, bvarisKod, aucusKod, bucusKod, akalkisSaat, bkalkisSaat, avarisSaat, bvarisSaat, agunDegisim, bgunDegisim))
-            {
+           
                 Kisi k = db.Kisis.Find(Session["id"]);
 
                 //TimeSpan Kalkistime = TimeSpan.Parse(akalkisSaat);
@@ -76,15 +75,7 @@ namespace westline_alfa.Controllers
                     basari = 1
                 };
                 return Json(jsonModel, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                var jsonModel = new
-                {
-                    basari = 0
-                };
-                return Json(jsonModel, JsonRequestBehavior.AllowGet);
-            }
+           
         }
     }
 }

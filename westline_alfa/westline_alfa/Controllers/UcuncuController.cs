@@ -18,10 +18,7 @@ namespace westline_alfa.Controllers
             int uniEyalet = -1, string uniPostaKodu = "")
         {
             helper.helper h = new helper.helper();
-            if (h.FormKontrol(liseAd, baslangic, bitis, alan, liseTamAdres, liseEyalet, lisePostaKodu, universiteAd, sinif,
-                bolum, okulNo, acilis, kapanis, uniTel, uniTamAdres, uniEyalet, uniPostaKodu) || Session["id"] != null)
-            {
-
+            
                 Lise l = new Lise();
                 l.Ad = liseAd;
                 l.Baslangic = Convert.ToDateTime(baslangic);
@@ -69,15 +66,7 @@ namespace westline_alfa.Controllers
                     basari = 1
                 };
                 return Json(jsonModel, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                var jsonModel = new
-                {
-                    basari = 0
-                };
-                return Json(jsonModel, JsonRequestBehavior.AllowGet);
-            }
+           
         }
     }
 }

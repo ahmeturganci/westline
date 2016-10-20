@@ -171,6 +171,7 @@
     <Compile Include="Models\KisiI.cs" />
     <Compile Include="Models\KisiReferan.cs" />
     <Compile Include="Models\KisiUcu.cs" />
+    <Compile Include="Models\Kullanici.cs" />
     <Compile Include="Models\Lise.cs" />
     <Compile Include="Models\Pasaport.cs" />
     <Compile Include="Models\Randevu.cs" />
