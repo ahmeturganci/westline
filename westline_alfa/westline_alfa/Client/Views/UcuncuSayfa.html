@@ -1,153 +1,147 @@
-﻿<div ng-controller="KisiTanimaController">
-    <h1>Adım 3 </h1>
-    <div class="panel">
-        <div class="panel-body">
-            <div class="panel-heading">asdas</div>
-            <form>
-                <fieldset>
-                    <div class="form-group">
-                        <label class="LiseAd" for="form-group-input">Lise Ad* </label>
-                        <input type="text" class="form-control" ng-model="liseAd" id="liseAd" placeholder="Lise Adı . . ." required>
-                    </div>
+﻿<div class="tab-pane" id="ucuncusayfa">
 
-                    <div class="form-group">
-                        <label class="LiseAd" for="form-group-input">Lise Alan* </label>
-                        <input type="text" class="form-control" ng-model="liseAlan" id="liseAlan" placeholder="Lise Alan . . ." required>
-                    </div>
+    <div ng-controller="KisiTanimaController">
+        <h1>Adım 3 </h1>
+        <div class="panel">
+            <div class="panel-body">
+                <div class="panel-heading">asdas</div>
+                <form>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="LiseAd" for="form-group-input">Lise Ad* </label>
+                            <input type="text" class="form-control" ng-model="liseAd" id="liseAd" placeholder="Lise Adı . . ." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="LiseAd" for="form-group-input">Lise Alan* </label>
+                            <input type="text" class="form-control" ng-model="liseAlan" id="liseAlan" placeholder="Lise Alan . . ." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="LiseBaslangic" for="form-group-input">Lise Baslangıç* </label>
+                            <input type="date" class="form-control" ng-model="liseBaslangic" min="1980-01-01" max="2000-01-01" id="liseBaslangic" placeholder="lise Başlangıç . . ." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="LiseBitis" for="form-group-input">Lise Bitiş* </label>
+                            <input type="date" class="form-control" ng-model="liseBitis" min="1980-01-01" max="2000-01-01" id="liseBitis" placeholder="Lise Bitiş . . . " required>
+                        </div>
+                        <div class="form-group">
+                            <label class="LiseTamAdres" for="form-group-input">Lise Tam Adres* </label>
+                            <input type="text" class="form-control" ng-model="liseTamAdres" id="liseTamAdres" placeholder="Lise Tam Adres . . ." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="LiseAdresDevam" for="form-group-input">Lise Adres Devam (Satır İki)</label>
+                            <input type="text" class="form-control" ng-model="liseAdresIki" id="liseAdresIki" placeholder="Lise Adres Devam (Satır Iki) . . ." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="LisePostaKodu" for="form-group-input">Lise Posta Kodu* </label>
+                            <input type="number" class="form-control" ng-model="liseAdresPostaKod" id="lisePostaKodu" placeholder="Lise Posta Kodu. . ." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="Ulke" for="form-group-input">Ülke* </label>
+                            <select class="combobox" ng-change="updateLiseIl()" ng-model="liseAdresUlke">
+                                <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="Eyalet" for="form-group-input">Eyalet* </label>
+                            <select class="combobox" ng-model="liseAdresEyalet">
+                                <option ng-repeat="e in liseEyalets" value="{{e.Id}}">{{e.Ad}}</option>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label class="LiseBaslangic" for="form-group-input">Lise Baslangıç* </label>
-                        <input type="date" class="form-control" ng-model="liseBaslangic" min="1980-01-01" max="2000-01-01" id="liseBaslangic" placeholder="lise Başlangıç . . ." required>
-                    </div>
+                    </fieldset>
+                    <fieldset>
+                        <!-- required html5 o input dolu olack :D -->
+                        <div class="form-group">
+                            <label class="UniversiteAd" for="form-group-input">Üniversite Ad* </label>
+                            <input type="text" class="form-control" ng-model="universiteAd" id="uniAd" placeholder="Üniversite Adı . . ." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="UniversiteBaslama" for="form-group-input">Universite başlama tarihi* </label>
+                            <input type="date" class="form-control" ng-model="universiteBaslangic" id="uniBaslama" placeholder="Üniversite Başlangıç . . ." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="UniversiteKapanma" for="form-group-input">Üniversite Kapanma tarihi* </label>
+                            <input type="date" class="form-control" ng-model="universitekapanis" id="uniKapanma" placeholder="Üniversite Kapanış . . . " required>
+                        </div>
+                        <div class="form-group">
+                            <label class="UniversiteSinif" for="form-group-input">Üniversite Sınıf* </label>
+                            <input type="number" class="form-control" ng-model="universiteSinif" id="uniSinif" placeholder="Üniversite Sınıf . . . " required>
+                        </div>
+                        <div class="form-group">
+                            <label class="UniversiteNo" for="form-group-input">Üniversite No* </label>
+                            <input type="text" class="form-control" ng-model="universiteNo" id="uniNo" placeholder="Üniversite No . . . " required>
+                        </div>
+                        <div class="form-group">
+                            <label class="UniversiteBolum" for="form-group-input">Üniversite Bölüm* </label>
+                            <input type="text" class="form-control" ng-model="universiteBolum" id="uniBolum" placeholder="Üniversite Bölüm . . . " required>
+                        </div>
+                        <div class="form-group">
+                            <label class="UniversiteTel" for="form-group-input">Üniversite Telefon* </label>
+                            <input type="text" class="form-control" ng-model="universiteTel" id="uniTel" placeholder="Üniversite Telefon . . . " required>
+                        </div>
+                        <div class="form-group">
+                            <label class="UniversiteAdres" for="form-group-input">Üniversite Tam Adres* </label>
+                            <input type="text" class="form-control" ng-model="universiteTamAdres" id="uniTamAdres" placeholder="Tam Adres . . ." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="UniversiteAdresIki" for="form-group-input">Üniversite Adres Devam (Satır İki)</label>
+                            <input type="text" class="form-control" ng-model="universiteAdresIki" id="uniAdresIki" placeholder="Üniversite Adres Devam (Satır Iki) . . ." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="UniversitePostaKodu" for="form-group-input"> Üniversite Posta Kodu* </label>
+                            <input type="number" class="form-control" ng-model="universiteAdresPostaKod" id="uniPostaKodu" placeholder="Üniversite Posta Kodu. . ." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="UniversiteUlke" for="form-group-input">Ülke* </label>
+                            <select class="combobox" ng-change="updateUniIl()" ng-model="universiteAdresUlke">
+                                <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="Eyalet" for="form-group-input">Eyalet* </label>
+                            <select class="combobox" ng-model="universiteAdresEyalet">
+                                <option ng-repeat="e in uniEyalets" value="{{e.Id}}">{{e.Ad}}</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                    <button ng-click="UcuncuSayfa()">Devam Et </button>
 
-                    <div class="form-group">
-                        <label class="LiseBitis" for="form-group-input">Lise Bitiş* </label>
-                        <input type="date" class="form-control" ng-model="liseBitis" min="1980-01-01" max="2000-01-01" id="liseBitis" placeholder="Lise Bitiş . . . " required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="LiseTamAdres" for="form-group-input">Lise Tam Adres* </label>
-                        <input type="text" class="form-control" ng-model="liseTamAdres" id="liseTamAdres" placeholder="Lise Tam Adres . . ." required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="LiseAdresDevam" for="form-group-input">Lise Adres Devam (Satır İki)</label>
-                        <input type="text" class="form-control" ng-model="liseAdresIki" id="liseAdresIki" placeholder="Lise Adres Devam (Satır Iki) . . ." required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="LisePostaKodu" for="form-group-input">Lise Posta Kodu* </label>
-                        <input type="number" class="form-control" ng-model="liseAdresPostaKod" id="lisePostaKodu" placeholder="Lise Posta Kodu. . ." required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="Ulke" for="form-group-input">Ülke* </label>
-                        <select class="combobox" ng-change="updateLiseIl()" ng-model="liseAdresUlke">
-                            <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="Eyalet" for="form-group-input">Eyalet* </label>
-                        <select class="combobox" ng-model="liseAdresEyalet">
-                            <option ng-repeat="e in liseEyalets" value="{{e.Id}}">{{e.Ad}}</option>
-                        </select>
-                    </div>
-
-
-                </fieldset>
-
-                <fieldset>
-                    <!-- required html5 o input dolu olack :D -->
-                    <div class="form-group">
-                        <label class="UniversiteAd" for="form-group-input">Üniversite Ad* </label>
-                        <input type="text" class="form-control" ng-model="universiteAd" id="uniAd" placeholder="Üniversite Adı . . ." required>
-                    </div>
-                    <div class="form-group">
-                        <label class="UniversiteBaslama" for="form-group-input">Universite başlama tarihi* </label>
-                        <input type="date" class="form-control" ng-model="universiteBaslangic" id="uniBaslama" placeholder="Üniversite Başlangıç . . ." required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="UniversiteKapanma" for="form-group-input">Üniversite Kapanma tarihi* </label>
-                        <input type="date" class="form-control" ng-model="universitekapanis" id="uniKapanma" placeholder="Üniversite Kapanış . . . " required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="UniversiteSinif" for="form-group-input">Üniversite Sınıf* </label>
-                        <input type="number" class="form-control" ng-model="universiteSinif" id="uniSinif" placeholder="Üniversite Sınıf . . . " required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="UniversiteNo" for="form-group-input">Üniversite No* </label>
-                        <input type="text" class="form-control" ng-model="universiteNo" id="uniNo" placeholder="Üniversite No . . . " required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="UniversiteBolum" for="form-group-input">Üniversite Bölüm* </label>
-                        <input type="text" class="form-control" ng-model="universiteBolum" id="uniBolum" placeholder="Üniversite Bölüm . . . " required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="UniversiteTel" for="form-group-input">Üniversite Telefon* </label>
-                        <input type="text" class="form-control" ng-model="universiteTel" id="uniTel" placeholder="Üniversite Telefon . . . " required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="UniversiteAdres" for="form-group-input">Üniversite Tam Adres* </label>
-                        <input type="text" class="form-control" ng-model="universiteTamAdres" id="uniTamAdres" placeholder="Tam Adres . . ." required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="UniversiteAdresIki" for="form-group-input">Üniversite Adres Devam (Satır İki)</label>
-                        <input type="text" class="form-control" ng-model="universiteAdresIki" id="uniAdresIki" placeholder="Üniversite Adres Devam (Satır Iki) . . ." required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="UniversitePostaKodu" for="form-group-input"> Üniversite Posta Kodu* </label>
-                        <input type="number" class="form-control" ng-model="universiteAdresPostaKod" id="uniPostaKodu" placeholder="Üniversite Posta Kodu. . ." required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="UniversiteUlke" for="form-group-input">Ülke* </label>
-                        <select class="combobox" ng-change="updateUniIl()" ng-model="universiteAdresUlke">
-                            <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="Eyalet" for="form-group-input">Eyalet* </label>
-                        <select class="combobox" ng-model="universiteAdresEyalet">
-                            <option ng-repeat="e in uniEyalets" value="{{e.Id}}">{{e.Ad}}</option>
-                        </select>
-                    </div>
-
-                </fieldset>
-
-                <button ng-click="UcuncuSayfa()">Devam Et </button>
-
-
-            </form>
-
+                </form>
+            </div>
         </div>
-        </div></div>
-        <script>
-     $("#liseAdresPostaKod,#uniSinif,#uniNo,#uniTel,#uniPostaKodu").keyup(function () {
-        if (this.value.match(/[^0-9]/g)) {
-            this.value = this.value.replace(/[^0-9]/g, '');
-        }
-    });//rakam
-     $("#liseAd,#liseAlan,#liseTamAdres,#liseAdresIki,#uniAd,#universiteBolum,#uniTamAdres,#uniAdresIki").keyup(function () {
-        if (this.value.match(/[^a-zA-Z]/g)) {
-            this.value = this.value.replace(/[^a-zA-Z]/g, '');
-        }
-     });//harf
+    </div>
+    </div>
+    <script>
+        $("#liseAdresPostaKod,#uniSinif,#uniNo,#uniTel,#uniPostaKodu").keyup(function () {
+            if (this.value.match(/[^0-9]/g)) {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            }
+        });//rakam
+        $("#liseAd,#liseAlan,#liseTamAdres,#liseAdresIki,#uniAd,#universiteBolum,#uniTamAdres,#uniAdresIki").keyup(function () {
+            if (this.value.match(/[^a-zA-Z]/g)) {
+                this.value = this.value.replace(/[^a-zA-Z]/g, '');
+            }
+        });//harf
 
- //Tarih büyüklük ve küçüklük kontrolü için max min kontrolleri
-     $(document).ready(function () {
-         var utc = new Date().toJSON().slice(0,10);
+        //Tarih büyüklük ve küçüklük kontrolü için max min kontrolleri
+        $(document).ready(function () {
+            var utc = new Date().toJSON().slice(0, 10);
 
-         document.getElementById("liseBaslangic").max = utc;
-         document.getElementById("liseBitis").max = utc;
-     });
-        </script>
+            document.getElementById("liseBaslangic").max = utc;
+            document.getElementById("liseBitis").max = utc;
+        });
+    </script>
+<script>
+    $('#ucuncusayfa').attr("style", "background-color:green");
+    $('#aktivasyon').attr("style", "background-color:gray");
+    $('#besincisayfa').attr("style", "background-color:gray");
+    $('#dorduncusayfa').attr("style", "background-color:gray");
+    $('#ucakbilgi').attr("style", "background-color:gray");
+    $('#birincisayfa').attr("style", "background-color:gray");
+    $('#isler').attr("style", "background-color:gray");
+    $('#randevual').attr("style", "background-color:gray");
+    $('#ikincisayfa').attr("style", "background-color:gray");
+    $('#cv').attr("style", "background-color:gray");
+
+
+</script>

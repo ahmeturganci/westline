@@ -1,188 +1,186 @@
-﻿<div ng-controller="KisiTanimaController">
-    <h1 ng-model="deneme">Adım 2 </h1>
-    <h2>{{ikinciMesaj}}</h2>
-    <!--Kisisel Detay Bilgi-->
-    <div class="container">
-        <h2>Kişisel Bilgi Detay</h2>
-        <div class="panel panel-default">
-            <div class="panel-heading">Kişisel Bilgi Detay</div>
-            <div class="panel-body">
-                <form>
-                    <fieldset>
-                        <div class="form-group">
-                            <label class="DogumTarihi" for="form-group-input">Doğum Tarihi* </label>
-                            <input type="date" class="form-control" ng-model="dogumTarih" id="dogumTarihi" placeholder="Doğum Tarihi . . . " required>
-                        </div>
-                   
-                        <div class="form-group">
-                            <label class="BabaAd" for="form-group-input">Baba Ad* </label>
-                            <input type="text" class="form-control" ng-model="babaAd" id="babaAd" placeholder="Baba Ad . . ." required>
-                        </div>
+﻿<div class="tab-pane" id="ikincisayfa">
 
-                        <div class="form-group">
-                            <label class="AnneAdSoyad" for="form-group-input"> Anne Adı ve soyadı* </label>
-                            <input type="text" class="form-control" ng-model="anneAd" id="anneAdSoyad" placeholder="Anne Ad. . ." required>
-                        </div>
+    <div ng-controller="KisiTanimaController">
+        <h1 ng-model="deneme">Adım 2 </h1>
+        <h2>{{ikinciMesaj}}</h2>
+        <!--Kisisel Detay Bilgi-->
+        <div class="container">
+            <h2>Kişisel Bilgi Detay</h2>
+            <div class="panel panel-default">
+                <div class="panel-heading">Kişisel Bilgi Detay</div>
+                <div class="panel-body">
+                    <form>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="DogumTarihi" for="form-group-input">Doğum Tarihi* </label>
+                                <input type="date" class="form-control" ng-model="dogumTarih" id="dogumTarihi" placeholder="Doğum Tarihi . . . " required>
+                            </div>
 
-                        <div class="form-group">
-                            <label class="Eyalet" for="form-group-input">Ingilizce seviyesi* </label>
-                            <select class="combobox" ng-model="ingilizceSeviye">
-                                <option ng-repeat="i in ingilizces" value="{{i.Id}}">{{i.Aciklama}}</option>
-                            </select>
-                        </div>
+                            <div class="form-group">
+                                <label class="BabaAd" for="form-group-input">Baba Ad* </label>
+                                <input type="text" class="form-control" ng-model="babaAd" id="babaAd" placeholder="Baba Ad . . ." required>
+                            </div>
+                            <div class="form-group">
+                                <label class="AnneAdSoyad" for="form-group-input"> Anne Adı ve soyadı* </label>
+                                <input type="text" class="form-control" ng-model="anneAd" id="anneAdSoyad" placeholder="Anne Ad. . ." required>
+                            </div>
+                            <div class="form-group">
+                                <label class="Eyalet" for="form-group-input">Ingilizce seviyesi* </label>
+                                <select class="combobox" ng-model="ingilizceSeviye">
+                                    <option ng-repeat="i in ingilizces" value="{{i.Id}}">{{i.Aciklama}}</option>
+                                </select>
+                            </div>
 
+                            <!--Burda Kaldım Radio lar yapılcak-->
+                            <div class="form-group">
+                                <label class="PasaportVarMi" for="form-group-input">Pasaport Var Mı* </label>
+                                <input type="radio" ng-model="pasaport" value="1" id="radio" /> Evet, Var
+                                <input type="radio" ng-model="pasaport" value="0" /> Hayır, Yok
+                            </div>
 
-                        <!--Burda Kaldım Radio lar yapılcak-->
-                        <div class="form-group">
-                            <label class="PasaportVarMi" for="form-group-input">Pasaport Var Mı* </label>
-                            <input type="radio" ng-model="pasaport" value="1" id="radio" /> Evet, Var
-                            <input type="radio" ng-model="pasaport" value="0" /> Hayır, Yok
-                        </div>
-
-
-
-                        <div class="form-group">
-                            <label class="PostaKodu" for="form-group-input">Posta Kodu* </label>
-                            <input type="number" class="form-control" ng-model="bilgiPostaKod" id="postaKodu" placeholder="Posta Kodu. . ." required>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="Ulke" for="form-group-input">Ülke* </label>
-                            <select class="combobox" ng-change="updateIls()" ng-model="bilgiUlke">
-                                <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="Eyalet" for="form-group-input">İl* </label>
-                            <select class="combobox" ng-model="bilgiEyalet">
-                                <option ng-repeat="e in bilgiEyalets" value="{{e.Id}}">{{e.Ad}}</option>
-                            </select>
-                        </div>
-
-                    </fieldset>
-                </form>
+                            <div class="form-group">
+                                <label class="PostaKodu" for="form-group-input">Posta Kodu* </label>
+                                <input type="number" class="form-control" ng-model="bilgiPostaKod" id="postaKodu" placeholder="Posta Kodu. . ." required>
+                            </div>
+                            <div class="form-group">
+                                <label class="Ulke" for="form-group-input">Ülke* </label>
+                                <select class="combobox" ng-change="updateIls()" ng-model="bilgiUlke">
+                                    <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="Eyalet" for="form-group-input">İl* </label>
+                                <select class="combobox" ng-model="bilgiEyalet">
+                                    <option ng-repeat="e in bilgiEyalets" value="{{e.Id}}">{{e.Ad}}</option>
+                                </select>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <!--Kisisel Detay-->
-    <!--iLETİŞİM-->
-    <div class="container">
-        <h2>İletişim</h2>
-        <div class="panel panel-default">
-            <div class="panel-heading">İletişim Bilgileri </div>
-            <div class="panel-body">
-                <form>
-                    <fieldset>
-                        <!-- required html5 o input dolu olack :D -->
-                        <div class="form-group">
-                            <label class="Telefon" for="form-group-input">Telefon* </label>
-                            <input type="text" class="form-control" ng-model="tel" id="Telefon" placeholder="Telefon Numarası. . ." required>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="Email" for="form-group-input">Email* </label>
-                            <input type="text" class="form-control" ng-model="email" id="Email" placeholder="Email Adresi. . ." required>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="Skype" for="form-group-input">Skype</label>
-                            <input type="text" class="form-control" ng-model="skype" id="Skype" placeholder="Skype Adresi. . ." required>
-                        </div>
-
-                    </fieldset>
-                </form>
+        <!--Kisisel Detay-->
+        <!--iLETİŞİM-->
+        <div class="container">
+            <h2>İletişim</h2>
+            <div class="panel panel-default">
+                <div class="panel-heading">İletişim Bilgileri </div>
+                <div class="panel-body">
+                    <form>
+                        <fieldset>
+                            <!-- required html5 o input dolu olack :D -->
+                            <div class="form-group">
+                                <label class="Telefon" for="form-group-input">Telefon* </label>
+                                <input type="text" class="form-control" ng-model="tel" id="Telefon" placeholder="Telefon Numarası. . ." required>
+                            </div>
+                            <div class="form-group">
+                                <label class="Email" for="form-group-input">Email* </label>
+                                <input type="text" class="form-control" ng-model="email" id="Email" placeholder="Email Adresi. . ." required>
+                            </div>
+                            <div class="form-group">
+                                <label class="Skype" for="form-group-input">Skype</label>
+                                <input type="text" class="form-control" ng-model="skype" id="Skype" placeholder="Skype Adresi. . ." required>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <!--İletişim Son-->
-    <!--İletişim - Adres Bilgi-->
-    <div class="container">
-        <h2>Adres</h2>
-        <div class="panel panel-default">
-            <div class="panel-heading">Adres Bilgileri </div>
-            <div class="panel-body">
-                <form>
-                    <fieldset>
-                        <!-- required html5 o input dolu olack :D -->
-                        <div class="form-group">
-                            <!--Adres-->
-                            <label class="Adres" for="form-group-input">Tam Adres* </label>
-                            <input type="text" class="form-control" ng-model="tamAdres" id="tamAdres" placeholder="Tam Adres . . ." required>
-                        </div>
-
-                        <div class="form-group">
-                            <!--Adres-->
-                            <label class="AdresDevam" for="form-group-input">Adres Devam (Satır İki) </label>
-                            <input type="text" class="form-control" ng-model="adresIki" id="adresIki" placeholder="Adres Devam (Satır Iki) . . ." required>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="PostaKodu" for="form-group-input">Posta Kodu* </label>
-                            <input type="number" class="form-control" ng-model="adresPostaKod" id="postaKodu" placeholder="Posta Kodu. . ." required>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="Ulke" for="form-group-input">Ülke* </label>
-                            <select class="combobox" ng-change="updateAdresIl()" ng-model="adresUlke">
-                                <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="Eyalet" for="form-group-input">Eyalet* </label>
-                            <select class="combobox" ng-model="adresEyalet">
-                                <option ng-repeat="e in adresEyalets" value="{{e.Id}}">{{e.Ad}}</option>
-                            </select>
-                        </div>
-
-                    </fieldset>
-                </form>
+        <!--İletişim Son-->
+        <!--İletişim - Adres Bilgi-->
+        <div class="container">
+            <h2>Adres</h2>
+            <div class="panel panel-default">
+                <div class="panel-heading">Adres Bilgileri </div>
+                <div class="panel-body">
+                    <form>
+                        <fieldset>
+                            <!-- required html5 o input dolu olack :D -->
+                            <div class="form-group">
+                                <!--Adres-->
+                                <label class="Adres" for="form-group-input">Tam Adres* </label>
+                                <input type="text" class="form-control" ng-model="tamAdres" id="tamAdres" placeholder="Tam Adres . . ." required>
+                            </div>
+                            <div class="form-group">
+                                <!--Adres-->
+                                <label class="AdresDevam" for="form-group-input">Adres Devam (Satır İki) </label>
+                                <input type="text" class="form-control" ng-model="adresIki" id="adresIki" placeholder="Adres Devam (Satır Iki) . . ." required>
+                            </div>
+                            <div class="form-group">
+                                <label class="PostaKodu" for="form-group-input">Posta Kodu* </label>
+                                <input type="number" class="form-control" ng-model="adresPostaKod" id="postaKodu" placeholder="Posta Kodu. . ." required>
+                            </div>
+                            <div class="form-group">
+                                <label class="Ulke" for="form-group-input">Ülke* </label>
+                                <select class="combobox" ng-change="updateAdresIl()" ng-model="adresUlke">
+                                    <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="Eyalet" for="form-group-input">Eyalet* </label>
+                                <select class="combobox" ng-model="adresEyalet">
+                                    <option ng-repeat="e in adresEyalets" value="{{e.Id}}">{{e.Ad}}</option>
+                                </select>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <!--İletişim - Adre Bilgi SON-->
-    <div class="container">
-        <h2>Acil Durum Kişi</h2>
-        <div class="panel panel-default">
-            <div class="panel-heading">Acil Durum Kişi Bilgileri </div>
-            <div class="panel-body">
-                <form>
-                    <fieldset>
-                        <!-- required html5 o input dolu olack :D -->
-                        <div class="form-group">
-                            <!--Adres-->
-                            <label class="AcilAd" for="form-group-input"> Acil Durum Kişi Ad* </label>
-                            <input type="text" class="form-control" ng-model="acilAd" id="acilKisiAd" placeholder="Acil Kişi Ad. . ." required>
-                        </div>
-                        <div class="form-group">
-                            <label class="AcilSoyad" for="form-group-input">Acil Durum Kişi Soyad* </label>
-                            <input type="text" class="form-control" ng-model="acilSoyad" id="acilKisiSoyad" placeholder="Acil Durum Kişi Soyad" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="AcilEmail" for="form-group-input">Acil Durum Tel* </label>
-                            <input type="number" class="form-control" ng-model="acilTel" id="acilKisiTel" placeholder="Acil Durum Tel. . ." required>
-                        </div>
-
-                    </fieldset>
-                </form>
+        <!--İletişim - Adre Bilgi SON-->
+        <div class="container">
+            <h2>Acil Durum Kişi</h2>
+            <div class="panel panel-default">
+                <div class="panel-heading">Acil Durum Kişi Bilgileri </div>
+                <div class="panel-body">
+                    <form>
+                        <fieldset>
+                            <!-- required html5 o input dolu olack :D -->
+                            <div class="form-group">
+                                <!--Adres-->
+                                <label class="AcilAd" for="form-group-input"> Acil Durum Kişi Ad* </label>
+                                <input type="text" class="form-control" ng-model="acilAd" id="acilKisiAd" placeholder="Acil Kişi Ad. . ." required>
+                            </div>
+                            <div class="form-group">
+                                <label class="AcilSoyad" for="form-group-input">Acil Durum Kişi Soyad* </label>
+                                <input type="text" class="form-control" ng-model="acilSoyad" id="acilKisiSoyad" placeholder="Acil Durum Kişi Soyad" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="AcilEmail" for="form-group-input">Acil Durum Tel* </label>
+                                <input type="number" class="form-control" ng-model="acilTel" id="acilKisiTel" placeholder="Acil Durum Tel. . ." required>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
         </div>
+        <button ng-click="IkinciSayfa()">Devam Et </button>
     </div>
+    </div>
+    <script>
+        $("#postaKodu, #Telefon,#adresPostaKod,#acilTel").keyup(function () {
+            if (this.value.match(/[^0-9]/g)) {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            }
+        });//rakam
+        $("#babaAd,#anneAdSoyad,#tamAdres,#adresIki,#acilAd,#acilSoyad").keyup(function () {
+            if (this.value.match(/[^a-zA-Z]/g)) {
+                this.value = this.value.replace(/[^a-zA-Z]/g, '');
+            }
+        });//harf
 
-    <button ng-click="IkinciSayfa()">Devam Et </button>
-</div>
+    </script>
 <script>
-    $("#postaKodu, #Telefon,#adresPostaKod,#acilTel").keyup(function () {
-        if (this.value.match(/[^0-9]/g)) {
-            this.value = this.value.replace(/[^0-9]/g, '');
-        }
-    });//rakam
-     $("#babaAd,#anneAdSoyad,#tamAdres,#adresIki,#acilAd,#acilSoyad").keyup(function () {
-        if (this.value.match(/[^a-zA-Z]/g)) {
-            this.value = this.value.replace(/[^a-zA-Z]/g, '');
-        }
-     });//harf
+    $('#ikincisayfa').attr("style", "background-color:green");
+    $('#aktivasyon').attr("style", "background-color:gray");
+    $('#besincisayfa').attr("style", "background-color:gray");
+    $('#dorduncusayfa').attr("style", "background-color:gray");
+    $('#ucuncusayfa').attr("style", "background-color:gray");
+    $('#birincisayfa').attr("style", "background-color:gray");
+    $('#randevual').attr("style", "background-color:gray");
+    $('#ucakbilgi').attr("style", "background-color:gray");
+    $('#isler').attr("style", "background-color:gray");
+    $('#cv').attr("style", "background-color:gray");
+
 
 </script>

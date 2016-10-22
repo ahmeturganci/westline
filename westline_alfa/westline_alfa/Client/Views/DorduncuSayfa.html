@@ -1,151 +1,162 @@
-﻿<div ng-controller="Part8Controller">
-    <form novalidate name="f1" ng-submit="SaveFile()">
-        <div style="color: red">{{Message}}</div>
-        <table style="margin:10px;">
-            <tr ng-hide="foto">
-                <td>Fotoğraf  Dosyası: </td>
-                <td>
-                    <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)"  required />
-                </td>
-            </tr>
-           
-            <tr ng-hide="foto">
-                <td></td>
-                <td>
-                    <input type="submit" value="Fotoğraf Kaydet" class="btn btn-danger" />
-                </td>
-            </tr>
-            <tr ng-hide="sabika">
-                
-                <td>Sabıka Kaydı  Dosyası: </td>
-                <td>
-                    <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-                </td>
-            </tr>
-            
-            <tr ng-hide="sabika">
-                <td></td>
-                <td>
-                    <input type="submit" class="btn btn-danger" value="Sabıka Kaydı Dosyası Kaydet" />
-                </td>
-            </tr>
+﻿<div class="tab-pane" id="dorduncusayfa">
 
-            <tr ng-hide="transkript">
-                <td> Transkript  Dosyası: </td>
-                <td>
-                    <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-                    
-                </td>
-            </tr>
-           
-            <tr ng-hide="transkript">
-                <td></td>
-                <td>
-                    <input type="submit" value="Transkript Kaydet" class="btn btn-danger"/>
-                </td>
-            </tr>
+    <div ng-controller="Part8Controller">
+        <form novalidate name="f1" ng-submit="SaveFile()">
+            <div style="color: red">{{Message}}</div>
+            <table style="margin:10px;">
+                <tr ng-hide="foto">
+                    <td>Fotoğraf  Dosyası: </td>
+                    <td>
+                        <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+                    </td>
+                </tr>
 
-            <tr ng-hide="ogrBelge">
-                <td> Öğrenci Belgesi  Dosyası: </td>
-                <td>
-                    <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-                </td>
-            </tr>
+                <tr ng-hide="foto">
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Fotoğraf Kaydet" class="btn btn-danger" />
+                    </td>
+                </tr>
+                <tr ng-hide="sabika">
 
-            <tr ng-hide="ogrBelge">
-                <td></td>
-                <td>
-                    <input type="submit" value="Dosya Kaydet" class="btn btn-danger" />
-                </td>
-            </tr>
-        </table>
+                    <td>Sabıka Kaydı  Dosyası: </td>
+                    <td>
+                        <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+                    </td>
+                </tr>
 
-        <div class="form-group">
-            <label class="PasaportVarMi" for="form-group-input">Pasaport Var Mı* </label>
-            <br />  <input type="radio" ng-model="pasaport" value="1" id="evetRadio" onclick="tiklama(this);"  /> Evet, Var <br />
-            <input type="radio" ng-model="pasaport" value="0" id="hayirRadio" onclick="tiklama(this);"  /> Hayır, Yok
-        </div>
-        <div id="pasaportDiv">
+                <tr ng-hide="sabika">
+                    <td></td>
+                    <td>
+                        <input type="submit" class="btn btn-danger" value="Sabıka Kaydı Dosyası Kaydet" />
+                    </td>
+                </tr>
+                <tr ng-hide="transkript">
+                    <td> Transkript  Dosyası: </td>
+                    <td>
+                        <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
 
+                    </td>
+                </tr>
 
+                <tr ng-hide="transkript">
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Transkript Kaydet" class="btn btn-danger" />
+                    </td>
+                </tr>
+                <tr ng-hide="ogrBelge">
+                    <td> Öğrenci Belgesi  Dosyası: </td>
+                    <td>
+                        <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+                    </td>
+                </tr>
+                <tr ng-hide="ogrBelge">
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Dosya Kaydet" class="btn btn-danger" />
+                    </td>
+                </tr>
+            </table>
             <div class="form-group">
-                <label class="pasaportno" for="form-group-input">Baba Ad* </label>
-                <input type="text" class="form-control" ng-model="pasaportno" id="pasaportno" placeholder="Pasaport No . . ." required>
+                <label class="PasaportVarMi" for="form-group-input">Pasaport Var Mı* </label>
+                <br />  <input type="radio" ng-model="pasaport" value="1" id="evetRadio" onclick="tiklama(this);" /> Evet, Var <br />
+                <input type="radio" ng-model="pasaport" value="0" id="hayirRadio" onclick="tiklama(this);" /> Hayır, Yok
             </div>
-
-            <div class="form-group">
-                <label class="Ulke" for="form-group-input">Ülke Seçimiz* </label>
-                <select class="combobox" ng-change="updatePasIls()" ng-model="pasUlke">
-                    <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label class="Eyalet" for="form-group-input">İl* </label>
-                <select class="combobox" ng-model="pasIl">
-                    <option ng-repeat="e in pasEyalets" value="{{e.Id}}">{{e.Ad}}</option>
-                </select>
-            </div>
+            <div id="pasaportDiv">
 
 
-            <div class="form-group">
-                <label class="ilce" for="form-group-input">Alınan Yer/Makam* </label>
-                <input type="text" class="form-control" ng-model="ilce" id="ilce" placeholder="Alınan Yer/Makam . . ." required>
-            </div>
-            <div class="form-group">
-                <label class="pasBaslangic" for="form-group-input">Pasaport Başlangıç Tarihi* </label>
-                <input type="date" class="form-control" ng-model="pasBaslangic" id="pasBaslangic" placeholder="Pasaport Başlangıç Tarihi . . . " required>
-            </div>
-            <div class="form-group">
-                <label class="pasBitis" for="form-group-input">Pasaport Bitiş* </label>
-                <input type="date" class="form-control" ng-model="pasBitis" id="pasBitis" placeholder="Pasaport Bitiş. . . " required>
-            </div>
-            <div class="form-group">
-                <label class="Eyalet" for="form-group-input">Ingilizce seviyesi* </label>
-                <select class="combobox" ng-model="PasaportCalinmaDurum">
-                    <option value="1">Evet</option>
-                    <option value="0">Hayır</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="programUcret" for="form-group-input">Pasaport ücreti karşılayan kişi* </label>
-                <input type="text" class="form-control" ng-model="pasKisi" id="pasKisi" placeholder="Pasaport ücreti karşılayan kişi. . ." required>
-            </div>
+                <div class="form-group">
+                    <label class="pasaportno" for="form-group-input">Baba Ad* </label>
+                    <input type="text" class="form-control" ng-model="pasaportno" id="pasaportno" placeholder="Pasaport No . . ." required>
+                </div>
 
-            <div class="form-group">
-                <label class="ucretYakinlik" for="form-group-input">Pasaport ücreti karşılayan kişinin yakınlığını giriniz* </label>
-                <input type="text" class="form-control" ng-model="ucretYakinlik" id="ucretYakinlik" placeholder="Ucret veren kişi yakınlıgı. . ." required>
-            </div>
-            <div class="form-group">
-                <label class="ucretTelefon" for="form-group-input">Pasaport ücreti karşılayan kişinin telefonu* </label>
-                <input type="number" class="form-control" ng-model="ucretTelefon" id="ucretTelefon" placeholder="Ucret veren kişi telefonu. . ." required>
-            </div>
-        </div>
-    </form>
+                <div class="form-group">
+                    <label class="Ulke" for="form-group-input">Ülke Seçimiz* </label>
+                    <select class="combobox" ng-change="updatePasIls()" ng-model="pasUlke">
+                        <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
+                    </select>
+                </div>
 
-    <button ng-click="PasaportEkle()">Devam Et </button>
+                <div class="form-group">
+                    <label class="Eyalet" for="form-group-input">İl* </label>
+                    <select class="combobox" ng-model="pasIl">
+                        <option ng-repeat="e in pasEyalets" value="{{e.Id}}">{{e.Ad}}</option>
+                    </select>
+                </div>
 
 
-   
-</div>
-<script>
-    //sayfa yuklendiginde yapılcaklar
-    $(document).ready(function () {
-        document.getElementById('pasaportDiv').style.visibility = 'hidden';
-        document.getElementById('pasaportDiv').style.height = 0;
-    });
+                <div class="form-group">
+                    <label class="ilce" for="form-group-input">Alınan Yer/Makam* </label>
+                    <input type="text" class="form-control" ng-model="ilce" id="ilce" placeholder="Alınan Yer/Makam . . ." required>
+                </div>
+                <div class="form-group">
+                    <label class="pasBaslangic" for="form-group-input">Pasaport Başlangıç Tarihi* </label>
+                    <input type="date" class="form-control" ng-model="pasBaslangic" id="pasBaslangic" placeholder="Pasaport Başlangıç Tarihi . . . " required>
+                </div>
+                <div class="form-group">
+                    <label class="pasBitis" for="form-group-input">Pasaport Bitiş* </label>
+                    <input type="date" class="form-control" ng-model="pasBitis" id="pasBitis" placeholder="Pasaport Bitiş. . . " required>
+                </div>
+                <div class="form-group">
+                    <label class="Eyalet" for="form-group-input">Ingilizce seviyesi* </label>
+                    <select class="combobox" ng-model="PasaportCalinmaDurum">
+                        <option value="1">Evet</option>
+                        <option value="0">Hayır</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="programUcret" for="form-group-input">Pasaport ücreti karşılayan kişi* </label>
+                    <input type="text" class="form-control" ng-model="pasKisi" id="pasKisi" placeholder="Pasaport ücreti karşılayan kişi. . ." required>
+                </div>
 
-    var currentValue = 0;
-    function tiklama(myRadio) {
-        if (myRadio.value == 1) {
-            document.getElementById('pasaportDiv').style.visibility = 'visible';
-            document.getElementById('pasaportDiv').style.height = "";
-        }
-        else {
+                <div class="form-group">
+                    <label class="ucretYakinlik" for="form-group-input">Pasaport ücreti karşılayan kişinin yakınlığını giriniz* </label>
+                    <input type="text" class="form-control" ng-model="ucretYakinlik" id="ucretYakinlik" placeholder="Ucret veren kişi yakınlıgı. . ." required>
+                </div>
+                <div class="form-group">
+                    <label class="ucretTelefon" for="form-group-input">Pasaport ücreti karşılayan kişinin telefonu* </label>
+                    <input type="number" class="form-control" ng-model="ucretTelefon" id="ucretTelefon" placeholder="Ucret veren kişi telefonu. . ." required>
+                </div>
+            </div>
+        </form>
+        <button ng-click="PasaportEkle()">Devam Et </button>
+
+
+    </div>
+    </div>
+    <script>
+        //sayfa yuklendiginde yapılcaklar
+        $(document).ready(function () {
             document.getElementById('pasaportDiv').style.visibility = 'hidden';
             document.getElementById('pasaportDiv').style.height = 0;
+        });
+
+        var currentValue = 0;
+        function tiklama(myRadio) {
+            if (myRadio.value == 1) {
+                document.getElementById('pasaportDiv').style.visibility = 'visible';
+                document.getElementById('pasaportDiv').style.height = "";
+            }
+            else {
+                document.getElementById('pasaportDiv').style.visibility = 'hidden';
+                document.getElementById('pasaportDiv').style.height = 0;
+            }
+
+
         }
-            
-       
-    }
+    </script>
+<script>
+    $('#dorduncusayfa').attr("style", "background-color:green");
+    $('#aktivasyon').attr("style", "background-color:gray");
+    $('#besincisayfa').attr("style", "background-color:gray");
+    $('#ikincisayfa').attr("style", "background-color:gray");
+    $('#ucuncusayfa').attr("style", "background-color:gray");
+    $('#birincisayfa').attr("style", "background-color:gray");
+    $('#randevual').attr("style", "background-color:gray");
+    $('#ucakbilgi').attr("style", "background-color:gray");
+    $('#isler').attr("style", "background-color:gray");
+    $('#cv').attr("style", "background-color:gray");
+
+
 </script>

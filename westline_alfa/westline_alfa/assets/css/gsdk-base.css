@@ -683,8 +683,8 @@ label small{
 
 .card{
     background-color: #FFFFFF;
-    padding: 10px 0 20px;
-    width: 100%;
+    width: 200%;
+    padding-left:-100px;
 }
 
 .pick-class-label{

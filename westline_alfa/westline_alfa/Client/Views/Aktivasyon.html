@@ -1,26 +1,39 @@
-﻿<div ng-controller="KisiTanimaController">
-    <h1 ng-model="deneme">Aktivasyon kodu</h1>
-    <h3>{{aktivasyonMesaj}}</h3>
-    <form>
-        <fieldset>
-            <!-- required html5 o input dolu olack :D -->
-            <div class="form-group">
-                <label class="TC" for="form-group-input">Aktivasyon Kodu* </label>
-                <input type="text" class="form-control" maxlength="5" ng-model="kod" id="kod" size="5" placeholder="Aktivasyon kodu . . ." required>
-            </div>
+﻿<div class="tab-pane" id="aktivasyon">
 
-        </fieldset>
+    <div ng-controller="KisiTanimaController">
+        <h1 ng-model="deneme">Aktivasyon kodu</h1>
+        <h3>{{aktivasyonMesaj}}</h3>
+        <form>
+            <fieldset>
+                <!-- required html5 o input dolu olack :D -->
+                <div class="form-group">
+                    <label class="TC" for="form-group-input">Aktivasyon Kodu* </label>
+                    <input type="text" class="form-control" maxlength="5" ng-model="kod" id="kod" size="5" placeholder="Aktivasyon kodu . . ." required>
+                </div>
+            </fieldset>
+            <button ng-click="Aktivasyon()">Devam Et </button>
 
-        <button ng-click="Aktivasyon()">Devam Et </button>
-
-
-
-    </form>
-</div>
+        </form>
+    </div>
+    </div>
+    <script>
+        $("#kod").keyup(function () {
+            if (this.value.match(/[^0-9]/g)) {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            }
+        });//rakam
+    </script>
 <script>
-    $("#kod").keyup(function () {
-        if (this.value.match(/[^0-9]/g)) {
-            this.value = this.value.replace(/[^0-9]/g, '');
-        }
-    });//rakam
+    $('#aktivasyon').attr("style", "background-color:green");
+    $('#randevual').attr("style", "background-color:gray");
+    $('#birincisayfa').attr("style", "background-color:gray");
+    $('#ikincisayfa').attr("style", "background-color:gray");
+    $('#ucuncusayfa').attr("style", "background-color:gray");
+    $('#dorduncusayfa').attr("style", "background-color:gray");
+    $('#besincisayfa').attr("style", "background-color:gray");
+    $('#ucakbilgi').attr("style", "background-color:gray");
+    $('#isler').attr("style", "background-color:gray");
+    $('#cv').attr("style", "background-color:gray");
+
+
 </script>

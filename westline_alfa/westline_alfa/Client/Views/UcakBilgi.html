@@ -1,131 +1,113 @@
-﻿<div ng-controller="KisiTanimaController">
-    <h1 ng-model="deneme">Uçak Bilgi</h1>
-    <h3>{{ucakMesaj}}</h3>
-    <form>
-        <fieldset>
-            Gidiş
+﻿<div class="tab-pane" id="ucakbilgi">
 
-            <div class="form-group">
-                <label class="DogumTarihi" for="form-group-input">Kalkiş tarihi* </label>
-                <input type="date" class="form-control" ng-model="AgidisTarih" id="gidisTarih" required>
-            </div>
+    <div ng-controller="KisiTanimaController">
+        <h1 ng-model="deneme">Uçak Bilgi</h1>
+        <h3>{{ucakMesaj}}</h3>
+        <form>
+            <fieldset>
+                Gidiş
 
-            <div class="form-group">
+                <div class="form-group">
+                    <label class="DogumTarihi" for="form-group-input">Kalkiş tarihi* </label>
+                    <input type="date" class="form-control" ng-model="AgidisTarih" id="gidisTarih" required>
+                </div>
+                <div class="form-group">
+                    <label class="Adres" for="form-group-input">Kalkiş şehir* </label>
+                    <input type="text" class="form-control" ng-model="AgidisSehir" id="gidisSehir" placeholder="Gidis şehir . . ." required>
+                </div>
+                <div class="form-group">
+                    <label class="Adres" for="form-group-input">Kalkiş havaalanı kodu* </label>
+                    <input type="text" class="form-control" ng-model="AhavaKod" id="havaKod" placeholder="Gidiş havaalanı kodu . . ." required>
+                </div>
+                <div class="form-group">
+                    <label class="Adres" for="form-group-input">Varış şehir* </label>
+                    <input type="text" class="form-control" ng-model="AvarisSehir" id="gidisSehir" placeholder="Varış şehir . . ." required>
+                </div>
+                <div class="form-group">
+                    <label class="Adres" for="form-group-input">Varış havaalanı kodu* </label>
+                    <input type="text" class="form-control" ng-model="AvarisKod" id="havaKod" placeholder="Varış havaalanı kodu . . ." required>
+                </div>
+                <div class="form-group">
+                    <label class="Adres" for="form-group-input">Uçuş Kodu* </label>
+                    <input type="text" class="form-control" ng-model="AucusKod" id="ucusKod" placeholder="Uçuş kodu . . ." required>
+                </div>
+                <div class="form-group">
+                    <label class="Adres" for="form-group-input">Kalkiş Saati* </label>
+                    <input type="time" class="form-control" ng-model="AkalkisSaat" id="kalkisSaat" required>
+                </div>
+                <div class="form-group">
+                    <label class="Adres" for="form-group-input">Varış Saati* </label>
+                    <input type="time" class="form-control" ng-model="AvarisSaat" id="varisSaat" required>
+                </div>
+                <div class="form-group">
+                    <label class="PasaportVarMi" for="form-group-input">Gün değişimi var* </label>
+                    <input type="radio" ng-model="AgunDegisim" value="1" id="radio" /> Evet, Var
+                    <input type="radio" ng-model="AgunDegisim" value="0" /> Hayır, Yok
+                </div>
+            </fieldset>
+            <fieldset>
+                Geliş
 
-                <label class="Adres" for="form-group-input">Kalkiş şehir* </label>
-                <input type="text" class="form-control" ng-model="AgidisSehir" id="gidisSehir" placeholder="Gidis şehir . . ." required>
-            </div>
-
-            <div class="form-group">
-
-                <label class="Adres" for="form-group-input">Kalkiş havaalanı kodu* </label>
-                <input type="text" class="form-control" ng-model="AhavaKod" id="havaKod" placeholder="Gidiş havaalanı kodu . . ." required>
-            </div>
-
-            <div class="form-group">
-
-                <label class="Adres" for="form-group-input">Varış şehir* </label>
-                <input type="text" class="form-control" ng-model="AvarisSehir" id="gidisSehir" placeholder="Varış şehir . . ." required>
-            </div>
-
-            <div class="form-group">
-
-                <label class="Adres" for="form-group-input">Varış havaalanı kodu* </label>
-                <input type="text" class="form-control" ng-model="AvarisKod" id="havaKod" placeholder="Varış havaalanı kodu . . ." required>
-            </div>
-
-            <div class="form-group">
-
-                <label class="Adres" for="form-group-input">Uçuş Kodu* </label>
-                <input type="text" class="form-control" ng-model="AucusKod" id="ucusKod" placeholder="Uçuş kodu . . ." required>
-            </div>
-
-            <div class="form-group">
-
-                <label class="Adres" for="form-group-input">Kalkiş Saati* </label>
-                <input type="time" class="form-control" ng-model="AkalkisSaat" id="kalkisSaat" required>
-            </div>
-
-            <div class="form-group">
-
-                <label class="Adres" for="form-group-input">Varış Saati* </label>
-                <input type="time" class="form-control" ng-model="AvarisSaat" id="varisSaat" required>
-            </div>
-
-            <div class="form-group">
-                <label class="PasaportVarMi" for="form-group-input">Gün değişimi var* </label>
-                <input type="radio" ng-model="AgunDegisim" value="1" id="radio" /> Evet, Var
-                <input type="radio" ng-model="AgunDegisim" value="0" /> Hayır, Yok
-            </div>
-
-        </fieldset>
-
-        <fieldset>
-            Geliş
-
-            <div class="form-group">
-                <label class="DogumTarihi" for="form-group-input">Kalkiş tarihi* </label>
-                <input type="date" class="form-control" ng-model="BgidisTarih" id="gidisTarih" required>
-            </div>
-
-            <div class="form-group">
-
-                <label class="Adres" for="form-group-input">Kalkiş şehir* </label>
-                <input type="text" class="form-control" ng-model="BgidisSehir" id="gidisSehir" placeholder="Gidis şehir . . ." required>
-            </div>
-
-            <div class="form-group">
-
-                <label class="Adres" for="form-group-input">Kalkiş havaalanı kodu* </label>
-                <input type="text" class="form-control" ng-model="BhavaKod" id="havaKod" placeholder="Gidiş havaalanı kodu . . ." required>
-            </div>
-
-            <div class="form-group">
-
-                <label class="Adres" for="form-group-input">Varış şehir* </label>
-                <input type="text" class="form-control" ng-model="BvarisSehir" id="gidisSehir" placeholder="Varış şehir . . ." required>
-            </div>
-
-            <div class="form-group">
-
-                <label class="Adres" for="form-group-input">Varış havaalanı kodu* </label>
-                <input type="text" class="form-control" ng-model="BvarisKod" id="havaKod" placeholder="Varış havaalanı kodu . . ." required>
-            </div>
-
-            <div class="form-group">
-
-                <label class="Adres" for="form-group-input">Uçuş Kodu* </label>
-                <input type="text" class="form-control" ng-model="BucusKod" id="ucusKod" placeholder="Uçuş kodu . . ." required>
-            </div>
-
-            <div class="form-group">
-
-                <label class="Adres" for="form-group-input">Kalkiş Saati* </label>
-                <input type="time" class="form-control" ng-model="BkalkisSaat" id="kalkisSaat" required>
-            </div>
-
-            <div class="form-group">
-
-                <label class="Adres" for="form-group-input">Varış Saati* </label>
-                <input type="time" class="form-control" ng-model="BvarisSaat" id="varisSaat" required>
-            </div>
-
-            <div class="form-group">
-                <label class="PasaportVarMi" for="form-group-input">Gün değişimi var* </label>
-                <input type="radio" ng-model="BgunDegisim" value="1" id="radio" /> Evet, Var
-                <input type="radio" ng-model="BgunDegisim" value="0" /> Hayır, Yok
-            </div>
-
-        </fieldset>
-
-        <button ng-click="UcakBilgi()">Devam Et </button>
-
-    </form>
-</div>
+                <div class="form-group">
+                    <label class="DogumTarihi" for="form-group-input">Kalkiş tarihi* </label>
+                    <input type="date" class="form-control" ng-model="BgidisTarih" id="gidisTarih" required>
+                </div>
+                <div class="form-group">
+                    <label class="Adres" for="form-group-input">Kalkiş şehir* </label>
+                    <input type="text" class="form-control" ng-model="BgidisSehir" id="gidisSehir" placeholder="Gidis şehir . . ." required>
+                </div>
+                <div class="form-group">
+                    <label class="Adres" for="form-group-input">Kalkiş havaalanı kodu* </label>
+                    <input type="text" class="form-control" ng-model="BhavaKod" id="havaKod" placeholder="Gidiş havaalanı kodu . . ." required>
+                </div>
+                <div class="form-group">
+                    <label class="Adres" for="form-group-input">Varış şehir* </label>
+                    <input type="text" class="form-control" ng-model="BvarisSehir" id="gidisSehir" placeholder="Varış şehir . . ." required>
+                </div>
+                <div class="form-group">
+                    <label class="Adres" for="form-group-input">Varış havaalanı kodu* </label>
+                    <input type="text" class="form-control" ng-model="BvarisKod" id="havaKod" placeholder="Varış havaalanı kodu . . ." required>
+                </div>
+                <div class="form-group">
+                    <label class="Adres" for="form-group-input">Uçuş Kodu* </label>
+                    <input type="text" class="form-control" ng-model="BucusKod" id="ucusKod" placeholder="Uçuş kodu . . ." required>
+                </div>
+                <div class="form-group">
+                    <label class="Adres" for="form-group-input">Kalkiş Saati* </label>
+                    <input type="time" class="form-control" ng-model="BkalkisSaat" id="kalkisSaat" required>
+                </div>
+                <div class="form-group">
+                    <label class="Adres" for="form-group-input">Varış Saati* </label>
+                    <input type="time" class="form-control" ng-model="BvarisSaat" id="varisSaat" required>
+                </div>
+                <div class="form-group">
+                    <label class="PasaportVarMi" for="form-group-input">Gün değişimi var* </label>
+                    <input type="radio" ng-model="BgunDegisim" value="1" id="radio" /> Evet, Var
+                    <input type="radio" ng-model="BgunDegisim" value="0" /> Hayır, Yok
+                </div>
+            </fieldset>
+            <button ng-click="UcakBilgi()">Devam Et </button>
+        </form>
+    </div>
+    <script>
+        $("#tc,#Telefon").keyup(function () {
+            if (this.value.match(/[^0-9]/g)) {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            }
+        });//rakam
+    </script>
+    </div>
 <script>
-    $("#tc,#Telefon").keyup(function () {
-        if (this.value.match(/[^0-9]/g)) {
-            this.value = this.value.replace(/[^0-9]/g, '');
-        }
-    });//rakam
+    $('#ucakbilgi').attr("style", "background-color:green");
+    $('#aktivasyon').attr("style", "background-color:gray");
+    $('#besincisayfa').attr("style", "background-color:gray");
+    $('#dorduncusayfa').attr("style", "background-color:gray");
+    $('#ucuncusayfa').attr("style", "background-color:gray");
+    $('#birincisayfa').attr("style", "background-color:gray");
+    $('#isler').attr("style", "background-color:gray");
+    $('#randevual').attr("style", "background-color:gray");
+    $('#ikincisayfa').attr("style", "background-color:gray");
+    $('#cv').attr("style", "background-color:gray");
+
+
 </script>
