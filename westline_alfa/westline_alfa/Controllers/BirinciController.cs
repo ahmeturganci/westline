@@ -16,7 +16,6 @@ namespace westline_alfa.Controllers
         public JsonResult KisiEkle()
         {
             var jsonResult = (object)null;
-            helper.helper h = new helper.helper();
             if (h.VeriEkle(Request.QueryString))
             {
                 /*helper.smsapi sms = new helper.smsapi("5399706684","03011995e","ILETI MRKZI");

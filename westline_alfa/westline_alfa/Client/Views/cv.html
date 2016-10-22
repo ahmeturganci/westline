@@ -1,14 +1,8 @@
 ﻿<div class="tab-pane" id="cv">
-
     <div ng-controller="KisiTanimaController">
         <h1 ng-model="deneme">Özgeçmiş  / CV </h1>
-        <form id="cv">
+        <form id="cvKayit">
             <fieldset>
-                asd {{cvGsm}}
-                sad {{cvTel}}
-                asd {{cvEmail}}
-                asd  {{cvAdres}}
-                Ad :  {{cvKisiAd}}
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="form-group" ng-repeat="c in cvElemans">
@@ -16,14 +10,15 @@
                             <input ng-if="c.iTur !== 'radio' && c.iTur !== 'textarea' &&  c.iTur !== 'select'" type="{{c.iTur}}" id="{{c.Id}}" name="{{c.Name}}" class="form-control" maxlength="{{c.Max}}" placeholder="{{c.Placeholder}}" value="{{c.Icerik}}" required>
                             <br />
                             <span ng-if="c.iTur === 'radio'" ng-repeat="s in c.Secenek">
+
                                 <span ng-if="s.Secili === 0">
-                                    <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="rd" /> {{s.secenek}}
+                                    <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="{{s.name}}" /> {{s.secenek}}
                                 </span>
                                 <span ng-if="s.Secili === 1">
-                                    <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="rd" checked /> {{s.secenek}}
+                                    <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="{{s.name}}" checked /> {{s.secenek}}
                                 </span>
                             </span>
-                            <textarea ng-if="c.iTur === 'textarea'" class="form-control" rows="5"></textarea>
+                            <textarea ng-if="c.iTur === 'textarea'" id="{{c.Id}}" class="form-control" name="{{c.Name}}" rows="5">{{c.Icerik}}</textarea>
                             <span ng-if="c.iTur === 'select'">
                                 <select class="combobox">
                                     <option ng-repeat="s in c.Secenek" value="{{s.Id}}">{{s.secenek}}</option>
@@ -32,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
+                <!--<div class="panel panel-default">
                     <div class="panel-heading">Referans</div>
                     <div class="panel-body">
                         <div class="form-group">
@@ -44,9 +39,9 @@
                             <input type="text" class="form-control" ng-model="cvRefAdSoyad" id="cvRefAdSoyad" placeholder="Refersans Adı ve Soyadı. . . " required>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </fieldset>
-            <button ng-click="CvKaydet()">Cv Kaydet</button>
+            <button ng-click="cvKaydet('cvKayit')">Cv Kaydet</button>
         </form>
     </div>
     </div>
@@ -61,6 +56,4 @@
         $('#ucakbilgi').attr("style", "background-color:gray");
         $('#isler').attr("style", "background-color:gray");
         $('#birincisayfa').attr("style", "background-color:gray");
-
-
     </script>

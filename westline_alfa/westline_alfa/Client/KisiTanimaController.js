@@ -1,19 +1,86 @@
 ﻿(function (app) {
     var KisiTanimaController = function ($scope, $http, $location, $window, $filter) {
-        //1.Sayfa
-        function Birinci(link) {
+        
+        function profilKayit(link) {
             $http.post("Birinci/KisiEkle?" + link).
-                
                 success(function (data) {
                     console.log(data.basari);
                     if (data.basari == 1) {
-                        $window.location.href = '#/Aktivasyon';
+                        $window.location.href = '#/Cv';
                     } else {
                         $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
                     }
                 }).error(function (data) {
                     alert("hata");
                 });
+        }
+
+        function cvKayit(link) {
+            $http.post("Cv/CvEkle?" + link).
+                success(function (data) {
+                    console.log(data.basari);
+                    if (data.basari == 1) {
+                        $window.location.href = '#/DorduncuSayfa';
+                    } else {
+                        $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                    }
+                }).error(function (data) {
+                    alert("hata");
+                });
+        }
+
+        var elemanSayac = 0;
+        var link = "";
+        function Kayit(formId) {
+            elemanSayac = 0;
+            link = "";
+            $('#' + formId).find('input').each(function (idx, input) {
+                // Do your DOM manipulation here
+                if ($(input).attr('type') != "radio") {
+                    if (elemanSayac == 0) {
+                        link += elemanSayac + "=" + $(input).val();
+                    } else {
+                        link += "&" + elemanSayac + "=" + $(input).val();
+                    }
+                    elemanSayac++;
+                    link += "&" + elemanSayac + "=" + $(input).attr('id');
+                    elemanSayac++;
+                    link += "&" + elemanSayac + "=" + $(input).attr('name');
+                    elemanSayac++;
+                } else {
+                    if ($(input).is(':checked')) {
+                        if (elemanSayac == 0) {
+                            link += elemanSayac + "=" + $(input).val();
+                        } else {
+                            link += "&" + elemanSayac + "=" + $(input).val();
+                        }
+                        elemanSayac++;
+                        link += "&" + elemanSayac + "=" + $(input).attr('id');
+                        elemanSayac++;
+                        link += "&" + elemanSayac + "=" + $(input).attr('name');
+                        elemanSayac++;
+                    }
+                }
+            });
+
+            $('#' + formId).find('textarea').each(function (idx, textarea) {
+                if (elemanSayac == 0) {
+                    link += elemanSayac + "=" + $(textarea).val();
+                } else {
+                    link += "&" + elemanSayac + "=" + $(textarea).val();
+                }
+                elemanSayac++;
+                link += "&" + elemanSayac + "=" + $(textarea).attr('id');
+                elemanSayac++;
+                link += "&" + elemanSayac + "=" + $(textarea).attr('name');
+                elemanSayac++;
+            });
+
+            if (formId == "profile") {
+                profilKayit(link);
+            } else if (formId == "cvKayit") {
+                cvKayit(link);
+            }
         }
 
         //Aktivasyon
@@ -177,18 +244,6 @@
                 });
         };
 
-        $scope.CvKaydet = function () {
-            $http.post("/CvController/cvAdre?=" + $scope.cvAdes + "&cvGsm=" + $scope.cvGsm + "&cvEvTel?=" + $scope.cvEvTel + "&cvAdres?=" + $scope.cvAdres + "&cvEmail?=" + $scope.cvEmail + "&cvHedef?=" + $scope.cvHedef + "&cvCalismaIstek?=" + $scope.cvCalismaIstek + "&cvYabanciDil?=" + $scope.cvYabanciDil + "&cvDogumTarih?=" + $scope.cvDogumTarih + "&cvAskerlik?=" + $scope.cvAskerlik + "&cvMedeni?=" + $scope.cvMedeni + "&cvPcBilgi?=" + $scope.cvPcBilgi + "&cvHobiler?=" + $scope.cvHobiler + "&cvRefTel?=" + $scope.cvRefTel+"&cvRefAdSoyad?="+$scope.cvRefAdSoyad)
-            .success(function (data) {
-                console.log(data.basari);
-                if (data.basari == 1) {
-                    $window.location.href = '#/UcuncuSayfa';
-                }
-            }).error(function (data) {
-                console.log(data);
-            });
-        };
-
         $http.get("/Ikinci/UlkeCek").success(function (data) {
             $scope.ulkes = data;
         }).error(function (data) {
@@ -246,55 +301,26 @@
 
         //Birinci sayfa eleman cek
         $http.get("/Birinci/elemans?sayfa=1&kisiId=1").success(function (data) {
-            console.log(data);
             $scope.birinciElemans = data;
         }).error(function (data) {
             console.log(data);
         });
 
-        var elemanSayac = 0;
-        var link = "";
+        
         $scope.profilSayfa = function (formId) {
-            elemanSayac = 0;
-            link = "";
-            $('#profile').find('input').each(function (idx, input) {
-                // Do your DOM manipulation here
-                if ($(input).attr('type') != "radio") {
-                    if (elemanSayac == 0) {
-                        link += elemanSayac + "=" + $(input).val();
-                    } else {
-                        link += "&" + elemanSayac + "=" + $(input).val();
-                    }
-                    elemanSayac++;
-                    link += "&" + elemanSayac + "=" + $(input).attr('id');
-                    elemanSayac++;
-                    link += "&" + elemanSayac + "=" + $(input).attr('name');
-                    elemanSayac++;
-                } else {
-                    if ($(input).is(':checked')) {
-                        if (elemanSayac == 0) {
-                            link += elemanSayac + "=" + $(input).val();
-                        } else {
-                            link += "&" + elemanSayac + "=" + $(input).val();
-                        }
-                        elemanSayac++;
-                        link += "&" + elemanSayac + "=" + $(input).attr('id');
-                        elemanSayac++;
-                        link += "&" + elemanSayac + "=" + $(input).attr('name');
-                        elemanSayac++;
-                    }
-                }
-            });
-            Birinci(link);
+            Kayit(formId);
         };
 
         //Cv sayfa eleman cek
         $http.get("/Cv/elemans?sayfa=2&kisiId=1").success(function (data) {
-            console.log(data);
             $scope.cvElemans = data;
         }).error(function (data) {
             console.log(data);
         });
+
+        $scope.cvKaydet = function (formId) {
+            Kayit(formId);
+        };
     }
     app.controller("KisiTanimaController", KisiTanimaController);
 }(angular.module("KisiModul")))

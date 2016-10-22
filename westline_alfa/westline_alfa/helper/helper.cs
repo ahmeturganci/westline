@@ -54,8 +54,10 @@ namespace westline_alfa.helper
             else return false;
         }
 
+        int sayac = 0;
         public JsonResult ElemanCek(int sayfa, int kisiId)
         {
+            sayac = 0;
             List<Object> jsonModelList = new List<object>();
             var jsonModel = (object)null;
             foreach (var i in db.Inputs.Where(x => x.Sayfa == sayfa))
@@ -93,10 +95,13 @@ namespace westline_alfa.helper
                         {
                             Id = j.Id,
                             secenek = j.Icerik,
+                            name = "rd" + sayac,
                             Secili = kontrol == true ? icerikId == 0 ? 0 : j.Id == icerikId ? 1 : 0 : 0
                         };
                         secenekler.Add(jsonSecenekModel);
                     }
+
+                    sayac++;
 
                     jsonModel = new
                     {
