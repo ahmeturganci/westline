@@ -4,11 +4,10 @@
         <h3>{{birinciMesaj}}</h3>
         <form id="profile">
             <fieldset>
-
                 <!-- required html5 o input dolu olack :D -->
                 <div class="form-group" ng-repeat="n in birinciElemans">
-                    <label for="form-group-input">{{n.Aciklama}}{{n.Zorunlu}} </label>
-                    <input ng-if="n.iTur !== 'radio'" type="{{n.iTur}}" id="{{n.Id}}" name="{{n.Name}}" class="form-control" maxlength="{{n.Max}}" placeholder="{{n.Placeholder}}" value="{{n.Icerik}}" required>
+                    <label for="form-group-input">{{n.Aciklama}}{{n.Zorunlu}}</label>
+                    <input ng-if="n.iTur !== 'radio' && n.iTur !== 'textarea'" type="{{n.iTur}}" id="{{n.Id}}" name="{{n.Name}}" class="form-control" maxlength="{{n.Max}}" placeholder="{{n.Placeholder}}" value="{{n.Icerik}}" required>
                     <br />
                     <span ng-if="n.iTur === 'radio'" ng-repeat="s in n.Secenek">
                         <span ng-if="s.Secili === 0">
@@ -18,6 +17,7 @@
                             <input type="{{n.iTur}}" id="{{n.Id}}" value="{{s.Id}}" name="rd" checked/> {{s.secenek}}
                         </span>
                     </span>
+                    <textarea ng-if="n.iTur === 'textarea'" class="form-control" rows="5"></textarea>
                 </div>
             </fieldset>
             <button ng-click="profilSayfa()">Devam Et </button>

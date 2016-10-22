@@ -11,47 +11,17 @@ namespace westline_alfa.Controllers
     {
         helper.helper h = new helper.helper();
         westlineDB db = new westlineDB();
-        public JsonResult CvEkle(string cvHedef = "", string cvCalismaIstek = "", int cvYabanciDil = -1, int cvAskerlik = -1, int cvMedeni = -1, int cvPcBilgi = -1, string cvHobiler = "", string cvRefTel = "", string cvRefAdSoyad = "")
+        //public JsonResult CvEkle()
+        //{
+        //    helper.helper h = new helper.helper();
+
+        //    return Json(jsonModel, JsonRequestBehavior.AllowGet);
+
+        //}
+
+        public JsonResult elemans(int sayfa, int kisiId)
         {
-            helper.helper h = new helper.helper();
-            
-
-                Kisi k = new Kisi();
-                Cv cv = new Cv();
-
-                cv.Askerlik = cvAskerlik == 1 ? true : false;//bunlar hep bilgi
-
-                cv.Hedef = cvHedef;
-                cv.Hobiler = cvHobiler;
-                cv.CalismakIstenilenIs = cvCalismaIstek;
-
-
-                db.Cvs.Add(cv);
-
-                Referan r = new Referan();
-                r.Adi = cvRefAdSoyad;
-                r.Tel = cvRefTel;
-                db.Referans.Add(r);
-                CvReferan cvRef = new CvReferan();
-
-                cvRef.Cv = cv;
-                cvRef.Referan = r;
-
-                db.CvReferans.Add(cvRef);
-                db.SaveChanges();
-
-                var jsonModel = new
-                {
-                    basari = 1,
-                };
-
-
-                return Json(jsonModel, JsonRequestBehavior.AllowGet);
-            
-        }
-        public JsonResult cvCeken()
-        {
-            return h.CvCek();
+            return h.ElemanCek(sayfa, kisiId);
         }
     }
 

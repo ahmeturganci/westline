@@ -189,24 +189,8 @@
             });
         };
 
-        $scope.fn_load = function () {
-            $http.get("Cv/cvCeken").
-                 success(function (data) {
-                     console.log(data.basari);
-                   
-                 }).error(function (data) {
-                     alert("hata");
-                 });
-        };
-
         $http.get("/Ikinci/UlkeCek").success(function (data) {
             $scope.ulkes = data;
-        }).error(function (data) {
-            console.log(data);
-        });
-
-        $http.get("/Ikinci/IngilizceCek").success(function (data) {
-            $scope.ingilizces = data;
         }).error(function (data) {
             console.log(data);
         });
@@ -261,7 +245,7 @@
 
 
         //Birinci sayfa eleman cek
-        $http.get("/Birinci/ElemanCek?sayfa=1").success(function (data) {
+        $http.get("/Birinci/elemans?sayfa=1&kisiId=1").success(function (data) {
             console.log(data);
             $scope.birinciElemans = data;
         }).error(function (data) {
@@ -301,9 +285,16 @@
                     }
                 }
             });
-            console.log(link);
             Birinci(link);
         };
+
+        //Cv sayfa eleman cek
+        $http.get("/Cv/elemans?sayfa=2&kisiId=1").success(function (data) {
+            console.log(data);
+            $scope.cvElemans = data;
+        }).error(function (data) {
+            console.log(data);
+        });
     }
     app.controller("KisiTanimaController", KisiTanimaController);
 }(angular.module("KisiModul")))
