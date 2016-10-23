@@ -13,6 +13,7 @@ namespace westline_alfa.Models
         public Isler()
         {
             KisiIs = new HashSet<KisiI>();
+            KullaniciIs = new HashSet<KullaniciI>();
         }
 
         public int Id { get; set; }
@@ -25,5 +26,8 @@ namespace westline_alfa.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KisiI> KisiIs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KullaniciI> KullaniciIs { get; set; }
     }
 }

@@ -207,18 +207,31 @@ namespace westline_alfa.helper
 
         public JsonResult IsGetir()
         {
-            List<Object> jsonModelList = new List<object>();
-            foreach (var i in db.Islers)
+            if(db.Degers.FirstOrDefault(x=>x.KisiId == 1 && x.InputId == 8).Icerik == "1")
             {
                 var jsonModel = new
                 {
-                    Id = i.Id,
-                    isAdi = i.Ad,
-                    isAciklama = i.Aciklama
+                    IsBuldu = 1,
+                    Aciklama = "İş buldu"
                 };
-                jsonModelList.Add(jsonModel);
+                return Json(jsonModel, JsonRequestBehavior.AllowGet);
             }
-            return Json(jsonModelList, JsonRequestBehavior.AllowGet);
+            else
+            {
+                List<Object> jsonModelList = new List<object>();
+                foreach (var i in db.Islers)
+                {
+                    var jsonModel = new
+                    {
+                        IsBuldu = 0,
+                        Id = i.Id,
+                        isAdi = i.Ad,
+                        isAciklama = i.Aciklama
+                    };
+                    jsonModelList.Add(jsonModel);
+                }
+                return Json(jsonModelList, JsonRequestBehavior.AllowGet);
+            }
         }
 
         public string MD5Sifrele(string metin)

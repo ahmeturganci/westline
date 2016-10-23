@@ -30,27 +30,6 @@
             });
     };
 
-    var sayac = 0;
-    $scope.PasaportEkle = function () {
-        if (sayac == 4) {
-            if ($scope.pasaport == 1) {
-                $http.post("Pasaport/PasaportEkle?no=" + $scope.pasaportno + "&il=" + $scope.pasIl + "&ilce=" + $scope.ilce + "&baslangicTarih=" + $scope.pasBaslangic + "&bitisTarih=" + $scope.pasBitis + "&calindiMi=" + $scope.PasaportCalinmaDurum + "&ucretKarsilayan=" + $scope.pasKisi + "&akrabalikIliski=" + $scope.ucretYakinlik + "&ucretKarsilayanTel=" + $scope.ucretTelefon).
-                success(function (data) {
-                    console.log(data.basari);
-                    if (data.basari == 1) {
-                        $window.location.href = '#/BesinciSayfa';
-                    } else {
-                        $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
-                    }
-                }).error(function (data) {
-                    alert("hata");
-                });
-            }
-        } else {
-            $scope.Message = "Lütfen eksik belgelerinizi tamamlayın";
-        }
-    };
-
     // THIS IS REQUIRED AS File Control is not supported 2 way binding features of Angular
     // ------------------------------------------------------------------------------------
     //File Validation
@@ -408,6 +387,40 @@
             console.log(data);
         });
 
+        $scope.IsEkle = function () {
+            elemanSayac = 0;
+            link = "";
+            $('#frmIsler').find('input').each(function (idx, input) {
+                if ($(input).attr('type') == "checkbox") {
+                    if ($(input).is(':checked')) {
+                        if (elemanSayac == 0) {
+                            link += elemanSayac + "=" + $(input).val();
+                        } else {
+                            link += "&" + elemanSayac + "=" + $(input).val();
+                        }
+                        elemanSayac++;
+                    }
+                }
+            });
+            IsKayit(link);
+        };
+        
+        function IsKayit(link) {
+            console.log(link);
+            $http.post("Isler/IsEkle?" + link).
+                success(function (data) {
+                    console.log(data.basari);
+                    if (data.basari == 1) {
+                        $window.location.href = '#/Cv';
+                    } else {
+                        $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                    }
+                }).error(function (data) {
+                    alert("hata");
+                });
+        }
+        
+        
 
         //Birinci sayfa eleman cek
         $http.get("/Birinci/elemans?sayfa=1&kisiId=1").success(function (data) {
@@ -435,7 +448,6 @@
 
     //Evrak sayfa eleman cek
         $http.get("/Dorduncu/elemans?sayfa=3&kisiId=1").success(function (data) {
-            console.log(data);
             $scope.evrakElemans = data;
         }).error(function (data) {
             console.log(data);

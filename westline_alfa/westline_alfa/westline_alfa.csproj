@@ -173,6 +173,7 @@
     <Compile Include="Models\KisiReferan.cs" />
     <Compile Include="Models\KisiUcu.cs" />
     <Compile Include="Models\Kullanici.cs" />
+    <Compile Include="Models\KullaniciI.cs" />
     <Compile Include="Models\Lise.cs" />
     <Compile Include="Models\Pasaport.cs" />
     <Compile Include="Models\Randevu.cs" />
@@ -260,7 +261,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\ertugrulungor.jpg" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
@@ -398,6 +398,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Admin\dist\img\" />
+    <Folder Include="Images\" />
     <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>

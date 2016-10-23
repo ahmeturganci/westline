@@ -1,16 +1,20 @@
 ﻿<div ng-controller="KisiTanimaController">
     <h1 ng-model="deneme"></h1>
     <h3>{{islerMesaj}}</h3>
-    <form>
+    <form id="frmIsler">
         <fieldset>
             <div class="form-group" id="islerDiv" ng-repeat="i in islers">
-                <input type="radio" ng-model="kendiIs" value="{{i.id}}" id="radio" onclick="isSecildi(this);" />{{i.isAdi}}
-                <label class="TC" for="form-group-input">{{i.isAciklama}} </label>
+                <span ng-if="i.IsBuldu === 0">
+                    <input type="checkbox" ng-model="kendiIs" value="{{i.Id}}" id="radio" onclick="isSecildi(this);" />{{i.isAdi}}
+                    <label class="TC" for="form-group-input">{{i.isAciklama}} </label>
+                </span>
+                <span ng-if="i.IsBuldu === 1">
+                    Kendi işinizi ayarladığınız için bu adımı atlayabilirsiniz. Eğer bulmadıysanız <a href="#/Profil">Profil</a> ekranından değiştiriniz.
+                </span>
             </div>
 
         </fieldset>
-        <button id="buton1" ng-click="Isler()">Devam Et </button>
-
+        <button id="buton1" ng-click="IsEkle()">Devam Et</button>
     </form>
 </div>
 <script>
