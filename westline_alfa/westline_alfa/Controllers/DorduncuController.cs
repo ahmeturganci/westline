@@ -10,8 +10,34 @@ namespace westline_alfa.Controllers
 {
     public class DorduncuController : Controller
     {
+        helper.helper h = new helper.helper();
 
-        public JsonResult SaveFiles(string description)
+        public JsonResult evrakPasaportEkle()
+        {
+            var jsonResult = (object)null;
+            if (h.VeriEkle(Request.QueryString))
+            {
+                jsonResult = new
+                {
+                    basari = 1
+                };
+            }
+            else
+            {
+                jsonResult = new
+                {
+                    basari = 0
+                };
+            }
+            return Json(jsonResult, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult elemans(int sayfa, int kisiId)
+        {
+            return h.ElemanCek(sayfa, kisiId);
+        }
+
+        public JsonResult SaveFiles(string description,int e)
         {
             string Message, fileName, actualFileName;
             Message = fileName = actualFileName = string.Empty;
@@ -30,21 +56,29 @@ namespace westline_alfa.Controllers
 
                     using (westlineDB dc = new westlineDB())
                     {
-                        Belge f = new Belge();
-                        f.FotografUrl = fileName;
-                        dc.Belges.Add(f);
-
-                        Kisi k = dc.Kisis.Find(1);
-                        k.Belge = f;
+                        Deger d;
+                        if (dc.Degers.Any(x => x.KisiId == 1 && x.InputId == e))
+                        {
+                            d = dc.Degers.FirstOrDefault(x => x.KisiId == 1 && x.InputId == e);
+                            d.Icerik = fileName;
+                        }
+                        else
+                        {
+                            d = new Deger();
+                            d.InputId = e;
+                            d.Icerik = fileName;
+                            d.KisiId = 1;
+                            dc.Degers.Add(d);
+                        }
 
                         dc.SaveChanges();
-                        Message = "File uploaded successfully";
+                        Message = fileName;
                         flag = true;
                     }
                 }
                 catch (Exception)
                 {
-                    Message = "File upload failed! Please try again";
+                    Message = "0";
                 }
             }
             return new JsonResult { Data = new { Message = Message, Status = flag } };

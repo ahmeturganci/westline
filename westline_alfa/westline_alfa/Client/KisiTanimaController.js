@@ -1,7 +1,115 @@
-﻿(function (app) {
-    var KisiTanimaController = function ($scope, $http, $location, $window, $filter) {
-        
-        function profilKayit(link) {
+﻿angular.module('KisiModul') // extending angular module from first part
+.controller('KisiTanimaController', function ($scope, FileUploadService, $window, $http, $location, $filter) {
+    
+    // Ekran Değerleri
+    $scope.Message = "";
+    $scope.FileInvalidMessage = "";
+    $scope.SelectedFileForUpload = null;
+    $scope.FileDescription = "";
+    $scope.IsFormSubmitted = false;
+    $scope.IsFileValid = false;
+    $scope.IsFormValid = false;
+
+    //Form Validation
+    $scope.$watch("f1.$valid", function (isValid) {
+        $scope.IsFormValid = isValid;
+    });
+
+    $http.get("/Ikinci/UlkeCek").success(function (data) {
+        $scope.ulkes = data;
+    }).error(function (data) {
+        console.log(data);
+    });
+
+    $scope.updateIls = function (f) {
+        $http.get("/Ikinci/EyaletCek?id=" + f).
+            success(function (data) {
+                $scope.Eyalets = data;
+            }).error(function (data) {
+                console.log(data);
+            });
+    };
+
+    var sayac = 0;
+    $scope.PasaportEkle = function () {
+        if (sayac == 4) {
+            if ($scope.pasaport == 1) {
+                $http.post("Pasaport/PasaportEkle?no=" + $scope.pasaportno + "&il=" + $scope.pasIl + "&ilce=" + $scope.ilce + "&baslangicTarih=" + $scope.pasBaslangic + "&bitisTarih=" + $scope.pasBitis + "&calindiMi=" + $scope.PasaportCalinmaDurum + "&ucretKarsilayan=" + $scope.pasKisi + "&akrabalikIliski=" + $scope.ucretYakinlik + "&ucretKarsilayanTel=" + $scope.ucretTelefon).
+                success(function (data) {
+                    console.log(data.basari);
+                    if (data.basari == 1) {
+                        $window.location.href = '#/BesinciSayfa';
+                    } else {
+                        $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                    }
+                }).error(function (data) {
+                    alert("hata");
+                });
+            }
+        } else {
+            $scope.Message = "Lütfen eksik belgelerinizi tamamlayın";
+        }
+    };
+
+    // THIS IS REQUIRED AS File Control is not supported 2 way binding features of Angular
+    // ------------------------------------------------------------------------------------
+    //File Validation
+    $scope.ChechFileValid = function (file) {
+        var isValid = false;
+        if ($scope.SelectedFileForUpload != null) {
+            if ((file.type == 'image/png' || file.type == 'image/jpeg' || file.type.indexOf("pdf") > -1 || file.type == 'image/gif') && file.size <= (512 * 1024)) {
+                $scope.FileInvalidMessage = "";
+                isValid = true;
+            }
+            else {
+                $scope.FileInvalidMessage = "Selected file is Invalid. (only file type png, jpeg and gif and 512 kb size allowed)";
+            }
+        }
+        else {
+            $scope.FileInvalidMessage = "Image required!";
+        }
+        $scope.IsFileValid = isValid;
+    };
+
+    //File Select event 
+    $scope.selectFileforUpload = function (file) {
+        $scope.SelectedFileForUpload = file[0];
+    }
+    //----------------------------------------------------------------------------------------
+
+    //Save File
+    $scope.SaveFile = function (e) {
+        $scope.IsFormSubmitted = true;
+        $scope.Message = "";
+        $scope.ChechFileValid($scope.SelectedFileForUpload);
+        if ($scope.IsFormValid && $scope.IsFileValid) {
+            FileUploadService.UploadFile($scope.SelectedFileForUpload, $scope.FileDescription, e).then(function (d) {
+                ClearForm();
+                $("#" + e + "d").attr("src", "Images/" + d.Message);
+                $("#" + e + "d").attr("width", 60);
+            }, function (e) {
+                alert(e);
+            });
+        }
+        else {
+            $scope.Message = "All the fields are required.";
+        }
+    };
+    //Clear form 
+    function ClearForm() {
+        $scope.FileDescription = "";
+        //as 2 way binding not support for File input Type so we have to clear in this way
+        //you can select based on your requirement
+        angular.forEach(angular.element("input[type='file']"), function (inputElem) {
+            angular.element(inputElem).val(null);
+        });
+
+        $scope.f1.$setPristine();
+        $scope.IsFormSubmitted = false;
+
+    }
+
+    function profilKayit(link) {
             $http.post("Birinci/KisiEkle?" + link).
                 success(function (data) {
                     console.log(data.basari);
@@ -29,6 +137,20 @@
                 });
         }
 
+        function evrakPasaportKayit(link) {
+            $http.post("Dorduncu/evrakPasaportEkle?" + link).
+                success(function (data) {
+                    console.log(data.basari);
+                    if (data.basari == 1) {
+                        $window.location.href = '#/isler';
+                    } else {
+                        $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                    }
+                }).error(function (data) {
+                    alert("hata");
+                });
+        }
+
         var elemanSayac = 0;
         var link = "";
         function Kayit(formId) {
@@ -36,7 +158,7 @@
             link = "";
             $('#' + formId).find('input').each(function (idx, input) {
                 // Do your DOM manipulation here
-                if ($(input).attr('type') != "radio") {
+                if ($(input).attr('type') != "radio" && $(input).attr('type') != "file"  && $(input).attr('type') != "submit") {
                     if (elemanSayac == 0) {
                         link += elemanSayac + "=" + $(input).val();
                     } else {
@@ -47,7 +169,7 @@
                     elemanSayac++;
                     link += "&" + elemanSayac + "=" + $(input).attr('name');
                     elemanSayac++;
-                } else {
+                }else if($(input).attr('type') == "radio"){
                     if ($(input).is(':checked')) {
                         if (elemanSayac == 0) {
                             link += elemanSayac + "=" + $(input).val();
@@ -75,11 +197,12 @@
                 link += "&" + elemanSayac + "=" + $(textarea).attr('name');
                 elemanSayac++;
             });
-
             if (formId == "profile") {
                 profilKayit(link);
             } else if (formId == "cvKayit") {
                 cvKayit(link);
+            } else if (formId == "evrakvepasaport") {
+                evrakPasaportKayit(link);
             }
         }
 
@@ -251,13 +374,6 @@
         });
 
         //Ülkeye göre il seçme
-        $scope.updateIls = function () {
-            $http.get("/Ikinci/EyaletCek?id=" + $scope.bilgiUlke).success(function (data) {
-                $scope.bilgiEyalets = data;
-            }).error(function (data) {
-                console.log(data);
-            });
-        };
 
         $scope.updateAdresIl = function () {
             $http.get("/Ikinci/EyaletCek?id=" + $scope.adresUlke).success(function (data) {
@@ -283,13 +399,7 @@
             });
         };
 
-        $scope.updatePasIls = function () {
-            $http.get("/Ikinci/EyaletCek?id=" + $scope.pasUlke).success(function (data) {
-                $scope.pasEyalets = data;
-            }).error(function (data) {
-                console.log(data);
-            });
-        };
+        
         
         //isleri getir
         $http.get("/Isler/IsleriGetir").success(function (data) {
@@ -321,6 +431,46 @@
         $scope.cvKaydet = function (formId) {
             Kayit(formId);
         };
+
+
+    //Evrak sayfa eleman cek
+        $http.get("/Dorduncu/elemans?sayfa=3&kisiId=1").success(function (data) {
+            console.log(data);
+            $scope.evrakElemans = data;
+        }).error(function (data) {
+            console.log(data);
+        });
+
+        $scope.pasaportKaydet = function (formId) {
+            Kayit(formId);
+        };
+}).factory('FileUploadService', function ($http, $q) { // explained abour controller and service in part 2
+
+    var fac = {};
+    fac.UploadFile = function (file, description, e) {
+        var formData = new FormData();
+        formData.append("file", file);
+        //We can send more data to server using append         
+        formData.append("description", description);
+        formData.append("e", e);
+
+        var defer = $q.defer();
+        $http.post("/Dorduncu/SaveFiles", formData,
+            {
+                withCredentials: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity
+            })
+        .success(function (d) {
+            defer.resolve(d);
+        })
+        .error(function () {
+            defer.reject("File Upload Failed!");
+        });
+
+        return defer.promise;
+
     }
-    app.controller("KisiTanimaController", KisiTanimaController);
-}(angular.module("KisiModul")))
+    return fac;
+
+});

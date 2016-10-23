@@ -17,6 +17,7 @@ namespace westline_alfa.Models
         public virtual DbSet<Adre> Adres { get; set; }
         public virtual DbSet<Aktivasyon> Aktivasyons { get; set; }
         public virtual DbSet<Belge> Belges { get; set; }
+        public virtual DbSet<ComboTur> ComboTurs { get; set; }
         public virtual DbSet<Cv> Cvs { get; set; }
         public virtual DbSet<CvReferan> CvReferans { get; set; }
         public virtual DbSet<Deger> Degers { get; set; }

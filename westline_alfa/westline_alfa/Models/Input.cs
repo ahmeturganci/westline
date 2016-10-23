@@ -32,6 +32,10 @@ namespace westline_alfa.Models
 
         public int? Sayfa { get; set; }
 
+        public int? ComboTurId { get; set; }
+
+        public virtual ComboTur ComboTur { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Deger> Degers { get; set; }
 
