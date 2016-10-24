@@ -130,6 +130,20 @@
                 });
         }
 
+        function ucakBilgiKayit(link) {
+            $http.post("Ucak/ucakBilgiEkle?" + link).
+                success(function (data) {
+                    console.log(data.basari);
+                    if (data.basari == 1) {
+                        $window.location.href = '#/isler';
+                    } else {
+                        $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                    }
+                }).error(function (data) {
+                    alert("hata");
+                });
+        }
+
         var elemanSayac = 0;
         var link = "";
         function Kayit(formId) {
@@ -176,12 +190,15 @@
                 link += "&" + elemanSayac + "=" + $(textarea).attr('name');
                 elemanSayac++;
             });
+            console.log(formId);
             if (formId == "profile") {
                 profilKayit(link);
             } else if (formId == "cvKayit") {
                 cvKayit(link);
             } else if (formId == "evrakvepasaport") {
                 evrakPasaportKayit(link);
+            } else if (formId == "ucakbilgiform") {
+                ucakBilgiKayit(link);
             }
         }
 
@@ -456,6 +473,18 @@
         $scope.pasaportKaydet = function (formId) {
             Kayit(formId);
         };
+
+    //Uçak eleman çek
+        $http.get("/Ucak/elemans?sayfa=4&kisiId=1").success(function (data) {
+            $scope.ucakElemans = data;
+        }).error(function (data) {
+            console.log(data);
+        });
+
+        $scope.ucakKaydet = function (formId) {
+            Kayit(formId);
+        };
+
 }).factory('FileUploadService', function ($http, $q) { // explained abour controller and service in part 2
 
     var fac = {};
