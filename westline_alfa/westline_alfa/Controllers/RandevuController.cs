@@ -11,21 +11,30 @@ namespace westline_alfa.Controllers
     {
         westlineDB db = new westlineDB();
         helper.helper h = new helper.helper();
-        public JsonResult Ekle(string altBir = "", string altIki = "")
-        {
-          
-                Randevu r = new Randevu();
-                r.AlternatifBir = Convert.ToDateTime(altBir);
-                r.AlternatifIki = Convert.ToDateTime(altIki);
-                r.Onay = false;
-                r.Kisi = db.Kisis.Find(Session["id"]);
 
-                var jsonModel = new
+        public JsonResult randevuEkle()
+        {
+            var jsonResult = (object)null;
+            if (h.VeriEkle(Request.QueryString))
+            {
+                jsonResult = new
                 {
                     basari = 1
                 };
-                return Json(jsonModel, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                jsonResult = new
+                {
+                    basari = 0
+                };
+            }
+            return Json(jsonResult, JsonRequestBehavior.AllowGet);
+        }
 
+        public JsonResult elemans(int sayfa, int kisiId)
+        {
+            return h.ElemanCek(sayfa, kisiId);
         }
     }
 }

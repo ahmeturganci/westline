@@ -158,6 +158,20 @@
                 });
         };
 
+        function randevuBilgiKayit(link) {
+            $http.post("Randevu/randevuEkle?" + link).
+                success(function (data) {
+                    console.log(data.basari);
+                    if (data.basari == 1) {
+                        $window.location.href = '#/isler';
+                    } else {
+                        $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                    }
+                }).error(function (data) {
+                    alert("hata");
+                });
+        };
+
         var elemanSayac = 0;
         var link = "";
         function Kayit(formId) {
@@ -215,6 +229,8 @@
                 ucakBilgiKayit(link);
             } else if (formId == "egitimform") {
                 egitimBilgiKayit(link);
+            } else if (formId == "randevuform") {
+                randevuBilgiKayit(link);
             }
         }
 
@@ -232,35 +248,6 @@
                     alert("hata");
                 });
         }
-
-     
-
-        
-
-        //vize ekle
-        $scope.$watch('birinciAlternatif', function (newValue) {
-            $scope.birinciAlternatif = $filter('date')(newValue, 'yyyy/MM/dd');
-        });
-
-        $scope.$watch('ikinciAlternatif', function (newValue) {
-            $scope.ikinciAlternatif = $filter('date')(newValue, 'yyyy/MM/dd');
-        });
-
-        $scope.RandevuAl = function () {
-            $http.post("Randevu/Ekle?altBir=" + $scope.birinciAlternatif + "&altIki=" + $scope.ikinciAlternatif).
-                success(function (data) {
-                    console.log(data.basari);
-                    if (data.basari == 1) {
-                   
-                    }
-                    else {
-                        $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
-                    }
-             }).error(function (data) {
-                    alert("hata");
-               });
-        }
-
 
         //5. sayfa
         $scope.$watch('amerikaBulunmaTarih', function (newValue) {
@@ -384,7 +371,6 @@
 
     //Eğitim eleman çek
         $http.get("/Ucuncu/elemans?sayfa=5&kisiId=1").success(function (data) {
-        console.log(data);
             $scope.egitimElemans = data;
         }).error(function (data) {
             console.log(data);
@@ -394,6 +380,16 @@
             Kayit(formId);
         };
 
+    //Randevu eleman çek
+        $http.get("/Randevu/elemans?sayfa=6&kisiId=1").success(function (data) {
+            $scope.randevuElemans = data;
+        }).error(function (data) {
+            console.log(data);
+        });
+
+        $scope.RandevuAl = function (formId) {
+            Kayit(formId);
+        };
 }).factory('FileUploadService', function ($http, $q) { // explained abour controller and service in part 2
 
     var fac = {};
