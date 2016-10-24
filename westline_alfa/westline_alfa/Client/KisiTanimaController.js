@@ -142,7 +142,21 @@
                 }).error(function (data) {
                     alert("hata");
                 });
-        }
+        };
+
+        function egitimBilgiKayit(link) {
+            $http.post("Ucuncu/egitimEkle?" + link).
+                success(function (data) {
+                    console.log(data.basari);
+                    if (data.basari == 1) {
+                        $window.location.href = '#/isler';
+                    } else {
+                        $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                    }
+                }).error(function (data) {
+                    alert("hata");
+                });
+        };
 
         var elemanSayac = 0;
         var link = "";
@@ -199,6 +213,8 @@
                 evrakPasaportKayit(link);
             } else if (formId == "ucakbilgiform") {
                 ucakBilgiKayit(link);
+            } else if (formId == "egitimform") {
+                egitimBilgiKayit(link);
             }
         }
 
@@ -217,79 +233,9 @@
                 });
         }
 
-        //2.sayfa
-        $scope.$watch('dogumTarih', function (newValue) {
-            $scope.dogumTarih = $filter('date')(newValue, 'yyyy/MM/dd');
-        });
+     
 
-        $scope.IkinciSayfa = function () {
-            
-          
-                $http.post("/Ikinci/KisiDetayEkle?babaAd=" + $scope.babaAd + "&anneAdSoyad=" + $scope.anneAd + "&ingilizceSeviye=" + $scope.ingilizceSeviye + "&pasaport=" + $scope.pasaport + "&dogumTarih=" + $scope.dogumTarih + "&skype=" + $scope.skype + "&tamAdres=" + $scope.tamAdres + "&adresIkinciSatir=" + $scope.adresIki + "&eyalet=" + $scope.bilgiEyalet + "&postaKodu=" + $scope.bilgiPostaKod + "&acilAd=" + $scope.acilAd + "&acilSoyad=" + $scope.acilSoyad + "&acilTel=" + $scope.acilTel + "&adresEyaletId=" + $scope.adresEyalet).success(function (data) {
-                    console.log(data.basari);
-                    if (data.basari == 1) {
-                        $window.location.href = '#/UcuncuSayfa';
-                    } else {
-                        $scope.ikinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
-                    }
-                }).error(function (data) {
-                    console.log(data);
-                });
-            
-            $scope.date = new Date();
-            
-            $scope.$watch('date', function (date) {
-                console.log("hop dedik");
-                $scope.dogumTarih = dateFilter(date, 'yyyy-MM-dd');
-            });
-
-            $scope.$watch('dogumTarih', function (dogumTarih) {
-                console.log("hop dedik");
-                $scope.date = new Date(dogumTarih);
-            });
-
-        }
-
-        //3. sayfa
-        $scope.$watch('liseBaslangic', function (newValue) {
-            $scope.liseBaslangic = $filter('date')(newValue, 'yyyy/MM/dd');
-        });
-
-        $scope.$watch('liseBitis', function (newValue) {
-            $scope.liseBitis = $filter('date')(newValue, 'yyyy/MM/dd');
-        });
-
-        $scope.$watch('universiteBaslangic', function (newValue) {
-            $scope.universiteBaslangic = $filter('date')(newValue, 'yyyy/MM/dd');
-        });
-
-        $scope.$watch('universitekapanis', function (newValue) {
-            $scope.universitekapanis = $filter('date')(newValue, 'yyyy/MM/dd');
-        });
-
-        $scope.UcuncuSayfa = function () {
-            if ($scope.liseBaslangic >= $scope.liseBitis )
-            {
-                alert('Lise başlangıc ve bitiş tarihlerini lütfen kontrol ediniz.');
-            }
-            else if($scope.universiteBaslangic>$scope.universitekapanis)
-            {
-                alert('Universite başlangıc ve bitiş tarihlerini lütfen kontrol ediniz.');
-            }
-            else
-            {
-                $http.post("/Ucuncu/EgitimEkle?liseAd=" + $scope.liseAd + "&baslangic=" + $scope.liseBaslangic + "&bitis=" + $scope.liseBitis + "&alan=" + $scope.liseAlan + "&liseTamAdres=" + $scope.liseTamAdres + "&liseAdresIkinciSatir=" + $scope.liseAdresIki + "&liseEyalet=" + $scope.liseAdresEyalet + "&lisePostaKodu=" + $scope.liseAdresPostaKod + "&universiteAd=" + $scope.universiteAd + "&sinif=" + $scope.universiteSinif + "&bolum=" + $scope.universiteBolum + "&okulNo=" + $scope.universiteNo + "&acilis=" + $scope.universiteBaslangic + "&kapanis=" + $scope.universitekapanis + "&uniTel=" + $scope.universiteTel + "&uniTamAdres=" + $scope.universiteTamAdres + "&uniAdresIkinciSatir=" + $scope.universiteAdresIki + "&uniEyalet=" + $scope.universiteAdresEyalet + "&uniPostaKodu=" + $scope.universiteAdresPostaKod)
-                                .success(function (data) {
-                                    console.log(data.basari);
-                                    if (data.basari == 1) {
-                                        $window.location.href = '#/DorduncuSayfa';
-                                    }
-                                }).error(function (data) {
-                                    console.log(data);
-                                });
-            }
-            
-        };
+        
 
         //vize ekle
         $scope.$watch('birinciAlternatif', function (newValue) {
@@ -315,28 +261,6 @@
                });
         }
 
-        //Uçak bilgi
-        $scope.$watch('AgidisTarih', function (newValue) {
-            $scope.AgidisTarih = $filter('date')(newValue, 'yyyy/MM/dd');
-        });
-
-        $scope.$watch('BgidisTarih', function (newValue) {
-            $scope.BgidisTarih = $filter('date')(newValue, 'yyyy/MM/dd');
-        });
-
-        $scope.UcakBilgi = function () {
-            $http.post("Ucak/Ekle?agidisTarih=" + $scope.AgidisTarih + "&bgidisTarih=" + $scope.BgidisTarih + "&agidisSehir=" + $scope.AgidisSehir + "&bgidisSehir=" + $scope.BgidisSehir + "&ahavaKod=" + $scope.AhavaKod + "&bhavaKod=" + $scope.BhavaKod + "&avarisSehir=" + $scope.AvarisSehir + "&bvarisSehir=" + $scope.BvarisSehir + "&avarisKod=" + $scope.AvarisKod + "&bvarisKod=" + $scope.BvarisKod + "&aucusKod=" + $scope.AucusKod + "&bucusKod=" + $scope.BucusKod + "&akalkisSaat=" + $scope.AkalkisSaat + "&bkalkisSaat=" + $scope.BkalkisSaat + "&avarisSaat=" + $scope.AvarisSaat + "&bvarisSaat=" + $scope.BvarisSaat + "&agunDegisim=" + $scope.AgunDegisim + "&bgunDegisim=" + $scope.BgunDegisim).
-                success(function (data) {
-                    console.log(data.basari);
-                    if (data.basari == 1) {
-                        $window.location.href = '#/IkinciSayfa';
-                    } else {
-                        $scope.aktivasyonMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
-                    }
-                }).error(function (data) {
-                    alert("hata");
-                });
-        }
 
         //5. sayfa
         $scope.$watch('amerikaBulunmaTarih', function (newValue) {
@@ -369,33 +293,6 @@
             console.log(data);
         });
 
-        //Ülkeye göre il seçme
-
-        $scope.updateAdresIl = function () {
-            $http.get("/Ikinci/EyaletCek?id=" + $scope.adresUlke).success(function (data) {
-                $scope.adresEyalets = data;
-            }).error(function (data) {
-                console.log(data);
-            });
-        };
-
-        $scope.updateLiseIl = function () {
-            $http.get("/Ikinci/EyaletCek?id=" + $scope.liseAdresUlke).success(function (data) {
-                $scope.liseEyalets = data;
-            }).error(function (data) {
-                console.log(data);
-            });
-        };
-
-        $scope.updateUniIl = function () {
-            $http.get("/Ikinci/EyaletCek?id=" + $scope.universiteAdresUlke).success(function (data) {
-                $scope.uniEyalets = data;
-            }).error(function (data) {
-                console.log(data);
-            });
-        };
-
-        
         
         //isleri getir
         $http.get("/Isler/IsleriGetir").success(function (data) {
@@ -482,6 +379,18 @@
         });
 
         $scope.ucakKaydet = function (formId) {
+            Kayit(formId);
+        };
+
+    //Eğitim eleman çek
+        $http.get("/Ucuncu/elemans?sayfa=5&kisiId=1").success(function (data) {
+        console.log(data);
+            $scope.egitimElemans = data;
+        }).error(function (data) {
+            console.log(data);
+        });
+
+        $scope.egitimKayit = function (formId) {
             Kayit(formId);
         };
 
