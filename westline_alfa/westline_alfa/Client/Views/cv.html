@@ -7,10 +7,15 @@
                     <div class="panel-body">
                         <div class="form-group" ng-repeat="c in cvElemans">
                             <label class="KariyerHedef" for="form-group-input">{{c.Aciklama}}{{c.Zorunlu}}</label>
-                            <input ng-if="c.iTur !== 'radio' && c.iTur !== 'textarea' &&  c.iTur !== 'select'" type="{{c.iTur}}" id="{{c.Id}}" name="{{c.Name}}" class="form-control" maxlength="{{c.Max}}" placeholder="{{c.Placeholder}}" value="{{c.Icerik}}" required>
+                            <input ng-if="c.iTur !== 'radio' && c.iTur !== 'textarea' &&  c.iTur !== 'select' && c.iTur !== 'file' && c.iTur !== 'ulke' && c.iTur !== 'il'" type="{{c.iTur}}" id="{{c.Id}}" name="{{c.Name}}" class="form-control" maxlength="{{c.Max}}" placeholder="{{c.Placeholder}}" value="{{c.Icerik}}" required>
                             <br />
+                            <span ng-if="c.iTur === 'file'" id="{{c.Id}}">
+                                <img ng-if="c.Icerik !== ''" id="{{c.Id}}d" src="Images/{{c.Icerik}}" width="60" />
+                                <img ng-if="c.Icerik === ''" id="{{c.Id}}d" />
+                                <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+                                <input type="submit" ng-click="SaveFile(c.Id)" value="Yükle" class="btn btn-danger" />
+                            </span>
                             <span ng-if="c.iTur === 'radio'" ng-repeat="s in c.Secenek">
-
                                 <span ng-if="s.Secili === 0">
                                     <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="{{s.name}}" /> {{s.secenek}}
                                 </span>
@@ -24,6 +29,12 @@
                                     <option ng-repeat="s in c.Secenek" value="{{s.Id}}">{{s.secenek}}</option>
                                 </select>
                             </span>
+                            <select ng-if="c.iTur === 'ulke'" class="combobox" ng-change="updateIls(countrySelect)" ng-model="countrySelect">
+                                <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
+                            </select>
+                            <select ng-if="c.iTur === 'il'" class="combobox" ng-model="pasIl">
+                                <option ng-repeat="e in Eyalets" value="{{e.Id}}">{{e.Ad}}</option>
+                            </select>
                         </div>
                     </div>
                 </div>

@@ -4,20 +4,36 @@
         <h3>{{birinciMesaj}}</h3>
         <form id="profile">
             <fieldset>
-                <!-- required html5 o input dolu olack :D -->
-                <div class="form-group" ng-repeat="n in birinciElemans">
-                    <label for="form-group-input">{{n.Aciklama}}{{n.Zorunlu}}</label>
-                    <input ng-if="n.iTur !== 'radio' && n.iTur !== 'textarea'" type="{{n.iTur}}" id="{{n.Id}}" name="{{n.Name}}" class="form-control" maxlength="{{n.Max}}" placeholder="{{n.Placeholder}}" value="{{n.Icerik}}" required>
+                <div class="form-group" ng-repeat="c in birinciElemans">
+                    <label class="KariyerHedef" for="form-group-input">{{c.Aciklama}}{{c.Zorunlu}}</label>
+                    <input ng-if="c.iTur !== 'radio' && c.iTur !== 'textarea' &&  c.iTur !== 'select' && c.iTur !== 'file' && c.iTur !== 'ulke' && c.iTur !== 'il'" type="{{c.iTur}}" id="{{c.Id}}" name="{{c.Name}}" class="form-control" maxlength="{{c.Max}}" placeholder="{{c.Placeholder}}" value="{{c.Icerik}}" required>
                     <br />
-                    <span ng-if="n.iTur === 'radio'" ng-repeat="s in n.Secenek">
+                    <span ng-if="c.iTur === 'file'" id="{{c.Id}}">
+                        <img ng-if="c.Icerik !== ''" id="{{c.Id}}d" src="Images/{{c.Icerik}}" width="60" />
+                        <img ng-if="c.Icerik === ''" id="{{c.Id}}d" />
+                        <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+                        <input type="submit" ng-click="SaveFile(c.Id)" value="Yükle" class="btn btn-danger" />
+                    </span>
+                    <span ng-if="c.iTur === 'radio'" ng-repeat="s in c.Secenek">
                         <span ng-if="s.Secili === 0">
-                            <input type="{{n.iTur}}" id="{{n.Id}}" value="{{s.Id}}" name="rd" /> {{s.secenek}}
+                            <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="{{s.name}}" /> {{s.secenek}}
                         </span>
                         <span ng-if="s.Secili === 1">
-                            <input type="{{n.iTur}}" id="{{n.Id}}" value="{{s.Id}}" name="rd" checked/> {{s.secenek}}
+                            <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="{{s.name}}" checked /> {{s.secenek}}
                         </span>
                     </span>
-                    <textarea ng-if="n.iTur === 'textarea'" class="form-control" rows="5"></textarea>
+                    <textarea ng-if="c.iTur === 'textarea'" id="{{c.Id}}" class="form-control" name="{{c.Name}}" rows="5">{{c.Icerik}}</textarea>
+                    <span ng-if="c.iTur === 'select'">
+                        <select class="combobox">
+                            <option ng-repeat="s in c.Secenek" value="{{s.Id}}">{{s.secenek}}</option>
+                        </select>
+                    </span>
+                    <select ng-if="c.iTur === 'ulke'" class="combobox" ng-change="updateIls(countrySelect)" ng-model="countrySelect">
+                        <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
+                    </select>
+                    <select ng-if="c.iTur === 'il'" class="combobox" ng-model="pasIl">
+                        <option ng-repeat="e in Eyalets" value="{{e.Id}}">{{e.Ad}}</option>
+                    </select>
                 </div>
             </fieldset>
             <button ng-click="profilSayfa('profile')">Devam Et </button>
