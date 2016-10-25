@@ -11,47 +11,30 @@ namespace westline_alfa.Controllers
     {
         westlineDB db = new westlineDB();
         helper.helper h = new helper.helper();
-
-        // GET: Ikinci
-        public JsonResult KisiDetayEkle(string babaAd = "", string anneAdSoyad = "", int ingilizceSeviye = -1,
-            int pasaport = -1, string dogumTarih = "", string skype = "",
-            string tamAdres = "", string adresIkinciSatir = "", int eyalet = -1,
-            string postaKodu = "",
-            int adresEyaletId = -1, string acilAd = "", string acilSoyad = "", string acilTel = "")
+        
+        public JsonResult ekBilgiEkle()
         {
-                Kisi k = db.Kisis.Find(Session["id"]);
-                k.BabaAdi = babaAd;
-                k.AnneAdi = anneAdSoyad;
-                k.IngilizceSeviye = db.IngilizceSeviyes.Find(ingilizceSeviye);
-                k.Pasaport = pasaport == 1 ? true : false;
-                k.DogumTarihi = Convert.ToDateTime(dogumTarih) ;
-                k.Iletisim.Skype = skype;
-
-                Adre a = new Adre();
-                a.TamAdres = tamAdres;
-                a.AdresSatirIki = adresIkinciSatir;
-                a.Il = db.Ils.Find(adresEyaletId);
-                a.PostaKodu = postaKodu;
-
-                AcilDurum ac = new AcilDurum();
-                ac.Ad = acilAd;
-                ac.Soyad = acilSoyad;
-                ac.Telefon = acilTel;
-                db.AcilDurums.Add(ac);
-
-                db.Adres.Add(a);
-                k.Iletisim.Adre = a;
-
-
-                db.SaveChanges();
-
-                var jsonModel = new
+            var jsonResult = (object)null;
+            if (h.VeriEkle(Request.QueryString))
+            {
+                jsonResult = new
                 {
                     basari = 1
                 };
-                return Json(jsonModel, JsonRequestBehavior.AllowGet);
-            
+            }
+            else
+            {
+                jsonResult = new
+                {
+                    basari = 0
+                };
+            }
+            return Json(jsonResult, JsonRequestBehavior.AllowGet);
+        }
 
+        public JsonResult elemans(int sayfa, int kisiId)
+        {
+            return h.ElemanCek(sayfa, kisiId);
         }
 
         public JsonResult UlkeCek()

@@ -172,6 +172,20 @@
                 });
         };
 
+        function ekBilgiKayit(link) {
+            $http.post("Ikinci/ekBilgiEkle?" + link).
+                success(function (data) {
+                    console.log(data.basari);
+                    if (data.basari == 1) {
+                        $window.location.href = '#/isler';
+                    } else {
+                        $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                    }
+                }).error(function (data) {
+                    alert("hata");
+                });
+        };
+
         var elemanSayac = 0;
         var link = "";
         function Kayit(formId) {
@@ -231,6 +245,8 @@
                 egitimBilgiKayit(link);
             } else if (formId == "randevuform") {
                 randevuBilgiKayit(link);
+            } else if (formId == "ekbilgiform") {
+                ekBilgiKayit(link);
             }
         }
 
@@ -388,6 +404,17 @@
         });
 
         $scope.RandevuAl = function (formId) {
+            Kayit(formId);
+        };
+
+    //Ek bilgi eleman çek
+        $http.get("/Ikinci/elemans?sayfa=7&kisiId=1").success(function (data) {
+            $scope.ekBilgiElemans = data;
+        }).error(function (data) {
+            console.log(data);
+        });
+
+        $scope.EkBilgi = function (formId) {
             Kayit(formId);
         };
 }).factory('FileUploadService', function ($http, $q) { // explained abour controller and service in part 2

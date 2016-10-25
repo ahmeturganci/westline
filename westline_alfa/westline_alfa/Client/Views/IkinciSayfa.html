@@ -1,162 +1,43 @@
 ﻿<div class="tab-pane" id="ikincisayfa">
 
     <div ng-controller="KisiTanimaController">
-        <h1 ng-model="deneme">Adım 2 </h1>
         <h2>{{ikinciMesaj}}</h2>
-        <!--Kisisel Detay Bilgi-->
-        <div class="container">
-            <h2>Kişisel Bilgi Detay</h2>
-            <div class="panel panel-default">
-                <div class="panel-heading">Kişisel Bilgi Detay</div>
-                <div class="panel-body">
-                    <form>
-                        <fieldset>
-                            <div class="form-group">
-                                <label class="DogumTarihi" for="form-group-input">Doğum Tarihi* </label>
-                                <input type="date" class="form-control" ng-model="dogumTarih" id="dogumTarihi" placeholder="Doğum Tarihi . . . " required>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="BabaAd" for="form-group-input">Baba Ad* </label>
-                                <input type="text" class="form-control" ng-model="babaAd" id="babaAd" placeholder="Baba Ad . . ." required>
-                            </div>
-                            <div class="form-group">
-                                <label class="AnneAdSoyad" for="form-group-input"> Anne Adı ve soyadı* </label>
-                                <input type="text" class="form-control" ng-model="anneAd" id="anneAdSoyad" placeholder="Anne Ad. . ." required>
-                            </div>
-                            <div class="form-group">
-                                <label class="Eyalet" for="form-group-input">Ingilizce seviyesi* </label>
-                                <select class="combobox" ng-model="ingilizceSeviye">
-                                    <option ng-repeat="i in ingilizces" value="{{i.Id}}">{{i.Aciklama}}</option>
-                                </select>
-                            </div>
-
-                            <!--Burda Kaldım Radio lar yapılcak-->
-                            <div class="form-group">
-                                <label class="PasaportVarMi" for="form-group-input">Pasaport Var Mı* </label>
-                                <input type="radio" ng-model="pasaport" value="1" id="radio" /> Evet, Var
-                                <input type="radio" ng-model="pasaport" value="0" /> Hayır, Yok
-                            </div>
-
-                            <div class="form-group">
-                                <label class="PostaKodu" for="form-group-input">Posta Kodu* </label>
-                                <input type="number" class="form-control" ng-model="bilgiPostaKod" id="postaKodu" placeholder="Posta Kodu. . ." required>
-                            </div>
-                            <div class="form-group">
-                                <label class="Ulke" for="form-group-input">Ülke* </label>
-                                <select class="combobox" ng-change="updateIls()" ng-model="bilgiUlke">
-                                    <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="Eyalet" for="form-group-input">İl* </label>
-                                <select class="combobox" ng-model="bilgiEyalet">
-                                    <option ng-repeat="e in bilgiEyalets" value="{{e.Id}}">{{e.Ad}}</option>
-                                </select>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
+        <form id="ekbilgiform">
+            <div class="form-group" ng-repeat="c in ekBilgiElemans">
+                <label class="KariyerHedef" for="form-group-input">{{c.Aciklama}}{{c.Zorunlu}}</label>
+                <input ng-if="c.iTur !== 'radio' && c.iTur !== 'textarea' &&  c.iTur !== 'select' && c.iTur !== 'file' && c.iTur !== 'ulke' && c.iTur !== 'il'" type="{{c.iTur}}" id="{{c.Id}}" name="{{c.Name}}" class="form-control" maxlength="{{c.Max}}" placeholder="{{c.Placeholder}}" value="{{c.Icerik}}" required>
+                <br />
+                <span ng-if="c.iTur === 'file'" id="{{c.Id}}">
+                    <img ng-if="c.Icerik !== ''" id="{{c.Id}}d" src="Images/{{c.Icerik}}" width="60" />
+                    <img ng-if="c.Icerik === ''" id="{{c.Id}}d" />
+                    <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+                    <input type="submit" ng-click="SaveFile(c.Id)" value="Yükle" class="btn btn-danger" />
+                </span>
+                <span ng-if="c.iTur === 'radio'" ng-repeat="s in c.Secenek">
+                    <span ng-if="s.Secili === 0">
+                        <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="{{s.name}}" /> {{s.secenek}}
+                    </span>
+                    <span ng-if="s.Secili === 1">
+                        <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="{{s.name}}" checked /> {{s.secenek}}
+                    </span>
+                </span>
+                <textarea ng-if="c.iTur === 'textarea'" id="{{c.Id}}" class="form-control" name="{{c.Name}}" rows="5">{{c.Icerik}}</textarea>
+                <span ng-if="c.iTur === 'select'">
+                    <select class="combobox">
+                        <option ng-repeat="s in c.Secenek" value="{{s.Id}}">{{s.secenek}}</option>
+                    </select>
+                </span>
+                <select ng-if="c.iTur === 'ulke'" class="combobox" ng-change="updateIls(countrySelect)" ng-model="countrySelect">
+                    <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
+                </select>
+                <select ng-if="c.iTur === 'il'" class="combobox" ng-model="pasIl">
+                    <option ng-repeat="e in Eyalets" value="{{e.Id}}">{{e.Ad}}</option>
+                </select>
             </div>
-        </div>
-        <!--Kisisel Detay-->
-        <!--iLETİŞİM-->
-        <div class="container">
-            <h2>İletişim</h2>
-            <div class="panel panel-default">
-                <div class="panel-heading">İletişim Bilgileri </div>
-                <div class="panel-body">
-                    <form>
-                        <fieldset>
-                            <!-- required html5 o input dolu olack :D -->
-                            <div class="form-group">
-                                <label class="Telefon" for="form-group-input">Telefon* </label>
-                                <input type="text" class="form-control" ng-model="tel" id="Telefon" placeholder="Telefon Numarası. . ." required>
-                            </div>
-                            <div class="form-group">
-                                <label class="Email" for="form-group-input">Email* </label>
-                                <input type="text" class="form-control" ng-model="email" id="Email" placeholder="Email Adresi. . ." required>
-                            </div>
-                            <div class="form-group">
-                                <label class="Skype" for="form-group-input">Skype</label>
-                                <input type="text" class="form-control" ng-model="skype" id="Skype" placeholder="Skype Adresi. . ." required>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!--İletişim Son-->
-        <!--İletişim - Adres Bilgi-->
-        <div class="container">
-            <h2>Adres</h2>
-            <div class="panel panel-default">
-                <div class="panel-heading">Adres Bilgileri </div>
-                <div class="panel-body">
-                    <form>
-                        <fieldset>
-                            <!-- required html5 o input dolu olack :D -->
-                            <div class="form-group">
-                                <!--Adres-->
-                                <label class="Adres" for="form-group-input">Tam Adres* </label>
-                                <input type="text" class="form-control" ng-model="tamAdres" id="tamAdres" placeholder="Tam Adres . . ." required>
-                            </div>
-                            <div class="form-group">
-                                <!--Adres-->
-                                <label class="AdresDevam" for="form-group-input">Adres Devam (Satır İki) </label>
-                                <input type="text" class="form-control" ng-model="adresIki" id="adresIki" placeholder="Adres Devam (Satır Iki) . . ." required>
-                            </div>
-                            <div class="form-group">
-                                <label class="PostaKodu" for="form-group-input">Posta Kodu* </label>
-                                <input type="number" class="form-control" ng-model="adresPostaKod" id="postaKodu" placeholder="Posta Kodu. . ." required>
-                            </div>
-                            <div class="form-group">
-                                <label class="Ulke" for="form-group-input">Ülke* </label>
-                                <select class="combobox" ng-change="updateAdresIl()" ng-model="adresUlke">
-                                    <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="Eyalet" for="form-group-input">Eyalet* </label>
-                                <select class="combobox" ng-model="adresEyalet">
-                                    <option ng-repeat="e in adresEyalets" value="{{e.Id}}">{{e.Ad}}</option>
-                                </select>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!--İletişim - Adre Bilgi SON-->
-        <div class="container">
-            <h2>Acil Durum Kişi</h2>
-            <div class="panel panel-default">
-                <div class="panel-heading">Acil Durum Kişi Bilgileri </div>
-                <div class="panel-body">
-                    <form>
-                        <fieldset>
-                            <!-- required html5 o input dolu olack :D -->
-                            <div class="form-group">
-                                <!--Adres-->
-                                <label class="AcilAd" for="form-group-input"> Acil Durum Kişi Ad* </label>
-                                <input type="text" class="form-control" ng-model="acilAd" id="acilKisiAd" placeholder="Acil Kişi Ad. . ." required>
-                            </div>
-                            <div class="form-group">
-                                <label class="AcilSoyad" for="form-group-input">Acil Durum Kişi Soyad* </label>
-                                <input type="text" class="form-control" ng-model="acilSoyad" id="acilKisiSoyad" placeholder="Acil Durum Kişi Soyad" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="AcilEmail" for="form-group-input">Acil Durum Tel* </label>
-                                <input type="number" class="form-control" ng-model="acilTel" id="acilKisiTel" placeholder="Acil Durum Tel. . ." required>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <button ng-click="IkinciSayfa()">Devam Et </button>
+            <button ng-click="EkBilgi('ekbilgiform')">Devam Et </button>
+        </form>
     </div>
-    </div>
+</div>
     <script>
         $("#postaKodu, #Telefon,#adresPostaKod,#acilTel").keyup(function () {
             if (this.value.match(/[^0-9]/g)) {
