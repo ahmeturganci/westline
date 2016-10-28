@@ -72,15 +72,15 @@
         }
         else {
             $.post("../Giris/GirisYap", { kullaniciAdi: $('#Email').val(), sifre: $('#parola').val()}, function (data) {
-                if(data==true)
+                if(data.basari==1)
                 {
                     alert('Giriş Başarılı');
-                    window.location.href = "../YonetimPanel/index.cshtml";
+                    window.location.href = "../YonetimPanel/Index";
                 }
                 else
                 {
                     alert('Bilgiler Yanlış oldugundan giriş yapılamadı.');
-                    window.location.href = "../Giris/index.cshtml";
+                    window.location.href = "../Giris/Index";
                 }
             });
         }

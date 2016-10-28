@@ -19,9 +19,10 @@ namespace westline_alfa.Controllers
         helper.helper h = new helper.helper();
         public JsonResult GirisYap(string kullaniciAdi, string sifre)
         {
-            if (db.Admins.Any(x => x.KullaniciAdi == kullaniciAdi && x.Sifre == h.MD5Sifrele(sifre)))
+            string s = h.MD5Sifrele(sifre);
+            if (db.Admins.Any(x => x.KullaniciAdi == kullaniciAdi && x.Sifre == s))
             {
-                Admin a = db.Admins.FirstOrDefault(x => x.KullaniciAdi == kullaniciAdi && x.Sifre == h.MD5Sifrele(sifre));
+                Admin a = db.Admins.FirstOrDefault(x => x.KullaniciAdi == kullaniciAdi && x.Sifre == s);
                 var jsonModel = new
                 {
                     basari = 1,

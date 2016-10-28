@@ -419,6 +419,7 @@
     <Content Include="Views\YonetimPanel\BesinciSayfaInput.cshtml" />
     <Content Include="Views\YonetimPanel\UcakBilgiInput.cshtml" />
     <Content Include="Views\Kullanici\Index.cshtml" />
+    <Content Include="Views\YonetimPanel\KullaniciDosya.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
