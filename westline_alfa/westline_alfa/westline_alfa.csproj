@@ -138,7 +138,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IkinciController.cs" />
     <Compile Include="Controllers\IslerController.cs" />
-    <Compile Include="Controllers\KullaniciController.cs" />
     <Compile Include="Controllers\PasaportController.cs" />
     <Compile Include="Controllers\PdfController.cs" />
     <Compile Include="Controllers\RandevuController.cs" />
@@ -180,6 +179,7 @@
     <Compile Include="Models\Randevu.cs" />
     <Compile Include="Models\Referan.cs" />
     <Compile Include="Models\Secenek.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\Tur.cs" />
     <Compile Include="Models\Ucu.cs" />
     <Compile Include="Models\Ulke.cs" />
@@ -262,6 +262,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\checkboxinput.PNG" />
+    <Content Include="Images\coklusecim.PNG" />
+    <Content Include="Images\emailinput.PNG" />
+    <Content Include="Images\metininput.PNG" />
+    <Content Include="Images\metinkutu.PNG" />
+    <Content Include="Images\metinkıutusu.PNG" />
+    <Content Include="Images\sayiinput.PNG" />
+    <Content Include="Images\secenek.PNG" />
+    <Content Include="Images\tarih.PNG" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
@@ -395,12 +404,21 @@
     <Content Include="Views\YonetimPanel\IsEkle.cshtml" />
     <Content Include="Views\YonetimPanel\Randevu.cshtml" />
     <Content Include="Views\Pdf\Index.cshtml" />
-    <Content Include="Views\Kullanici\Index.cshtml" />
+    <Content Include="Views\YonetimPanel\profilInput.cshtml" />
+    <Content Include="Views\YonetimPanel\CvInput.cshtml" />
+    <Content Include="Views\YonetimPanel\RandevuAlInput.cshtml" />
+    <Content Include="Views\YonetimPanel\IslerInput.cshtml" />
+    <Content Include="Views\YonetimPanel\AktivasyonInput.cshtml" />
+    <Content Include="Views\YonetimPanel\BirinciSayfaInput.cshtml" />
+    <Content Include="Views\YonetimPanel\IkinciSayfaInput.cshtml" />
+    <Content Include="Views\YonetimPanel\UcuncuSayfaInput.cshtml" />
+    <Content Include="Views\YonetimPanel\DorduncuSayfaInput.cshtml" />
+    <Content Include="Views\YonetimPanel\BesinciSayfaInput.cshtml" />
+    <Content Include="Views\YonetimPanel\UcakBilgiInput.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Admin\dist\img\" />
-    <Folder Include="Images\" />
     <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>

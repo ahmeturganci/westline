@@ -21,6 +21,50 @@ namespace westline_alfa.Controllers
             return View();
         }
 
+        public ActionResult profilInput()
+        {
+            return View();
+        }
+        public ActionResult CvInput()
+        {
+            return View();
+        }
+        public ActionResult RandevuAlInput()
+        {
+            return View();
+        }
+        public ActionResult IslerInput()
+        {
+            return View();
+        }
+        public ActionResult BirinciSayfaInput()
+        {
+            return View();
+        }
+        public ActionResult IkinciSayfaInput()
+        {
+            return View();
+        }
+        public ActionResult UcuncuSayfaInput()
+        {
+            return View();
+        }
+        public ActionResult DorduncuSayfaInput()
+        {
+            return View();
+        }
+        public ActionResult BesinciSayfaInput()
+        {
+            return View();
+        }
+        public ActionResult UcakBilgiInput()
+        {
+            return View();
+        }
+        public ActionResult AktivasyonInput()
+        {
+            return View();
+        }
         public ActionResult Randevu()
         {
             return View(db.Kisis);
