@@ -138,6 +138,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IkinciController.cs" />
     <Compile Include="Controllers\IslerController.cs" />
+    <Compile Include="Controllers\KullaniciController.cs" />
     <Compile Include="Controllers\PasaportController.cs" />
     <Compile Include="Controllers\PdfController.cs" />
     <Compile Include="Controllers\RandevuController.cs" />
@@ -179,7 +180,6 @@
     <Compile Include="Models\Randevu.cs" />
     <Compile Include="Models\Referan.cs" />
     <Compile Include="Models\Secenek.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\Tur.cs" />
     <Compile Include="Models\Ucu.cs" />
     <Compile Include="Models\Ulke.cs" />
@@ -395,6 +395,7 @@
     <Content Include="Views\YonetimPanel\IsEkle.cshtml" />
     <Content Include="Views\YonetimPanel\Randevu.cshtml" />
     <Content Include="Views\Pdf\Index.cshtml" />
+    <Content Include="Views\Kullanici\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

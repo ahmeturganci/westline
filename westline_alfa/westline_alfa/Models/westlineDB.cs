@@ -42,7 +42,6 @@ namespace westline_alfa.Models
         public virtual DbSet<Randevu> Randevus { get; set; }
         public virtual DbSet<Referan> Referans { get; set; }
         public virtual DbSet<Secenek> Seceneks { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tur> Turs { get; set; }
         public virtual DbSet<Ucu> Ucus { get; set; }
         public virtual DbSet<Ulke> Ulkes { get; set; }
