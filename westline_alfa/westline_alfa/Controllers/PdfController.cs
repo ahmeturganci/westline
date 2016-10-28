@@ -12,7 +12,7 @@ namespace westline_alfa.Controllers
         westlineDB db = new westlineDB();
         public ActionResult Index(int id)
         {
-            return View(db.Kisis.Find(id));
+            return View(db.Kullanicis.Find(id));
         }
     }
 }

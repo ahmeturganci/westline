@@ -197,6 +197,7 @@
     <Content Include="assets\img\thumb_list_place.png" />
     <Content Include="assets\img\thumb_register.png" />
     <Content Include="assets\img\tim_80x80.png" />
+    <Content Include="assets\img\westline.png" />
     <Content Include="assets\img\wizard-boat.jpg" />
     <Content Include="assets\img\wizard-city.jpg" />
     <Content Include="assets\img\wizard.jpg" />

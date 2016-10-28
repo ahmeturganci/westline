@@ -781,7 +781,7 @@ label{
 }
 .wizard-card .tab-content{
     min-height: 340px;
-    padding: 20px 10px;
+    padding: 0px 10px;
 }
 
 .wizard-card .wizard-footer{

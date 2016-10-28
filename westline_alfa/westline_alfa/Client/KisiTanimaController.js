@@ -186,6 +186,20 @@
                 });
         };
 
+        function dsBilgiKayit(link) {
+            $http.post("Besinci/dsEkle?" + link).
+                success(function (data) {
+                    console.log(data.basari);
+                    if (data.basari == 1) {
+                        $window.location.href = '#/isler';
+                    } else {
+                        $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                    }
+                }).error(function (data) {
+                    alert("hata");
+                });
+        };
+
         var elemanSayac = 0;
         var link = "";
         function Kayit(formId) {
@@ -247,6 +261,8 @@
                 randevuBilgiKayit(link);
             } else if (formId == "ekbilgiform") {
                 ekBilgiKayit(link);
+            } else if (formId == "dsForm") {
+                dsBilgiKayit(link);
             }
         }
 
@@ -265,30 +281,6 @@
                 });
         }
 
-        //5. sayfa
-        $scope.$watch('amerikaBulunmaTarih', function (newValue) {
-            $scope.amerikaBulunmaTarih = $filter('date')(newValue, 'yyyy/MM/dd');
-        });
-
-        $scope.$watch('babaDogumTarihi', function (newValue) {
-            $scope.babaDogumTarihi = $filter('date')(newValue, 'yyyy/MM/dd');
-        });
-
-        $scope.$watch('anneDogumTarihi', function (newValue) {
-            $scope.anneDogumTarihi = $filter('date')(newValue, 'yyyy/MM/dd');
-        });
-
-        $scope.BesinciSayfa = function () {
-            $http.post("Besinci/BesinciSayfa?dogumYeri=" + $scope.dogumYeri + "&vatandasNo=" + $scope.vatandasNo + "&ikinciVatandasNo=" + $scope.ikinciVatandasNo + "&AbdSsn=" + $scope.AbdSsn + "&amerikadaBulunduMu=" + $scope.amerikadaBulunduMu + "&amerikaBulunmaTarih=" + $scope.amerikaBulunmaTarih + "&amerikaBulunduguSure=" + $scope.amerikaBulunduguSure + "&oncedenAmerikaVizesi=" + $scope.oncedenAmerikaVizesi + "&oncedenAmerikaVizeRet=" + $scope.oncedenAmerikaVizeRet + "&oncedenAmerikaVizeRetNedeni=" + $scope.oncedenAmerikaVizeRetNedeni + "&amerikaVatandasGocmenBasvuru=" + $scope.amerikaVatandasGocmenBasvuru + "&babaDogumTarihi=" + $scope.babaDogumTarihi + "&babaAmerikadaMi=" + $scope.babaAmerikadaMi + "&askerlikYapti=" + $scope.askerlikYapti + "&sonBesYil=" + $scope.sonBesYil + "&anneDogumTarihi=" + $scope.anneDogumTarihi + "&anneAmerikadaMi=" + $scope.anneAmerikadaMi + "&amerikaAkrabaBilgi=" + $scope.amerikaAkrabaBilgi)
-                .success(function (data) {
-                    console.log(data.basari);
-                    if (data.basari == 1) {
-                        $window.location.href = '#/AltinciSayfa';
-                    }
-                }).error(function (data) {
-                    console.log(data);
-                });
-        };
 
         $http.get("/Ikinci/UlkeCek").success(function (data) {
             $scope.ulkes = data;
@@ -417,6 +409,18 @@
         $scope.EkBilgi = function (formId) {
             Kayit(formId);
         };
+
+    //ds eleman çek
+        $http.get("/Besinci/elemans?sayfa=8&kisiId=1").success(function (data) {
+            $scope.dsElemans = data;
+        }).error(function (data) {
+            console.log(data);
+        });
+
+        $scope.dsKayit = function (formId) {
+            Kayit(formId);
+        };
+
 }).factory('FileUploadService', function ($http, $q) { // explained abour controller and service in part 2
 
     var fac = {};
