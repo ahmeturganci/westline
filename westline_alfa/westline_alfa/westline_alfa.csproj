@@ -261,6 +261,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\checkboxinput.PNG" />
+    <Content Include="Images\coklusecim.PNG" />
+    <Content Include="Images\emailinput.PNG" />
+    <Content Include="Images\metininput.PNG" />
+    <Content Include="Images\metinkutu.PNG" />
+    <Content Include="Images\metinkıutusu.PNG" />
+    <Content Include="Images\sayiinput.PNG" />
+    <Content Include="Images\secenek.PNG" />
+    <Content Include="Images\tarih.PNG" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
@@ -394,11 +403,21 @@
     <Content Include="Views\YonetimPanel\IsEkle.cshtml" />
     <Content Include="Views\YonetimPanel\Randevu.cshtml" />
     <Content Include="Views\Pdf\Index.cshtml" />
+    <Content Include="Views\YonetimPanel\profilInput.cshtml" />
+    <Content Include="Views\YonetimPanel\CvInput.cshtml" />
+    <Content Include="Views\YonetimPanel\RandevuAlInput.cshtml" />
+    <Content Include="Views\YonetimPanel\IslerInput.cshtml" />
+    <Content Include="Views\YonetimPanel\AktivasyonInput.cshtml" />
+    <Content Include="Views\YonetimPanel\BirinciSayfaInput.cshtml" />
+    <Content Include="Views\YonetimPanel\IkinciSayfaInput.cshtml" />
+    <Content Include="Views\YonetimPanel\UcuncuSayfaInput.cshtml" />
+    <Content Include="Views\YonetimPanel\DorduncuSayfaInput.cshtml" />
+    <Content Include="Views\YonetimPanel\BesinciSayfaInput.cshtml" />
+    <Content Include="Views\YonetimPanel\UcakBilgiInput.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Admin\dist\img\" />
-    <Folder Include="Images\" />
     <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
