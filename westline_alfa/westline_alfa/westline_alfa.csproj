@@ -138,6 +138,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IkinciController.cs" />
     <Compile Include="Controllers\IslerController.cs" />
+    <Compile Include="Controllers\KullaniciController.cs" />
     <Compile Include="Controllers\PasaportController.cs" />
     <Compile Include="Controllers\PdfController.cs" />
     <Compile Include="Controllers\RandevuController.cs" />
@@ -386,7 +387,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\uploadButton.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -415,6 +418,7 @@
     <Content Include="Views\YonetimPanel\DorduncuSayfaInput.cshtml" />
     <Content Include="Views\YonetimPanel\BesinciSayfaInput.cshtml" />
     <Content Include="Views\YonetimPanel\UcakBilgiInput.cshtml" />
+    <Content Include="Views\Kullanici\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

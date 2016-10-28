@@ -1,0 +1,668 @@
+﻿
+@{
+    ViewBag.Title = "Kullanıcı Dosya Yükleme";
+    Layout = "~/Views/Shared/_YonetimLayout.cshtml";
+}
+@model westline_alfa.Models.Kullanici
+<head>
+    <style>
+        .elemandivi {
+            width: 200px;
+            background-color: #e6e6e6;
+            border-radius: 5px;
+            padding: 8px;
+        }
+
+            .elemandivi input {
+                padding: 5px 10px;
+            }
+
+            .elemandivi textarea {
+                padding: 5px 10px;
+            }
+    </style>
+</head>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"></div>
+        <div class="panel-body">
+          Kullanıcı 
+        </div>
+        <div class="panel-body">
+            <table>
+                <tr>
+                    <td>
+                        <img src="~/Images/metininput.PNG" onclick="textInput();" style="width:350px; height:80px" />
+                    </td>
+                    <td id="deneme">
+                        <div class="elemandivi">
+
+                            Metin <center>
+                                <input id="metin" name="metin" type="text" class="input-xlarge" style="margin-bottom:7px;"><br />
+                            </center>
+                            Placeholder<center>
+                                <input id="metinplace" name="metinplace" type="text" class="input-xlarge" style="margin-bottom:5px;"><br />
+                            </center>
+
+                            <br />
+                            <center>
+                                <input type="checkbox" name="metinzorunlu" id="metinzorunlu" value="Zorunlu" style="margin-bottom:5px;">Zorunlu
+                            </center>
+
+                            <br />
+                            <button id="doublebutton-0" name="doublebutton-0" class="btn btn-success" style="margin-left:25px;" onclick="MetinVeriAl();">Kaydet</button>
+                            <button id="doublebutton2-0" name="doublebutton2-0" class="btn btn-danger" onclick="metinkapat();">İptal</button>
+
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="~/Images/metinkutu.PNG" onclick="metinkutuInput();" style="width:350px; height:80px" />
+                    </td>
+                    <td id="metinkutuInput">
+                        <div class="elemandivi">
+
+                            Metin <center>
+                                <input id="metinkutu" name="metinkutu" type="text" class="input-xlarge" style="margin-bottom:7px;"><br />
+                            </center>
+                            Placeholder<center>
+                                <input id="metinkutuplace" name="metinkutuplace" type="text" class="input-xlarge" style="margin-bottom:5px;"><br />
+                            </center>
+
+                            <br />
+                            <center>
+                                <input type="checkbox" name="metinkutuzorunlu" id="metinkutuzorunlu" value="Zorunlu" style="margin-bottom:5px;">Zorunlu
+                            </center>
+
+                            <br />
+                            <button id="doublebutton-0" name="doublebutton-0" class="btn btn-success" style="margin-left:25px;" onclick="MetinKutuVeriAl();">Kaydet</button>
+                            <button id="doublebutton2-0" name="doublebutton2-0" class="btn btn-danger" onclick="metinkutukapat();">İptal</button>
+
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="~/Images/sayiinput.PNG" onclick="sayiInput();" style="width:350px; height:80px" />
+                    </td>
+
+                    <td id="sayiinput">
+                        <div class="elemandivi">
+
+                            Metin <center>
+                                <input id="sayimetin" name="sayimetin" type="text" class="input-xlarge" style="margin-bottom:7px;"><br />
+                            </center>
+                            Placeholder<center>
+                                <input id="sayiplace" name="sayiplace" type="text" class="input-xlarge" style="margin-bottom:5px;"><br />
+                            </center>
+
+                            <br />
+                            <center>
+                                <input type="checkbox" name="sayizorunlu" id="sayizorunlu" value="Zorunlu" style="margin-bottom:5px;">Zorunlu
+                            </center>
+
+                            <br />
+                            <button id="doublebutton-0" name="doublebutton-0" class="btn btn-success" style="margin-left:25px;" onclick="SayiVeriAl();">Kaydet</button>
+                            <button id="doublebutton2-0" name="doublebutton2-0" class="btn btn-danger" onclick="sayikapat();">İptal</button>
+
+                        </div>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>
+                        <img src="~/Images/tarih.PNG" onclick="tarihInput();" style="width:350px; height:65px" />
+                    </td>
+
+                    <td id="tarihinput">
+                        <div class="elemandivi">
+
+                            Metin <center>
+                                <input id="tarihmetin" name="tarihmetin" type="text" class="input-xlarge" style="margin-bottom:7px;"><br />
+                            </center>
+                            <br />
+                            <center>
+                                <input type="checkbox" name="tarihzorunlu" id="tarihzorunlu" value="Zorunlu" style="margin-bottom:5px;">Zorunlu
+                            </center>
+
+                            <br />
+                            <button id="doublebutton-0" name="doublebutton-0" class="btn btn-success" style="margin-left:25px;" onclick="TarihVeriAl();">Kaydet</button>
+                            <button id="doublebutton2-0" name="doublebutton2-0" class="btn btn-danger" onclick="tarihKapat();">İptal</button>
+
+                        </div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <img src="~/Images/emailinput.PNG" onclick="emailInput();" style="width:350px; height:80px" />
+                    </td>
+
+                    <td id="emailInput">
+                        <div class="elemandivi">
+
+                            Metin <center>
+                                <input id="emailmetin" name="emailmetin" type="text" class="input-xlarge" style="margin-bottom:7px;"><br />
+                            </center>
+                            <br />
+                            Placeholder<center>
+                                <input id="emailplace" name="emailplace" type="text" class="input-xlarge" style="margin-bottom:5px;"><br />
+                            </center>
+                            <center>
+                                <input type="checkbox" name="emailzorunlu" id="emailzorunlu" value="Zorunlu" style="margin-bottom:5px;">Zorunlu
+                            </center>
+
+                            <br />
+                            <button id="doublebutton-0" name="doublebutton-0" class="btn btn-success" style="margin-left:25px;" onclick="EmailVeriAl();">Kaydet</button>
+                            <button id="doublebutton2-0" name="doublebutton2-0" class="btn btn-danger" onclick="emailKapat();">İptal</button>
+
+                        </div>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>
+                        <img src="~/Images/secenek.PNG" onclick="secenekInput();" style="width:350px; height:80px" />
+                    </td>
+
+                    <td id="secenekInput">
+                        <div class="elemandivi">
+
+                            Metin <center>
+                                <input id="secenekmetin" name="secenekmetin" type="text" class="input-xlarge" style="margin-bottom:7px;"><br />
+                            </center>
+                            <br />
+                            Elemanları Giriniz ( Virgul ile ayırınız.)
+                            <center><textarea id="radioelemanlar" name="radioelemanlar" rows="5"></textarea></center>
+                            <br />
+                            <center>
+                                <input type="checkbox" name="radioelemanlarzorunlu" id="radioelemanlarzorunlu" value="Zorunlu" style="margin-bottom:5px;">Zorunlu
+                            </center>
+
+                            <br />
+                            <button id="doublebutton-0" name="doublebutton-0" class="btn btn-success" style="margin-left:25px;" onclick="SecenekVeriAl();">Kaydet</button>
+                            <button id="doublebutton2-0" name="doublebutton2-0" class="btn btn-danger" onclick="secenekKapat();">İptal</button>
+
+                        </div>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>
+                        <img src="~/Images/coklusecim.PNG" onclick="coklusecimInput();" style="width:350px; height:80px" />
+                    </td>
+
+                    <td id="coklusecimInput">
+                        <div class="elemandivi">
+
+                            Metin <center>
+                                <input id="coklusecimmetin" name="coklusecimmetin" type="text" class="input-xlarge" style="margin-bottom:7px;"><br />
+                            </center>
+                            <br />
+                            Elemanları Giriniz ( Virgul ile ayırınız.)
+                            <center><textarea id="coklusecim" name="coklusecim" rows="5"></textarea></center>
+                            <br />
+                            <center>
+                                <input type="checkbox" name="coklusecimzorunlu" id="coklusecimzorunlu" value="Zorunlu" style="margin-bottom:5px;">Zorunlu
+                            </center>
+
+                            <br />
+                            <button id="doublebutton-0" name="doublebutton-0" class="btn btn-success" style="margin-left:25px;" onclick="SelectVeriAl();">Kaydet</button>
+                            <button id="doublebutton2-0" name="doublebutton2-0" class="btn btn-danger" onclick="coklusecimKapat();">İptal</button>
+
+                        </div>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>
+                        <img src="~/Images/checkboxinput.PNG" onclick="checkboxInput();" style="width:350px; height:80px" />
+                    </td>
+
+                    <td id="checkboxInput">
+                        <div class="elemandivi">
+
+                            Metin <center>
+                                <input id="checkinputmetin" name="checkinputmetin" type="text" class="input-xlarge" style="margin-bottom:7px;"><br />
+                            </center>
+                            <br />
+                            Elemanları Giriniz ( Virgul ile ayırınız.)
+                            <center><textarea id="checkinput" name="checkinput" rows="5"></textarea></center>
+                            <br />
+                            <center>
+                                <input type="checkbox" name="checkinputzorunlu" id="checkinputzorunlu" value="Zorunlu" style="margin-bottom:5px;">Zorunlu
+                            </center>
+
+                            <br />
+                            <button id="doublebutton-0" name="doublebutton-0" class="btn btn-success" style="margin-left:25px;" onclick="CheckboxVeriAl();">Kaydet</button>
+                            <button id="doublebutton2-0" name="doublebutton2-0" class="btn btn-danger" onclick="checkboxKapat();">İptal</button>
+
+                        </div>
+                    </td>
+
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    var sayfanum = 1;
+    //METİN İNPUT VERİSİ İCİN İNPUTU İÇİNN VERİLERİ ALMAK ICIN KULLANILIR.
+    function MetinVeriAl()
+    {
+        var tur = 1;
+        var metin = document.getElementById("metin").value;
+        var metinplace = document.getElementById("metinplace").value;
+        var elemanlar = "";
+
+        var zorunludurum = 1;
+        if (document.getElementById("metinzorunlu").checked == true) {
+            zorunludurum = 1;
+        }
+        else zorunludurum = 0;
+        if (metin == "" || metinplace == "")
+        {
+            alert("Veriler boş olamaz.");
+        }
+        else {
+            $.post('../YonetimPanelController/InputEkle', { metin: metin, metinplace: metinplace, elemanlar: elemanlar, zorunludurum: zorunludurum, tur: tur, sayfanum: sayfanum }, function (data) {
+                if (data == true)
+                    alert("İnput sayfaya başarılı bir şekilde eklendi.");
+                else {
+                    alert("Sorun oluştu.");
+                    window.location.href = "../YonetimPanel/profilInput";
+                }
+
+
+            });
+        }
+
+    }
+
+    //METİN KUTU SUNUN INPUT OLUŞUTRULMASI
+    function MetinKutuVeriAl() {
+        var tur = 1;
+        var metinkutu = document.getElementById("metinkutu").value;
+        var metinkutuplace = document.getElementById("metinkutuplace").value;
+        var elemanlar = "";
+
+        var zorunludurum = 1;
+        if (document.getElementById("metinlkutuzorunlu").checked == true) {
+            zorunludurum = 1;
+        }
+        else zorunludurum = 0;
+        if (metin == "" || metinplace == "") {
+            alert("Veriler boş olamaz.");
+        }
+        else {
+            $.post('../YonetimPanelController/InputEkle', { metin: metinkutu, metinplace: metinkutuplace, elemanlar: elemanlar, zorunludurum: zorunludurum, tur: tur, sayfanum: sayfanum }, function (data) {
+                if (data == true)
+                    alert("İnput sayfaya başarılı bir şekilde eklendi.");
+                else {
+                    alert("Sorun oluştu.");
+                    window.location.href = "../YonetimPanel/profilInput";
+                }
+
+
+            });
+        }
+
+    }
+    //SAYİ İNPUT VERİSİ İCİN İNPUTU İÇİNN VERİLERİ ALMAK ICIN KULLANILIR.
+    function SayiVeriAl()
+    {
+        var tur = 2;
+        var sayimetin = document.getElementById("sayimetin").value;
+        var sayiplace = document.getElementById("sayiplace").value;
+        var elemanlar = "";
+        var zorunludurum = 1;
+        if (document.getElementById("sayizorunlu").checked == true) {
+            zorunludurum = 1;
+        }
+        else zorunludurum = 0;
+        if (sayimetin=="" || sayiplace =="") {
+            alert("Veriler boş olamaz.");
+        }
+        else {
+            $.post('../YonetimPanelController/InputEkle', { metin: sayimetin, metinplace: sayiplace, elemanlar: elemanlar, zorunludurum: zorunludurum, tur: tur, sayfanum: sayfanum }, function (data) {
+                if (data == true)
+                    alert("İnput sayfaya başarılı bir şekilde eklendi.");
+                else {
+                    alert("Sorun oluştu.");
+                    window.location.href = "../YonetimPanel/profilInput";
+                }
+
+
+            });
+        }
+
+    }
+    //TarihVeriAl İNPUTU İÇİNN VERİLERİ ALMAK ICIN KULLANILIR.
+    function TarihVeriAl() {
+        var tur = 3;
+        var tarihmetin = document.getElementById("tarihmetin").value;
+        var tarihplace = "";
+        var elemanlar = "";
+        var zorunludurum = 1;
+        if (document.getElementById("tarihzorunlu").checked == true) {
+            zorunludurum = 1;
+        }
+        else zorunludurum = 0;
+        if (tarihmetin == "") {
+            alert("Veriler boş olamaz.");
+        }
+        $.post('../YonetimPanelController/InputEkle', { metin: tarihmetin, metinplace: sayiplace, elemanlar: elemanlar, zorunludurum: zorunludurum, tur: tur, sayfanum: sayfanum }, function (data) {
+            if (data == true)
+                alert("İnput sayfaya başarılı bir şekilde eklendi.");
+            else {
+                alert("Sorun oluştu.");
+                window.location.href = "../YonetimPanel/profilInput";
+            }
+
+
+        });
+    }
+    //EMAİL İNPUTU İÇİNN VERİLERİ ALMAK ICIN KULLANILIR.
+    function EmailVeriAl() {
+        var tur = 6;
+        var emailmetin = document.getElementById("emailmetin").value;
+        var emailplace = document.getElementById("emailplace").value;
+        var elemanlar = "";
+        var zorunludurum = 1;
+        if (document.getElementById("emailzorunlu").checked == true) {
+            zorunludurum = 1;
+        }
+        else zorunludurum = 0;
+        if (emailmetin == "" ||emailplace == "") {
+            alert("Veriler boş olamaz.");
+        }
+        else
+        {
+            $.post('../YonetimPanelController/InputEkle', { metin: emailmetin, metinplace: emailplace, elemanlar: elemanlar, zorunludurum: zorunludurum, tur: tur, sayfanum: sayfanum }, function (data) {
+                if (data == true)
+                    alert("İnput sayfaya başarılı bir şekilde eklendi.");
+                else {
+                    alert("Sorun oluştu.");
+                    window.location.href = "../YonetimPanel/profilInput";
+                }
+
+
+            });
+        }
+
+    }
+    //RADİO BUTONDAN ALMAK ICIN ' DAN VERİLERİ ALMAK ICIN KULLANILIR.
+    function SecenekVeriAl()
+    {
+        var tur = 4;
+        var secenekmetin = document.getElementById("secenekmetin").value;
+        var secenekplace = "";
+        var radioelemanlar = document.getElementById('radioelemanlar').value;
+        var zorunludurum = 1;
+        if (document.getElementById("radioelemanlarzorunlu").checked == true) {
+            zorunludurum = 1;
+        }
+        else zorunludurum = 0;
+        if (secenekmetin == "" || radioelemanlar == "") {
+            alert("Veriler boş olamaz.");
+        }
+        else {
+            $.post('../YonetimPanelController/InputEkle', { metin: secenekmetin, metinplace: secenekplace, elemanlar: radioelemanlar, zorunludurum: zorunludurum, tur: tur, sayfanum: sayfanum }, function (data) {
+                if (data == true)
+                    alert("İnput sayfaya başarılı bir şekilde eklendi.");
+                else {
+                    alert("Sorun oluştu.");
+                    window.location.href = "../YonetimPanel/profilInput";
+                }
+
+
+            });
+        }
+
+    }
+
+    //SELECT ' DAN VERİLERİ ALMAK ICIN KULLANILIR.
+    function SelectVeriAl() {
+        var tur = 8;
+        var coklusecimmetin = document.getElementById("coklusecimmetin").value;
+        var coklusecimplace = "";
+        var selectelemanlar = document.getElementById('coklusecim').value;
+        var zorunludurum = 1;
+        if (document.getElementById("coklusecimzorunlu").checked == true) {
+            zorunludurum = 1;
+        }
+        else zorunludurum = 0;
+        if (coklusecimmetin == "" || coklusecimplace == "") {
+            alert("Veriler boş olamaz.");
+        }
+        else {
+            $.post('../YonetimPanelController/InputEkle', { metin: coklusecimmetin, metinplace: coklusecimplace, elemanlar: selectelemanlar, zorunludurum: zorunludurum, tur: tur, sayfanum: sayfanum }, function (data) {
+                if (data == true)
+                    alert("İnput sayfaya başarılı bir şekilde eklendi.");
+                else {
+                    alert("Sorun oluştu.");
+                    window.location.href = "../YonetimPanel/profilInput";
+                }
+
+
+            });
+        }
+
+    }
+
+    //CHECKBOX ' DAN VERİLERİ ALMAK ICIN KULLANILIR.
+    function CheckboxVeriAl() {
+        var tur = 5;
+        var checkboxmetin = document.getElementById("checkinputmetin").value;
+        var checkboxplace = "";
+        var checkboxelemanlar = document.getElementById('checkinput').value;
+        var zorunludurum = 1;
+        if (document.getElementById("checkinputzorunlu").checked == true) {
+            zorunludurum = 1;
+        }
+        else zorunludurum = 0;
+        if (checkboxmetin == "" || checkboxplace == "") {
+            alert("Veriler boş olamaz.");
+        }
+        else {
+            $.post('../YonetimPanelController/InputEkle', { metin: checkboxmetin, metinplace: checkboxplace, elemanlar: checkboxelemanlar, zorunludurum: zorunludurum, tur: tur, sayfanum: sayfanum }, function (data) {
+                if (data == true)
+                    alert("İnput sayfaya başarılı bir şekilde eklendi.");
+                else {
+                    alert("Sorun oluştu.");
+                    window.location.href = "../YonetimPanel/profilInput";
+                }
+            });
+        }
+
+    }
+    //CHECKBOX ' DAN VERİLERİ ALMAK ICIN KULLANILIR.
+    function CheckboxVeriAl() {
+        var tur = 5;
+        var checkboxmetin = document.getElementById("checkinputmetin").value;
+        var checkboxplace = "";
+        var checkboxelemanlar = document.getElementById('checkinput').value;
+        var zorunludurum = 1;
+        if (document.getElementById("checkinputzorunlu").checked == true) {
+            zorunludurum = 1;
+        }
+        else zorunludurum = 0;
+        if (checkboxmetin == "" || checkboxplace == "") {
+            alert("Veriler boş olamaz.");
+        }
+        else {
+            $.post('../YonetimPanelController/InputEkle', { metin: checkboxmetin, metinplace: checkboxplace, elemanlar: checkboxelemanlar, zorunludurum: zorunludurum, tur: tur, sayfanum: sayfanum }, function (data) {
+                if (data == true)
+                    alert("İnput sayfaya başarılı bir şekilde eklendi.");
+                else {
+                    alert("Sorun oluştu.");
+                    window.location.href = "../YonetimPanel/profilInput";
+                }
+            });
+        }
+
+    }
+    document.getElementById('coklusecimInput').style.visibility = "hidden";
+    document.getElementById('deneme').style.visibility = "hidden";
+    document.getElementById('secenekInput').style.visibility = "hidden";
+    document.getElementById('deneme').style.visibility = "hidden";
+    document.getElementById('tarihinput').style.visibility = "hidden";
+    document.getElementById('emailInput').style.visibility = "hidden";
+    document.getElementById('sayiinput').style.visibility = "hidden";
+    document.getElementById('checkboxInput').style.visibility = "hidden";
+    document.getElementById('metinkutuInput').style.visibility = "hidden";
+
+    function textInput()
+    {
+        document.getElementById('deneme').style.visibility = "visible";
+        document.getElementById('sayiinput').style.visibility = "hidden";
+        document.getElementById('tarihinput').style.visibility = "hidden";
+        document.getElementById('emailInput').style.visibility = "hidden";
+        document.getElementById('secenekInput').style.visibility = "hidden";
+        document.getElementById('coklusecimInput').style.visibility = "hidden";
+        document.getElementById('checkboxInput').style.visibility = "hidden";
+        document.getElementById('metinkutuInput').style.visibility = "hidden";
+
+
+
+
+    }
+     function metinkutuInput() {
+         document.getElementById('sayiinput').style.visibility = "hidden";
+        document.getElementById('deneme').style.visibility = "hidden";
+        document.getElementById('tarihinput').style.visibility = "hidden";
+        document.getElementById('emailInput').style.visibility = "hidden";
+        document.getElementById('secenekInput').style.visibility = "hidden";
+        document.getElementById('coklusecimInput').style.visibility = "hidden";
+        document.getElementById('checkboxInput').style.visibility = "hidden";
+        document.getElementById('metinkutuInput').style.visibility = "visible";
+
+
+
+    }
+     function metinkutukapat() {
+         document.getElementById('metinkutuInput').style.visibility = "hidden";
+     }
+    function sayiInput() {
+        document.getElementById('sayiinput').style.visibility = "visible";
+        document.getElementById('deneme').style.visibility = "hidden";
+        document.getElementById('tarihinput').style.visibility = "hidden";
+        document.getElementById('emailInput').style.visibility = "hidden";
+        document.getElementById('secenekInput').style.visibility = "hidden";
+        document.getElementById('coklusecimInput').style.visibility = "hidden";
+        document.getElementById('checkboxInput').style.visibility = "hidden";
+        document.getElementById('metinkutuInput').style.visibility = "hidden";
+
+
+
+    }
+    function sayikapat() {
+        document.getElementById('sayiinput').style.visibility = "hidden";
+    }
+    function metinkapat()
+    {
+        document.getElementById('deneme').style.visibility = "hidden";
+
+    }
+
+    function tarihInput() {
+        document.getElementById('tarihinput').style.visibility = "visible";
+        document.getElementById('sayiinput').style.visibility = "hidden";
+        document.getElementById('deneme').style.visibility = "hidden";
+        document.getElementById('emailInput').style.visibility = "hidden";
+        document.getElementById('secenekInput').style.visibility = "hidden";
+        document.getElementById('coklusecimInput').style.visibility = "hidden";
+        document.getElementById('checkboxInput').style.visibility = "hidden";
+        document.getElementById('metinkutuInput').style.visibility = "hidden";
+
+
+    }
+    function tarihKapat() {
+        document.getElementById('tarihinput').style.visibility = "hidden";
+
+    }
+    function emailInput() {
+        document.getElementById('emailInput').style.visibility = "visible";
+        document.getElementById('tarihinput').style.visibility = "hidden";
+        document.getElementById('sayiinput').style.visibility = "hidden";
+        document.getElementById('deneme').style.visibility = "hidden";
+        document.getElementById('secenekInput').style.visibility = "hidden";
+        document.getElementById('coklusecimInput').style.visibility = "hidden";
+        document.getElementById('checkboxInput').style.visibility = "hidden";
+        document.getElementById('metinkutuInput').style.visibility = "hidden";
+
+
+
+    }
+    function emailKapat() {
+        document.getElementById('emailInput').style.visibility = "hidden";
+
+    }
+    function secenekInput() {
+        document.getElementById('emailInput').style.visibility = "hidden";
+        document.getElementById('tarihinput').style.visibility = "hidden";
+        document.getElementById('sayiinput').style.visibility = "hidden";
+        document.getElementById('deneme').style.visibility = "hidden";
+        document.getElementById('secenekInput').style.visibility = "visible";
+        document.getElementById('coklusecimInput').style.visibility = "hidden";
+        document.getElementById('checkboxInput').style.visibility = "hidden";
+        document.getElementById('metinkutuInput').style.visibility = "hidden";
+
+
+
+    }
+    function secenekKapat() {
+        document.getElementById('secenekInput').style.visibility = "hidden";
+
+
+    }
+
+
+    function coklusecimInput() {
+        document.getElementById('emailInput').style.visibility = "hidden";
+        document.getElementById('tarihinput').style.visibility = "hidden";
+        document.getElementById('sayiinput').style.visibility = "hidden";
+        document.getElementById('deneme').style.visibility = "hidden";
+        document.getElementById('secenekInput').style.visibility = "hidden";
+        document.getElementById('coklusecimInput').style.visibility = "visible";
+        document.getElementById('checkboxInput').style.visibility = "hidden";
+        document.getElementById('metinkutuInput').style.visibility = "hidden";
+
+
+    }
+    function coklusecimKapat() {
+        document.getElementById('coklusecimInput').style.visibility = "hidden";
+
+
+    }
+
+
+
+    function checkboxInput() {
+        document.getElementById('emailInput').style.visibility = "hidden";
+        document.getElementById('tarihinput').style.visibility = "hidden";
+        document.getElementById('sayiinput').style.visibility = "hidden";
+        document.getElementById('deneme').style.visibility = "hidden";
+        document.getElementById('secenekInput').style.visibility = "hidden";
+        document.getElementById('checkboxInput').style.visibility = "visible";
+        document.getElementById('coklusecimInput').style.visibility = "hidden";
+        document.getElementById('metinkutuInput').style.visibility = "hidden";
+
+
+    }
+    function checkboxKapat() {
+        document.getElementById('checkboxInput').style.visibility = "hidden";
+
+
+    }
+</script>
