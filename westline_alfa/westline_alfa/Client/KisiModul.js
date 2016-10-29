@@ -40,7 +40,7 @@
             })
             
          .otherwise({
-             redirectTo: "/RandevuAl"
+             redirectTo: "/Dashboard"
          });
     });
 
