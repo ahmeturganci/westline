@@ -14,5 +14,9 @@ namespace westline_alfa.Controllers
         {
             return View(db.Kullanicis.Find(id));
         }
+        public ActionResult CvPdf(int id)
+        {
+            return View(db.Kullanicis.Find(id));
+        }
     }
 }

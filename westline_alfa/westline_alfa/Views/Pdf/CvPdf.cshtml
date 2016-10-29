@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "CvPdf";
+
+}@model westline_alfa.Models.Kullanici
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/pdf.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<style>
+    .resim {
+    }
+</style>
+<body>
+    <div class="container">
+
+        @*kisisel bilgiler*@
+
+        <div class="kutu">
+            <div class="logo"><img src="http://summerworktravel.com/wp-content/uploads/logo.jpg" style="height:80px;" alt="Alternate Text" /></div>
+
+
+            @{var deger = Model.Degers.Where(x => x.KisiId == 1);
+                <center>
+
+                    <h1><u>@deger.FirstOrDefault(x => x.InputId == 2).Icerik @deger.FirstOrDefault(x => x.InputId == 3).Icerik @deger.FirstOrDefault(x => x.InputId == 4).Icerik</u></h1>
+                </center> <div class="panel">
+                    <div class="panel-body">
+                        <div class="resim"><img src="http://ertugrulungor.com/wp-content/themes/SimplyReadable/images/me.png" alt="Alternate Text" style="margin:10px; width: 100px;height:100px;float: right;" /></div>
+                        <p> <b>Doğum Tarihi : </b>@deger.FirstOrDefault(x => x.InputId == 1).Icerik</p>
+                        <p> <b>Adres: </b>@deger.FirstOrDefault(x => x.InputId == 2061).Icerik</p>
+                        <p> <b>Telefon: </b>@deger.FirstOrDefault(x => x.InputId == 2061).Icerik</p>
+                        <p> <b>E-Mail Adres: </b>@deger.FirstOrDefault(x => x.InputId == 5).Icerik</p>
+                        <p> <b>Program Kullanılabilirliği: </b>@deger.FirstOrDefault(x => x.InputId == 1).Icerik asdasd</p>
+                        <h2>Kişisel Bilgiler</h2>
+                        <b>Ben Kimim? </b>
+                        <p>@deger.FirstOrDefault(x => x.InputId == 1).Icerik</p>
+
+                        <b>Neden  Work Travel Programına katılmak istiyorum?</b>
+                        <p>@deger.FirstOrDefault(x => x.InputId == 1).Icerik</p>
+
+                        <b>Benim yeteneklerim ve Özelliklerim</b>
+                        <p>Hobilerim : @deger.FirstOrDefault(x => x.InputId == 15).Icerik</p>
+                        <p>Yeteneklerim : @deger.FirstOrDefault(x => x.InputId == 14).Icerik</p>
+                        <h2><u>Eğitim</u></h2>
+                        <p> <b>Lise Ad: </b>@deger.FirstOrDefault(x => x.InputId == 2034).Icerik  </p>
+                        <p> <b>Derece / Ortalama: </b>@deger.FirstOrDefault(x => x.InputId == 2034).Icerik  Biz bu bilgiyi almamışız.</p>
+                        <p> <b>Üniversite Ad: </b>@deger.FirstOrDefault(x => x.InputId == 2043).Icerik</p>
+                        <p> <b>Derece / Ortalama: </b>@deger.FirstOrDefault(x => x.InputId == 2034).Icerik  Biz bu bilgiyi almamışız.</p>
+                        <p> <b>Okul  Şehir/ Ulke İçerden hata aldım</p>
+                        <p> <b>Başlama Tarihi</b>@deger.FirstOrDefault(x => x.InputId == 2044).Icerik  </p>
+                        <p> <b>Bitiş Tarihi</b>@deger.FirstOrDefault(x => x.InputId == 2045).Icerik  </p>
+
+
+
+                        <h2><u>Deneyimler</u></h2>
+                        <p> <b> Mesleki Deneyim</b>@deger.FirstOrDefault(x => x.InputId == 2045).Icerik  </p>
+                        <p> <b> Pozisyon</b>@deger.FirstOrDefault(x => x.InputId == 2045).Icerik Bu bilgiyide almadık.  </p>
+                        <p> <b> Çalıştığı Tarih Aralığı</b>@deger.FirstOrDefault(x => x.InputId == 2045).Icerik Bu bilgiyide almadık.  </p>
+                        <ul>
+                            <li>Ayrılma Nedeni : >@deger.FirstOrDefault(x => x.InputId == 2045).Icerik Bu bilgiyide almadık.</li>
+                        </ul>
+                        <h2><u>Faaliyetler</u></h2>
+                        <p> <b> Diller ve seviyesi</b>@deger.FirstOrDefault(x => x.InputId == 2).Icerik Bu bilgide yok </p>
+
+                        <img src="~/Images/@deger.FirstOrDefault(x => x.InputId == 1).Icerik" />
+
+
+                    </div>
+                </div>
+
+
+            }
+        </div>
+</body>
+</html>

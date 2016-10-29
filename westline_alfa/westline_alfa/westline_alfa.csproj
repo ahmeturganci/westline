@@ -164,6 +164,7 @@
     <Compile Include="Models\DilKisi.cs" />
     <Compile Include="Models\ds160.cs" />
     <Compile Include="Models\GidilenUlkeler.cs" />
+    <Compile Include="Models\GirisLog.cs" />
     <Compile Include="Models\Il.cs" />
     <Compile Include="Models\Ilce.cs" />
     <Compile Include="Models\Iletisim.cs" />
@@ -175,13 +176,18 @@
     <Compile Include="Models\KisiReferan.cs" />
     <Compile Include="Models\KisiUcu.cs" />
     <Compile Include="Models\Kullanici.cs" />
+    <Compile Include="Models\KullaniciGiri.cs" />
     <Compile Include="Models\KullaniciI.cs" />
     <Compile Include="Models\Lise.cs" />
+    <Compile Include="Models\Odeme.cs" />
     <Compile Include="Models\Pasaport.cs" />
     <Compile Include="Models\Randevu.cs" />
     <Compile Include="Models\Referan.cs" />
     <Compile Include="Models\Secenek.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\Sozlesme.cs" />
+    <Compile Include="Models\SozlesmeTur.cs" />
+    <Compile Include="Models\Taksit.cs" />
+    <Compile Include="Models\TaksitOdeme.cs" />
     <Compile Include="Models\Tur.cs" />
     <Compile Include="Models\Ucu.cs" />
     <Compile Include="Models\Ulke.cs" />
@@ -423,6 +429,7 @@
     <Content Include="Views\YonetimPanel\UcakBilgiInput.cshtml" />
     <Content Include="Views\Kullanici\Index.cshtml" />
     <Content Include="Views\YonetimPanel\KullaniciDosya.cshtml" />
+    <Content Include="Views\Pdf\CvPdf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
