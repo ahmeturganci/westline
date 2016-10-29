@@ -143,6 +143,7 @@
     <Compile Include="Controllers\RandevuController.cs" />
     <Compile Include="Controllers\UcakController.cs" />
     <Compile Include="Controllers\UcuncuController.cs" />
+    <Compile Include="Controllers\WATSozlesmeController.cs" />
     <Compile Include="Controllers\YonetimPanelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -198,6 +199,7 @@
     <Content Include="assets\img\thumb_register.png" />
     <Content Include="assets\img\tim_80x80.png" />
     <Content Include="assets\img\westline.png" />
+    <Content Include="assets\img\westlineSozlesme.jpg" />
     <Content Include="assets\img\wizard-boat.jpg" />
     <Content Include="assets\img\wizard-city.jpg" />
     <Content Include="assets\img\wizard.jpg" />
@@ -415,6 +417,7 @@
     <Content Include="Views\YonetimPanel\DorduncuSayfaInput.cshtml" />
     <Content Include="Views\YonetimPanel\BesinciSayfaInput.cshtml" />
     <Content Include="Views\YonetimPanel\UcakBilgiInput.cshtml" />
+    <Content Include="Views\WATSozlesme\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
