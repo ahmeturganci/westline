@@ -17,7 +17,6 @@ namespace westline_alfa.Models
 
         public int Id { get; set; }
 
-        [Column(TypeName = "date")]
         public DateTime? Tarih { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
