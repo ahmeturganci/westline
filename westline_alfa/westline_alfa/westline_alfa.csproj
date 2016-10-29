@@ -221,6 +221,7 @@
     <Content Include="Client\Views\BesinciSayfa.html" />
     <Content Include="Client\Views\BirinciSayfa.html" />
     <Content Include="Client\Views\Cv.html" />
+    <Content Include="Client\Views\dashboard.html" />
     <Content Include="Client\Views\DorduncuSayfa.html" />
     <Content Include="Client\Views\IkinciSayfa.html" />
     <Content Include="Client\Views\isler.html" />
@@ -433,6 +434,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Admin\dist\img\" />
     <Folder Include="Upload\" />
+    <Folder Include="Views\Dashboard\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
