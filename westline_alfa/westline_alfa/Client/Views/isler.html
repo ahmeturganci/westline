@@ -61,8 +61,97 @@
     $('#ucakbilgi').attr("style", "background-color:gray");
     $('#ikincisayfa').attr("style", "background-color:gray");
     $('#cv').attr("style", "background-color:gray");
-    $('#taksitbilgi').attr("style", "background-color:gray");
-    $('#dashboard').attr("style", "background-color:gray");
+    $('#taksitbilgi').attr("style", "background-color:green");
+    $('#dashboard').attr("style", "background-color:green");
+
+    $.post('../Home/RenkDurumCek', function (data) {
+        //birinci sayfa
+        if (data.birincisayfa == "0")
+            $('#birincisayfa').attr("style", "background-color:yellow");
+        else if (data.birincisayfa == "1")
+            $('#birincisayfa').attr("style", "background-color:red");
+        else
+            $('#birincisayfa').attr("style", "background-color:green");
+
+        //besinci sayfa
+        if (data.besincisayfa == "0")
+            $('#besincisayfa').attr("style", "background-color:yellow");
+        else if (data.besincisayfa == "1")
+            $('#besincisayfa').attr("style", "background-color:red");
+        else
+            $('#besincisayfa').attr("style", "background-color:green");
+
+
+        //aktivasyon sayfa
+        if (data.aktivasyon == "0")
+            $('#aktivasyon').attr("style", "background-color:yellow");
+        else if (data.aktivasyon == "1")
+            $('#aktivasyon').attr("style", "background-color:red");
+        else
+            $('#aktivasyon').attr("style", "background-color:green");
+
+
+        //radevu al sayfa
+        if (data.randevual == "0")
+            $('#randevual').attr("style", "background-color:yellow");
+        else if (data.randevual == "1")
+            $('#randevual').attr("style", "background-color:red");
+        else
+            $('#randevual').attr("style", "background-color:green");
+
+
+        //ikicisayfa sayfa
+        if (data.ikincisayfa == "0")
+            $('#ikincisayfa').attr("style", "background-color:yellow");
+        else if (data.ikincisayfa == "1")
+            $('#ikincisayfa').attr("style", "background-color:red");
+        else
+            $('#ikincisayfa').attr("style", "background-color:green");
+
+        //ucuncusayfa sayfa
+        if (data.ucuncusayfa == "0")
+            $('#ucuncusayfa').attr("style", "background-color:yellow");
+        else if (data.ucuncusayfa == "1")
+            $('#ucuncusayfa').attr("style", "background-color:red");
+        else
+            $('#ucuncusayfa').attr("style", "background-color:green");
+
+
+        //dorduncusayfa sayfa
+        if (data.dorduncusayfa == "0")
+            $('#dorduncusayfa').attr("style", "background-color:yellow");
+        else if (data.dorduncusayfa == "1")
+            $('#dorduncusayfa').attr("style", "background-color:red");
+        else
+            $('#dorduncusayfa').attr("style", "background-color:green");
+
+
+
+        //ucakbilgi sayfa
+        if (data.ucakbilgi == "0")
+            $('#ucakbilgi').attr("style", "background-color:yellow");
+        else if (data.ucakbilgi == "1")
+            $('#ucakbilgi').attr("style", "background-color:red");
+        else
+            $('#ucakbilgi').attr("style", "background-color:green");
+
+        //isler sayfa
+        if (data.isler == "0")
+            $('#isler').attr("style", "background-color:yellow");
+        else if (data.isler == "1")
+            $('#isler').attr("style", "background-color:red");
+        else
+            $('#isler').attr("style", "background-color:green");
+
+
+        //cv sayfa
+        if (data.cv == "0")
+            $('#cv').attr("style", "background-color:yellow");
+        else if (data.cv == "1")
+            $('#cv').attr("style", "background-color:red");
+        else
+            $('#cv').attr("style", "background-color:green");
+    });
 
 
 </script>
