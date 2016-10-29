@@ -133,6 +133,7 @@
     <Compile Include="Controllers\BesinciController.cs" />
     <Compile Include="Controllers\BirinciController.cs" />
     <Compile Include="Controllers\CvController.cs" />
+    <Compile Include="Controllers\dashboardController.cs" />
     <Compile Include="Controllers\DorduncuController.cs" />
     <Compile Include="Controllers\GirisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

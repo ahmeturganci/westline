@@ -256,5 +256,21 @@ namespace westline_alfa.helper
             //hexadecimal(onaltılık) stringi geri döndürelim.
             return sb.ToString();
         }
+
+        public JsonResult SonGirisCek(int kisiId)
+        {
+            List<Object> jsonModelList = new List<object>();
+            foreach (var i in db.KullaniciGiris.Where(x=>x.KullaniciId == kisiId).OrderByDescending(y=>y.Id))
+            {
+                var a = i.GirisLog.Tarih.Value;
+                var jsonModel = new
+                {
+                    Giris = a.Date.Day + "." + a.Date.Month + "." + a.Date.Year + " " + a.Hour + ":" + a.Minute
+                };
+                jsonModelList.Add(jsonModel);
+            }
+
+            return Json(jsonModelList,JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -25,6 +25,7 @@ namespace westline_alfa.Models
         public virtual DbSet<DilKisi> DilKisis { get; set; }
         public virtual DbSet<ds160> ds160 { get; set; }
         public virtual DbSet<GidilenUlkeler> GidilenUlkelers { get; set; }
+        public virtual DbSet<GirisLog> GirisLogs { get; set; }
         public virtual DbSet<Il> Ils { get; set; }
         public virtual DbSet<Ilce> Ilces { get; set; }
         public virtual DbSet<Iletisim> Iletisims { get; set; }
@@ -36,13 +37,19 @@ namespace westline_alfa.Models
         public virtual DbSet<KisiReferan> KisiReferans { get; set; }
         public virtual DbSet<KisiUcu> KisiUcus { get; set; }
         public virtual DbSet<Kullanici> Kullanicis { get; set; }
+        public virtual DbSet<KullaniciGiri> KullaniciGiris { get; set; }
         public virtual DbSet<KullaniciI> KullaniciIs { get; set; }
         public virtual DbSet<Lise> Lises { get; set; }
+        public virtual DbSet<Odeme> Odemes { get; set; }
         public virtual DbSet<Pasaport> Pasaports { get; set; }
         public virtual DbSet<Randevu> Randevus { get; set; }
         public virtual DbSet<Referan> Referans { get; set; }
         public virtual DbSet<Secenek> Seceneks { get; set; }
+        public virtual DbSet<Sozlesme> Sozlesmes { get; set; }
+        public virtual DbSet<SozlesmeTur> SozlesmeTurs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Taksit> Taksits { get; set; }
+        public virtual DbSet<TaksitOdeme> TaksitOdemes { get; set; }
         public virtual DbSet<Tur> Turs { get; set; }
         public virtual DbSet<Ucu> Ucus { get; set; }
         public virtual DbSet<Ulke> Ulkes { get; set; }
@@ -117,6 +124,11 @@ namespace westline_alfa.Models
                 .HasMany(e => e.KisiReferans)
                 .WithOptional(e => e.Referan)
                 .HasForeignKey(e => e.ReferansId);
+
+            modelBuilder.Entity<SozlesmeTur>()
+                .HasMany(e => e.Sozlesmes)
+                .WithOptional(e => e.SozlesmeTur1)
+                .HasForeignKey(e => e.SozlesmeTur);
 
             modelBuilder.Entity<Ucu>()
                 .HasMany(e => e.KisiUcus)

@@ -421,6 +421,14 @@
             Kayit(formId);
         };
 
+    //Dashboard eleman çek
+        $http.get("/dashboard/GirisLog?Id=1").success(function (data) {
+            console.log(data);
+            $scope.logs = data;
+        }).error(function (data) {
+            console.log(data);
+        });
+
 }).factory('FileUploadService', function ($http, $q) { // explained abour controller and service in part 2
 
     var fac = {};
