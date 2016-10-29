@@ -218,6 +218,7 @@
     <Content Include="Client\Views\IkinciSayfa.html" />
     <Content Include="Client\Views\isler.html" />
     <Content Include="Client\Views\RandevuAl.html" />
+    <Content Include="Client\Views\taksitbilgi.html" />
     <Content Include="Client\Views\UcakBilgi.html" />
     <Content Include="Client\Views\UcuncuSayfa.html" />
     <Content Include="Content\Admin\bootstrap\css\bootstrap.css" />
