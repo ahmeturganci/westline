@@ -22,10 +22,10 @@ namespace westline_alfa.Controllers
             NameValueCollection query = Request.QueryString;
             for (int i = 0; i < query.Count; i++)
             {
-                KullaniciI k = new KullaniciI();
-                k.IsId = Convert.ToInt32(query[i]);
-                k.KullaniciId = 1;
-                db.KullaniciIs.Add(k);
+                //KullaniciIs k = new KullaniciIs();
+                //k.IsId = Convert.ToInt32(query[i]);
+                //k.KullaniciId = 1;
+                //db.KullaniciIs.Add(k);
             }
 
             db.SaveChanges();

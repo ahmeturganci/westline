@@ -16,7 +16,11 @@ namespace westline_alfa.Controllers
             return View(db.Kisis);
         }
 
-        public ActionResult IsEkle()
+        public ActionResult KullaniciDosya()
+        {
+            return View(db.Kullanicis);
+        }
+            public ActionResult IsEkle()
         {
             return View();
         }

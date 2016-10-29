@@ -1,7 +1,6 @@
 ﻿angular.module('KisiModul') // extending angular module from first part
 .controller('KisiTanimaController', function ($scope, FileUploadService, $window, $http, $location, $filter) {
-    
-    // Ekran Değerleri
+    $scope.aaa = "sasdasd";    // Ekran Değerleri
     $scope.Message = "";
     $scope.FileInvalidMessage = "";
     $scope.SelectedFileForUpload = null;
@@ -58,6 +57,7 @@
 
     //Save File
     $scope.SaveFile = function (e) {
+        console.log("kaydetme fonksiyonunun içerisinde");
         $scope.IsFormSubmitted = true;
         $scope.Message = "";
         $scope.ChechFileValid($scope.SelectedFileForUpload);

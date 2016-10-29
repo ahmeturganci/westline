@@ -7,22 +7,21 @@ using westline_alfa.Models;
 
 namespace westline_alfa.Controllers
 {
-    public class GirisController : Controller
+    public class KullaniciController : Controller
     {
-        // GET: Giris
+        // GET: Kullanici
         public ActionResult Index()
         {
             return View();
         }
-
         westlineDB db = new westlineDB();
         helper.helper h = new helper.helper();
         public JsonResult GirisYap(string kullaniciAdi, string sifre)
         {
             string s = h.MD5Sifrele(sifre);
-            if (db.Admins.Any(x => x.KullaniciAdi == kullaniciAdi && x.Sifre == s))
+            if (db.Kullanicis.Any(x => x.KullaniciAdi == kullaniciAdi && x.Sifre == s))
             {
-                Admin a = db.Admins.FirstOrDefault(x => x.KullaniciAdi == kullaniciAdi && x.Sifre == s);
+                Kullanici a = db.Kullanicis.FirstOrDefault(x => x.KullaniciAdi == kullaniciAdi && x.Sifre ==s);
                 var jsonModel = new
                 {
                     basari = 1,

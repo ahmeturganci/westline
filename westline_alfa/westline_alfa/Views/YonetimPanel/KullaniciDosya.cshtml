@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "KullaniciDosya";
+    Layout = "~/Views/Shared/_YonetimLayout.cshtml";
+}
+@model IEnumerable<westline_alfa.Models.Kullanici>
+    <div class="container"  ng-controller="KisiTanimaController">
+        <h2>Kullanıcı Evrak Yükleme</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">Kullanıcı Dosya İşlem</div>
+            <div class="panel-body">
+               
+                <table class="table table-inverse">
+                    <thead>
+                        <tr>
+
+                            <th>{{aaa}}</th>
+                            <th>Kullanici Adı Soyad </th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+
+                    @{foreach (var k in Model)
+                        {
+                            <tbody>
+                                <tr>
+
+                                    <td>@k.KullaniciAdi</td>
+                                    <!-- <td>k.Degers.FirstOrDefault(z=>z.InputId==2 && z.KisiId==k.Id).Icerik</td>
+                                      <td>k.Degers.FirstOrDefault(z => z.InputId == 4 && z.KisiId == k.Id).Icerik</td>-->
+                                    <td>kullanici adı soyadı çekilecek</td>
+                                    <td>
+                                        <input type="file" name="file" id="btnFileUpload" class="btn btn-danger" />
+                                        <input type="submit" value="Yükle" class="btn btn-danger" id="dosyaEkle">
+                                        
+                                    </td>
+                                </tr>
+                            </tbody>
+                        }
+                    }
+
+
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+ 
+</div>
