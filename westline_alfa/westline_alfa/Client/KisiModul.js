@@ -5,7 +5,9 @@
 
     var config = (function ($routeProvider) {
         $routeProvider
-         .when("/Profil", {
+            .when("/Dashboard", {
+                templateUrl: "/Client/Views/dashboard.html"
+            }).when("/Profil", {
              templateUrl: "/Client/Views/BirinciSayfa.html"
          }).when("/Aktivasyon", {
              templateUrl: "/Client/Views/Aktivasyon.html"
