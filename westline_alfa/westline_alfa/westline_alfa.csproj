@@ -151,7 +151,6 @@
     </Compile>
     <Compile Include="helper\helper.cs" />
     <Compile Include="helper\smsapi.cs" />
-    <Compile Include="helper\Yardimci.cs" />
     <Compile Include="Models\AcilDurum.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Adre.cs" />
@@ -165,7 +164,6 @@
     <Compile Include="Models\DilKisi.cs" />
     <Compile Include="Models\ds160.cs" />
     <Compile Include="Models\GidilenUlkeler.cs" />
-    <Compile Include="Models\GirisLog.cs" />
     <Compile Include="Models\Il.cs" />
     <Compile Include="Models\Ilce.cs" />
     <Compile Include="Models\Iletisim.cs" />
@@ -177,19 +175,13 @@
     <Compile Include="Models\KisiReferan.cs" />
     <Compile Include="Models\KisiUcu.cs" />
     <Compile Include="Models\Kullanici.cs" />
-    <Compile Include="Models\KullaniciGiri.cs" />
     <Compile Include="Models\KullaniciI.cs" />
     <Compile Include="Models\Lise.cs" />
-    <Compile Include="Models\Odeme.cs" />
     <Compile Include="Models\Pasaport.cs" />
     <Compile Include="Models\Randevu.cs" />
     <Compile Include="Models\Referan.cs" />
     <Compile Include="Models\Secenek.cs" />
-    <Compile Include="Models\Sozlesme.cs" />
-    <Compile Include="Models\SozlesmeTur.cs" />
     <Compile Include="Models\sysdiagram.cs" />
-    <Compile Include="Models\Taksit.cs" />
-    <Compile Include="Models\TaksitOdeme.cs" />
     <Compile Include="Models\Tur.cs" />
     <Compile Include="Models\Ucu.cs" />
     <Compile Include="Models\Ulke.cs" />
@@ -227,6 +219,7 @@
     <Content Include="Client\Views\IkinciSayfa.html" />
     <Content Include="Client\Views\isler.html" />
     <Content Include="Client\Views\RandevuAl.html" />
+    <Content Include="Client\Views\taksitbilgi.html" />
     <Content Include="Client\Views\UcakBilgi.html" />
     <Content Include="Client\Views\UcuncuSayfa.html" />
     <Content Include="Content\Admin\bootstrap\css\bootstrap.css" />

@@ -4,10 +4,7 @@
 
 
     var config = (function ($routeProvider) {
-        $routeProvider
-            .when("/Dashboard", {
-                templateUrl: "/Client/Views/dashboard.html"
-            }).when("/Profil", {
+        $routeProvider .when("/Profil", {
              templateUrl: "/Client/Views/BirinciSayfa.html"
          }).when("/Aktivasyon", {
              templateUrl: "/Client/Views/Aktivasyon.html"
@@ -34,8 +31,13 @@
              })
             .when("/UcakBilgi", {
                 templateUrl: "/Client/Views/UcakBilgi.html"
-             })
-
+            })
+            .when("/TaksitBilgi", {
+                templateUrl: "/Client/Views/taksitbilgi.html"
+            })
+            .when("/Dashboard", {
+                templateUrl: "/Client/Views/dashboard.html"
+            })
             
          .otherwise({
              redirectTo: "/RandevuAl"

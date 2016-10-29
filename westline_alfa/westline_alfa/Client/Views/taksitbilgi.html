@@ -1,60 +1,23 @@
-﻿
-<div class="tab-pane" id="birincisayfa">
+﻿    
+<div class="tab-pane" id="taksitbilgi">
     <div ng-controller="KisiTanimaController">
-        <h3>{{birinciMesaj}}</h3>
-        <form id="profile">
-            <fieldset>
-                <div class="form-group" ng-repeat="c in birinciElemans">
-                    <label class="KariyerHedef" for="form-group-input">{{c.Aciklama}}{{c.Zorunlu}}</label>
-                    <input ng-if="c.iTur !== 'radio' && c.iTur !== 'textarea' &&  c.iTur !== 'select' && c.iTur !== 'file' && c.iTur !== 'ulke' && c.iTur !== 'il'" type="{{c.iTur}}" id="{{c.Id}}" name="{{c.Name}}" class="form-control" maxlength="{{c.Max}}" placeholder="{{c.Placeholder}}" value="{{c.Icerik}}" required>
-                    <br />
-                    <span ng-if="c.iTur === 'file'" id="{{c.Id}}">
-                        <img ng-if="c.Icerik !== ''" id="{{c.Id}}d" src="Images/{{c.Icerik}}" width="60" />
-                        <img ng-if="c.Icerik === ''" id="{{c.Id}}d" />
-                        <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-                        <input type="submit" ng-click="SaveFile(c.Id)" value="Yükle" class="btn btn-danger" />
-                    </span>
-                    <span ng-if="c.iTur === 'radio'" ng-repeat="s in c.Secenek">
-                        <span ng-if="s.Secili === 0">
-                            <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="{{s.name}}" /> {{s.secenek}}
-                        </span>
-                        <span ng-if="s.Secili === 1">
-                            <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="{{s.name}}" checked /> {{s.secenek}}
-                        </span>
-                    </span>
-                    <textarea ng-if="c.iTur === 'textarea'" id="{{c.Id}}" class="form-control" name="{{c.Name}}" rows="5">{{c.Icerik}}</textarea>
-                    <span ng-if="c.iTur === 'select'">
-                        <select class="combobox">
-                            <option ng-repeat="s in c.Secenek" value="{{s.Id}}">{{s.secenek}}</option>
-                        </select>
-                    </span>
-                    <select ng-if="c.iTur === 'ulke'" class="combobox" ng-change="updateIls(countrySelect)" ng-model="countrySelect">
-                        <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
-                    </select>
-                    <select ng-if="c.iTur === 'il'" class="combobox" ng-model="pasIl">
-                        <option ng-repeat="e in Eyalets" value="{{e.Id}}">{{e.Ad}}</option>
-                    </select>
-                </div>
-            </fieldset>
-            <button ng-click="profilSayfa('profile')">Devam Et </button>
-        </form>
+        <div class="panel panel-success">
+            <div class="panel-heading">Taksit Bilgilerim</div>
+            <div class="panel-body">
+                <h3>Taksit Bilgisi</h3>
+             <ul>
+                <li>Ocak  - 150TL</li>
+                 <li>Şubat  - 150TL</li>
+                 <li>Mart  - 150TL</li>
+
+             </ul>
+            </div>
+        </div>
+        
     </div>
 </div>
-
 <script>
-    $("#tc,#Telefon").keyup(function () {
-        if (this.value.match(/[^0-9]/g)) {
-            this.value = this.value.replace(/[^0-9]/g, '');
-        }
-    });//rakam
-    $("#Ad,#OrtaAd,#Soyad").keyup(function () {
-        if (this.value.match(/[^a-zA-Z]/g)) {
-            this.value = this.value.replace(/[^a-zA-Z]/g, '');
-        }
-    });//harf
-</script>
-<script>
-    $('#birincisayfa').attr("style", "background-color:green");
+    $('#birincisayfa').attr("style", "background-color:gray");
     $('#aktivasyon').attr("style", "background-color:gray");
     $('#besincisayfa').attr("style", "background-color:gray");
     $('#ikincisayfa').attr("style", "background-color:gray");
@@ -66,7 +29,6 @@
     $('#cv').attr("style", "background-color:gray");
     $('#taksitbilgi').attr("style", "background-color:green");
     $('#dashboard').attr("style", "background-color:green");
-
 
     $.post('../Home/RenkDurumCek', function (data) {
         //birinci sayfa
