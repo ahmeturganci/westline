@@ -184,6 +184,8 @@
     <Compile Include="Models\Randevu.cs" />
     <Compile Include="Models\Referan.cs" />
     <Compile Include="Models\Secenek.cs" />
+    <Compile Include="Models\Sozlesme.cs" />
+    <Compile Include="Models\SozlesmeTur.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\Taksit.cs" />
     <Compile Include="Models\TaksitOdeme.cs" />
@@ -395,6 +397,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\uploadButton.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\yonetim.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

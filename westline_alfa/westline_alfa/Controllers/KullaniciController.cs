@@ -22,6 +22,18 @@ namespace westline_alfa.Controllers
             if (db.Kullanicis.Any(x => x.KullaniciAdi == kullaniciAdi && x.Sifre == s))
             {
                 Kullanici a = db.Kullanicis.FirstOrDefault(x => x.KullaniciAdi == kullaniciAdi && x.Sifre ==s);
+
+                GirisLog g = new GirisLog();
+                g.Tarih = DateTime.Now;
+                db.GirisLogs.Add(g);
+
+                KullaniciGiri kg = new KullaniciGiri();
+                kg.GirisLog = g;
+                kg.Kullanici = a;
+                db.KullaniciGiris.Add(kg);
+
+                db.SaveChanges();
+
                 var jsonModel = new
                 {
                     basari = 1,
