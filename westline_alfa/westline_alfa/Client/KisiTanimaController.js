@@ -423,8 +423,14 @@
 
     //Dashboard eleman çek
         $http.get("/dashboard/GirisLog?Id=1").success(function (data) {
-            console.log(data);
             $scope.logs = data;
+        }).error(function (data) {
+            console.log(data);
+        });
+
+    //taksitbilgi çek
+        $http.get("/taksitbilgi/TaksitCek?Id=1").success(function (data) {
+            $scope.taksits = data;
         }).error(function (data) {
             console.log(data);
         });

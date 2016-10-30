@@ -143,6 +143,7 @@
     <Compile Include="Controllers\PasaportController.cs" />
     <Compile Include="Controllers\PdfController.cs" />
     <Compile Include="Controllers\RandevuController.cs" />
+    <Compile Include="Controllers\taksitbilgiController.cs" />
     <Compile Include="Controllers\UcakController.cs" />
     <Compile Include="Controllers\UcuncuController.cs" />
     <Compile Include="Controllers\YonetimPanelController.cs" />
@@ -151,6 +152,7 @@
     </Compile>
     <Compile Include="helper\helper.cs" />
     <Compile Include="helper\smsapi.cs" />
+    <Compile Include="helper\Yardimci.cs" />
     <Compile Include="Models\AcilDurum.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Adre.cs" />
@@ -179,7 +181,6 @@
     <Compile Include="Models\KullaniciGiri.cs" />
     <Compile Include="Models\KullaniciI.cs" />
     <Compile Include="Models\Lise.cs" />
-    <Compile Include="Models\Odeme.cs" />
     <Compile Include="Models\Pasaport.cs" />
     <Compile Include="Models\Randevu.cs" />
     <Compile Include="Models\Referan.cs" />
@@ -438,6 +439,7 @@
     <Folder Include="Content\Admin\dist\img\" />
     <Folder Include="Upload\" />
     <Folder Include="Views\Dashboard\" />
+    <Folder Include="Views\taksitbilgi\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

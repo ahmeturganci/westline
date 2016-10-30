@@ -11,11 +11,11 @@ namespace westline_alfa.Models
     {
         public int Id { get; set; }
 
-        public int? OdemeId { get; set; }
+        public int? KullaniciId { get; set; }
 
         public int? TaksitId { get; set; }
 
-        public virtual Odeme Odeme { get; set; }
+        public virtual Kullanici Kullanici { get; set; }
 
         public virtual Taksit Taksit { get; set; }
     }

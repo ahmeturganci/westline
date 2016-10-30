@@ -40,13 +40,13 @@ namespace westline_alfa.Models
         public virtual DbSet<KullaniciGiri> KullaniciGiris { get; set; }
         public virtual DbSet<KullaniciI> KullaniciIs { get; set; }
         public virtual DbSet<Lise> Lises { get; set; }
-        public virtual DbSet<Odeme> Odemes { get; set; }
         public virtual DbSet<Pasaport> Pasaports { get; set; }
         public virtual DbSet<Randevu> Randevus { get; set; }
         public virtual DbSet<Referan> Referans { get; set; }
         public virtual DbSet<Secenek> Seceneks { get; set; }
         public virtual DbSet<Sozlesme> Sozlesmes { get; set; }
         public virtual DbSet<SozlesmeTur> SozlesmeTurs { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Taksit> Taksits { get; set; }
         public virtual DbSet<TaksitOdeme> TaksitOdemes { get; set; }
         public virtual DbSet<Tur> Turs { get; set; }

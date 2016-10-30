@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using westline_alfa.Models;
 
@@ -53,9 +52,6 @@ namespace westline_alfa.helper
 
         public JsonResult Taksitlendir(float ucret, int taksitSayi, int kullaniciId)
         {
-            Odeme o = new Odeme();
-            o.KullaniciId = kullaniciId;
-            db.Odemes.Add(o);
 
             int dateAyar = 30;
             for (int i = 0; i < taksitSayi; i++)
@@ -69,8 +65,8 @@ namespace westline_alfa.helper
 
 
                 TaksitOdeme taksitOde = new TaksitOdeme();
-                taksitOde.OdemeId = o.Id;
                 taksitOde.TaksitId = t.Id;
+                taksitOde.KullaniciId = kullaniciId;
                 db.TaksitOdemes.Add(taksitOde);
             }
 
@@ -87,6 +83,23 @@ namespace westline_alfa.helper
             
         }
 
+        public JsonResult TaksitGetir(int Id)
+        {
+            List<Object> jsonModelList = new List<object>();
+            foreach (var i in db.TaksitOdemes.Where(x => x.KullaniciId == Id).OrderByDescending(y => y.Id))
+            {
+                var a = i.Taksit.SonOdeme.Value;
+                var jsonModel = new
+                {
+                    Miktar = i.Taksit.Miktar,
+                    SonOdeme = a.Day + "." + a.Month + "." + a.Year,
+                    Odendi = i.Taksit.Odendi == true ? 1 : 0
+                };
+                jsonModelList.Add(jsonModel);
+            }
+
+            return Json(jsonModelList, JsonRequestBehavior.AllowGet);
+        }
 
 
     }

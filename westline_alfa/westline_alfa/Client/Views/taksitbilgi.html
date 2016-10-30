@@ -6,9 +6,7 @@
             <div class="panel-body">
                 <h3>Taksit Bilgisi</h3>
              <ul>
-                <li>Ocak  - 150TL</li>
-                 <li>Şubat  - 150TL</li>
-                 <li>Mart  - 150TL</li>
+                <li ng-repeat="t in taksits">{{t.Miktar}} - {{t.SonOdeme}} - {{t.Odendi}}</li>
 
              </ul>
             </div>

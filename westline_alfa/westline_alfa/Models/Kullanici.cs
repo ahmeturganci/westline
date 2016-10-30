@@ -15,8 +15,8 @@ namespace westline_alfa.Models
             Degers = new HashSet<Deger>();
             KullaniciGiris = new HashSet<KullaniciGiri>();
             KullaniciIs = new HashSet<KullaniciI>();
-            Odemes = new HashSet<Odeme>();
             Sozlesmes = new HashSet<Sozlesme>();
+            TaksitOdemes = new HashSet<TaksitOdeme>();
         }
 
         public int Id { get; set; }
@@ -37,9 +37,9 @@ namespace westline_alfa.Models
         public virtual ICollection<KullaniciI> KullaniciIs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Odeme> Odemes { get; set; }
+        public virtual ICollection<Sozlesme> Sozlesmes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sozlesme> Sozlesmes { get; set; }
+        public virtual ICollection<TaksitOdeme> TaksitOdemes { get; set; }
     }
 }
