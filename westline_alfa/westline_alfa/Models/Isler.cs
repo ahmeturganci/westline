@@ -12,7 +12,6 @@ namespace westline_alfa.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Isler()
         {
-            KisiIs = new HashSet<KisiI>();
             KullaniciIs = new HashSet<KullaniciI>();
         }
 
@@ -23,9 +22,6 @@ namespace westline_alfa.Models
 
         [StringLength(50)]
         public string Aciklama { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KisiI> KisiIs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KullaniciI> KullaniciIs { get; set; }

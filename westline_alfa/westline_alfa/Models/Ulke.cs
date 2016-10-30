@@ -12,7 +12,6 @@ namespace westline_alfa.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ulke()
         {
-            GidilenUlkelers = new HashSet<GidilenUlkeler>();
             Ils = new HashSet<Il>();
         }
 
@@ -29,9 +28,6 @@ namespace westline_alfa.Models
         [Required]
         [StringLength(255)]
         public string en_US { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GidilenUlkeler> GidilenUlkelers { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Il> Ils { get; set; }

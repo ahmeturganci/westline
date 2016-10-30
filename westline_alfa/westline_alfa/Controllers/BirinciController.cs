@@ -45,7 +45,7 @@ namespace westline_alfa.Controllers
         public JsonResult Kontrol(string kod)
         {
             int id = Convert.ToInt32(Session["id"]);
-            if (db.Aktivasyons.Any(x => x.KisiId == id && x.Kod == kod))
+            if (db.Aktivasyons.Any(x => x.KullaniciId == id && x.Kod == kod))
             {
                 var jsonModel = new
                 {

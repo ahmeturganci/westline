@@ -18,10 +18,10 @@ namespace westline_alfa.Models
 
         public int Id { get; set; }
 
-        [StringLength(50)]
+        [StringLength(500)]
         public string Aciklama { get; set; }
 
-        [StringLength(50)]
+        [StringLength(500)]
         public string Placeholder { get; set; }
 
         public int? TurId { get; set; }

@@ -12,6 +12,7 @@ namespace westline_alfa.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Kullanici()
         {
+            Aktivasyons = new HashSet<Aktivasyon>();
             Degers = new HashSet<Deger>();
             KullaniciGiris = new HashSet<KullaniciGiri>();
             KullaniciIs = new HashSet<KullaniciI>();
@@ -26,6 +27,15 @@ namespace westline_alfa.Models
 
         [StringLength(50)]
         public string Sifre { get; set; }
+
+        public bool? AktivasyonOnay { get; set; }
+
+        public bool? AdminOnay { get; set; }
+
+        public bool? RandevuOnay { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Aktivasyon> Aktivasyons { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Deger> Degers { get; set; }

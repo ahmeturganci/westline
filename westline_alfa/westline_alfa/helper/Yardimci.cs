@@ -101,6 +101,16 @@ namespace westline_alfa.helper
             return Json(jsonModelList, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult InputSil(int inputId)
+        {
+            Input i = db.Inputs.FirstOrDefault(x=>x.Id == inputId);
+            db.Inputs.Remove(i);
+            db.SaveChanges();
+            var jsonModel = new {
+                basari = 1
+            };
 
+            return Json(jsonModel, JsonRequestBehavior.AllowGet);
+        }
     }
 }

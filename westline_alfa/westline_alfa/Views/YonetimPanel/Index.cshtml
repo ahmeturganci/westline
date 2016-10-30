@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_YonetimLayout.cshtml";
 }
-@model IEnumerable<westline_alfa.Models.Kisi>
+@model IEnumerable<westline_alfa.Models.Kullanici>
 <style>
     hr.stil1 {
         height: 10px;
@@ -41,10 +41,11 @@
 
                 @foreach (var k in Model.Where(x => x.AktivasyonOnay == true && x.AdminOnay == false))
                 {
+                    <input type="hidden" name="id" value="@k.Id"/>
                     <tr>
                         <td><label style="padding-top:-25px;">@k.Id</label></td>
-
-                        <td><h5 style="float:left; font-size:20px;">Onay bekleyen Kullanici : @k.Ad @k.Soyad</h5></td>
+                        
+                        <td><h5 style="float:left; font-size:20px;">@k.Degers.FirstOrDefault(x=>x.InputId==2).Icerik @k.Degers.FirstOrDefault(x => x.InputId == 4).Icerik</h5></td>
                         <td><button style="margin-left:20px; margin-top:5px;" type="submit" class="btn btn-success">Onay Ver</button></td>
                     </tr>
                 }
@@ -70,7 +71,7 @@
                 foreach (var k in Model.Where(x => x.AktivasyonOnay == false && x.AdminOnay == false))
                 {
                     <tr>
-                        <td><h5 style="float:left; font-size:20px;">Onay bekleyen Kullanici : @k.Ad @k.Soyad</h5></td>
+                        <td><h5 style="float:left; font-size:20px;">Onay bekleyen Kullanici : @k.Degers.FirstOrDefault(x => x.InputId == 2).Icerik @k.Degers.FirstOrDefault(x => x.InputId == 4).Icerik</h5></td>
                     </tr>
                 }
             }

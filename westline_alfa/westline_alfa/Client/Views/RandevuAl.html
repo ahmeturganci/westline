@@ -4,7 +4,7 @@
         <h3>{{randevuMesaj}}</h3>
         <form id="randevuform">
             <div class="form-group" ng-repeat="c in randevuElemans">
-                <label class="KariyerHedef" for="form-group-input">{{c.Aciklama}}{{c.Zorunlu}}</label>
+                <label class="KariyerHedef" for="form-group-input">Birinci Alternatif*</label>
                 <input ng-if="c.iTur !== 'radio' && c.iTur !== 'textarea' &&  c.iTur !== 'select' && c.iTur !== 'file' && c.iTur !== 'ulke' && c.iTur !== 'il'" type="{{c.iTur}}" id="{{c.Id}}" name="{{c.Name}}" class="form-control" maxlength="{{c.Max}}" placeholder="{{c.Placeholder}}" value="{{c.Icerik}}" required>
                 <br />
                 <span ng-if="c.iTur === 'file'" id="{{c.Id}}">

@@ -119,19 +119,7 @@ namespace westline_alfa.helper
             return Json(jsonModelList, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult IngilizceSeviyeler() {
-            List<Object> jsonModelList = new List<object>();
-            foreach (var i in db.IngilizceSeviyes)
-            {
-                var jsonModel = new
-                {
-                    Id = i.Id,
-                    Aciklama = i.Aciklama
-                };
-                jsonModelList.Add(jsonModel);
-            }
-            return Json(jsonModelList, JsonRequestBehavior.AllowGet);
-        }
+        
 
         public JsonResult Ulkeler()
         {
@@ -191,10 +179,10 @@ namespace westline_alfa.helper
         {
             Random rnd = new Random();
             string kod = rnd.Next(10000,99999).ToString();
-            Kisi k = db.Kisis.Find(id);
+            Kullanici k = db.Kullanicis.Find(id);
 
             Aktivasyon a = new Aktivasyon();
-            a.Kisi = k;
+            a.Kullanici = k;
             a.Kod = kod;
             a.Tarih = DateTime.Now;
             k.AktivasyonOnay = false;

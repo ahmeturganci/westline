@@ -13,7 +13,7 @@ namespace westline_alfa.Controllers
         // GET: YonetimPanel
         public ActionResult Index()
         {
-            return View(db.Kisis);
+            return View(db.Kullanicis);
         }
 
         public ActionResult KullaniciDosya()
@@ -71,7 +71,12 @@ namespace westline_alfa.Controllers
         }
         public ActionResult Randevu()
         {
-            return View(db.Kisis);
+            return View(db.Kullanicis);
+        }
+
+        public ActionResult OgrenciListele()
+        {
+            return View(db.Kullanicis);
         }
 
         public ActionResult Is(string ad, string aciklama)
@@ -86,7 +91,8 @@ namespace westline_alfa.Controllers
 
         public ActionResult OnayVer(string id)
         {
-            Kisi k = db.Kisis.Find(Convert.ToInt32(id));
+            int Id = Convert.ToInt32(id);
+            Kullanici k = db.Kullanicis.Find(Id);
             k.AdminOnay = true;
             db.SaveChanges();
             return RedirectToAction("Index", "YonetimPanel");
@@ -94,12 +100,14 @@ namespace westline_alfa.Controllers
 
         public ActionResult RandevuOnay(string id, string secim)
         {
-            Randevu r = db.Randevus.Find(Convert.ToInt32(id));
-            r.Onay = true;
-            if (secim == "0")
-                r.SecilenTarih = r.AlternatifBir;
-            else
-                r.SecilenTarih = r.AlternatifIki;
+            int Id = Convert.ToInt32(id);
+            int Secim = Convert.ToInt32(secim);
+            Deger d = db.Degers.FirstOrDefault(x=>x.Id == Secim && x.KisiId == Id);
+            d.Onay = true;
+
+            Kullanici k = db.Kullanicis.Find(Id);
+            k.RandevuOnay = true;
+
             db.SaveChanges();
             return RedirectToAction("Randevu", "YonetimPanel");
         }

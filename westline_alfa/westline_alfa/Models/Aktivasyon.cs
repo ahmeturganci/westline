@@ -11,13 +11,13 @@ namespace westline_alfa.Models
     {
         public int id { get; set; }
 
-        public int? KisiId { get; set; }
+        public int? KullaniciId { get; set; }
 
         [StringLength(50)]
         public string Kod { get; set; }
 
         public DateTime? Tarih { get; set; }
 
-        public virtual Kisi Kisi { get; set; }
+        public virtual Kullanici Kullanici { get; set; }
     }
 }

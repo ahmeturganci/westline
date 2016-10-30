@@ -18,6 +18,8 @@ namespace westline_alfa.Models
 
         public int? KisiId { get; set; }
 
+        public bool? Onay { get; set; }
+
         public virtual Input Input { get; set; }
 
         public virtual Kullanici Kullanici { get; set; }

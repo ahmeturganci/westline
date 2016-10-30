@@ -47,9 +47,6 @@ namespace westline_alfa.Controllers
             return h.Iller(id);
         }
 
-        public JsonResult IngilizceCek()
-        {
-            return h.IngilizceSeviyeler();
-        }
+        
     }
 }

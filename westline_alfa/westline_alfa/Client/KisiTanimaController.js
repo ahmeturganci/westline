@@ -411,7 +411,7 @@
         };
 
     //ds eleman çek
-        $http.get("/Besinci/elemans?sayfa=8&kisiId=1").success(function (data) {
+        $http.get("/Besinci/elemans?sayfa=9&kisiId=1").success(function (data) {
             $scope.dsElemans = data;
         }).error(function (data) {
             console.log(data);
