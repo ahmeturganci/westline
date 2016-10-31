@@ -21,7 +21,7 @@
         <h3>{{ucakMesaj}}</h3>
         <form id="ucakbilgiform">
             <div class="form-group" ng-repeat="c in ucakElemans">
-                <label class="KariyerHedef" for="form-group-input">{{c.Aciklama}}{{c.Zorunlu}}</label>
+                <label for="form-group-input"><b>{{c.Aciklama}}<strong style="color:red;">{{c.Zorunlu}}</strong></b></label>
                 <input ng-if="c.iTur !== 'radio' && c.iTur !== 'textarea' &&  c.iTur !== 'select' && c.iTur !== 'file' && c.iTur !== 'ulke' && c.iTur !== 'il'" type="{{c.iTur}}" id="{{c.Id}}" name="{{c.Name}}" class="form-control" maxlength="{{c.Max}}" placeholder="{{c.Placeholder}}" value="{{c.Icerik}}" required>
                 <br />
                 <span ng-if="c.iTur === 'file'" id="{{c.Id}}">
@@ -40,18 +40,18 @@
                 </span>
                 <textarea ng-if="c.iTur === 'textarea'" id="{{c.Id}}" class="form-control" name="{{c.Name}}" rows="5">{{c.Icerik}}</textarea>
                 <span ng-if="c.iTur === 'select'">
-                    <select class="combobox">
+                    <select class="form-control combobox">
                         <option ng-repeat="s in c.Secenek" value="{{s.Id}}">{{s.secenek}}</option>
                     </select>
                 </span>
-                <select ng-if="c.iTur === 'ulke'" class="combobox" ng-change="updateIls(countrySelect)" ng-model="countrySelect">
+                <select ng-if="c.iTur === 'ulke'" class="form-control combobox" ng-change="updateIls(countrySelect)" ng-model="countrySelect">
                     <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
                 </select>
-                <select ng-if="c.iTur === 'il'" class="combobox" ng-model="pasIl">
+                <select ng-if="c.iTur === 'il'" class="form-control combobox" ng-model="pasIl">
                     <option ng-repeat="e in Eyalets" value="{{e.Id}}">{{e.Ad}}</option>
                 </select>
             </div>
-            <button ng-click="ucakKaydet('ucakbilgiform')">Devam Et </button>
+            <button ng-click="ucakKaydet('ucakbilgiform')" class="btn btn-primary">Devam Et </button>
         </form>
     </div>
     <script>

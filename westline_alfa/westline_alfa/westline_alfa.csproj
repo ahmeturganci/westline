@@ -170,7 +170,6 @@
     <Compile Include="Models\Secenek.cs" />
     <Compile Include="Models\Sozlesme.cs" />
     <Compile Include="Models\SozlesmeTur.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\Taksit.cs" />
     <Compile Include="Models\TaksitOdeme.cs" />
     <Compile Include="Models\Tur.cs" />

@@ -17,13 +17,13 @@
 </script>
 <div class="tab-pane" id="cv">
     <div ng-controller="KisiTanimaController">
-        <h1 ng-model="deneme">Özgeçmiş  / CV </h1>
+        <h3 ng-model="deneme">Özgeçmiş / CV </h3>
         <form id="cvKayit">
             <fieldset>
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="form-group" ng-repeat="c in cvElemans">
-                            <label class="KariyerHedef" for="form-group-input">{{c.Aciklama}}{{c.Zorunlu}}</label>
+                            <label for="form-group-input"><b>{{c.Aciklama}}<strong style="color:red;">{{c.Zorunlu}}</strong></b></label>
                             <input ng-if="c.iTur !== 'radio' && c.iTur !== 'textarea' &&  c.iTur !== 'select' && c.iTur !== 'file' && c.iTur !== 'ulke' && c.iTur !== 'il'" type="{{c.iTur}}" id="{{c.Id}}" name="{{c.Name}}" class="form-control" maxlength="{{c.Max}}" placeholder="{{c.Placeholder}}" value="{{c.Icerik}}" required>
                             <br />
                             <span ng-if="c.iTur === 'file'" id="{{c.Id}}">
@@ -42,7 +42,7 @@
                             </span>
                             <textarea ng-if="c.iTur === 'textarea'" id="{{c.Id}}" class="form-control" name="{{c.Name}}" rows="5">{{c.Icerik}}</textarea>
                             <span ng-if="c.iTur === 'select'">
-                                <select class="combobox">
+                                <select class="form-control">
                                     <option ng-repeat="s in c.Secenek" value="{{s.Id}}">{{s.secenek}}</option>
                                 </select>
                             </span>
@@ -55,21 +55,8 @@
                         </div>
                     </div>
                 </div>
-                <!--<div class="panel panel-default">
-                    <div class="panel-heading">Referans</div>
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <label class="RefTel" for="form-group-input">Referans Telefon</label>
-                            <input type="text" class="form-control" ng-model="cvRefTel" id="cvRefTel" placeholder="Referans Telefon . . . " required>
-                        </div>
-                        <div class="form-group">
-                            <label class="RefAdSoyad" for="form-group-input">Refersans Adı ve Soyadı* </label>
-                            <input type="text" class="form-control" ng-model="cvRefAdSoyad" id="cvRefAdSoyad" placeholder="Refersans Adı ve Soyadı. . . " required>
-                        </div>
-                    </div>
-                </div>-->
             </fieldset>
-            <button ng-click="cvKaydet('cvKayit')">Cv Kaydet</button>
+            <button ng-click="cvKaydet('cvKayit')" class="btn btn-primary">Cv Kaydet</button>
         </form>
     </div>
     </div>

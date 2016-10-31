@@ -263,7 +263,8 @@ namespace westline_alfa.helper
         }
 
         public JsonResult SayfaDurum(int sayfaId, int kullaniciId)
-        {
+        {//bam   kanka tasarım bittyse salla
+            //ben buralaro değiştirim byük ihtimal o zaman atam kayan yeri söyle düzeltim okey ? 
             if (db.SayfaDurums.FirstOrDefault(x => x.KullaniciId == kullaniciId && x.SayfaId == sayfaId).Durum == true)
             {
                 var jsonModel = new
