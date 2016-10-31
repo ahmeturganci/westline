@@ -30,27 +30,24 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Onay verilcek kişi id</th>
-
-                <th>Onay verilcek kişi</th>
+                <th>Id</th>
+                <th>Kullanıcı Adı</th>
+                <th>Mail</th>
                 <th>Onay ver</th>
             </tr>
         </thead>
         <tbody>
-            <form action="/YonetimPanel/OnayVer" method="post">
 
                 @foreach (var k in Model.Where(x => x.AktivasyonOnay == true && x.AdminOnay == false))
                 {
-                    <input type="hidden" name="id" value="@k.Id"/>
                     <tr>
-                        <td><label style="padding-top:-25px;">@k.Id</label></td>
+                        <td>@k.Id</td>
                         
-                        <td><h5 style="float:left; font-size:20px;">@k.Degers.FirstOrDefault(x=>x.InputId==2).Icerik @k.Degers.FirstOrDefault(x => x.InputId == 4).Icerik</h5></td>
-                        <td><button style="margin-left:20px; margin-top:5px;" type="submit" class="btn btn-success">Onay Ver</button></td>
+                        <td><h5 style="float:left; font-size:20px;">@k.KullaniciAdi</h5></td>
+                        <td><h5 style="float:left; font-size:20px;">@k.Degers.FirstOrDefault(x=>x.InputId==5).Icerik</h5></td>
+                        <td><button style="margin-left:20px; margin-top:5px;" type="button" data-toggle="modal" data-id="@k.Id" data-target="#myModal" class="btn btn-success onay">Onay Ver</button></td>
                     </tr>
                 }
-
-            </form>
         </tbody>
     </table>
 </div>
@@ -71,10 +68,40 @@
                 foreach (var k in Model.Where(x => x.AktivasyonOnay == false && x.AdminOnay == false))
                 {
                     <tr>
-                        <td><h5 style="float:left; font-size:20px;">Onay bekleyen Kullanici : @k.Degers.FirstOrDefault(x => x.InputId == 2).Icerik @k.Degers.FirstOrDefault(x => x.InputId == 4).Icerik</h5></td>
+                        <td><h5 style="float:left; font-size:20px;">Onay bekleyen Kullanici : @k.KullaniciAdi</h5></td>
                     </tr>
                 }
             }
         </tbody>
     </table>
 </div>
+
+
+<form action="/YonetimPanel/TaksitveOnay" method="post">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="hidden" name="kullaniciId"/>
+                    <input type="text" name="ucret" />
+                    <input type="number" name="taksitSayi" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                    <button type="submit" class="btn btn-primary">Taksitlendir ve Onay ver</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $(document).on("click", ".onay", function () {
+         var myBookId = $(this).data('id');
+         $(".modal-body #hidden").val(myBookId);
+});
+</script>

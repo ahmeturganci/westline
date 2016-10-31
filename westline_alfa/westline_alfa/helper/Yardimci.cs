@@ -63,12 +63,21 @@ namespace westline_alfa.helper
                 t.Odendi = false;
                 db.Taksits.Add(t);
 
+                db.SaveChanges();
 
                 TaksitOdeme taksitOde = new TaksitOdeme();
                 taksitOde.TaksitId = t.Id;
                 taksitOde.KullaniciId = kullaniciId;
                 db.TaksitOdemes.Add(taksitOde);
             }
+            
+            Kullanici k = db.Kullanicis.Find(kullaniciId);
+            k.AdminOnay = true;
+
+
+            SayfaDurum s = db.SayfaDurums.FirstOrDefault(x => x.KullaniciId == kullaniciId && x.SayfaId == 1);
+            s.Durum = true;
+
 
             db.SaveChanges();
             var jsonResult = new

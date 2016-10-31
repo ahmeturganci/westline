@@ -18,15 +18,9 @@ namespace westline_alfa.Controllers
             var jsonResult = (object)null;
             if (h.VeriEkle(Request.QueryString))
             {
-                /*helper.smsapi sms = new helper.smsapi("5399706684","03011995e","ILETI MRKZI");
-                if (sms.SendSMS(new string[] { "5350560103" }, "DENEME MESAJI"))
-                {
-                    // Mesaj Gönderildi
-                }
-                else
-                {
-                    // Mesaj Gönderilemedi
-                }*/
+                SayfaDurum s = db.SayfaDurums.FirstOrDefault(x => x.KullaniciId == Convert.ToInt32(Session["id"]) && x.SayfaId == 11);
+                s.Durum = true;
+                db.SaveChanges();
                 jsonResult = new
                 {
                     basari = 1
@@ -47,6 +41,10 @@ namespace westline_alfa.Controllers
             int id = Convert.ToInt32(Session["id"]);
             if (db.Aktivasyons.Any(x => x.KullaniciId == id && x.Kod == kod))
             {
+                Kullanici k = db.Kullanicis.Find(id);
+                k.AktivasyonOnay = true;
+
+                db.SaveChanges();
                 var jsonModel = new
                 {
                     basari = 1
@@ -66,6 +64,38 @@ namespace westline_alfa.Controllers
         public JsonResult elemans(int sayfa, int kisiId)
         {
             return h.ElemanCek(sayfa, kisiId);
+        }
+
+        public JsonResult SayfaDurum(int id)
+        {
+            if (Session["id"] != null)
+            {
+                return h.SayfaDurum(id, Convert.ToInt32(Session["id"]));
+            }
+            else
+            {
+                var jsonModel = new
+                {
+                    basari = 0
+                };
+                return Json(jsonModel, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public JsonResult RenkDurumCek()
+        {
+            if (Session["id"] != null)
+            {
+                return h.RenkDurum(Convert.ToInt32(Session["id"]));
+            }
+            else
+            {
+                var jsonModel = new
+                {
+                    basari = 0
+                };
+                return Json(jsonModel, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

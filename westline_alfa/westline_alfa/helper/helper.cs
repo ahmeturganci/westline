@@ -48,7 +48,7 @@ namespace westline_alfa.helper
                 }
 
                 db.SaveChanges();
-                
+
                 return true;
             }
             else return false;
@@ -60,7 +60,7 @@ namespace westline_alfa.helper
             sayac = 0;
             List<Object> jsonModelList = new List<object>();
             var jsonModel = (object)null;
-            foreach (var i in db.Inputs.Where(x => x.Sayfa == sayfa))
+            foreach (var i in db.Inputs.Where(x => x.SayfaId == sayfa))
             {
                 bool kontrol = false;
                 string icerik = "";
@@ -119,7 +119,7 @@ namespace westline_alfa.helper
             return Json(jsonModelList, JsonRequestBehavior.AllowGet);
         }
 
-        
+
 
         public JsonResult Ulkeler()
         {
@@ -156,12 +156,12 @@ namespace westline_alfa.helper
             bool kontrol = true;
             int sayac = 0;
             string icerik = "";
-            for (int i = 0; i <elemanlar.Count; i++)
+            for (int i = 0; i < elemanlar.Count; i++)
             {
                 if (sayac == 0) icerik = elemanlar[i];
-                else if(sayac == 2)
+                else if (sayac == 2)
                 {
-                    if(elemanlar[i] == "1" && icerik == "")
+                    if (elemanlar[i] == "1" && icerik == "")
                     {
                         kontrol = false;
                         break;
@@ -173,12 +173,12 @@ namespace westline_alfa.helper
             }
 
             return kontrol;
-        } 
+        }
 
-        public void AktivasyonEkle(int id)
+        public string AktivasyonEkle(int id)
         {
             Random rnd = new Random();
-            string kod = rnd.Next(10000,99999).ToString();
+            string kod = rnd.Next(10000, 99999).ToString();
             Kullanici k = db.Kullanicis.Find(id);
 
             Aktivasyon a = new Aktivasyon();
@@ -191,11 +191,12 @@ namespace westline_alfa.helper
             k.Aktivasyons.Add(a);
 
             db.SaveChanges();
+            return kod;
         }
 
         public JsonResult IsGetir()
         {
-            if(db.Degers.FirstOrDefault(x=>x.KisiId == 1 && x.InputId == 8).Icerik == "1")
+            if (db.Degers.FirstOrDefault(x => x.KisiId == 1 && x.InputId == 8).Icerik == "1")
             {
                 var jsonModel = new
                 {
@@ -248,7 +249,7 @@ namespace westline_alfa.helper
         public JsonResult SonGirisCek(int kisiId)
         {
             List<Object> jsonModelList = new List<object>();
-            foreach (var i in db.KullaniciGiris.Where(x=>x.KullaniciId == kisiId).OrderByDescending(y=>y.Id))
+            foreach (var i in db.KullaniciGiris.Where(x => x.KullaniciId == kisiId).OrderByDescending(y => y.Id))
             {
                 var a = i.GirisLog.Tarih.Value;
                 var jsonModel = new
@@ -258,7 +259,56 @@ namespace westline_alfa.helper
                 jsonModelList.Add(jsonModel);
             }
 
-            return Json(jsonModelList,JsonRequestBehavior.AllowGet);
+            return Json(jsonModelList, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SayfaDurum(int sayfaId, int kullaniciId)
+        {
+            if (db.SayfaDurums.FirstOrDefault(x => x.KullaniciId == kullaniciId && x.SayfaId == sayfaId).Durum == true)
+            {
+                var jsonModel = new
+                {
+                    basari = 1,
+                    son = 0
+                };
+                return Json(jsonModel,JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                int son = db.SayfaDurums.OrderByDescending(x => x.Id).FirstOrDefault(y => y.KullaniciId == kullaniciId && y.Durum == true).Id;
+
+                var jsonModel = new
+                {
+                    basari = 0,
+                    son = son
+                };
+                return Json(jsonModel, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public JsonResult RenkDurum(int id)
+        {
+            int[] dizi = new int[10];
+            int i = 0;
+            foreach (var s in db.SayfaDurums.Where(x => x.KullaniciId == id))
+            {
+                dizi[i] = s.Durum == true ? 2 : 1;
+                i++;
+            }
+            var jsonModal = new
+            {
+                birincisayfa = dizi[0],
+                cv = dizi[1],
+                dorduncusayfa = dizi[2],
+                ucakbilgi = dizi[3],
+                ucuncusayfa = dizi[4],
+                randevual = dizi[5],
+                ikincisayfa = dizi[6],
+                besincisayfa = dizi[7],
+                aktivasyon = dizi[8],
+                tahsilat = dizi[9]
+            };
+            return Json(jsonModal, JsonRequestBehavior.AllowGet);
         }
     }
 }

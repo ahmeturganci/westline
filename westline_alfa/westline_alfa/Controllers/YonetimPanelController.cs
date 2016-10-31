@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,6 +11,7 @@ namespace westline_alfa.Controllers
     public class YonetimPanelController : Controller
     {
         westlineDB db = new westlineDB();
+        helper.Yardimci y = new helper.Yardimci();
         // GET: YonetimPanel
         public ActionResult Index()
         {
@@ -79,6 +81,17 @@ namespace westline_alfa.Controllers
             return View(db.Kullanicis);
         }
 
+        public ActionResult OgrenciDetay(int id)
+        {
+            return View(db.Kullanicis.Find(id));
+        }
+
+        public ActionResult TaksitveOnay(float ucret, int taksitSayi, int kullaniciId)
+        {
+            y.Taksitlendir(ucret,taksitSayi,kullaniciId);
+            return RedirectToAction("Index", "YonetimPanel");
+        }
+
         public ActionResult Is(string ad, string aciklama)
         {
             Isler i = new Isler();
@@ -88,15 +101,7 @@ namespace westline_alfa.Controllers
             db.SaveChanges();
             return RedirectToAction("IsEkle", "YonetimPanel");
         }
-
-        public ActionResult OnayVer(string id)
-        {
-            int Id = Convert.ToInt32(id);
-            Kullanici k = db.Kullanicis.Find(Id);
-            k.AdminOnay = true;
-            db.SaveChanges();
-            return RedirectToAction("Index", "YonetimPanel");
-        }
+        
 
         public ActionResult RandevuOnay(string id, string secim)
         {
@@ -110,6 +115,28 @@ namespace westline_alfa.Controllers
 
             db.SaveChanges();
             return RedirectToAction("Randevu", "YonetimPanel");
+        }
+
+        public JsonResult SozlesmeOnay(int sozlesmeId, int kullaniciId)
+        {
+            return y.SozlesmeOnay(sozlesmeId, kullaniciId);
+        }
+
+        [HttpPost]
+        public ActionResult Upload()
+        {
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+
+                if (file != null && file.ContentLength > 0 && file.ContentType == "application/pdf")
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                    file.SaveAs(path);
+                }
+            }
+            return RedirectToAction("OgrenciDetay/1", "YonetimPanel");
         }
 
     }

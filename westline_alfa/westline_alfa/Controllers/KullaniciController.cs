@@ -14,6 +14,12 @@ namespace westline_alfa.Controllers
         {
             return View();
         }
+
+        public ActionResult Kayit()
+        {
+            return View();
+        }
+
         westlineDB db = new westlineDB();
         helper.helper h = new helper.helper();
         public JsonResult GirisYap(string kullaniciAdi, string sifre)
@@ -34,6 +40,7 @@ namespace westline_alfa.Controllers
 
                 db.SaveChanges();
 
+                Session["id"] = a.Id;
                 var jsonModel = new
                 {
                     basari = 1,
@@ -49,6 +56,120 @@ namespace westline_alfa.Controllers
                 };
                 return Json(jsonModel, JsonRequestBehavior.AllowGet); ;
             }
+        }
+
+        public JsonResult SessionGetir()
+        {
+            if (Session["id"] != null)
+            {
+                var jsonModel = new
+                {
+                    basari = 1,
+                    id = Session["id"]
+                };
+                return Json(jsonModel, JsonRequestBehavior.AllowGet); ;
+            }
+            else
+            {
+                var jsonModel = new
+                {
+                    basari = 0,
+                    id = 0
+                };
+                return Json(jsonModel, JsonRequestBehavior.AllowGet); ;
+            }
+        }
+
+        public JsonResult KayitOl(string kullaniciAdi, string sifre, string mail, string tel)
+        {
+            if(db.Kullanicis.Any(x=>x.KullaniciAdi == kullaniciAdi) == false)
+            {
+                Kullanici k = new Kullanici();
+                k.KullaniciAdi = kullaniciAdi;
+                k.Sifre = h.MD5Sifrele(sifre);
+                k.AktivasyonOnay = false;
+                k.AdminOnay = false;
+
+                db.Kullanicis.Add(k);
+
+                db.SaveChanges();
+
+                GirisLog g = new GirisLog();
+                g.Tarih = DateTime.Now;
+                db.GirisLogs.Add(g);
+
+                KullaniciGiri kg = new KullaniciGiri();
+                kg.GirisLog = g;
+                kg.Kullanici = k;
+                db.KullaniciGiris.Add(kg);
+
+                Deger d = new Deger();
+                d.Icerik = mail;
+                d.InputId = 5;
+                d.KisiId = k.Id;
+                db.Degers.Add(d);
+
+
+                Deger d2 = new Deger();
+                d2.Icerik = tel;
+                d2.InputId = 6;
+                d2.KisiId = k.Id;
+                db.Degers.Add(d2);
+
+                for (int i = 1; i < 11; i++)
+                {
+                    if (i == 8) continue;
+                    else if(i == 10)
+                    {
+                        SayfaDurum s = new SayfaDurum();
+                        s.KullaniciId = k.Id;
+                        s.SayfaId = i;
+                        s.Durum = true;
+                        db.SayfaDurums.Add(s);
+                    }
+                    else
+                    {
+                        SayfaDurum s = new SayfaDurum();
+                        s.KullaniciId = k.Id;
+                        s.SayfaId = i;
+                        s.Durum = false;
+                        db.SayfaDurums.Add(s);
+                    }
+                }
+
+
+                db.SaveChanges();
+
+
+                Session["id"] = k.Id;
+                helper.smsapi sms = new helper.smsapi("5399706684","03011995e","ILETI MRKZI");
+                if (sms.SendSMS(new string[] { tel }, h.AktivasyonEkle(k.Id)))
+                {
+                    var jsonModel = new
+                    {
+                        basari = 1,
+                        id = k.Id
+                    };
+                    return Json(jsonModel, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    var jsonModel = new
+                    {
+                        basari = 0
+                    };
+                    return Json(jsonModel, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                var jsonModel = new
+                {
+                    basari = 0
+                };
+                return Json(jsonModel, JsonRequestBehavior.AllowGet); ;
+            }
+           
         }
     }
 }

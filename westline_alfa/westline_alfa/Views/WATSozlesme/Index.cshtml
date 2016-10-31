@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
+@model westline_alfa.Models.Kullanici
 <head>
     <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -34,7 +35,7 @@
           
             <b>MADDE 1: TARAFLAR</b><br />
              İşbu sözleşme; İstiklal Cad. Kontlar İşhanı No:75/6 Kat:5 Taksim Beyoğlu İstanbul adresli <b>Westline International</b> (Bir GEON Eğitim Danışmanlık Organizasyon ve Turizm Hizmetleri 
-    İthalat İhracat Ticaret Ltd. Şti. resmi markasıdır.)(bundan sonra WESTLINE veya Acente olarak adlandırılacaktır) ve <b>İSİM KISMI</b>(bundan sonra ÖĞRENCİ olarak adlandırılacaktır) arasında imzalanmıştır.
+    İthalat İhracat Ticaret Ltd. Şti. resmi markasıdır.)(bundan sonra WESTLINE veya Acente olarak adlandırılacaktır) ve <b>@Model.Degers.FirstOrDefault(x=>x.InputId == 2).Icerik @Model.Degers.FirstOrDefault(x => x.InputId == 4).Icerik </b>(bundan sonra ÖĞRENCİ olarak adlandırılacaktır) arasında imzalanmıştır.
             <br />
             <b> Madde 2 KONU</b><br />
                İşbu sözleşmenin konusu, “Work and Travel” (Türkçesi ile “Çalış ve Gez”) programı ile ilgili hizmetlerin pazarlanmasına aracılık eden<b> Westline International</b> ile <b> ÖĞRENCİ </b>arasında karşılıklı hak ve yükümlülüklerin düzenlenmesidir.
@@ -678,9 +679,9 @@
         İşbu sözleşme 25 Madde olmak üzere, <b>07.10.2016</b> tarihinde iki nüsha olarak her sayfası imzalanmış ve bir nüsha WESTLINE’a, bir nüsha da ÖĞRENCİ’ye verilmiştir.
     <br />
         <b>EK BİLGİLER:</b><br />
-        ÖĞRENCİ TC KİMLİK NO: <b>XXXXXX</b><br />
-        ÖĞRENCİ E-MAİL ADRESİ::<b> XXXXXX</b><br />
-        ÖĞRENCİ TELEFON NUMARASI: <b>XXXXXXX</b><br />
+        ÖĞRENCİ TC KİMLİK NO: <b>@Model.Degers.FirstOrDefault(x => x.InputId == 1).Icerik </b><br />
+        ÖĞRENCİ E-MAİL ADRESİ: <b>@Model.Degers.FirstOrDefault(x => x.InputId == 5).Icerik </b><br />
+        ÖĞRENCİ TELEFON NUMARASI: <b>@Model.Degers.FirstOrDefault(x => x.InputId == 6).Icerik </b><br />
 
     </div><br /><br />
     <div class="deneme2">

@@ -28,7 +28,7 @@
         </div>
         <div class="login-box-body">
             <p class="login-box-msg">Kullanıcı Giriş Paneli</p>
-             
+
             <form action="" method="post">
                 <div class="form-group has-feedback">
                     <input type="email" class="form-control" placeholder="Kullanıcı Adı" id="KulAd">
@@ -36,18 +36,16 @@
                 </div>
                 <div class="form-group has-feedback">
                     <input type="password" class="form-control" placeholder="Parola" id="parola">
-
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="email" class="form-control" placeholder="Email" id="email">
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="tel" class="form-control" placeholder="Telefon" id="tel">
                 </div>
                 <div class="row">
-                    <div class="col-xs-8">
-                        <div>
-                            <label>
-                                <input type="checkbox"> Beni Hatırla
-                            </label>
-                        </div>
-                    </div>
                     <div class="col-xs-4">
-                        <button onclick="Giris();" type="button" class="btn btn-primary btn-block btn-flat">Giriş Yap</button>
+                        <button onclick="Kayit();" type="button" class="btn btn-primary btn-block btn-flat">Giriş Yap</button>
                     </div>
                 </div>
             </form>
@@ -61,24 +59,26 @@
 </html>
 <script>
 
-    function Giris()
+    function Kayit()
     {
         var email = document.getElementById('KulAd').value;
         var sifre = document.getElementById('parola').value;
-        if (email == "" || sifre == "")
+        var email = document.getElementById('email').value;
+        var tel = document.getElementById('tel').value;
+        if (email == "" || sifre == "" || email == "" || tel == "")
         {
             alert('Email veya Parola boş gecilemez...');
         }
         else {
-            $.post("../Kullanici/GirisYap", { kullaniciAdi: email, sifre: sifre }, function (data) {
+            $.post("../Kullanici/KayitOl", { kullaniciAdi: email, sifre: sifre, mail: email, tel: tel }, function (data) {
                 alert(data.basari);
                 if(data.basari==1)
                 {
-                    window.location.href = "/#/Dashboard";
+                    window.location.href = "/#/Aktivasyon";
                 }
                 else
                 {
-                    window.location.href = "../Kullanici/index";
+                    window.location.href = "../Kullanici/Kayit";
                 }
             });
         }

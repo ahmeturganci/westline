@@ -1,4 +1,20 @@
-﻿    
+﻿    <script>
+        $.post('../Birinci/sayfaDurum', { id: 11 }, function (data) {
+            if (data.basari == 0) {
+                console.log(data);
+                if (data.son == 1) window.location = "#/Profil";
+                else if (data.son == 2) window.location = "#/Cv";
+                else if (data.son == 3) window.location = "#/Evrak";
+                else if (data.son == 4) window.location = "#/UcakBilgi";
+                else if (data.son == 5) window.location = "#/Egitim";
+                else if (data.son == 6) window.location = "#/RandevuAl";
+                else if (data.son == 7) window.location = "#/EkBilgi";
+                else if (data.son == 8) window.location = "#/Ds160";
+                else if (data.son == 9) window.location = "#/Aktivasyon";
+                else if (data.son == 10) window.location = "#/TaksitBilgi";
+            }
+        });
+</script>
 <div class="tab-pane" id="taksitbilgi">
     <div ng-controller="KisiTanimaController">
         <div class="panel panel-success">
@@ -7,7 +23,6 @@
                 <h3>Taksit Bilgisi</h3>
              <ul>
                 <li ng-repeat="t in taksits">{{t.Miktar}} - {{t.SonOdeme}} - {{t.Odendi}}</li>
-
              </ul>
             </div>
         </div>
@@ -33,7 +48,7 @@
         if (data.birincisayfa == "0")
             $('#birincisayfa').attr("style", "background-color:yellow");
         else if (data.birincisayfa == "1")
-            $('#birincisayfa').attr("style", "background-color:red");
+            $('#birincisayfa').attr("style", "background-color:gray");
         else
             $('#birincisayfa').attr("style", "background-color:green");
 

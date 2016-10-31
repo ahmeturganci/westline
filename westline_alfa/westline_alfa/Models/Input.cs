@@ -30,7 +30,7 @@ namespace westline_alfa.Models
 
         public bool? Zorunlu { get; set; }
 
-        public int? Sayfa { get; set; }
+        public int? SayfaId { get; set; }
 
         public int? ComboTurId { get; set; }
 
@@ -38,6 +38,8 @@ namespace westline_alfa.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Deger> Degers { get; set; }
+
+        public virtual Sayfa Sayfa { get; set; }
 
         public virtual Tur Tur { get; set; }
 

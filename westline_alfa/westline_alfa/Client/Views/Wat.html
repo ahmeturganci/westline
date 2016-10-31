@@ -1,0 +1,80 @@
+﻿<script>
+        $.post('../Birinci/sayfaDurum', { id: 1 }, function (data) {
+            if (data.basari == 0) {
+                console.log(data);
+                if (data.son == 1) window.location = "#/Profil";
+                else if (data.son == 2) window.location = "#/Cv";
+                else if (data.son == 3) window.location = "#/Evrak";
+                else if (data.son == 4) window.location = "#/UcakBilgi";
+                else if (data.son == 5) window.location = "#/Egitim";
+                else if (data.son == 6) window.location = "#/RandevuAl";
+                else if (data.son == 7) window.location = "#/EkBilgi";
+                else if (data.son == 8) window.location = "#/Ds160";
+                else if (data.son == 9) window.location = "#/Aktivasyon";
+                else if (data.son == 10) window.location = "#/TaksitBilgi";
+            }
+        });
+</script>
+<div class="tab-pane" id="aktivasyon">
+
+    <div ng-controller="KisiTanimaController">
+        <h3>{{aktivasyonMesaj}}</h3>
+        <form>
+            <fieldset>
+                <!-- required html5 o input dolu olack :D -->
+                <div class="panel panel-danger">
+                    <div class="panel-heading">WAT Sözleşmesi İndir* </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <a href="/WATSozlesme/Index/{{session}}" target="_blank" class="form-control">WAT Sözleşmesi indir</a>
+                            Yukarıdaki butona tıklayıp sözleşmeyi indirmeniz ve ardından imzalayıp alttaki panelden yüklemeniz gerekmektedir.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">WAT Sözleşmesi Yükle* </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <input type="file" id="wat" class="form-control">
+                            <input type="submit" onclick="sozlesme()" value="Yükle" />
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<script>
+    function sozlesme(){
+        var files = $("#wat").target.files;
+        //var myID = 3; //uncomment this to make sure the ajax URL works
+        if (files.length > 0) {
+            if (window.FormData !== undefined) {
+                var data = new FormData();
+                for (var x = 0; x < files.length; x++) {
+                    data.append("file" + x, files[x]);
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Wat/UploadHomeReport?id=' + myID,
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: function (result) {
+                        console.log(result);
+                    },
+                    error: function (xhr, status, p3, p4) {
+                        var err = "Error " + " " + status + " " + p3 + " " + p4;
+                        if (xhr.responseText && xhr.responseText[0] == "{")
+                            err = JSON.parse(xhr.responseText).Message;
+                        console.log(err);
+                    }
+                });
+            } else {
+                alert("This browser doesn't support HTML5 file uploads!");
+            }
+        }
+    }
+</script>

@@ -24,6 +24,8 @@ namespace westline_alfa.Models
         public virtual DbSet<Kullanici> Kullanicis { get; set; }
         public virtual DbSet<KullaniciGiri> KullaniciGiris { get; set; }
         public virtual DbSet<KullaniciI> KullaniciIs { get; set; }
+        public virtual DbSet<Sayfa> Sayfas { get; set; }
+        public virtual DbSet<SayfaDurum> SayfaDurums { get; set; }
         public virtual DbSet<Secenek> Seceneks { get; set; }
         public virtual DbSet<Sozlesme> Sozlesmes { get; set; }
         public virtual DbSet<SozlesmeTur> SozlesmeTurs { get; set; }

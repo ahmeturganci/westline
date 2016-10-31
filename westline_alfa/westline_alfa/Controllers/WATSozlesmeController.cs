@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using westline_alfa.Models;
 
 namespace westline_alfa.Controllers
 {
     public class WATSozlesmeController : Controller
     {
-        // GET: WATSozlesme
-        public ActionResult Index()
+        westlineDB db = new westlineDB();
+        public ActionResult Index(int id)
         {
-            return View();
+            return View(db.Kullanicis.Find(id));
         }
     }
 }

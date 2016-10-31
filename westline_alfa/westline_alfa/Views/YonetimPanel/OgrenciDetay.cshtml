@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "OgrenciDetay";
+    Layout = "~/Views/Shared/_YonetimLayout.cshtml";
+}
+@model westline_alfa.Models.Kullanici
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        WAT Sözleşmesi Yükle
+    </div>    
+    <div class="panel-body">
+        @using (Html.BeginForm("Upload", "YonetimPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="file" name="FileUpload" />
+            <input type="submit" name="Submit" id="Submit" value="Upload" />
+        }
+    </div>
+</div>
+
+@if (Model.Sozlesmes.Any(x => x.SozlesmeTur == 1))
+{
+    if (Model.Sozlesmes.FirstOrDefault(x => x.SozlesmeTur == 1).Onay == false)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Wat Sözleşmesi Onayla
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("SozlesmeOnay", "YonetimPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <input type="submit" name="Submit" id="Submit" value="Sözleşme Onayla" />
+                }
+            </div>
+        </div>
+    }
+}
+
+

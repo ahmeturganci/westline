@@ -12,21 +12,21 @@
             .when("/Cv", {
                 templateUrl: "/Client/Views/Cv.html"
             })
-            .when("/IkinciSayfa", {
+            .when("/EkBilgi", {
                 templateUrl: "/Client/Views/IkinciSayfa.html"
             }).
-       when("/UcuncuSayfa", {
+       when("/Egitim", {
            templateUrl: "/Client/Views/UcuncuSayfa.html"
        }).when("/isler", {
            templateUrl: "/Client/Views/isler.html"
        }).
-        when("/DorduncuSayfa", {
+        when("/Evrak", {
             templateUrl: "/Client/Views/DorduncuSayfa.html"
         }).
         when("/RandevuAl", {
             templateUrl: "/Client/Views/RandevuAl.html"
         })
-             .when("/BesinciSayfa", {
+             .when("/Ds160", {
                  templateUrl: "/Client/Views/BesinciSayfa.html"
              })
             .when("/UcakBilgi", {
@@ -37,6 +37,9 @@
             })
             .when("/Dashboard", {
                 templateUrl: "/Client/Views/dashboard.html"
+            })
+            .when("/Wat", {
+                templateUrl: "/Client/Views/Wat.html"
             })
             
          .otherwise({

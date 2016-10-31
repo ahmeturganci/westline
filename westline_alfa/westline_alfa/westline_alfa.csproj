@@ -145,6 +145,7 @@
     <Compile Include="Controllers\taksitbilgiController.cs" />
     <Compile Include="Controllers\UcakController.cs" />
     <Compile Include="Controllers\UcuncuController.cs" />
+    <Compile Include="Controllers\WATSozlesmeController.cs" />
     <Compile Include="Controllers\YonetimPanelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -164,6 +165,8 @@
     <Compile Include="Models\Kullanici.cs" />
     <Compile Include="Models\KullaniciGiri.cs" />
     <Compile Include="Models\KullaniciI.cs" />
+    <Compile Include="Models\Sayfa.cs" />
+    <Compile Include="Models\SayfaDurum.cs" />
     <Compile Include="Models\Secenek.cs" />
     <Compile Include="Models\Sozlesme.cs" />
     <Compile Include="Models\SozlesmeTur.cs" />
@@ -174,6 +177,7 @@
     <Compile Include="Models\Ulke.cs" />
     <Compile Include="Models\westlineDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controllers\WatController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\bootstrap.min.css" />
@@ -208,6 +212,8 @@
     <Content Include="Client\Views\taksitbilgi.html" />
     <Content Include="Client\Views\UcakBilgi.html" />
     <Content Include="Client\Views\UcuncuSayfa.html" />
+    <Content Include="Client\Views\VizeEvrak.html" />
+    <Content Include="Client\Views\Wat.html" />
     <Content Include="Content\Admin\bootstrap\css\bootstrap.css" />
     <Content Include="Content\Admin\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\Admin\bootstrap\fonts\glyphicons-halflings-regular.svg" />
@@ -411,6 +417,10 @@
     <Content Include="Views\Kullanici\Index.cshtml" />
     <Content Include="Views\YonetimPanel\KullaniciDosya.cshtml" />
     <Content Include="Views\Pdf\CvPdf.cshtml" />
+    <Content Include="Views\YonetimPanel\OgrenciListele.cshtml" />
+    <Content Include="Views\YonetimPanel\OgrenciDetay.cshtml" />
+    <Content Include="Views\Kullanici\Kayit.cshtml" />
+    <Content Include="Views\WATSozlesme\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -418,6 +428,7 @@
     <Folder Include="Upload\" />
     <Folder Include="Views\Dashboard\" />
     <Folder Include="Views\taksitbilgi\" />
+    <Folder Include="Views\Wat\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
