@@ -285,6 +285,19 @@
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script>
+
+    function InputSil(id)
+    {
+        $.post('./Yonetim/InputSil', { inputid: id }, function (data) {
+            if (data == true)
+                alert("İnput Silindi.");
+            else{
+                            alert("İnput Silmede Sorun Oluştu.");
+                            location.href = "/YonetimPanel/UcuncuSayfaInput";
+                }
+        });
+    }
+
     var sayfanum = 1;
     //METİN İNPUT VERİSİ İCİN İNPUTU İÇİNN VERİLERİ ALMAK ICIN KULLANILIR.
     function MetinVeriAl()
