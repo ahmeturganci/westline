@@ -14,7 +14,7 @@ namespace westline_alfa.Controllers
         westlineDB db = new westlineDB();
         public JsonResult IsleriGetir()
         {
-            return h.IsGetir();
+            return h.IsGetir(Convert.ToInt32(Session["id"]));
         }
 
         public JsonResult IsEkle()

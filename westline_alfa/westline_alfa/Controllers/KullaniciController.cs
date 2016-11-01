@@ -116,7 +116,7 @@ namespace westline_alfa.Controllers
                 d2.KisiId = k.Id;
                 db.Degers.Add(d2);
 
-                for (int i = 1; i < 11; i++)
+                for (int i = 1; i < 14; i++)
                 {
                     if (i == 8) continue;
                     else if(i == 10)

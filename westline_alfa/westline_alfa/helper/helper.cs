@@ -14,7 +14,7 @@ namespace westline_alfa.helper
     {
         westlineDB db = new westlineDB();
 
-        public bool VeriEkle(NameValueCollection query)
+        public bool VeriEkle(NameValueCollection query,int Kisiid)
         {
             int sayac = 0;
             string icerik = "", id = "";
@@ -26,20 +26,22 @@ namespace westline_alfa.helper
                     else if (sayac == 1) id = query[i];
                     else
                     {
-                        Deger d;
+                        
                         int inputId = Convert.ToInt32(id);
-                        if (db.Degers.Any(x => x.KisiId == 1 && x.InputId == inputId))
+                        if (db.Degers.Any(x => x.KisiId == Kisiid && x.InputId == inputId))
                         {
-                            d = db.Degers.FirstOrDefault(x => x.KisiId == 1 && x.InputId == inputId);
+                            Deger d = db.Degers.FirstOrDefault(x => x.KisiId == Kisiid && x.InputId == inputId);
                             d.Icerik = icerik;
+                            db.SaveChanges();
                         }
                         else
                         {
-                            d = new Deger();
+                            Deger d = new Deger();
                             d.InputId = Convert.ToInt32(id);
                             d.Icerik = icerik;
-                            d.KisiId = 1;
+                            d.KisiId = Kisiid;
                             db.Degers.Add(d);
+                            db.SaveChanges();
                         }
                         sayac = 0;
                         continue;
@@ -47,7 +49,6 @@ namespace westline_alfa.helper
                     sayac++;
                 }
 
-                db.SaveChanges();
 
                 return true;
             }
@@ -194,16 +195,36 @@ namespace westline_alfa.helper
             return kod;
         }
 
-        public JsonResult IsGetir()
+        public JsonResult IsGetir(int id)
         {
-            if (db.Degers.FirstOrDefault(x => x.KisiId == 1 && x.InputId == 8).Icerik == "1")
+            if (db.Degers.Any(x => x.KisiId == id && x.InputId == 8))
             {
-                var jsonModel = new
+
+                if (db.Degers.FirstOrDefault(x => x.KisiId == id && x.InputId == 8).Icerik == "1")
                 {
-                    IsBuldu = 1,
-                    Aciklama = "İş buldu"
-                };
-                return Json(jsonModel, JsonRequestBehavior.AllowGet);
+                    var jsonModel = new
+                    {
+                        IsBuldu = 1,
+                        Aciklama = "İş buldu"
+                    };
+                    return Json(jsonModel, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    List<Object> jsonModelList = new List<object>();
+                    foreach (var i in db.Islers)
+                    {
+                        var jsonModel = new
+                        {
+                            IsBuldu = 0,
+                            Id = i.Id,
+                            isAdi = i.Ad,
+                            isAciklama = i.Aciklama
+                        };
+                        jsonModelList.Add(jsonModel);
+                    }
+                    return Json(jsonModelList, JsonRequestBehavior.AllowGet);
+                }
             }
             else
             {
@@ -276,7 +297,7 @@ namespace westline_alfa.helper
             }
             else
             {
-                int son = db.SayfaDurums.OrderByDescending(x => x.Id).FirstOrDefault(y => y.KullaniciId == kullaniciId && y.Durum == true).Id;
+                int son = db.SayfaDurums.OrderByDescending(x => x.Id).FirstOrDefault(y => y.KullaniciId == kullaniciId && y.Durum == true).SayfaId.Value;
 
                 var jsonModel = new
                 {
@@ -289,7 +310,7 @@ namespace westline_alfa.helper
 
         public JsonResult RenkDurum(int id)
         {
-            int[] dizi = new int[10];
+            int[] dizi = new int[12];
             int i = 0;
             foreach (var s in db.SayfaDurums.Where(x => x.KullaniciId == id))
             {
@@ -307,7 +328,9 @@ namespace westline_alfa.helper
                 ikincisayfa = dizi[6],
                 besincisayfa = dizi[7],
                 aktivasyon = dizi[8],
-                tahsilat = dizi[9]
+                tahsilat = dizi[9],
+                isler = dizi[10],
+                wat = dizi[11]
             };
             return Json(jsonModal, JsonRequestBehavior.AllowGet);
         }
