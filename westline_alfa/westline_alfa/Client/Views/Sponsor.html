@@ -1,0 +1,119 @@
+﻿
+<div class="tab-pane" id="birincisayfa">
+    <div ng-controller="KisiTanimaController">
+        <h3>{{birinciMesaj}}</h3>
+        <form id="sponsor">
+            <fieldset>
+                <ul>
+                    <li><input type="radio" name="sps" value="0" ng-model="sponsor" ng-checked="true"/>CSB</li>
+                    <li><input type="radio" name="sps" value="1" ng-model="sponsor"/>IENA</li>
+                    <li><input type="radio" name="sps" value="2" ng-model="sponsor"/>UWT</li>
+                </ul>
+            </fieldset>
+            <button ng-click="sponsorSayfa('sponsor')" class="btn btn-primary">Sponsor Seç</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    $("#tc,#Telefon").keyup(function () {
+        if (this.value.match(/[^0-9]/g)) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        }
+    });//rakam
+    $("#Ad,#OrtaAd,#Soyad").keyup(function () {
+        if (this.value.match(/[^a-zA-Z]/g)) {
+            this.value = this.value.replace(/[^a-zA-Z]/g, '');
+        }
+    });//harf
+</script>
+<script>
+    $.post('../Birinci/RenkDurumCek', function (data) {
+        console.log(data);
+        if (data.birincisayfa == "1")
+            $('#birincisayfa').attr("style", "background-color:gray");
+        else
+            $('#birincisayfa').attr("style", "background-color:green");
+
+        //besinci sayfa
+        if (data.besincisayfa == "1")
+            $('#besincisayfa').attr("style", "background-color:gray");
+        else
+            $('#besincisayfa').attr("style", "background-color:green");
+
+
+        //aktivasyon sayfa
+        if (data.aktivasyon == "1")
+            $('#aktivasyon').attr("style", "background-color:gray");
+        else
+            $('#aktivasyon').attr("style", "background-color:green");
+
+
+        //radevu al sayfa
+        if (data.randevual == "1")
+            $('#randevual').attr("style", "background-color:gray");
+        else
+            $('#randevual').attr("style", "background-color:green");
+
+
+        //ikicisayfa sayfa
+        if (data.ikincisayfa == "1")
+            $('#ikincisayfa').attr("style", "background-color:gray");
+        else
+            $('#ikincisayfa').attr("style", "background-color:green");
+
+        //ucuncusayfa sayfa
+        if (data.ucuncusayfa == "1")
+            $('#ucuncusayfa').attr("style", "background-color:gray");
+        else
+            $('#ucuncusayfa').attr("style", "background-color:green");
+
+
+        //dorduncusayfa sayfa
+        if (data.dorduncusayfa == "1")
+            $('#dorduncusayfa').attr("style", "background-color:gray");
+        else
+            $('#dorduncusayfa').attr("style", "background-color:green");
+
+
+
+        //ucakbilgi sayfa
+        if (data.ucakbilgi == "1")
+            $('#ucakbilgi').attr("style", "background-color:gray");
+        else
+            $('#ucakbilgi').attr("style", "background-color:green");
+
+        //isler sayfa
+        if (data.isler == "1")
+            $('#isler').attr("style", "background-color:gray");
+        else
+            $('#isler').attr("style", "background-color:green");
+
+        //cv sayfa
+        if (data.tahsilat == "1")
+            $('#taksitbilgi').attr("style", "background-color:gray");
+        else
+            $('#taksitbilgi').attr("style", "background-color:green");
+
+        //cv sayfa
+        if (data.cv == "1")
+            $('#cv').attr("style", "background-color:gray");
+        else
+            $('#cv').attr("style", "background-color:green");
+
+        //cv sayfa
+        if (data.isler == "1")
+            $('#isler').attr("style", "background-color:gray");
+        else
+            $('#isler').attr("style", "background-color:green");
+
+        //cv sayfa
+        if (data.wat == "1")
+            $('#wat').attr("style", "background-color:gray");
+        else
+            $('#wat').attr("style", "background-color:green");
+
+    });
+
+</script>

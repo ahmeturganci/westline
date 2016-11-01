@@ -11,13 +11,17 @@ namespace westline_alfa.Controllers
     public class DorduncuController : Controller
     {
         helper.helper h = new helper.helper();
-
+        westlineDB db = new westlineDB();
         public JsonResult evrakPasaportEkle()
         {
             var jsonResult = (object)null;
             int kisiId = Convert.ToInt32(Session["id"]);
             if (h.VeriEkle(Request.QueryString, kisiId))
             {
+                int kulId = Convert.ToInt32(Session["id"]);
+                SayfaDurum s = db.SayfaDurums.FirstOrDefault(x => x.KullaniciId == kisiId && x.SayfaId == 1011);
+                s.Durum = true;
+                db.SaveChanges();
                 jsonResult = new
                 {
                     basari = 1

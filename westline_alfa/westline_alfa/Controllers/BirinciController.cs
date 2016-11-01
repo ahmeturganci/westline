@@ -45,8 +45,8 @@ namespace westline_alfa.Controllers
             {
                 Kullanici k = db.Kullanicis.Find(id);
                 k.AktivasyonOnay = true;
-
                 db.SaveChanges();
+
                 var jsonModel = new
                 {
                     basari = 1

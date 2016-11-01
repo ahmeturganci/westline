@@ -116,30 +116,31 @@ namespace westline_alfa.Controllers
                 d2.KisiId = k.Id;
                 db.Degers.Add(d2);
 
-                for (int i = 1; i < 14; i++)
+
+                foreach (var i in db.Sayfas)
                 {
-                    if (i == 8) continue;
-                    else if(i == 10)
+                    if (i.Id == 10)
                     {
                         SayfaDurum s = new SayfaDurum();
                         s.KullaniciId = k.Id;
-                        s.SayfaId = i;
+                        s.SayfaId = i.Id;
                         s.Durum = true;
                         db.SayfaDurums.Add(s);
+
                     }
                     else
                     {
                         SayfaDurum s = new SayfaDurum();
                         s.KullaniciId = k.Id;
-                        s.SayfaId = i;
+                        s.SayfaId = i.Id;
                         s.Durum = false;
                         db.SayfaDurums.Add(s);
+
+
                     }
                 }
 
-
                 db.SaveChanges();
-
 
                 Session["id"] = k.Id;
                 helper.smsapi sms = new helper.smsapi("5399706684","03011995e","ILETI MRKZI");

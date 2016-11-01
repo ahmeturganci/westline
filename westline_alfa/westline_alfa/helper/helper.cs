@@ -329,8 +329,8 @@ namespace westline_alfa.helper
                 besincisayfa = dizi[7],
                 aktivasyon = dizi[8],
                 tahsilat = dizi[9],
-                isler = dizi[10],
-                wat = dizi[11]
+                wat = dizi[10],
+                isler = dizi[11]
             };
             return Json(jsonModal, JsonRequestBehavior.AllowGet);
         }

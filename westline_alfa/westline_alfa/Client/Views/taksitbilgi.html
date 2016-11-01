@@ -9,9 +9,10 @@
                 else if (data.son == 5) window.location = "#/Egitim";
                 else if (data.son == 6) window.location = "#/RandevuAl";
                 else if (data.son == 7) window.location = "#/EkBilgi";
-                else if (data.son == 8) window.location = "#/Ds160";
-                else if (data.son == 9) window.location = "#/Aktivasyon";
-                else if (data.son == 10) window.location = "#/TaksitBilgi";
+                else if (data.son == 9) window.location = "#/Ds160";
+                else if (data.son == 10) window.location = "#/Aktivasyon";
+                else if (data.son == 1010) window.location = "#/Wat";
+                else if (data.son == 1011) window.location = "#/isler";
             }
         });
 </script>
@@ -21,12 +22,12 @@
             <div class="panel-heading">Taksit Bilgilerim</div>
             <div class="panel-body">
                 <h3>Taksit Bilgisi</h3>
-             <ul>
-                <li ng-repeat="t in taksits">{{t.Miktar}} - {{t.SonOdeme}} - {{t.Odendi}}</li>
-             </ul>
+                <ul>
+                    <li ng-repeat="t in taksits">{{t.Miktar}} - {{t.SonOdeme}} - {{t.Odendi}}</li>
+                </ul>
+                <button ng-click="taksitOnay()">Devam Et</button>
             </div>
         </div>
-        
     </div>
 </div>
 <script>
@@ -107,6 +108,12 @@
             $('#isler').attr("style", "background-color:gray");
         else
             $('#isler').attr("style", "background-color:green");
+
+        //cv sayfa
+        if (data.wat == "1")
+            $('#wat').attr("style", "background-color:gray");
+        else
+            $('#wat').attr("style", "background-color:green");
     });
 
 </script>

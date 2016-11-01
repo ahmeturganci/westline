@@ -281,7 +281,7 @@
                     success(function (data) {
                         console.log(data.basari);
                         if (data.basari == 1) {
-                            $window.location.href = '#/IkinciSayfa';
+                            alert("Aktivasyon başarılı. Admin onayını bekliyorsunuz");
                         } else {
                             $scope.aktivasyonMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
                         }
@@ -338,6 +338,24 @@
                     });
             }
 
+
+            $scope.taksitOnay = function () {
+                $http.post("Taksit/taksitOnay?" + link).
+                    success(function (data) {
+                        console.log(data.basari);
+                        if (data.basari == 1) {
+                            $window.location.href = '#/Wat';
+                        } else {
+                            $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
+                        }
+                    }).error(function (data) {
+                        alert("hata");
+                    });
+            };
+
+            $scope.sponsorSayfa = function () {
+                console.log($scope.sponsor);
+            };
 
 
             //Birinci sayfa eleman cek

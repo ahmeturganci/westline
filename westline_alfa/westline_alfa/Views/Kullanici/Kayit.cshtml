@@ -59,7 +59,7 @@
 
     function Kayit()
     {
-        var email = document.getElementById('KulAd').value;
+        var KulAd = document.getElementById('KulAd').value;
         var sifre = document.getElementById('parola').value;
         var email = document.getElementById('email').value;
         var tel = document.getElementById('tel').value;
@@ -68,7 +68,7 @@
             alert('Email veya Parola boş gecilemez...');
         }
         else {
-            $.post("../Kullanici/KayitOl", { kullaniciAdi: email, sifre: sifre, mail: email, tel: tel }, function (data) {
+            $.post("../Kullanici/KayitOl", { kullaniciAdi: KulAd, sifre: sifre, mail: email, tel: tel }, function (data) {
                 alert(data.basari);
                 if(data.basari==1)
                 {

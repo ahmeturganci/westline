@@ -170,6 +170,7 @@
     <Compile Include="Models\Secenek.cs" />
     <Compile Include="Models\Sozlesme.cs" />
     <Compile Include="Models\SozlesmeTur.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\Taksit.cs" />
     <Compile Include="Models\TaksitOdeme.cs" />
     <Compile Include="Models\Tur.cs" />
@@ -208,6 +209,7 @@
     <Content Include="Client\Views\IkinciSayfa.html" />
     <Content Include="Client\Views\isler.html" />
     <Content Include="Client\Views\RandevuAl.html" />
+    <Content Include="Client\Views\Sponsor.html" />
     <Content Include="Client\Views\taksitbilgi.html" />
     <Content Include="Client\Views\UcakBilgi.html" />
     <Content Include="Client\Views\UcuncuSayfa.html" />

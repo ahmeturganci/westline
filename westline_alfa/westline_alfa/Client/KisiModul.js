@@ -41,7 +41,10 @@
             .when("/Wat", {
                 templateUrl: "/Client/Views/Wat.html"
             })
-            
+            .when("/Sponsor", {
+                templateUrl: "/Client/Views/Sponsor.html"
+            })
+
          .otherwise({
              redirectTo: "/Dashboard"
          });

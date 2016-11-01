@@ -17,6 +17,10 @@ namespace westline_alfa.Controllers
             int kisiId = Convert.ToInt32(Session["id"]);
             if (h.VeriEkle(Request.QueryString, kisiId))
             {
+                int kulId = Convert.ToInt32(Session["id"]);
+                SayfaDurum s = db.SayfaDurums.FirstOrDefault(x => x.KullaniciId == kisiId && x.SayfaId == 3);
+                s.Durum = true;
+                db.SaveChanges();
                 jsonResult = new
                 {
                     basari = 1
