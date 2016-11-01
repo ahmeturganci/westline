@@ -16,13 +16,14 @@
     <div class="container">
 
         @*kisisel bilgiler*@
-        @{ for (int i = 1; i < 9; i++)
+        @{ for (int i = 1; i < 10; i++)
             {
+                if (i == 8) { continue; }
                 <div class="kutu">
                     <div class="icerik-baslik">@i. Sayfa</div>
-                    @{ foreach (var deger in Model.Degers.Where(x => x.KisiId == 1))
+                    @{ foreach (var deger in Model.Degers)
                         {
-                            if (deger.Input.Sayfa == i)
+                            if (deger.Input.SayfaId == i)
                             {
                                 if (deger.Input.TurId == 4 || deger.Input.TurId == 5)
                                 {
