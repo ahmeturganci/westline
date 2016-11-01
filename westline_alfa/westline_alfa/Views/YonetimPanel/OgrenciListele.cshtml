@@ -14,16 +14,15 @@
         </tr>
     </thead>
     <tbody>
-        <form action="/YonetimPanel/OnayVer" method="post">
+
             @foreach (var i in Model.Where(x=>x.AdminOnay == true))
             {
                 <tr>
                     <td>@i.Id</td>
-                    <td>@i.Degers.FirstOrDefault(x => x.InputId == 2).Icerik @i.Degers.FirstOrDefault(x => x.InputId == 4).Icerik</td>
-                    <td><button style="margin-left:20px; margin-top:5px;" type="submit" class="btn btn-success">Gözat</button></td>
+                    <td>@i.KullaniciAdi</td>
+                    <td><a style="margin-left:20px; margin-top:5px;" href="/YonetimPanel/OgrenciDetay/@i.Id" type="submit" class="btn btn-success">Gözat</a></td>
                 </tr>
             }
-        </form>
 </tbody>
 </table>
 

@@ -15,11 +15,21 @@
             }
         });
 </script>
+
+<style>
+    .gizli {
+        display: none;
+    }
+
+    .gozuken {
+        display: block;
+    }
+</style>
+
 <div class="tab-pane" id="aktivasyon">
 
     <div ng-controller="KisiTanimaController">
         <h3>{{aktivasyonMesaj}}</h3>
-        <form>
             <fieldset>
                 <!-- required html5 o input dolu olack :D -->
                 <div class="panel panel-danger">
@@ -36,13 +46,16 @@
                     <div class="panel-heading">WAT Sözleşmesi Yükle* </div>
                     <div class="panel-body">
                         <div class="form-group">
-                            <input type="file" id="wat" class="form-control">
-                            <input type="submit" onclick="sozlesme()" value="Yükle" />
+                            <form novalidate name="f1" id="evrakvepasaport">
+                                <a id="dort_1d" ng-if="Wat_URL !== ''" href="Images/{{Wat_URL}}"> WAT Göster</a>
+                                <a id="dort_1d" ng-if="Wat_URL === ''" style="display:none"> WAT Göster</a>
+                                <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+                                <input type="submit" ng-click="SaveFile(1,1)" value="Yükle" class="btn btn-danger" />
+                            </form>
                         </div>
                     </div>
                 </div>
             </fieldset>
-        </form>
     </div>
 </div>
 <script>
