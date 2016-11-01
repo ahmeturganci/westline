@@ -131,12 +131,23 @@
         else
             $('#isler').attr("style", "background-color:green");
 
+        //cv sayfa
+        if (data.tahsilat == "1")
+            $('#taksitbilgi').attr("style", "background-color:gray");
+        else
+            $('#taksitbilgi').attr("style", "background-color:green");
 
         //cv sayfa
         if (data.cv == "1")
             $('#cv').attr("style", "background-color:gray");
         else
             $('#cv').attr("style", "background-color:green");
+
+        //cv sayfa
+        if (data.isler == "1")
+            $('#isler').attr("style", "background-color:gray");
+        else
+            $('#isler').attr("style", "background-color:green");
     });
 
 </script>

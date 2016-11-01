@@ -169,3 +169,84 @@
     <!--Kisisel Detay-->
 
 </div>
+<script>
+    $.post('../Birinci/RenkDurumCek', function (data) {
+        if (data.birincisayfa == "1")
+            $('#birincisayfa').attr("style", "background-color:gray");
+        else
+            $('#birincisayfa').attr("style", "background-color:green");
+
+        //besinci sayfa
+        if (data.besincisayfa == "1")
+            $('#besincisayfa').attr("style", "background-color:gray");
+        else
+            $('#besincisayfa').attr("style", "background-color:green");
+
+
+        //aktivasyon sayfa
+        if (data.aktivasyon == "1")
+            $('#aktivasyon').attr("style", "background-color:gray");
+        else
+            $('#aktivasyon').attr("style", "background-color:green");
+
+
+        //radevu al sayfa
+        if (data.randevual == "1")
+            $('#randevual').attr("style", "background-color:gray");
+        else
+            $('#randevual').attr("style", "background-color:green");
+
+
+        //ikicisayfa sayfa
+        if (data.ikincisayfa == "1")
+            $('#ikincisayfa').attr("style", "background-color:gray");
+        else
+            $('#ikincisayfa').attr("style", "background-color:green");
+
+        //ucuncusayfa sayfa
+        if (data.ucuncusayfa == "1")
+            $('#ucuncusayfa').attr("style", "background-color:gray");
+        else
+            $('#ucuncusayfa').attr("style", "background-color:green");
+
+
+        //dorduncusayfa sayfa
+        if (data.dorduncusayfa == "1")
+            $('#dorduncusayfa').attr("style", "background-color:gray");
+        else
+            $('#dorduncusayfa').attr("style", "background-color:green");
+
+
+
+        //ucakbilgi sayfa
+        if (data.ucakbilgi == "1")
+            $('#ucakbilgi').attr("style", "background-color:gray");
+        else
+            $('#ucakbilgi').attr("style", "background-color:green");
+
+        //isler sayfa
+        if (data.isler == "1")
+            $('#isler').attr("style", "background-color:gray");
+        else
+            $('#isler').attr("style", "background-color:green");
+
+        //cv sayfa
+        if (data.tahsilat == "1")
+            $('#taksitbilgi').attr("style", "background-color:gray");
+        else
+            $('#taksitbilgi').attr("style", "background-color:green");
+
+        //cv sayfa
+        if (data.cv == "1")
+            $('#cv').attr("style", "background-color:gray");
+        else
+            $('#cv').attr("style", "background-color:green");
+
+        //cv sayfa
+        if (data.isler == "1")
+            $('#isler').attr("style", "background-color:gray");
+        else
+            $('#isler').attr("style", "background-color:green");
+    });
+
+</script>
