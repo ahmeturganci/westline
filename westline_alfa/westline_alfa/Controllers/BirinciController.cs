@@ -16,9 +16,11 @@ namespace westline_alfa.Controllers
         public JsonResult KisiEkle()
         {
             var jsonResult = (object)null;
-            if (h.VeriEkle(Request.QueryString))
+            int kisiId = Convert.ToInt32(Session["id"]);
+            if (h.VeriEkle(Request.QueryString, kisiId))
             {
-                SayfaDurum s = db.SayfaDurums.FirstOrDefault(x => x.KullaniciId == Convert.ToInt32(Session["id"]) && x.SayfaId == 11);
+                int kulId = Convert.ToInt32(Session["id"]);
+                SayfaDurum s = db.SayfaDurums.FirstOrDefault(x => x.KullaniciId ==  kisiId && x.SayfaId == 11);
                 s.Durum = true;
                 db.SaveChanges();
                 jsonResult = new

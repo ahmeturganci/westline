@@ -21,7 +21,7 @@
         <form id="profile">
             <fieldset>
                 <div class="form-group" ng-repeat="c in birinciElemans">
-                    <label class="KariyerHedef" for="form-group-input">{{c.Aciklama}}{{c.Zorunlu}}</label>
+                    <label for="form-group-input"><b>{{c.Aciklama}}<strong style="color:red;">{{c.Zorunlu}}</strong></b></label>
                     <input ng-if="c.iTur !== 'radio' && c.iTur !== 'textarea' &&  c.iTur !== 'select' && c.iTur !== 'file' && c.iTur !== 'ulke' && c.iTur !== 'il'" type="{{c.iTur}}" id="{{c.Id}}" name="{{c.Name}}" class="form-control" maxlength="{{c.Max}}" placeholder="{{c.Placeholder}}" value="{{c.Icerik}}" required>
                     <br />
                     <span ng-if="c.iTur === 'file'" id="{{c.Id}}">
@@ -52,7 +52,7 @@
                     </select>
                 </div>
             </fieldset>
-            <button ng-click="profilSayfa('profile')">Devam Et </button>
+            <button ng-click="profilSayfa('profile')" class="btn btn-primary">Devam Et </button>
         </form>
     </div>
 </div>
@@ -131,12 +131,23 @@
         else
             $('#isler').attr("style", "background-color:green");
 
+        //cv sayfa
+        if (data.tahsilat == "1")
+            $('#taksitbilgi').attr("style", "background-color:gray");
+        else
+            $('#taksitbilgi').attr("style", "background-color:green");
 
         //cv sayfa
         if (data.cv == "1")
             $('#cv').attr("style", "background-color:gray");
         else
             $('#cv').attr("style", "background-color:green");
+
+        //cv sayfa
+        if (data.isler == "1")
+            $('#isler').attr("style", "background-color:gray");
+        else
+            $('#isler').attr("style", "background-color:green");
     });
 
 </script>

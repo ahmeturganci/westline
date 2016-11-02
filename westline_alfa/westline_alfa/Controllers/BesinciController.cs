@@ -16,7 +16,8 @@ namespace westline_alfa.Controllers
         public JsonResult dsEkle()
         {
             var jsonResult = (object)null;
-            if (h.VeriEkle(Request.QueryString))
+            int kisiId = Convert.ToInt32(Session["id"]);
+            if (h.VeriEkle(Request.QueryString,kisiId))
             {
                 jsonResult = new
                 {

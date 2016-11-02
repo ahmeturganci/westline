@@ -56,7 +56,6 @@
                             <input type="text" class="form-control" ng-model="AbdSsn" id="AbdSsn" placeholder="AbdSsn. . ." required>
                         </div>
 
-                        <!--Burda Kaldım Radio lar yapılcak-->
                         <div class="form-group">
                             <label class="AmerikadaBulunduMu" for="form-group-input">Amerikada Bulundu Mu* </label>
                             <input type="radio" ng-model="AmerikadaBulunduMu" value="1" id="radio" /> Evet, Var
@@ -74,7 +73,6 @@
                             <input type="date" class="form-control" ng-model="amerikaBulunduguSure" id="amerikadaKalmaSure" placeholder="Amerika Bulundugu Süre. . ." required>
                         </div>
 
-                        <!--Burda Kaldım Radio lar yapılcak-->
                         <div class="form-group">
                             <label class="OncedenAmerikaVizesiAldı" for="form-group-input">Onceden Amerika Vizesi Aldı Mı</label>
                             <input type="radio" ng-model="oncedenAmerikaVizesi" value="1" /> Evet, Var
@@ -109,9 +107,6 @@
                             </select>
                         </div>
 
-
-
-
                         <div class="form-group">
                             <label class="BabaDogumTarihi" for="form-group-input">Baba Dogum Tarihi</label>
                             <input type="date" class="form-control" ng-model="babaDogumTarihi" id="babaDogumTarihi" placeholder="Baba Dogum Tarihi. . ." required>
@@ -137,10 +132,6 @@
                             <input type="radio" ng-model="sonBesYil" value="0" /> Hayır, Yok
                         </div>
 
-
-
-
-                        <!--// AmerikaAkrabaBilgi gelecek sadece -->
                         <div class="form-group">
                             <label class="Eyalet" for="form-group-input">Eyalet </label>
                             <select class="combobox" ng-model="bilgiEyalet">
@@ -152,15 +143,12 @@
                             <label class="PostaKodu" for="form-group-input">Posta Kodu</label>
                             <input type="number" class="form-control" ng-model="bilgiPostaKod" id="postaKodu" placeholder="Posta Kodu. . ." required>
                         </div>
-
                         <div class="form-group">
                             <label class="Ulke" for="form-group-input">Ülke </label>
                             <select class="combobox" ng-model="bilgiUlke">
                                 <option ng-repeat="u in ulkes" value=""></option>
                             </select>
                         </div>
-
-
                     </fieldset>
                 </form>
             </div>
