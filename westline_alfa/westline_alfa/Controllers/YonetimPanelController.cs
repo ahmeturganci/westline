@@ -123,7 +123,7 @@ namespace westline_alfa.Controllers
         }
 
         [HttpPost]
-        public ActionResult Upload()
+        public ActionResult UploadWat(int id)
         {
             if (Request.Files.Count > 0)
             {
@@ -134,10 +134,77 @@ namespace westline_alfa.Controllers
                     var fileName = Path.GetFileName(file.FileName);
                     var path = Path.Combine(Server.MapPath("~/Images/"), fileName);
                     file.SaveAs(path);
+                    Sozlesme s = new Sozlesme();
+                    s.SozlesmeTur = 1;
+                    s.Url = fileName;
+                    s.KullaniciId = id;
+                    s.Onay = true;
+
+                    db.Sozlesmes.Add(s);
+                    db.SaveChanges();
                 }
             }
-            return RedirectToAction("OgrenciDetay/1", "YonetimPanel");
+            return RedirectToAction("OgrenciDetay/"+id, "YonetimPanel");
         }
 
+        [HttpPost]
+        public ActionResult UploadDs(int id)
+        {
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+
+                if (file != null && file.ContentLength > 0 && file.ContentType == "application/pdf")
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                    file.SaveAs(path);
+                    Sozlesme s = new Sozlesme();
+                    s.SozlesmeTur = 2;
+                    s.Url = fileName;
+                    s.KullaniciId = id;
+                    s.Onay = true;
+
+                    db.Sozlesmes.Add(s);
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("OgrenciDetay/" + id, "YonetimPanel");
+        }
+
+        [HttpPost]
+        public ActionResult UploadSevis(int id)
+        {
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+
+                if (file != null && file.ContentLength > 0 && file.ContentType == "application/pdf")
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                    file.SaveAs(path);
+                    Sozlesme s = new Sozlesme();
+                    s.SozlesmeTur = 3;
+                    s.Url = fileName;
+                    s.KullaniciId = id;
+                    s.Onay = true;
+
+                    db.Sozlesmes.Add(s);
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("OgrenciDetay/" + id, "YonetimPanel");
+        }
+
+        public JsonResult InputSil(int id)
+        {
+            return y.InputSil(id);
+        }
+
+        public JsonResult InputEkle(string metin, string metinplace, int tur, int zorunludurum, int sayfanum)
+        {
+            return y.InputEkle(metin, metinplace, tur, zorunludurum, sayfanum);
+        }
     }
 }

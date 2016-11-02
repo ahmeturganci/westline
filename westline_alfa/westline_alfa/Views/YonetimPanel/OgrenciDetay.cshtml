@@ -4,6 +4,198 @@
     Layout = "~/Views/Shared/_YonetimLayout.cshtml";
 }
 @model westline_alfa.Models.Kullanici
+<style>
+    .admin-link{
+        width: 7.69%;
+        height: 42px;
+        float:left;
+        text-align: center;
+        font-size: 18px;
+        padding-top: 9px;
+        color: #fff;
+    }
+
+    .pasif{
+        background-color: gray;
+    }
+
+    .aktif{
+        background-color:green;
+    }
+</style>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Kullanıcının Bitirdiği Sayfalar
+    </div>
+    <div class="panel-body">
+        @{
+            if (Model.SayfaDurums.FirstOrDefault(x => x.SayfaId == 10).Durum == true)
+            {
+                <div class="admin-link aktif">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                </div>
+            }
+            else
+            {
+                <div class="admin-link pasif">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                </div>
+            }
+
+           
+                <div class="admin-link aktif">
+                    <i class="fa fa-dashboard" aria-hidden="true"></i>
+                </div>
+
+
+            if (Model.SayfaDurums.FirstOrDefault(x => x.SayfaId == 1).Durum == true)
+            {
+                <div class="admin-link aktif">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </div>
+            }
+            else
+            {
+                <div class="admin-link pasif">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </div>
+            }
+
+            if (Model.SayfaDurums.FirstOrDefault(x => x.SayfaId == 11).Durum == true)
+            {
+                <div class="admin-link aktif">
+                    <i class="fa fa-money" aria-hidden="true"></i>
+                </div>
+            }
+            else
+            {
+                <div class="admin-link pasif">
+                    <i class="fa fa-money" aria-hidden="true"></i>
+                </div>
+            }
+
+            if (Model.SayfaDurums.FirstOrDefault(x => x.SayfaId == 1010).Durum == true)
+            {
+                <div class="admin-link aktif">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </div>
+            }
+            else
+            {
+                <div class="admin-link pasif">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </div>
+            }
+
+            if (Model.SayfaDurums.FirstOrDefault(x => x.SayfaId == 7).Durum == true)
+            {
+                <div class="admin-link aktif">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                </div>
+            }
+            else
+            {
+                <div class="admin-link pasif">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                </div>
+            }
+
+            if (Model.SayfaDurums.FirstOrDefault(x => x.SayfaId == 5).Durum == true)
+            {
+                <div class="admin-link aktif">
+                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                </div>
+            }
+            else
+            {
+                <div class="admin-link pasif">
+                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                </div>
+            }
+
+            if (Model.SayfaDurums.FirstOrDefault(x => x.SayfaId == 2).Durum == true)
+            {
+                <div class="admin-link aktif">
+                    <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                </div>
+            }
+            else
+            {
+                <div class="admin-link pasif">
+                    <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                </div>
+            }
+
+            if (Model.SayfaDurums.FirstOrDefault(x => x.SayfaId == 3).Durum == true)
+            {
+                <div class="admin-link aktif">
+                    <i class="fa fa-file-picture-o" aria-hidden="true"></i>
+                </div>
+            }
+            else
+            {
+                <div class="admin-link pasif">
+                    <i class="fa fa-file-picture-o" aria-hidden="true"></i>
+                </div>
+            }
+
+            if (Model.SayfaDurums.FirstOrDefault(x => x.SayfaId == 1011).Durum == true)
+            {
+                <div class="admin-link aktif">
+                    <i class="fa fa-briefcase" aria-hidden="true"></i>
+                </div>
+            }
+            else
+            {
+                <div class="admin-link pasif">
+                    <i class="fa fa-briefcase" aria-hidden="true"></i>
+                </div>
+            }
+
+            if (Model.SayfaDurums.FirstOrDefault(x => x.SayfaId == 6).Durum == true)
+            {
+                <div class="admin-link aktif">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </div>
+            }
+            else
+            {
+                <div class="admin-link pasif">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </div>
+            }
+
+            if (Model.SayfaDurums.FirstOrDefault(x => x.SayfaId == 4).Durum == true)
+            {
+                <div class="admin-link aktif">
+                    <i class="fa fa-plane" aria-hidden="true"></i>
+                </div>
+            }
+            else
+            {
+                <div class="admin-link pasif">
+                    <i class="fa fa-plane" aria-hidden="true"></i>
+                </div>
+            }
+
+            if (Model.SayfaDurums.FirstOrDefault(x => x.SayfaId == 9).Durum == true)
+            {
+                <div class="admin-link aktif">
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                </div>
+            }
+            else
+            {
+                <div class="admin-link pasif">
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                </div>
+            }
+        }
+        
+
+    </div>
+</div>
+
 
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -19,8 +211,37 @@
         WAT Sözleşmesi Yükle
     </div>    
     <div class="panel-body">
-        @using (Html.BeginForm("Upload", "YonetimPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("UploadWat", "YonetimPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
+            <input type="hidden" name="id" value="@Model.Id" />
+            <input type="file" name="FileUpload" />
+            <input type="submit" name="Submit" id="Submit" value="Upload" />
+        }
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        DS-2019 yükle
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm("UploadDs", "YonetimPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="hidden" name="id" value="@Model.Id" />
+            <input type="file" name="FileUpload" />
+            <input type="submit" name="Submit" id="Submit" value="Upload" />
+        }
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Sevis harcı yükle
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm("UploadSevis", "YonetimPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="hidden" name="id" value="@Model.Id" />
             <input type="file" name="FileUpload" />
             <input type="submit" name="Submit" id="Submit" value="Upload" />
         }

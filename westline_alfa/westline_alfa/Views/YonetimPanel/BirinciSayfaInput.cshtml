@@ -287,7 +287,7 @@
 <script>
 
     function InputSil(id) {
-        $.post('./Yonetim/InputSil', { inputid: id }, function (data) {
+        $.post('../Yonetim/InputSil', { inputid: id }, function (data) {
             if (data == true)
                 alert("İnput Silindi.");
             else {
@@ -315,7 +315,7 @@
             alert("Veriler boş olamaz.");
         }
         else {
-            $.post('../YonetimPanelController/InputEkle', { metin: metin, metinplace: metinplace, elemanlar: elemanlar, zorunludurum: zorunludurum, tur: tur, sayfanum: sayfanum }, function (data) {
+            $.post('../YonetimPanel/InputEkle', { metin: metin, metinplace: metinplace, elemanlar: elemanlar, zorunludurum: zorunludurum, tur: tur, sayfanum: sayfanum }, function (data) {
                 if (data == true)
                     alert("İnput sayfaya başarılı bir şekilde eklendi.");
                 else {

@@ -121,5 +121,22 @@ namespace westline_alfa.helper
 
             return Json(jsonModel, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult InputEkle(string aciklama, string placeholder, int turId, int zorunlu, int sayfaId)
+        {
+            Input i = new Input();
+            i.Aciklama = aciklama;
+            i.Placeholder = placeholder;
+            i.TurId = turId;
+            i.Zorunlu = zorunlu == 0 ? false : true;
+            i.SayfaId = sayfaId;
+            db.Inputs.Add(i);
+            db.SaveChanges();
+            var jsonModel = new
+            {
+                basari = 1
+            };
+            return Json(jsonModel, JsonRequestBehavior.AllowGet);
+        }
     }
 }

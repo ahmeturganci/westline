@@ -20,13 +20,25 @@
                 padding: 5px 10px;
             }
     </style>
+<script>
+    function calis(e) {
+        $.post("../YonetimPanel/InputSil", { id: e }, function (data) {
+            if (data.basari == 1)
+                alert("İnput Silindi.");
+            else {
+                alert("İnput Silmede Sorun Oluştu.");
+                location.href = "/YonetimPanel/CvInput";
+            }
+        });
+    }
+</script>
 </head>
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-heading"></div>
         <div class="panel-body" ng-app="myApp" ng-controller="yonetim">
             <div class="form-group" ng-repeat="c in cvElemans">
-                <label class="KariyerHedef" for="form-group-input">{{c.Aciklama}}{{c.Zorunlu}}</label> - <a href="InputSil({{c.Id}})">Sil</a>
+                <label class="KariyerHedef" for="form-group-input">{{c.Aciklama}}{{c.Zorunlu}}</label> - <button id="{{c.Id}}" onclick="calis(this.id)" class="sil">Sil</button>
                 <input ng-if="c.iTur !== 'radio' && c.iTur !== 'textarea' &&  c.iTur !== 'select' && c.iTur !== 'file' && c.iTur !== 'ulke' && c.iTur !== 'il'" type="{{c.iTur}}" id="{{c.Id}}" name="{{c.Name}}" class="form-control" maxlength="{{c.Max}}" placeholder="{{c.Placeholder}}" value="{{c.Icerik}}" required>
                 <br />
                 <span ng-if="c.iTur === 'file'" id="{{c.Id}}">
@@ -285,18 +297,7 @@
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script>
-
-    function InputSil(id) {
-        $.post('./Yonetim/InputSil', { inputid: id }, function (data) {
-            if (data == true)
-                alert("İnput Silindi.");
-            else {
-                alert("İnput Silmede Sorun Oluştu.");
-                location.href = "/YonetimPanel/UcuncuSayfaInput";
-            }
-        });
-    }
-    var sayfanum = 1;
+    var sayfanum = 2;
     //METİN İNPUT VERİSİ İCİN İNPUTU İÇİNN VERİLERİ ALMAK ICIN KULLANILIR.
     function MetinVeriAl()
     {
@@ -315,15 +316,13 @@
             alert("Veriler boş olamaz.");
         }
         else {
-            $.post('../YonetimPanelController/InputEkle', { metin: metin, metinplace: metinplace, elemanlar: elemanlar, zorunludurum: zorunludurum, tur: tur, sayfanum: sayfanum }, function (data) {
-                if (data == true)
+            $.post('../YonetimPanel/InputEkle', { metin: metin, metinplace: metinplace, zorunludurum: zorunludurum, tur: tur, sayfanum: sayfanum }, function (data) {
+                if (data.basari == 1)
                     alert("İnput sayfaya başarılı bir şekilde eklendi.");
                 else {
                     alert("Sorun oluştu.");
                     window.location.href = "../YonetimPanel/profilInput";
                 }
-
-
             });
         }
 
