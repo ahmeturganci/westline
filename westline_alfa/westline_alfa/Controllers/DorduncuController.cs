@@ -55,25 +55,24 @@ namespace westline_alfa.Controllers
                 int size = file.ContentLength;
                 try
                 {
-
                     file.SaveAs(Path.Combine(Server.MapPath("~/Images"), fileName));
-
-
                     using (westlineDB dc = new westlineDB())
                     {
-                        Deger d;
-                        if (dc.Degers.Any(x => x.KisiId == 1 && x.InputId == e))
+                        Sozlesme d;
+                        int kulId = Convert.ToInt32(Session["id"]);
+                        if (dc.Sozlesmes.Any(x => x.KullaniciId == kulId && x.SozlesmeTur==e))
                         {
-                            d = dc.Degers.FirstOrDefault(x => x.KisiId == 1 && x.InputId == e);
-                            d.Icerik = fileName;
+                            d = dc.Sozlesmes.FirstOrDefault(x => x.KullaniciId == kulId && x.SozlesmeTur == e);
+                            d.Url = fileName;
                         }
                         else
                         {
-                            d = new Deger();
-                            d.InputId = e;
-                            d.Icerik = fileName;
-                            d.KisiId = 1;
-                            dc.Degers.Add(d);
+                            d = new Sozlesme();
+                            d.KullaniciId = kulId;
+                            d.Url = fileName;
+                            d.SozlesmeTur = e;
+                            d.Onay = false;
+                            dc.Sozlesmes.Add(d);
                         }
 
                         dc.SaveChanges();

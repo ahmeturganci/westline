@@ -59,65 +59,91 @@ namespace westline_alfa.helper
         public JsonResult ElemanCek(int sayfa, int kisiId)
         {
             sayac = 0;
-            List<Object> jsonModelList = new List<object>();
-            var jsonModel = (object)null;
-            foreach (var i in db.Inputs.Where(x => x.SayfaId == sayfa))
-            {
-                bool kontrol = false;
-                string icerik = "";
-                if (db.Degers.Any(x => x.InputId == i.Id && x.KisiId == kisiId))
-                {
-                    kontrol = true;
-                    icerik = db.Degers.FirstOrDefault(x => x.InputId == i.Id && x.KisiId == kisiId).Icerik;
-                }
 
-                if (i.Tur.Id != 4 && i.Tur.Id != 8)
+            var jsonModel = (object)null;
+            if (sayfa == 3) // Evrak Sayfasıysa (Dinamiklik kaldırıldı.)
+            {
+                string Foto_URL = db.Sozlesmes.Where(a => a.SozlesmeTur == 2 && a.KullaniciId == kisiId).Select(a => a.Url).FirstOrDefault();
+                Foto_URL = (Foto_URL != null) ? Foto_URL : "";
+                string OgrBelge_URL = db.Sozlesmes.Where(a => a.SozlesmeTur == 3 && a.KullaniciId == kisiId).Select(a => a.Url).FirstOrDefault();
+                OgrBelge_URL = (OgrBelge_URL != null) ? OgrBelge_URL : "";
+                string Pas_URL = db.Sozlesmes.Where(a => a.SozlesmeTur == 4 && a.KullaniciId == kisiId).Select(a => a.Url).FirstOrDefault();
+                Pas_URL = (Pas_URL != null) ? Pas_URL : "";
+                string Adil_URL = db.Sozlesmes.Where(a => a.SozlesmeTur == 5 && a.KullaniciId == kisiId).Select(a => a.Url).FirstOrDefault();
+                Adil_URL = (Adil_URL != null) ? Adil_URL : "";
+
+
+                return Json(new { Foto_URL = Foto_URL, OgrBelge_URL = OgrBelge_URL, Pas_URL = Pas_URL, Adil_URL = Adil_URL }, JsonRequestBehavior.AllowGet);
+            }
+            else if(sayfa==13) // WAT sayfasının bilgisini çekmek için.// Dinamik değil.
+            {
+                string Wat_URL= db.Sozlesmes.Where(a => a.SozlesmeTur == 1 && a.KullaniciId == kisiId).Select(a => a.Url).FirstOrDefault();
+                Wat_URL = (Wat_URL != null) ? Wat_URL : "";
+                return Json(Wat_URL, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                List<Object> jsonModelList = new List<object>();
+                foreach (var i in db.Inputs.Where(x => x.SayfaId == sayfa))
                 {
-                    jsonModel = new
+                    bool kontrol = false;
+                    string icerik = "";
+                    if (db.Degers.Any(x => x.InputId == i.Id && x.KisiId == kisiId))
                     {
-                        Id = i.Id,
-                        Aciklama = i.Aciklama,
-                        Placeholder = i.Placeholder,
-                        iTur = i.Tur.Ad,
-                        Zorunlu = i.Zorunlu == true ? "*" : "",
-                        Name = i.Zorunlu == true ? "1" : "0",
-                        Max = i.Maxlength != null ? i.Maxlength : 1000,
-                        Icerik = kontrol == true ? icerik : ""
-                    };
-                }
-                else
-                {
-                    List<Object> secenekler = new List<object>();
-                    int icerikId = 0;
-                    if (kontrol) icerikId = Convert.ToInt32(db.Degers.FirstOrDefault(x => x.KisiId == kisiId && x.InputId == i.Id).Icerik);
-                    foreach (var j in db.Seceneks.Where(x => x.InputId == i.Id))
-                    {
-                        var jsonSecenekModel = new
-                        {
-                            Id = j.Id,
-                            secenek = j.Icerik,
-                            name = "rd" + sayac,
-                            Secili = kontrol == true ? icerikId == 0 ? 0 : j.Id == icerikId ? 1 : 0 : 0
-                        };
-                        secenekler.Add(jsonSecenekModel);
+                        kontrol = true;
+                        icerik = db.Degers.FirstOrDefault(x => x.InputId == i.Id && x.KisiId == kisiId).Icerik;
                     }
 
-                    sayac++;
-
-                    jsonModel = new
+                    if (i.Tur.Id != 4 && i.Tur.Id != 8)
                     {
-                        Id = i.Id,
-                        Aciklama = i.Aciklama,
-                        iTur = i.Tur.Ad,
-                        Zorunlu = i.Zorunlu == true ? "*" : "",
-                        Name = i.Zorunlu == true ? "1" : "0",
-                        Secenek = secenekler
-                    };
-                }
+                        jsonModel = new
+                        {
+                            Id = i.Id,
+                            Aciklama = i.Aciklama,
+                            Placeholder = i.Placeholder,
+                            iTur = i.Tur.Ad,
+                            Zorunlu = i.Zorunlu == true ? "*" : "",
+                            Name = i.Zorunlu == true ? "1" : "0",
+                            Max = i.Maxlength != null ? i.Maxlength : 1000,
+                            Icerik = kontrol == true ? icerik : ""
+                        };
+                    }
+                    else
+                    {
+                        List<Object> secenekler = new List<object>();
+                        int icerikId = 0;
+                        if (kontrol) icerikId = Convert.ToInt32(db.Degers.FirstOrDefault(x => x.KisiId == kisiId && x.InputId == i.Id).Icerik);
+                        foreach (var j in db.Seceneks.Where(x => x.InputId == i.Id))
+                        {
+                            var jsonSecenekModel = new
+                            {
+                                Id = j.Id,
+                                secenek = j.Icerik,
+                                name = "rd" + sayac,
+                                Secili = kontrol == true ? icerikId == 0 ? 0 : j.Id == icerikId ? 1 : 0 : 0
+                            };
+                            secenekler.Add(jsonSecenekModel);
+                        }
 
-                jsonModelList.Add(jsonModel);
+                        sayac++;
+
+                        jsonModel = new
+                        {
+                            Id = i.Id,
+                            Aciklama = i.Aciklama,
+                            iTur = i.Tur.Ad,
+                            Zorunlu = i.Zorunlu == true ? "*" : "",
+                            Name = i.Zorunlu == true ? "1" : "0",
+                            Secenek = secenekler
+                        };
+                    }
+
+                    jsonModelList.Add(jsonModel);
+                }
+                return Json(jsonModelList, JsonRequestBehavior.AllowGet);
             }
-            return Json(jsonModelList, JsonRequestBehavior.AllowGet);
+
+
         }
 
 

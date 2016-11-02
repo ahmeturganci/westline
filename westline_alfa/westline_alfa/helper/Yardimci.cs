@@ -27,11 +27,13 @@ namespace westline_alfa.helper
 
         public JsonResult SozlesmeOnay(int sozlesmeId, int kullaniciId)
         {
-            
-            if(db.Sozlesmes.Any(x=>x.SozlesmeTur == sozlesmeId && x.KullaniciId == kullaniciId))
+
+            if (db.Sozlesmes.Any(x => x.Id == sozlesmeId && x.KullaniciId == kullaniciId))
             {
-                Sozlesme s = db.Sozlesmes.FirstOrDefault(x => x.SozlesmeTur == sozlesmeId && x.KullaniciId == kullaniciId);
+                Sozlesme s = db.Sozlesmes.FirstOrDefault(x => x.Id == sozlesmeId && x.KullaniciId == kullaniciId);
                 s.Onay = true;
+                var sayfa = db.SayfaDurums.FirstOrDefault(a => a.KullaniciId == kullaniciId && a.SayfaId == 7);
+                sayfa.Durum = true;
                 db.SaveChanges();
                 var jsonResult = new
                 {
@@ -70,7 +72,7 @@ namespace westline_alfa.helper
                 taksitOde.KullaniciId = kullaniciId;
                 db.TaksitOdemes.Add(taksitOde);
             }
-            
+
             Kullanici k = db.Kullanicis.Find(kullaniciId);
             k.AdminOnay = true;
 
@@ -89,7 +91,7 @@ namespace westline_alfa.helper
 
         public void TaksitBildirim(int kullaniciId)
         {
-            
+
         }
 
         public JsonResult TaksitGetir(int Id)

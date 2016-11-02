@@ -41,16 +41,28 @@
             // THIS IS REQUIRED AS File Control is not supported 2 way binding features of Angular
             // ------------------------------------------------------------------------------------
             //File Validation
-            $scope.ChechFileValid = function (file) {
+            $scope.ChechFileValid = function (file, tur) {
                 var isValid = false;
                 if ($scope.SelectedFileForUpload != null) {
-                    if ((file.type == 'image/png' || file.type == 'image/jpeg' || file.type.indexOf("pdf") > -1 || file.type == 'image/gif') && file.size <= (512 * 1024)) {
-                        $scope.FileInvalidMessage = "";
-                        isValid = true;
+                    if (tur == 0) {
+                        if ((file.type == 'image/jpeg') && file.size <= (512 * 1024 * 5)) {
+                            $scope.FileInvalidMessage = "";
+                            isValid = true;
+                        }
+                        else {
+                            $scope.FileInvalidMessage = "Selected file is Invalid. (only file type  jpeg  5 mb size allowed)";
+                        }
                     }
                     else {
-                        $scope.FileInvalidMessage = "Selected file is Invalid. (only file type png, jpeg and gif and 512 kb size allowed)";
+                        if ((file.type.indexOf("pdf") > -1 && file.size <= (512 * 1024 * 5))) {
+                            $scope.FileInvalidMessage = "";
+                            isValid = true;
+                        }
+                        else {
+                            $scope.FileInvalidMessage = "Selected file is Invalid. (only file type png, jpeg and gif and 512 kb size allowed)";
+                        }
                     }
+
                 }
                 else {
                     $scope.FileInvalidMessage = "Image required!";
@@ -65,21 +77,28 @@
             //----------------------------------------------------------------------------------------
 
             //Save File
-            $scope.SaveFile = function (e) {
+            $scope.SaveFile = function (e, tur) {
                 console.log("kaydetme fonksiyonunun içerisinde");
                 $scope.IsFormSubmitted = true;
                 $scope.Message = "";
-                $scope.ChechFileValid($scope.SelectedFileForUpload);
+                $scope.ChechFileValid($scope.SelectedFileForUpload, tur);
                 if ($scope.IsFormValid && $scope.IsFileValid) {
                     FileUploadService.UploadFile($scope.SelectedFileForUpload, $scope.FileDescription, e).then(function (d) {
                         ClearForm();
-                        $("#" + e + "d").attr("src", "Images/" + d.Message);
-                        $("#" + e + "d").attr("width", 60);
+                        if (tur == 0) {
+                            $("#dort_" + e + "d").attr("src", "Images/" + d.Message);
+                            $("#dort_" + e + "d").attr("width", 60);
+                        }
+                        else {
+                            $("#dort_" + e + "d").attr("href", "Images/" + d.Message);
+                            $("#dort_" + e + "d").show();
+                        }
                     }, function (e) {
                         alert(e);
                     });
                 }
                 else {
+                    alert($scope.Message);
                     $scope.Message = "All the fields are required.";
                 }
             };
@@ -384,7 +403,7 @@
 
             //Evrak sayfa eleman cek
             $http.get("/Dorduncu/elemans?sayfa=3&kisiId=" + session).success(function (data) {
-                $scope.evrakElemans = data;
+                $scope.evrakEleman = data;
             }).error(function (data) {
                 console.log(data);
             });
@@ -461,6 +480,12 @@
             }).error(function (data) {
                 console.log(data);
             });
+            //Wat Bilgi Çek
+            $http.get("/Wat/BilgiCek").success(function (data) {
+                $scope.Wat_URL = data;
+            }).error(function (data) {
+                console.log(data);
+            });
         }
         else {
             window.location = "/Kullanici/Index";
@@ -469,7 +494,7 @@
         console.log(data);
     });
 
-   
+
 
 }).factory('FileUploadService', function ($http, $q) { // explained abour controller and service in part 2
 
