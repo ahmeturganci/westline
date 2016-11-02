@@ -166,6 +166,8 @@ namespace westline_alfa.Controllers
                     s.Onay = true;
 
                     db.Sozlesmes.Add(s);
+
+                    db.SayfaDurums.FirstOrDefault(x => x.SayfaId == 9 && x.KullaniciId == id).Durum = true;
                     db.SaveChanges();
                 }
             }
