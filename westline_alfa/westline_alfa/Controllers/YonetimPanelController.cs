@@ -22,7 +22,7 @@ namespace westline_alfa.Controllers
         {
             return View(db.Kullanicis);
         }
-            public ActionResult IsEkle()
+        public ActionResult IsEkle()
         {
             return View();
         }
@@ -101,13 +101,13 @@ namespace westline_alfa.Controllers
             db.SaveChanges();
             return RedirectToAction("IsEkle", "YonetimPanel");
         }
-        
+
 
         public ActionResult RandevuOnay(string id, string secim)
         {
             int Id = Convert.ToInt32(id);
             int Secim = Convert.ToInt32(secim);
-            Deger d = db.Degers.FirstOrDefault(x=>x.Id == Secim && x.KisiId == Id);
+            Deger d = db.Degers.FirstOrDefault(x => x.Id == Secim && x.KisiId == Id);
             d.Onay = true;
 
             Kullanici k = db.Kullanicis.Find(Id);
@@ -116,10 +116,10 @@ namespace westline_alfa.Controllers
             db.SaveChanges();
             return RedirectToAction("Randevu", "YonetimPanel");
         }
-
-        public JsonResult SozlesmeOnay(int sozlesmeId, int kullaniciId)
+        [HttpPost]
+        public JsonResult SozlesmeOnay( int sozlesmeId)
         {
-            return y.SozlesmeOnay(sozlesmeId, kullaniciId);
+            return y.SozlesmeOnay(sozlesmeId,Convert.ToInt32(Session["id"]));
         }
 
         [HttpPost]
@@ -186,22 +186,9 @@ namespace westline_alfa.Controllers
                     var fileName = Path.GetFileName(file.FileName);
                     var path = Path.Combine(Server.MapPath("~/Images/"), fileName);
                     file.SaveAs(path);
-                    Sozlesme s = new Sozlesme();
-                    s.SozlesmeTur = 3;
-                    s.Url = fileName;
-                    s.KullaniciId = id;
-                    s.Onay = true;
-
-                    db.Sozlesmes.Add(s);
-                    db.SaveChanges();
                 }
             }
-            return RedirectToAction("OgrenciDetay/" + id, "YonetimPanel");
-        }
-
-        public JsonResult InputSil(int id)
-        {
-            return y.InputSil(id);
+            return RedirectToAction("OgrenciDetay/1", "YonetimPanel");
         }
 
         public JsonResult InputEkle(string metin, string metinplace, int tur, int zorunludurum, int sayfanum)

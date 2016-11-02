@@ -16,46 +16,48 @@
             }
         });
 </script>
+<style>
+    .gizli{
+        display:none;
+    }
+    .gozuken{
+    display:block;
+    }
+</style>
 <div class="tab-pane" id="dorduncusayfa">
     <div ng-controller="KisiTanimaController">
+        <p>Fotoğraf</p>
         <form novalidate name="f1" id="evrakvepasaport">
-            <div style="color: red">{{Message}}</div>
-            <div class="form-group" ng-repeat="c in evrakElemans">
-                <label for="form-group-input"><b>{{c.Aciklama}}<strong style="color:red;">{{c.Zorunlu}}</strong></b></label>
-                <input ng-if="c.iTur !== 'radio' && c.iTur !== 'textarea' &&  c.iTur !== 'select' && c.iTur !== 'file' && c.iTur !== 'ulke' && c.iTur !== 'il'" type="{{c.iTur}}" id="{{c.Id}}" name="{{c.Name}}" class="form-control" maxlength="{{c.Max}}" placeholder="{{c.Placeholder}}" value="{{c.Icerik}}" required>
-                <br />
-                <span ng-if="c.iTur === 'file'" id="{{c.Id}}">
-                    <img ng-if="c.Icerik !== ''" id="{{c.Id}}d" src="Images/{{c.Icerik}}" width="60" />
-                    <img ng-if="c.Icerik === ''" id="{{c.Id}}d" />
-                    <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-                    <input type="submit" ng-click="SaveFile(c.Id)" value="Yükle" class="btn btn-danger" />
-                </span>
-                <span ng-if="c.iTur === 'radio'" ng-repeat="s in c.Secenek">
-                    <span ng-if="s.Secili === 0">
-                        <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="{{s.name}}" /> {{s.secenek}}
-                    </span>
-                    <span ng-if="s.Secili === 1">
-                        <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="{{s.name}}" checked /> {{s.secenek}}
-                    </span>
-                </span>
-                <textarea ng-if="c.iTur === 'textarea'" id="{{c.Id}}" class="form-control" name="{{c.Name}}" rows="5">{{c.Icerik}}</textarea>
-                <span ng-if="c.iTur === 'select'">
-                    <select class="combobox">
-                        <option ng-repeat="s in c.Secenek" value="{{s.Id}}">{{s.secenek}}</option>
-                    </select>
-                </span>
-                <select ng-if="c.iTur === 'ulke'" class="combobox" ng-change="updateIls(countrySelect)" ng-model="countrySelect">
-                    <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
-                </select>
-                <select ng-if="c.iTur === 'il'" class="combobox" ng-model="pasIl">
-                    <option ng-repeat="e in Eyalets" value="{{e.Id}}">{{e.Ad}}</option>
-                </select>
-            </div>
-            <button ng-click="pasaportKaydet('evrakvepasaport')" class="btn btn-primary">Devam Et </button>
+            <img ng-if="evrakEleman.Foto_URL !== ''" id="dort_2d" src="Images/{{evrakEleman.Foto_URL}}" width="60" />
+            <img ng-if="evrakEleman.Foto_URL === ''" id="dort_2d" />
+            <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+            <input type="submit" ng-click="SaveFile(2,0)" value="Yükle" class="btn btn-danger" />
+        </form>
+        <p>Öğrenci Belgesi</p>
+        <form novalidate name="f1" id="evrakvepasaport">
+            <a id="dort_3d" ng-if="evrakEleman.OgrBelge_URL !== ''" href="Images/{{evrakEleman.OgrBelge_URL}}"> Öğrenci Belgesini Göster</a>
+            <a id="dort_3d" ng-if="evrakEleman.OgrBelge_URL === ''" style="display:none"> Öğrenci Belgesini Göster</a>
+            <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+            <input type="submit" ng-click="SaveFile(3,1)" value="Yükle" class="btn btn-danger" />
+        </form>
+        <p>Pasaport</p>
+        <form novalidate name="f1" id="evrakvepasaport">
+            <a id="dort_4d" ng-if = "evrakEleman.Pas_URL !== ''" href="Images/{{evrakEleman.Pas_URL}}"> Pasaport Göster</a>
+            <a id="dort_4d" ng-if = "evrakEleman.Pas_URL === ''" style="display:none"> Pasaport Göster</a>
+            <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+            <input type="submit" ng-click="SaveFile(4,1)" value="Yükle" class="btn btn-danger" />
+        </form>
+        <p>Adil Sicil</p>
+        <form novalidate name="f1" id="evrakvepasaport">
+            <a id="dort_5d" ng-if = "evrakEleman.Adil_URL !== ''" href="Images/{{evrakEleman.Adil_URL}}">Adil Sicil Göster</a>
+            <a id="dort_5d" ng-if="evrakEleman.Adil_URL === ''" style="display:none">Adil Sicil Göster</a>
+            <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+            <input type="submit" ng-click="SaveFile(5,1)" value="Yükle" class="btn btn-danger" />
         </form>
     </div>
+
 </div>
-    
+
 <script>
     $.post('../Birinci/RenkDurumCek', function (data) {
         if (data.birincisayfa == "1")
@@ -134,12 +136,6 @@
             $('#isler').attr("style", "background-color:gray");
         else
             $('#isler').attr("style", "background-color:green");
-
-        //cv sayfa
-        if (data.wat == "1")
-            $('#wat').attr("style", "background-color:gray");
-        else
-            $('#wat').attr("style", "background-color:green");
     });
 
 </script>

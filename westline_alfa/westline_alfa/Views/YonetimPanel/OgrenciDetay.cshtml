@@ -193,6 +193,70 @@
         }
         
 
+<table>
+    @{
+        var durumlar = @Model.SayfaDurums.ToList();
+    }
+    @foreach (var durum in durumlar)
+    {
+        <tr>
+            <td>@durum.Sayfa.SayfaAdi</td>
+            @{ 
+                if(durum.Durum.Value)
+                {
+                    <td>Tamamlandı</td>
+                }
+                else
+                {
+                    <td>Tamamlanmadı</td>
+                }
+            }
+            </tr>
+    }
+    
+</table>
+
+
+
+@if (Model.Sozlesmes.Any(x => x.SozlesmeTur == 1))
+{
+    if (Model.Sozlesmes.FirstOrDefault(x => x.SozlesmeTur == 1).Onay == false)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Wat Sözleşmesi Onayla
+            </div>
+            <div class="panel-body">
+                <a href="~/Images/@Model.Sozlesmes.FirstOrDefault(x=>x.SozlesmeTur==1).Url">PDF'i Görüntüle</a>
+                @using (Html.BeginForm("SozlesmeOnay", "YonetimPanel", FormMethod.Post))
+                {
+                    <input type="hidden" name="sozlesmeId" value="@Model.Sozlesmes.FirstOrDefault(x=>x.SozlesmeTur==1).Id" />
+                    <input type="submit" name="Submit" id="Submit" value="Sözleşme Onayla" />
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <p>Kullanıcının Watt'ı Onaylanmış</p>
+    }
+}
+else
+{
+    <h2>Kullanıcı Watt Sözleşmesi Yüklememiş</h2>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            WAT Sözleşmesi Yükle
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm("Upload", "YonetimPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <input type="file" name="FileUpload" />
+                <input type="submit" name="Submit" id="Submit" value="Upload" />
+            }
+        </div>
+    </div>
+}
     </div>
 </div>
 
