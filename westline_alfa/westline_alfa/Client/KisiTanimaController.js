@@ -361,6 +361,17 @@
             };
 
 
+            $scope.RandevuAl = function () {
+                $http.get("/Randevu/randevuEkle?altBir=" + $("#r1").val() + "&altIki=" + $("#r2").val()).
+                    success(function (data) {
+                        if (data.basari == 1) {
+
+                        }
+                }).error(function (data) {
+                    console.log(data);
+                });
+            };
+
             //Birinci sayfa eleman cek
             $http.get("/Birinci/elemans?sayfa=1&kisiId=" + session).success(function (data) {
                 $scope.birinciElemans = data;
