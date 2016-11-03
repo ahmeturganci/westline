@@ -20,14 +20,15 @@ namespace westline_alfa.Controllers
         public JsonResult GirisYap(string kullaniciAdi, string sifre)
         {
             string s = h.MD5Sifrele(sifre);
-            if (db.Admins.Any(x => x.KullaniciAdi == kullaniciAdi && x.Sifre == s))
+            if (db.Admins.Any(x => x.KullaniciAdi == kullaniciAdi && x.Sifre == sifre))
             {
-                Admin a = db.Admins.FirstOrDefault(x => x.KullaniciAdi == kullaniciAdi && x.Sifre == s);
+                Admin a = db.Admins.FirstOrDefault(x => x.KullaniciAdi == kullaniciAdi && x.Sifre == sifre);
                 var jsonModel = new
                 {
                     basari = 1,
                     id = a.Id
                 };
+                Session["adminId"] = a.Id;
                 return Json(jsonModel, JsonRequestBehavior.AllowGet); ;
             }
             else
@@ -38,6 +39,11 @@ namespace westline_alfa.Controllers
                 };
                 return Json(jsonModel, JsonRequestBehavior.AllowGet); ;
             }
+        }
+        public ActionResult Cikis()
+        {
+            Session.Remove("adminId");
+            return RedirectToAction("Index", "Giris");
         }
     }
 }

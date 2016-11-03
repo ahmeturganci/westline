@@ -15,97 +15,196 @@ namespace westline_alfa.Controllers
         // GET: YonetimPanel
         public ActionResult Index()
         {
-            return View(db.Kullanicis);
+            if (Session["adminId"] != null)
+            {
+                return View(db.Kullanicis);
+
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
 
         public ActionResult KullaniciDosya()
         {
-            return View(db.Kullanicis);
+            if (Session["adminId"] != null)
+            {
+                return View(db.Kullanicis);
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
+
         public ActionResult IsEkle()
         {
-            return View();
+            if (Session["adminId"] != null)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
 
         public ActionResult profilInput()
         {
-            return View();
+            if (Session["adminId"] != null)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
         public ActionResult CvInput()
         {
-            return View();
+            if (Session["adminId"] != null)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
         public ActionResult RandevuAlInput()
         {
-            return View();
+            if (Session["adminId"] != null)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
         public ActionResult IslerInput()
         {
-            return View();
+            if (Session["adminId"] != null)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
         public ActionResult BirinciSayfaInput()
         {
-            return View();
+            if (Session["adminId"] != null)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
         public ActionResult IkinciSayfaInput()
         {
-            return View();
+            if (Session["adminId"] != null)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
         public ActionResult UcuncuSayfaInput()
         {
-            return View();
+            if (Session["adminId"] != null)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
         public ActionResult DorduncuSayfaInput()
         {
-            return View();
+            if (Session["adminId"] != null)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
         public ActionResult BesinciSayfaInput()
         {
-            return View();
+            if (Session["adminId"] != null)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
         public ActionResult UcakBilgiInput()
         {
-            return View();
+            if (Session["adminId"] != null)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
         public ActionResult AktivasyonInput()
         {
-            return View();
+            if (Session["adminId"] != null)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
         public ActionResult Randevu()
         {
-            return View(db.Kullanicis);
+            if (Session["adminId"] != null)
+            {
+                return View(db.Kullanicis);
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
 
         public ActionResult OgrenciListele()
         {
-            return View(db.Kullanicis);
+            if (Session["adminId"] != null)
+            {
+                return View(db.Kullanicis);
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
 
         public ActionResult OgrenciDetay(int id)
         {
-            return View(db.Kullanicis.Find(id));
+            if (Session["adminId"] != null)
+            {
+                return View(db.Kullanicis.Find(id));
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
 
         public ActionResult TaksitveOnay(float ucret, int taksitSayi, int kullaniciId)
         {
-            y.Taksitlendir(ucret,taksitSayi,kullaniciId);
+            if (Session["adminId"] != null)
+            {
+                y.Taksitlendir(ucret, taksitSayi, kullaniciId);
             return RedirectToAction("Index", "YonetimPanel");
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
 
         public ActionResult Is(string ad, string aciklama)
         {
-            Isler i = new Isler();
+            if (Session["adminId"] != null)
+            {
+                Isler i = new Isler();
             i.Ad = ad;
             i.Aciklama = aciklama;
             db.Islers.Add(i);
             db.SaveChanges();
             return RedirectToAction("IsEkle", "YonetimPanel");
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
 
 
         public ActionResult RandevuOnay(string id, string secim)
         {
-            int Id = Convert.ToInt32(id);
+            if (Session["adminId"] != null)
+            {
+                int Id = Convert.ToInt32(id);
             int Secim = Convert.ToInt32(secim);
             Deger d = db.Degers.FirstOrDefault(x => x.Id == Secim && x.KisiId == Id);
             d.Onay = true;
@@ -115,17 +214,27 @@ namespace westline_alfa.Controllers
 
             db.SaveChanges();
             return RedirectToAction("Randevu", "YonetimPanel");
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
         [HttpPost]
-        public JsonResult SozlesmeOnay( int sozlesmeId)
+        public JsonResult SozlesmeOnay(int sozlesmeId)
         {
-            return y.SozlesmeOnay(sozlesmeId,Convert.ToInt32(Session["id"]));
+            if (Session["adminId"] != null)
+            {
+                return y.SozlesmeOnay(sozlesmeId, Convert.ToInt32(Session["id"]));
+            }
+            else
+                return Json("No access",JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
         public ActionResult UploadWat(int id)
         {
-            if (Request.Files.Count > 0)
+            if (Session["adminId"] != null)
+            {
+                if (Request.Files.Count > 0)
             {
                 var file = Request.Files[0];
 
@@ -144,13 +253,18 @@ namespace westline_alfa.Controllers
                     db.SaveChanges();
                 }
             }
-            return RedirectToAction("OgrenciDetay/"+id, "YonetimPanel");
+            return RedirectToAction("OgrenciDetay/" + id, "YonetimPanel");
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
 
         [HttpPost]
         public ActionResult UploadDs(int id)
         {
-            if (Request.Files.Count > 0)
+            if (Session["adminId"] != null)
+            {
+                if (Request.Files.Count > 0)
             {
                 var file = Request.Files[0];
 
@@ -172,12 +286,17 @@ namespace westline_alfa.Controllers
                 }
             }
             return RedirectToAction("OgrenciDetay/" + id, "YonetimPanel");
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
 
         [HttpPost]
         public ActionResult UploadSevis(int id)
         {
-            if (Request.Files.Count > 0)
+            if (Session["adminId"] != null)
+            {
+                if (Request.Files.Count > 0)
             {
                 var file = Request.Files[0];
 
@@ -189,11 +308,20 @@ namespace westline_alfa.Controllers
                 }
             }
             return RedirectToAction("OgrenciDetay/1", "YonetimPanel");
+            }
+            else
+                return RedirectToAction("Index", "Giris");
         }
 
         public JsonResult InputEkle(string metin, string metinplace, int tur, int zorunludurum, int sayfanum)
         {
-            return y.InputEkle(metin, metinplace, tur, zorunludurum, sayfanum);
+            if (Session["adminId"] != null)
+            {
+                return y.InputEkle(metin, metinplace, tur, zorunludurum, sayfanum);
+            }
+            else
+                return Json("No access", JsonRequestBehavior.AllowGet);
+
         }
     }
 }
