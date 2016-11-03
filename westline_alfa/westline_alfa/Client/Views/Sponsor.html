@@ -1,17 +1,19 @@
 ﻿
 <div class="tab-pane" id="birincisayfa">
     <div ng-controller="KisiTanimaController">
-        <h3>{{birinciMesaj}}</h3>
-        <form id="sponsor">
-            <fieldset>
-                <ul>
-                    <li><input type="radio" name="sps" value="0" ng-model="sponsor" ng-checked="true"/>CSB</li>
-                    <li><input type="radio" name="sps" value="1" ng-model="sponsor"/>IENA</li>
-                    <li><input type="radio" name="sps" value="2" ng-model="sponsor"/>UWT</li>
-                </ul>
-            </fieldset>
-            <button ng-click="sponsorSayfa('sponsor')" class="btn btn-primary">Sponsor Seç</button>
-        </form>
+        <div class="panel panel-info">
+            <div class="panel-heading">Sponsor Sayfası* </div>
+            <form id="sponsor">
+                <fieldset>
+                    <ul>
+                        <li><input type="radio" name="sps" value="0" ng-model="sponsor" ng-checked="true" />CSB</li>
+                        <li><input type="radio" name="sps" value="1" ng-model="sponsor" />IENA</li>
+                        <li><input type="radio" name="sps" value="2" ng-model="sponsor" />UWT</li>
+                    </ul>
+                </fieldset>
+                <button ng-click="sponsorSayfa('sponsor')" class="btn btn-primary">Sponsor Seç</button>
+            </form>
+        </div>
     </div>
 </div>
 

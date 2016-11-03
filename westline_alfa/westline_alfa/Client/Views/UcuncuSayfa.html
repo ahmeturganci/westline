@@ -18,46 +18,49 @@
 </script>
 <div class="tab-pane" id="ucuncusayfa">
 
-    <div ng-controller="KisiTanimaController">
-        <div class="panel">
-            <div class="panel-body">
-                <form id="egitimform">
-                    <div class="form-group" ng-repeat="c in egitimElemans">
-                        <label for="form-group-input"><b>{{c.Aciklama}}<strong style="color:red;">{{c.Zorunlu}}</strong></b></label>
-                        <input ng-if="c.iTur !== 'radio' && c.iTur !== 'textarea' &&  c.iTur !== 'select' && c.iTur !== 'file' && c.iTur !== 'ulke' && c.iTur !== 'il'" type="{{c.iTur}}" id="{{c.Id}}" name="{{c.Name}}" class="form-control" maxlength="{{c.Max}}" placeholder="{{c.Placeholder}}" value="{{c.Icerik}}" required>
-                        <br />
-                        <span ng-if="c.iTur === 'file'" id="{{c.Id}}">
-                            <img ng-if="c.Icerik !== ''" id="{{c.Id}}d" src="Images/{{c.Icerik}}" width="60" />
-                            <img ng-if="c.Icerik === ''" id="{{c.Id}}d" />
-                            <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-                            <input type="submit" ng-click="SaveFile(c.Id)" value="Yükle" class="btn btn-danger" />
-                        </span>
-                        <span ng-if="c.iTur === 'radio'" ng-repeat="s in c.Secenek">
-                            <span ng-if="s.Secili === 0">
-                                <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="{{s.name}}" /> {{s.secenek}}
+    <div   ng-controller="KisiTanimaController">
+        <div class="panel panel-info">
+            <div class="panel-heading">Üçüncü Sayfa </div>
+            <div class="panel">
+                <div class="panel-body">
+                    <form id="egitimform">
+                        <div class="form-group" ng-repeat="c in egitimElemans">
+                            <label for="form-group-input"><b>{{c.Aciklama}}<strong style="color:red;">{{c.Zorunlu}}</strong></b></label>
+                            <input ng-if="c.iTur !== 'radio' && c.iTur !== 'textarea' &&  c.iTur !== 'select' && c.iTur !== 'file' && c.iTur !== 'ulke' && c.iTur !== 'il'" type="{{c.iTur}}" id="{{c.Id}}" name="{{c.Name}}" class="form-control" maxlength="{{c.Max}}" placeholder="{{c.Placeholder}}" value="{{c.Icerik}}" required>
+                            <br />
+                            <span ng-if="c.iTur === 'file'" id="{{c.Id}}">
+                                <img ng-if="c.Icerik !== ''" id="{{c.Id}}d" src="Images/{{c.Icerik}}" width="60" />
+                                <img ng-if="c.Icerik === ''" id="{{c.Id}}d" />
+                                <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+                                <input type="submit" ng-click="SaveFile(c.Id)" value="Yükle" class="btn btn-danger" />
                             </span>
-                            <span ng-if="s.Secili === 1">
-                                <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="{{s.name}}" checked /> {{s.secenek}}
+                            <span ng-if="c.iTur === 'radio'" ng-repeat="s in c.Secenek">
+                                <span ng-if="s.Secili === 0">
+                                    <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="{{s.name}}" /> {{s.secenek}}
+                                </span>
+                                <span ng-if="s.Secili === 1">
+                                    <input type="{{c.iTur}}" id="{{c.Id}}" value="{{s.Id}}" name="{{s.name}}" checked /> {{s.secenek}}
+                                </span>
                             </span>
-                        </span>
-                        <textarea ng-if="c.iTur === 'textarea'" id="{{c.Id}}" class="form-control" name="{{c.Name}}" rows="5">{{c.Icerik}}</textarea>
-                        <span ng-if="c.iTur === 'select'">
-                            <select class="form-control">
-                                <option ng-repeat="s in c.Secenek" value="{{s.Id}}">{{s.secenek}}</option>
+                            <textarea ng-if="c.iTur === 'textarea'" id="{{c.Id}}" class="form-control" name="{{c.Name}}" rows="5">{{c.Icerik}}</textarea>
+                            <span ng-if="c.iTur === 'select'">
+                                <select class="form-control">
+                                    <option ng-repeat="s in c.Secenek" value="{{s.Id}}">{{s.secenek}}</option>
+                                </select>
+                            </span>
+                            <select ng-if="c.iTur === 'ulke'" class="form-control combobox" ng-change="updateIls(countrySelect)" ng-model="countrySelect">
+                                <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
                             </select>
-                        </span>
-                        <select ng-if="c.iTur === 'ulke'" class="form-control combobox" ng-change="updateIls(countrySelect)" ng-model="countrySelect">
-                            <option ng-repeat="u in ulkes" value="{{u.Id}}">{{u.Ad}}</option>
-                        </select>
-                        <select ng-if="c.iTur === 'il'" class="form-control combobox" ng-model="pasIl">
-                            <option ng-repeat="e in Eyalets" value="{{e.Id}}">{{e.Ad}}</option>
-                        </select>
-                    </div>
-                    <button ng-click="egitimKayit('egitimform')" class="btn btn-primary">Devam Et </button>
-                </form>
+                            <select ng-if="c.iTur === 'il'" class="form-control combobox" ng-model="pasIl">
+                                <option ng-repeat="e in Eyalets" value="{{e.Id}}">{{e.Ad}}</option>
+                            </select>
+                        </div>
+                        <button ng-click="egitimKayit('egitimform')" class="btn btn-primary">Devam Et </button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+        </div>
     </div>
 
 <script>
