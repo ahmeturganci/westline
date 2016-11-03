@@ -193,28 +193,6 @@
         }
         
 
-<table>
-    @{
-        var durumlar = @Model.SayfaDurums.ToList();
-    }
-    @foreach (var durum in durumlar)
-    {
-        <tr>
-            <td>@durum.Sayfa.SayfaAdi</td>
-            @{ 
-                if(durum.Durum.Value)
-                {
-                    <td>Tamamlandı</td>
-                }
-                else
-                {
-                    <td>Tamamlanmadı</td>
-                }
-            }
-            </tr>
-    }
-    
-</table>
 
 
 

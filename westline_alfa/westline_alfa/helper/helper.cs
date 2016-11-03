@@ -63,13 +63,13 @@ namespace westline_alfa.helper
             var jsonModel = (object)null;
             if (sayfa == 3) // Evrak Sayfasıysa (Dinamiklik kaldırıldı.)
             {
-                string Foto_URL = db.Sozlesmes.Where(a => a.SozlesmeTur == 2 && a.KullaniciId == kisiId).Select(a => a.Url).FirstOrDefault();
+                string Foto_URL = db.Sozlesmes.Where(a => a.SozlesmeTur == 4 && a.KullaniciId == kisiId).Select(a => a.Url).FirstOrDefault();
                 Foto_URL = (Foto_URL != null) ? Foto_URL : "";
-                string OgrBelge_URL = db.Sozlesmes.Where(a => a.SozlesmeTur == 3 && a.KullaniciId == kisiId).Select(a => a.Url).FirstOrDefault();
+                string OgrBelge_URL = db.Sozlesmes.Where(a => a.SozlesmeTur == 5 && a.KullaniciId == kisiId).Select(a => a.Url).FirstOrDefault();
                 OgrBelge_URL = (OgrBelge_URL != null) ? OgrBelge_URL : "";
-                string Pas_URL = db.Sozlesmes.Where(a => a.SozlesmeTur == 4 && a.KullaniciId == kisiId).Select(a => a.Url).FirstOrDefault();
+                string Pas_URL = db.Sozlesmes.Where(a => a.SozlesmeTur == 6 && a.KullaniciId == kisiId).Select(a => a.Url).FirstOrDefault();
                 Pas_URL = (Pas_URL != null) ? Pas_URL : "";
-                string Adil_URL = db.Sozlesmes.Where(a => a.SozlesmeTur == 5 && a.KullaniciId == kisiId).Select(a => a.Url).FirstOrDefault();
+                string Adil_URL = db.Sozlesmes.Where(a => a.SozlesmeTur == 7 && a.KullaniciId == kisiId).Select(a => a.Url).FirstOrDefault();
                 Adil_URL = (Adil_URL != null) ? Adil_URL : "";
 
 

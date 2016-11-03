@@ -1,5 +1,5 @@
 ﻿<script>
-        $.post('../Birinci/sayfaDurum', { id: 12 }, function (data) {
+        $.post('../Birinci/sayfaDurum', { id: 1011 }, function (data) {
             if (data.basari == 0) {
                 console.log(data);
                 if (data.son == 1) window.location = "#/Profil";
@@ -153,6 +153,9 @@
             $('#wat').attr("style", "background-color:gray");
         else
             $('#wat').attr("style", "background-color:green");
+
+        $('#dashboard').attr("style", "background-color:green");
+
     });
 
 </script>

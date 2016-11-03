@@ -78,7 +78,6 @@
 
             //Save File
             $scope.SaveFile = function (e, tur) {
-                console.log("kaydetme fonksiyonunun içerisinde");
                 $scope.IsFormSubmitted = true;
                 $scope.Message = "";
                 $scope.ChechFileValid($scope.SelectedFileForUpload, tur);
@@ -515,6 +514,11 @@
             })
         .success(function (d) {
             defer.resolve(d);
+            if (d.Yesillendir == true) {
+                $("#isler").attr("style", "background-color:green");
+            } else {
+                $("#isler").attr("style", "background-color:gray");
+            }
         })
         .error(function () {
             defer.reject("File Upload Failed!");

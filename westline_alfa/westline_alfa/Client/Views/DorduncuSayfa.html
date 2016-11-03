@@ -28,31 +28,31 @@
     <div ng-controller="KisiTanimaController">
         <p>Fotoğraf</p>
         <form novalidate name="f1" id="evrakvepasaport">
-            <img ng-if="evrakEleman.Foto_URL !== ''" id="dort_2d" src="Images/{{evrakEleman.Foto_URL}}" width="60" />
-            <img ng-if="evrakEleman.Foto_URL === ''" id="dort_2d" />
+            <img ng-if="evrakEleman.Foto_URL !== ''" id="dort_4d" src="Images/{{evrakEleman.Foto_URL}}" width="60" />
+            <img ng-if="evrakEleman.Foto_URL === ''" id="dort_4d" />
             <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-            <input type="submit" ng-click="SaveFile(2,0)" value="Yükle" class="btn btn-danger" />
+            <input type="submit" ng-click="SaveFile(4,0)" value="Yükle" class="btn btn-danger" />
         </form>
         <p>Öğrenci Belgesi</p>
         <form novalidate name="f1" id="evrakvepasaport">
-            <a id="dort_3d" ng-if="evrakEleman.OgrBelge_URL !== ''" href="Images/{{evrakEleman.OgrBelge_URL}}"> Öğrenci Belgesini Göster</a>
-            <a id="dort_3d" ng-if="evrakEleman.OgrBelge_URL === ''" style="display:none"> Öğrenci Belgesini Göster</a>
+            <a id="dort_5d" ng-if="evrakEleman.OgrBelge_URL !== ''" href="Images/{{evrakEleman.OgrBelge_URL}}"> Öğrenci Belgesini Göster</a>
+            <a id="dort_5d" ng-if="evrakEleman.OgrBelge_URL === ''" style="display:none"> Öğrenci Belgesini Göster</a>
             <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-            <input type="submit" ng-click="SaveFile(3,1)" value="Yükle" class="btn btn-danger" />
+            <input type="submit" ng-click="SaveFile(5,1)" value="Yükle" class="btn btn-danger" />
         </form>
         <p>Pasaport</p>
         <form novalidate name="f1" id="evrakvepasaport">
-            <a id="dort_4d" ng-if = "evrakEleman.Pas_URL !== ''" href="Images/{{evrakEleman.Pas_URL}}"> Pasaport Göster</a>
-            <a id="dort_4d" ng-if = "evrakEleman.Pas_URL === ''" style="display:none"> Pasaport Göster</a>
+            <a id="dort_6d" ng-if = "evrakEleman.Pas_URL !== ''" href="Images/{{evrakEleman.Pas_URL}}"> Pasaport Göster</a>
+            <a id="dort_6d" ng-if = "evrakEleman.Pas_URL === ''" style="display:none"> Pasaport Göster</a>
             <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-            <input type="submit" ng-click="SaveFile(4,1)" value="Yükle" class="btn btn-danger" />
+            <input type="submit" ng-click="SaveFile(6,1)" value="Yükle" class="btn btn-danger" />
         </form>
-        <p>Adil Sicil</p>
+        <p>Adli Sicil</p>
         <form novalidate name="f1" id="evrakvepasaport">
-            <a id="dort_5d" ng-if = "evrakEleman.Adil_URL !== ''" href="Images/{{evrakEleman.Adil_URL}}">Adil Sicil Göster</a>
-            <a id="dort_5d" ng-if="evrakEleman.Adil_URL === ''" style="display:none">Adil Sicil Göster</a>
+            <a id="dort_7d" ng-if = "evrakEleman.Adil_URL !== ''" href="Images/{{evrakEleman.Adil_URL}}">Adli Sicil Göster</a>
+            <a id="dort_7d" ng-if="evrakEleman.Adil_URL === ''" style="display:none">Adli Sicil Göster</a>
             <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-            <input type="submit" ng-click="SaveFile(5,1)" value="Yükle" class="btn btn-danger" />
+            <input type="submit" ng-click="SaveFile(7,1)" value="Yükle" class="btn btn-danger" />
         </form>
     </div>
 
@@ -113,11 +113,6 @@
         else
             $('#ucakbilgi').attr("style", "background-color:green");
 
-        //isler sayfa
-        if (data.isler == "1")
-            $('#isler').attr("style", "background-color:gray");
-        else
-            $('#isler').attr("style", "background-color:green");
 
         //cv sayfa
         if (data.tahsilat == "1")
@@ -136,6 +131,15 @@
             $('#isler').attr("style", "background-color:gray");
         else
             $('#isler').attr("style", "background-color:green");
+
+        //cv sayfa
+        if (data.wat == "1")
+            $('#wat').attr("style", "background-color:gray");
+        else
+            $('#wat').attr("style", "background-color:green");
+
+        $('#dashboard').attr("style", "background-color:green");
+
     });
 
 </script>

@@ -46,7 +46,7 @@ namespace westline_alfa.Controllers
         {
             string Message, fileName, actualFileName;
             Message = fileName = actualFileName = string.Empty;
-            bool flag = false;
+            bool flag = false, yesillendir = false;
             if (Request.Files != null)
             {
                 var file = Request.Files[0];
@@ -73,6 +73,29 @@ namespace westline_alfa.Controllers
                             d.SozlesmeTur = e;
                             d.Onay = false;
                             dc.Sozlesmes.Add(d);
+
+                            if(e == 1)
+                            {
+                                SayfaDurum s = dc.SayfaDurums.FirstOrDefault(x => x.KullaniciId == kulId && x.SayfaId == 7);
+                                s.Durum = true;
+                            }
+                            else
+                            {
+                                if(dc.Sozlesmes.Any(x=>x.KullaniciId == kulId))
+                                {
+                                    int sayac = 0;
+                                    foreach (var i in dc.Sozlesmes.Where(x => x.KullaniciId == kulId && x.SozlesmeTur > 1))
+                                    {
+                                        sayac++;
+                                    }
+                                    if (sayac > 2)
+                                    {
+                                        SayfaDurum s = dc.SayfaDurums.FirstOrDefault(x => x.KullaniciId == kulId && x.SayfaId == 1011);
+                                        s.Durum = true;
+                                        yesillendir = true;
+                                    }
+                                }
+                            }
                         }
 
                         dc.SaveChanges();
@@ -85,7 +108,7 @@ namespace westline_alfa.Controllers
                     Message = "0";
                 }
             }
-            return new JsonResult { Data = new { Message = Message, Status = flag } };
+            return new JsonResult { Data = new { Message = Message, Status = flag, Yesillendir = yesillendir } };
         }
 
         // yeni eklenen upload (evrakSayfa olay)

@@ -29,7 +29,6 @@ namespace westline_alfa.Models
         public virtual DbSet<Secenek> Seceneks { get; set; }
         public virtual DbSet<Sozlesme> Sozlesmes { get; set; }
         public virtual DbSet<SozlesmeTur> SozlesmeTurs { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Taksit> Taksits { get; set; }
         public virtual DbSet<TaksitOdeme> TaksitOdemes { get; set; }
         public virtual DbSet<Tur> Turs { get; set; }
@@ -61,9 +60,40 @@ namespace westline_alfa.Models
                 .HasForeignKey(e => e.IsId);
 
             modelBuilder.Entity<Kullanici>()
+                .HasMany(e => e.Aktivasyons)
+                .WithOptional(e => e.Kullanici)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<Kullanici>()
                 .HasMany(e => e.Degers)
                 .WithOptional(e => e.Kullanici)
-                .HasForeignKey(e => e.KisiId);
+                .HasForeignKey(e => e.KisiId)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<Kullanici>()
+                .HasMany(e => e.KullaniciGiris)
+                .WithOptional(e => e.Kullanici)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<Kullanici>()
+                .HasMany(e => e.KullaniciIs)
+                .WithOptional(e => e.Kullanici)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<Kullanici>()
+                .HasMany(e => e.SayfaDurums)
+                .WithOptional(e => e.Kullanici)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<Kullanici>()
+                .HasMany(e => e.Sozlesmes)
+                .WithOptional(e => e.Kullanici)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<Kullanici>()
+                .HasMany(e => e.TaksitOdemes)
+                .WithOptional(e => e.Kullanici)
+                .WillCascadeOnDelete();
 
             modelBuilder.Entity<SozlesmeTur>()
                 .HasMany(e => e.Sozlesmes)
