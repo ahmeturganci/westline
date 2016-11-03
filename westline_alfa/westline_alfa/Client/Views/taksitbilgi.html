@@ -18,18 +18,18 @@
 </script>
 <div class="tab-pane" id="taksitbilgi">
     <div ng-controller="KisiTanimaController">
-        <div class="panel panel-success">
-            <div class="panel-heading">Taksit Bilgilerim</div>
-            <div class="panel-body">
-                <h3>Taksit Bilgisi</h3>
-                <ul>
-                    <li ng-repeat="t in taksits">{{t.Miktar}} - {{t.SonOdeme}} - {{t.Odendi}}</li>
-                </ul>
-                <button ng-click="taksitOnay()">Devam Et</button>
+        <div class="panel panel-info">
+            <div class="panel-heading">Taksit Bilgileri Sayfası* </div>
+                <div class="panel-body">
+                    <h3>Taksit Bilgisi</h3>
+                    <ul>
+                        <li ng-repeat="t in taksits">{{t.Miktar}} - {{t.SonOdeme}} - {{t.Odendi}}</li>
+                    </ul>
+                    <button ng-click="taksitOnay()" class="btn btn-primary">Devam Et</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 <script>
     $.post('../Birinci/RenkDurumCek', function (data) {
         if (data.birincisayfa == "1")

@@ -29,8 +29,10 @@
 
 <div class="tab-pane" id="aktivasyon">
 
-    <div ng-controller="KisiTanimaController">
-        <h3>{{aktivasyonMesaj}}</h3>
+    <div style="border:1px #ccc solid;" ng-controller="KisiTanimaController">
+        <center>
+            <h4>WAT Sözleşme Sayfası</h4>
+        </center>
             <fieldset>
                 <!-- required html5 o input dolu olack :D -->
                 <div class="panel panel-danger">
@@ -51,7 +53,7 @@
                                 <a id="dort_1d" ng-if="Wat_URL !== ''" href="Images/{{Wat_URL}}"> WAT Göster</a>
                                 <a id="dort_1d" ng-if="Wat_URL === ''" style="display:none"> WAT Göster</a>
                                 <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-                                <input type="submit" ng-click="SaveFile(1,1)" value="Yükle" class="btn btn-danger" />
+                                <input type="submit" ng-click="SaveFile(1,1)" value="Yükle" class="btn btn-primary" />
                             </form>
                         </div>
                     </div>
