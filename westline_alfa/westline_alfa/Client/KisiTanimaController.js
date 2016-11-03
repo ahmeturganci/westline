@@ -94,7 +94,6 @@
                         }
                         if(e==1) // WAT 
                         {
-                            alert("WAT");
                             WatBildirimiGoster();
                         }
                     }, function (e) {
