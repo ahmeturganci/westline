@@ -184,6 +184,7 @@
   <ItemGroup>
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\gsdk-base.css" />
+    <Content Include="assets\css\main.css" />
     <Content Include="assets\img\default-avatar.png" />
     <Content Include="assets\img\favicon.ico" />
     <Content Include="assets\img\new_logo.png" />

@@ -222,15 +222,15 @@
         else
         {
             <h2>Kullanıcı Watt Sözleşmesi Yüklememiş</h2>
-            <div class="panel panel-default">
+            <div class="panel panel-success">
                 <div class="panel-heading">
                     WAT Sözleşmesi Yükle
                 </div>
                 <div class="panel-body">
                     @using (Html.BeginForm("Upload", "YonetimPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
-                        <input type="file" name="FileUpload" />
-                        <input type="submit" name="Submit" id="Submit" value="Upload" />
+                        <input type="file" name="FileUpload" style="display:inline" />
+                        <input type="submit" name="Submit" id="Submit" value="Upload" class="btn btn-primary" />
                     }
                 </div>
             </div>
@@ -239,7 +239,7 @@
 </div>
 
 
-<div class="panel panel-default">
+<div class="panel panel-success">
     <div class="panel-heading">
         Kullanıcı Bilgileri
     </div>
@@ -248,7 +248,7 @@
     </div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-success">
     <div class="panel-heading">
         WAT Sözleşmesi Yükle
     </div>
@@ -256,8 +256,8 @@
         @using (Html.BeginForm("UploadWat", "YonetimPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <input type="hidden" name="id" value="@Model.Id" />
-            <input type="file" name="FileUpload" />
-            <input type="submit" name="Submit" id="Submit" value="Upload" />
+            <input type="file" name="FileUpload" style="display:inline;" />
+            <input type="submit" name="Submit" id="Submit" value="Upload"  class="btn btn-primary"/>
         }
     </div>
 </div>
@@ -308,7 +308,7 @@
     }
 }
 
-<div class="panel panel-default">
+<div class="panel panel-success">
     <div class="panel-heading">
         DS-2019 yükle
     </div>
@@ -316,8 +316,8 @@
         @using (Html.BeginForm("UploadDs", "YonetimPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <input type="hidden" name="id" value="@Model.Id" />
-            <input type="file" name="FileUpload" />
-            <input type="submit" name="Submit" id="Submit" value="Upload" />
+            <input type="file" name="FileUpload" style="display:inline;" />
+            <input type="submit" name="Submit" id="Submit" value="Upload" class="btn btn-primary" />
         }
     </div>
 </div>
