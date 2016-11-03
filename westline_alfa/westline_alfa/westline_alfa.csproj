@@ -165,11 +165,14 @@
     <Compile Include="Models\Kullanici.cs" />
     <Compile Include="Models\KullaniciGiri.cs" />
     <Compile Include="Models\KullaniciI.cs" />
+    <Compile Include="Models\KullaniciRandevu.cs" />
+    <Compile Include="Models\Randevu.cs" />
     <Compile Include="Models\Sayfa.cs" />
     <Compile Include="Models\SayfaDurum.cs" />
     <Compile Include="Models\Secenek.cs" />
     <Compile Include="Models\Sozlesme.cs" />
     <Compile Include="Models\SozlesmeTur.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\Taksit.cs" />
     <Compile Include="Models\TaksitOdeme.cs" />
     <Compile Include="Models\Tur.cs" />

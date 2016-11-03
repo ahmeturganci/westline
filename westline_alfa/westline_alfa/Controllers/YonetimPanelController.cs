@@ -103,19 +103,6 @@ namespace westline_alfa.Controllers
         }
 
 
-        public ActionResult RandevuOnay(string id, string secim)
-        {
-            int Id = Convert.ToInt32(id);
-            int Secim = Convert.ToInt32(secim);
-            Deger d = db.Degers.FirstOrDefault(x => x.Id == Secim && x.KisiId == Id);
-            d.Onay = true;
-
-            Kullanici k = db.Kullanicis.Find(Id);
-            k.RandevuOnay = true;
-
-            db.SaveChanges();
-            return RedirectToAction("Randevu", "YonetimPanel");
-        }
         [HttpPost]
         public JsonResult SozlesmeOnay( int sozlesmeId)
         {
@@ -188,12 +175,45 @@ namespace westline_alfa.Controllers
                     file.SaveAs(path);
                 }
             }
-            return RedirectToAction("OgrenciDetay/1", "YonetimPanel");
+            return RedirectToAction("OgrenciDetay/"+id, "YonetimPanel");
         }
 
         public JsonResult InputEkle(string metin, string metinplace, int tur, int zorunludurum, int sayfanum)
         {
             return y.InputEkle(metin, metinplace, tur, zorunludurum, sayfanum);
+        }
+
+
+
+        public ActionResult RandevuOnay(string kulid, string btnid)
+        {
+            int kulId = Convert.ToInt32(kulid);
+            int btnId = Convert.ToInt32(btnid);
+            Kullanici k = db.Kullanicis.Find(kulId);
+            if(btnId != 0)
+            {   
+                KullaniciRandevu kr = db.KullaniciRandevus.FirstOrDefault(x => x.KullaniciId == kulId && x.RandevuId == btnId);
+                kr.Onay = true;
+                db.SaveChanges();
+                y.MailGonder(k.Degers.FirstOrDefault(x=>x.InputId==5).Icerik, "Randevunuz Onaylandı!", "Randevunuz onaylanmıştır. Gideceğiniz tarih: " + kr.Randevu.Tarih);
+                helper.smsapi sms = new helper.smsapi("5399706684", "03011995e", "ILETI MRKZI");
+                sms.SendSMS(new string[] { k.Degers.FirstOrDefault(x=>x.InputId==6).Icerik }," Randevunuz onaylanmıştır.Gideceğiniz tarih: " + kr.Randevu.Tarih);
+                db.SayfaDurums.FirstOrDefault(x => x.KullaniciId == kulId && x.SayfaId == btnId).Durum = true;
+                db.SaveChanges();
+            }
+            else
+            {
+                foreach (var item in db.KullaniciRandevus.Where(x=>x.KullaniciId==kulId))
+                {
+                    db.KullaniciRandevus.Remove(item);
+                }
+                db.SaveChanges();
+                y.MailGonder(k.Degers.FirstOrDefault(x => x.InputId == 5).Icerik, "Randevunuz Reddedildi!", "Randevunuz reddedilmiştir. Lütfen yeniden seçim yapınız");
+                helper.smsapi sms = new helper.smsapi("5399706684", "03011995e", "ILETI MRKZI");
+                sms.SendSMS(new string[] { k.Degers.FirstOrDefault(x => x.InputId == 6).Icerik }, "Randevunuz reddedilmiştir. Lütfen yeniden seçim yapınız");
+            }
+            
+            return RedirectToAction("OgrenciDetay/" + kulId, "YonetimPanel");
         }
     }
 }

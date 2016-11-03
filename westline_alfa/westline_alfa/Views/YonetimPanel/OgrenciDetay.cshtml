@@ -262,6 +262,52 @@
     </div>
 </div>
 
+@{
+    if (Model.KullaniciRandevus.Any())
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Öğrenci Randevu Onayla
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Randevu Tarihi</th>
+                            <th>Onay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.KullaniciRandevus.Any(x => x.Onay == true))
+                        {
+                            <tr>
+                                <td>@Model.KullaniciRandevus.FirstOrDefault(x=>x.Onay == true).Randevu.Tarih</td>
+                                <td>Onaylandı</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var item in Model.KullaniciRandevus)
+                            {
+                                    <tr>
+                                        <td>@item.Randevu.Tarih</td>
+                                        <td><input type="submit" name="submit" id="r2" class="btn btn-info" onclick="onay(@Model.Id,@item.RandevuId)" value="Onayla" /></td>
+                                    </tr>
+                            }
+                            <tr>
+                                <td>Bu iki tarihi de onaylama</td>
+                                <td><input type="submit" name="submit" id="r3" class="btn btn-danger" onclick="onay(@Model.Id,0)" value="Tamam" /></td>
+                            </tr>
+                        }
+
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+}
+
 <div class="panel panel-default">
     <div class="panel-heading">
         DS-2019 yükle
@@ -290,24 +336,12 @@
     </div>
 </div>
 
-@*@if (Model.Sozlesmes.Any(x => x.SozlesmeTur == 1))
-{
-    if (Model.Sozlesmes.FirstOrDefault(x => x.SozlesmeTur == 1).Onay == false)
-    {
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Wat Sözleşmesi Onayla
-            </div>
-            <div class="panel-body">
-                <a href="Images/@Model.Sozlesmes.FirstOrDefault(a=>a.SozlesmeTur==1).Url">Wat'i Goruntule</a>
-                @using (Html.BeginForm("SozlesmeOnay", "YonetimPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    <input type="hidden" name="sozlesmeId" value="@Model.Sozlesmes.FirstOrDefault(x => x.SozlesmeTur == 1).Id" />
-                    <input type="submit" name="Submit" id="Submit" value="Sözleşme Onayla" />
-                }
-            </div>
-        </div>
+<script>
+    function onay(kulId, btnId) {
+        $.post('../../YonetimPanel/RandevuOnay', { kulid: kulId, btnid: btnId }, function (data) {
+            location.href = "../YonetimPanel/OgrenciDetay/" + kulId;
+        });
     }
-}*@
+</script>
 
 
