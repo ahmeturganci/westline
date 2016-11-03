@@ -16,6 +16,7 @@
     <link rel="icon" type="/image/png" href="../../assets/img/favicon.ico">
     <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../../assets/css/gsdk-base.css" rel="stylesheet" />
+    <link href="~/assets/css/animate.css" rel="stylesheet" />
 
     <script src="https://use.fontawesome.com/455b02834b.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
@@ -37,6 +38,8 @@
     <!--  methods for manipulating the wizard and the validation -->
     <script src="../../assets/js/wizard.js"></script>
 
+    <!-- Bildirim -->
+    <script src="~/Scripts/bootstrap-notify.min.js"></script>
     <style>
         li i {
             font-size: 19px !important;
@@ -46,6 +49,42 @@
             margin-top: -15px;
         }
     </style>
+    <script>
+        function WatBildirimiGoster() {
+            $.notify({
+                message: '<center><b>Wat kaydınız alınmıştır.</b></center><p><center><b>Yöneticinin onayı beklenmektedir</b>.Yönetici onayladığında SMS ve Mail ile bilgilendirileceksiniz.</p></center>'
+            }, {
+                // settings
+                type: 'success',
+                animate: {
+                    enter: 'animated bounceIn',
+                    exit: 'animated bounceOut'
+                },
+                delay: 10000,
+                placement: {
+                    from: "bottom",
+                    align: "right"
+                },
+            });
+        }
+        function RandevuBildirimiGoster() {
+            $.notify({
+                message: '<center><b>Randevu kaydınız alınmıştır.</b></center><p><center><b>Yöneticinin onayı beklenmektedir</b>.Yönetici onayladığında SMS ve Mail ile bilgilendirileceksiniz.</p></center>'
+            }, {
+                // settings
+                type: 'success',
+                animate: {
+                    enter: 'animated bounceIn',
+                    exit: 'animated bounceOut'
+                },
+                delay: 10000,
+                placement: {
+                    from: "bottom",
+                    align: "right"
+                },
+            });
+        }
+    </script>
 </head>
 <body class="image-container set-full-height">
 

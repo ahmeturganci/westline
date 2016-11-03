@@ -92,6 +92,11 @@
                             $("#dort_" + e + "d").attr("href", "Images/" + d.Message);
                             $("#dort_" + e + "d").show();
                         }
+                        if(e==1) // WAT 
+                        {
+                            alert("WAT");
+                            WatBildirimiGoster();
+                        }
                     }, function (e) {
                         alert(e);
                     });
@@ -365,7 +370,7 @@
                 $http.get("/Randevu/randevuEkle?altBir=" + $("#r1").val() + "&altIki=" + $("#r2").val()).
                     success(function (data) {
                         if (data.basari == 1) {
-
+                            RandevuBildirimiGoster();
                         }
                 }).error(function (data) {
                     console.log(data);
