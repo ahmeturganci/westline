@@ -20,13 +20,17 @@ namespace westline_alfa.Controllers
         public JsonResult IsEkle()
         {
             NameValueCollection query = Request.QueryString;
+
+            int kisiId = Convert.ToInt32(Session["id"]);
             for (int i = 0; i < query.Count; i++)
             {
-                //KullaniciIs k = new KullaniciIs();
-                //k.IsId = Convert.ToInt32(query[i]);
-                //k.KullaniciId = 1;
-                //db.KullaniciIs.Add(k);
+                KullaniciI k = new KullaniciI();
+                k.IsId = Convert.ToInt32(query[i]);
+                k.KullaniciId = kisiId;
+                db.KullaniciIs.Add(k);
             }
+
+            db.SayfaDurums.FirstOrDefault(x => x.KullaniciId == kisiId && x.SayfaId == 6).Durum = true;
 
             db.SaveChanges();
             var jsonResult = new

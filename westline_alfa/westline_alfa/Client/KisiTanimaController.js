@@ -185,20 +185,6 @@
                     });
             };
 
-            function randevuBilgiKayit(link) {
-                $http.post("Randevu/randevuEkle?" + link).
-                    success(function (data) {
-                        console.log(data.basari);
-                        if (data.basari == 1) {
-                            $window.location.href = '#/isler';
-                        } else {
-                            $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
-                        }
-                    }).error(function (data) {
-                        alert("hata");
-                    });
-            };
-
             function ekBilgiKayit(link) {
                 $http.post("Ikinci/ekBilgiEkle?" + link).
                     success(function (data) {
@@ -345,9 +331,8 @@
                 console.log(link);
                 $http.post("Isler/IsEkle?" + link).
                     success(function (data) {
-                        console.log(data.basari);
                         if (data.basari == 1) {
-                            $window.location.href = '#/Cv';
+                            $window.location.href = '#/RandevuAl';
                         } else {
                             $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
                         }
@@ -433,16 +418,7 @@
                 Kayit(formId);
             };
 
-            //Randevu eleman çek
-            $http.get("/Randevu/elemans?sayfa=6&kisiId=" + session).success(function (data) {
-                $scope.randevuElemans = data;
-            }).error(function (data) {
-                console.log(data);
-            });
-
-            $scope.RandevuAl = function (formId) {
-                Kayit(formId);
-            };
+            
 
             //Ek bilgi eleman çek
             $http.get("/Ikinci/elemans?sayfa=7&kisiId=" + session).success(function (data) {

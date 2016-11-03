@@ -24,7 +24,7 @@
             <fieldset>
                 <div class="form-group" id="islerDiv" ng-repeat="i in islers">
                     <span ng-if="i.IsBuldu === 0">
-                        <input type="checkbox" ng-model="kendiIs" value="{{i.Id}}" id="radio" onclick="isSecildi(this);" />{{i.isAdi}}
+                        <input type="checkbox" ng-model="kendiIs" value="{{i.Id}}" id="radio" class="rdChc" onclick="check()" />{{i.isAdi}}
                         <label class="TC" for="form-group-input">{{i.isAciklama}} </label>
                     </span>
                     <span ng-if="i.IsBuldu === 1">
@@ -48,27 +48,27 @@
             this.value = this.value.replace(/[^a-zA-Z]/g, '');
         }
     });//harf
-    var sayi = 0;
-    function isSecildi(secim)
-    {
-        sayi++;
-        if (sayi.value == 0)
-            document.getElementById('buton1').disabled = true;
-        else if (sayi.value == 4) {
-            alert('Son Seçiminizi yapıyorsunuz.');
-        }
-        else if (sayi.value == 5) {
-            alert('Son Seçimi yaptınız');
-            document.getElementById('buton1').disabled = true;
-
-        }
-        else
-            document.getElementById('buton1').disabled = false;
-
-    }
-    $(document).ready(function () {
-        document.getElementById('buton1').disabled = true;
-    });
+    
+        
+    function check() {
+        var sayac = 0;
+            $(".rdChc").each(function (index, element) {
+                if (element.checked == true) {
+                    sayac++;
+                }
+            });
+            if (sayac >= 5) {
+                $(".rdChc").each(function (index, element) {
+                    if (element.checked == false) {
+                        element.disabled = true;
+                    }
+                });
+            } else {
+                $(".rdChc").each(function (index, element) {
+                        element.disabled = false;
+                });
+            }
+        };
 </script>
 <script>
     $.post('../Birinci/RenkDurumCek', function (data) {
