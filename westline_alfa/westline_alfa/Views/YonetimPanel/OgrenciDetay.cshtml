@@ -5,22 +5,22 @@
 }
 @model westline_alfa.Models.Kullanici
 <style>
-    .admin-link{
+    .admin-link {
         width: 7.69%;
         height: 42px;
-        float:left;
+        float: left;
         text-align: center;
         font-size: 18px;
         padding-top: 9px;
         color: #fff;
     }
 
-    .pasif{
+    .pasif {
         background-color: gray;
     }
 
-    .aktif{
-        background-color:green;
+    .aktif {
+        background-color: green;
     }
 </style>
 <div class="panel panel-default">
@@ -42,10 +42,10 @@
                 </div>
             }
 
-           
-                <div class="admin-link aktif">
-                    <i class="fa fa-dashboard" aria-hidden="true"></i>
-                </div>
+
+            <div class="admin-link aktif">
+                <i class="fa fa-dashboard" aria-hidden="true"></i>
+            </div>
 
 
             if (Model.SayfaDurums.FirstOrDefault(x => x.SayfaId == 1).Durum == true)
@@ -191,72 +191,72 @@
                 </div>
             }
         }
-        
 
-<table>
-    @{
-        var durumlar = @Model.SayfaDurums.ToList();
-    }
-    @foreach (var durum in durumlar)
-    {
-        <tr>
-            <td>@durum.Sayfa.SayfaAdi</td>
-            @{ 
-                if(durum.Durum.Value)
-                {
-                    <td>Tamamlandı</td>
-                }
-                else
-                {
-                    <td>Tamamlanmadı</td>
-                }
+
+        <table>
+            @{
+                var durumlar = @Model.SayfaDurums.ToList();
             }
-            </tr>
-    }
-    
-</table>
-
-
-
-@if (Model.Sozlesmes.Any(x => x.SozlesmeTur == 1))
-{
-    if (Model.Sozlesmes.FirstOrDefault(x => x.SozlesmeTur == 1).Onay == false)
-    {
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Wat Sözleşmesi Onayla
-            </div>
-            <div class="panel-body">
-                <a href="~/Images/@Model.Sozlesmes.FirstOrDefault(x=>x.SozlesmeTur==1).Url">PDF'i Görüntüle</a>
-                @using (Html.BeginForm("SozlesmeOnay", "YonetimPanel", FormMethod.Post))
-                {
-                    <input type="hidden" name="sozlesmeId" value="@Model.Sozlesmes.FirstOrDefault(x=>x.SozlesmeTur==1).Id" />
-                    <input type="submit" name="Submit" id="Submit" value="Sözleşme Onayla" />
-                }
-            </div>
-        </div>
-    }
-    else
-    {
-        <p>Kullanıcının Watt'ı Onaylanmış</p>
-    }
-}
-else
-{
-    <h2>Kullanıcı Watt Sözleşmesi Yüklememiş</h2>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            WAT Sözleşmesi Yükle
-        </div>
-        <div class="panel-body">
-            @using (Html.BeginForm("Upload", "YonetimPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @foreach (var durum in durumlar)
             {
-                <input type="file" name="FileUpload" />
-                <input type="submit" name="Submit" id="Submit" value="Upload" />
+                <tr>
+                    <td>@durum.Sayfa.SayfaAdi</td>
+                    @{
+                        if (durum.Durum.Value)
+                        {
+                            <td>Tamamlandı</td>
+                        }
+                        else
+                        {
+                            <td>Tamamlanmadı</td>
+                        }
+                    }
+                </tr>
+                        }
+
+        </table>
+
+
+
+        @if (Model.Sozlesmes.Any(x => x.SozlesmeTur == 1))
+        {
+            if (Model.Sozlesmes.FirstOrDefault(x => x.SozlesmeTur == 1).Onay == false)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Wat Sözleşmesi Onayla
+                    </div>
+                    <div class="panel-body">
+                        <a href="~/Images/@Model.Sozlesmes.FirstOrDefault(x=>x.SozlesmeTur==1).Url">PDF'i Görüntüle</a>
+                        @using (Html.BeginForm("SozlesmeOnay", "YonetimPanel", FormMethod.Post))
+                        {
+                            <input type="hidden" name="sozlesmeId" value="@Model.Sozlesmes.FirstOrDefault(x=>x.SozlesmeTur==1).Id" />
+                            <input type="submit" name="Submit" id="Submit" value="Sözleşme Onayla" />
+                        }
+                    </div>
+                </div>
             }
-        </div>
-    </div>
-}
+            else
+            {
+                <p>Kullanıcının Watt'ı Onaylanmış</p>
+            }
+        }
+        else
+        {
+            <h2>Kullanıcı Watt Sözleşmesi Yüklememiş</h2>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    WAT Sözleşmesi Yükle
+                </div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("Upload", "YonetimPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <input type="file" name="FileUpload" />
+                        <input type="submit" name="Submit" id="Submit" value="Upload" />
+                    }
+                </div>
+            </div>
+        }
     </div>
 </div>
 
@@ -264,16 +264,16 @@ else
 <div class="panel panel-default">
     <div class="panel-heading">
         Kullanıcı Bilgileri
-    </div>  
+    </div>
     <div class="panel-body">
-        <a class="btn btn-default" href="/Pdf/Index/@Model.Id" target="_blank">Kullanıcı Bilgileri Görüntüle</a> 
+        <a class="btn btn-default" href="/Pdf/Index/@Model.Id" target="_blank">Kullanıcı Bilgileri Görüntüle</a>
     </div>
 </div>
 
 <div class="panel panel-default">
     <div class="panel-heading">
         WAT Sözleşmesi Yükle
-    </div>    
+    </div>
     <div class="panel-body">
         @using (Html.BeginForm("UploadWat", "YonetimPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
@@ -312,7 +312,7 @@ else
     </div>
 </div>
 
-@if (Model.Sozlesmes.Any(x => x.SozlesmeTur == 1))
+@*@if (Model.Sozlesmes.Any(x => x.SozlesmeTur == 1))
 {
     if (Model.Sozlesmes.FirstOrDefault(x => x.SozlesmeTur == 1).Onay == false)
     {
@@ -321,13 +321,15 @@ else
                 Wat Sözleşmesi Onayla
             </div>
             <div class="panel-body">
+                <a href="Images/@Model.Sozlesmes.FirstOrDefault(a=>a.SozlesmeTur==1).Url">Wat'i Goruntule</a>
                 @using (Html.BeginForm("SozlesmeOnay", "YonetimPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
+                    <input type="hidden" name="sozlesmeId" value="@Model.Sozlesmes.FirstOrDefault(x => x.SozlesmeTur == 1).Id" />
                     <input type="submit" name="Submit" id="Submit" value="Sözleşme Onayla" />
                 }
             </div>
         </div>
     }
-}
+}*@
 
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web.Mvc;
 using westline_alfa.Models;
 
@@ -9,6 +10,16 @@ namespace westline_alfa.helper
     public class Yardimci : Controller
     {
         westlineDB db = new westlineDB();
+
+        SmtpClient smtp;
+        public Yardimci()
+        {
+            smtp = new SmtpClient();
+            smtp.Host = "smtp.yandex.ru";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+            smtp.Credentials = new System.Net.NetworkCredential("okan.deneme", "123456789b");
+        }
 
         public JsonResult SozlesmeEkle(int sozlesmeId, int kullaniciId)
         {
@@ -32,9 +43,18 @@ namespace westline_alfa.helper
             {
                 Sozlesme s = db.Sozlesmes.FirstOrDefault(x => x.Id == sozlesmeId && x.KullaniciId == kullaniciId);
                 s.Onay = true;
-                var sayfa = db.SayfaDurums.FirstOrDefault(a => a.KullaniciId == kullaniciId && a.SayfaId == 7);
-                sayfa.Durum = true;
+                if(s.SozlesmeTur==1)
+                {
+                    var sayfa = db.SayfaDurums.FirstOrDefault(a => a.KullaniciId == kullaniciId && a.SayfaId == 7);
+                    sayfa.Durum = true;
+                }
+                
                 db.SaveChanges();
+
+                var sonuc = MailGonder(s.Kullanici.Degers.Where(a => a.InputId == 5).Select(a => a.Icerik).FirstOrDefault(), "Westline", "Wat Onaylandı.Lütfen forma devam ediniz.");
+                smsapi sms = new smsapi("5399706684", "03011995e", "ILETI MRKZI");
+                var sonuc2 = sms.SendSMS(new string[] { s.Kullanici.Degers.Where(a => a.InputId == 6).Select(a => a.Icerik).FirstOrDefault() }, "Wat Onaylandı.Lüfen forma devam ediniz.");
+                
                 var jsonResult = new
                 {
                     basari = 1
@@ -139,6 +159,23 @@ namespace westline_alfa.helper
                 basari = 1
             };
             return Json(jsonModel, JsonRequestBehavior.AllowGet);
+        }
+        public bool MailGonder(string gonderilecekMail, string konu, string icerik)
+        {
+            MailMessage ePosta = new MailMessage();
+            ePosta.From = new MailAddress("okan.deneme@yandex.com.tr", "Okan Test");
+            ePosta.To.Add(gonderilecekMail);
+            ePosta.Subject = konu;
+            ePosta.Body = icerik;
+            try
+            {
+                smtp.Send(ePosta);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
