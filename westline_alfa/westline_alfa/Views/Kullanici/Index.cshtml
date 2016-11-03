@@ -68,7 +68,6 @@
         }
         else {
             $.post("../Kullanici/GirisYap", { kullaniciAdi: email, sifre: sifre }, function (data) {
-                alert(data.basari);
                 if(data.basari==1)
                 {
                     window.location.href = "/#/Dashboard";
