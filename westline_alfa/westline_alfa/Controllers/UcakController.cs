@@ -17,6 +17,8 @@ namespace westline_alfa.Controllers
             int kisiId = Convert.ToInt32(Session["id"]);
             if (h.VeriEkle(Request.QueryString, kisiId))
             {
+                db.SayfaDurums.FirstOrDefault(x => x.KullaniciId == kisiId && x.SayfaId == 9).Durum = true;
+                db.SaveChanges();
                 jsonResult = new
                 {
                     basari = 1

@@ -200,19 +200,7 @@ namespace westline_alfa.Controllers
         }
 
 
-        public ActionResult RandevuOnay(string id, string secim)
-        {
-            int Id = Convert.ToInt32(id);
-            int Secim = Convert.ToInt32(secim);
-            Deger d = db.Degers.FirstOrDefault(x => x.Id == Secim && x.KisiId == Id);
-            d.Onay = true;
-
-            Kullanici k = db.Kullanicis.Find(Id);
-            k.RandevuOnay = true;
-
-            db.SaveChanges();
-            return RedirectToAction("Randevu", "YonetimPanel");
-        }
+        
         [HttpPost]
         public JsonResult SozlesmeOnay(int sozlesmeId)
         {
@@ -292,17 +280,19 @@ namespace westline_alfa.Controllers
             if (Session["adminId"] != null)
             {
                 if (Request.Files.Count > 0)
-            {
-                var file = Request.Files[0];
-
-                if (file != null && file.ContentLength > 0 && file.ContentType == "application/pdf")
                 {
-                    var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Images/"), fileName);
-                    file.SaveAs(path);
+                    var file = Request.Files[0];
+
+                    if (file != null && file.ContentLength > 0 && file.ContentType == "application/pdf")
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                        file.SaveAs(path);
+                    }
                 }
             }
-            return RedirectToAction("OgrenciDetay/"+id, "YonetimPanel");
+            return RedirectToAction("OgrenciDetay/" + id, "YonetimPanel");
+
         }
 
         public JsonResult InputEkle(string metin, string metinplace, int tur, int zorunludurum, int sayfanum)
@@ -314,7 +304,7 @@ namespace westline_alfa.Controllers
             else
                 return Json("No access", JsonRequestBehavior.AllowGet);
 
-        }
+        
             return y.InputEkle(metin, metinplace, tur, zorunludurum, sayfanum);
         }
 
