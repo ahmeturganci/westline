@@ -26,37 +26,57 @@
 </style>
 <div class="tab-pane" id="dorduncusayfa">
     <div ng-controller="KisiTanimaController">
-        <p>Fotoğraf</p>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Fotoğraf</div>
+
+            <br />
+            <form novalidate name="f1" id="evrakvepasaport">
+                <img ng-if="evrakEleman.Foto_URL !== ''" id="dort_2d" src="Images/{{evrakEleman.Foto_URL}}" width="60" />
+                <img ng-if="evrakEleman.Foto_URL === ''" id="dort_2d" />
+                <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required class="file file-loading" style="display:inline;"/>
+                <input type="submit" ng-click="SaveFile(2,0)" value="Yükle" class="btn btn-danger" />
+            </form>
+
+        </div>
+        <br />
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Öğrenci Belgesi</div>
+            <br />
+            <form novalidate name="f1" id="evrakvepasaport">
+                <a id="dort_3d" ng-if="evrakEleman.OgrBelge_URL !== ''" href="Images/{{evrakEleman.OgrBelge_URL}}"> Öğrenci Belgesini Göster</a>
+                <a id="dort_3d" ng-if="evrakEleman.OgrBelge_URL === ''" style="display:none"> Öğrenci Belgesini Göster</a>
+                <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required style="display:inline;" />
+                <input type="submit" ng-click="SaveFile(3,1)" value="Yükle" class="btn btn-danger" />
+            </form>
+        </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Pasaport</div><br />
+
         <form novalidate name="f1" id="evrakvepasaport">
-            <img ng-if="evrakEleman.Foto_URL !== ''" id="dort_2d" src="Images/{{evrakEleman.Foto_URL}}" width="60" />
-            <img ng-if="evrakEleman.Foto_URL === ''" id="dort_2d" />
-            <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-            <input type="submit" ng-click="SaveFile(2,0)" value="Yükle" class="btn btn-danger" />
-        </form>
-        <p>Öğrenci Belgesi</p>
-        <form novalidate name="f1" id="evrakvepasaport">
-            <a id="dort_3d" ng-if="evrakEleman.OgrBelge_URL !== ''" href="Images/{{evrakEleman.OgrBelge_URL}}"> Öğrenci Belgesini Göster</a>
-            <a id="dort_3d" ng-if="evrakEleman.OgrBelge_URL === ''" style="display:none"> Öğrenci Belgesini Göster</a>
-            <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
-            <input type="submit" ng-click="SaveFile(3,1)" value="Yükle" class="btn btn-danger" />
-        </form>
-        <p>Pasaport</p>
-        <form novalidate name="f1" id="evrakvepasaport">
-            <a id="dort_4d" ng-if = "evrakEleman.Pas_URL !== ''" href="Images/{{evrakEleman.Pas_URL}}"> Pasaport Göster</a>
-            <a id="dort_4d" ng-if = "evrakEleman.Pas_URL === ''" style="display:none"> Pasaport Göster</a>
-            <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+            <a id="dort_4d" ng-if="evrakEleman.Pas_URL !== ''" href="Images/{{evrakEleman.Pas_URL}}"> Pasaport Göster</a>
+            <a id="dort_4d" ng-if="evrakEleman.Pas_URL === ''" style="display:none"> Pasaport Göster</a>
+            <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required style="display:inline;" />
             <input type="submit" ng-click="SaveFile(4,1)" value="Yükle" class="btn btn-danger" />
         </form>
-        <p>Adil Sicil</p>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">Adil Sicil</div><br />
+
         <form novalidate name="f1" id="evrakvepasaport">
-            <a id="dort_5d" ng-if = "evrakEleman.Adil_URL !== ''" href="Images/{{evrakEleman.Adil_URL}}">Adil Sicil Göster</a>
+            <a id="dort_5d" ng-if="evrakEleman.Adil_URL !== ''" href="Images/{{evrakEleman.Adil_URL}}">Adil Sicil Göster</a>
             <a id="dort_5d" ng-if="evrakEleman.Adil_URL === ''" style="display:none">Adil Sicil Göster</a>
-            <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required />
+            <input type="file" name="file" accept="*" onchange="angular.element(this).scope().selectFileforUpload(this.files)" required style="display:inline;" />
             <input type="submit" ng-click="SaveFile(5,1)" value="Yükle" class="btn btn-danger" />
         </form>
     </div>
 
-</div>
+    </div>
+    </div>
+
+
 
 <script>
     $.post('../Birinci/RenkDurumCek', function (data) {
