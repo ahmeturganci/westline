@@ -20,19 +20,21 @@
     <fieldset>    
         <div class="panel panel-info">
             <div class="panel-heading">Aktivasyon Sayfası* </div>
-            <div ng-controller="KisiTanimaController">
-                <h1 ng-model="deneme">Aktivasyon Kodu</h1>
-                <h3>{{aktivasyonMesaj}}</h3>
-                <form>
-                    <fieldset>
-                        <div class="form-group">
-                            <label for="form-group-input">Aktivasyon Kodu* </label>
-                            <input type="text" class="form-control" maxlength="5" ng-model="kod" id="kod" size="5" placeholder="Aktivasyon kodu . . ." required>
-                        </div>
-                    </fieldset>
-                    <button ng-click="Aktivasyon()" class="btn btn-primary">Devam Et </button>
+            <div class="panel-body">
+                <div ng-controller="KisiTanimaController">
+                    <h1 ng-model="deneme">Aktivasyon Kodu</h1>
+                    <h3>{{aktivasyonMesaj}}</h3>
+                    <form>
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="form-group-input">Aktivasyon Kodu* </label>
+                                <input type="text" class="form-control" maxlength="5" ng-model="kod" id="kod" size="5" placeholder="Aktivasyon kodu . . ." required>
+                            </div>
+                        </fieldset>
+                        <button ng-click="Aktivasyon()" class="btn btn-primary">Devam Et </button>
 
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
 </fieldset>

@@ -20,13 +20,25 @@
                 padding: 5px 10px;
             }
     </style>
+    <script>
+    function calis(e) {
+        $.post("../YonetimPanel/InputSil", { id: e }, function (data) {
+            if (data.basari == 1)
+                alert("İnput Silindi.");
+            else {
+                alert("İnput Silmede Sorun Oluştu.");
+                location.href = "/YonetimPanel/CvInput";
+            }
+        });
+    }
+    </script>
 </head>
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-heading"></div>
         <div class="panel-body" ng-app="myApp" ng-controller="yonetim"> 
             <div class="form-group" ng-repeat="c in egitimElemans">
-                <label class="KariyerHedef" for="form-group-input">{{c.Aciklama}}{{c.Zorunlu}}</label> - <a href="InputSil({{c.Id}})">Sil</a>
+                <label class="KariyerHedef" for="form-group-input">{{c.Aciklama}}{{c.Zorunlu}}</label> - <button id="{{c.Id}}" onclick="calis(this.id)" class="sil">Sil</button>
                 <input ng-if="c.iTur !== 'radio' && c.iTur !== 'textarea' &&  c.iTur !== 'select' && c.iTur !== 'file' && c.iTur !== 'ulke' && c.iTur !== 'il'" type="{{c.iTur}}" id="{{c.Id}}" name="{{c.Name}}" class="form-control" maxlength="{{c.Max}}" placeholder="{{c.Placeholder}}" value="{{c.Icerik}}" required>
                 <br />
                 <span ng-if="c.iTur === 'file'" id="{{c.Id}}">

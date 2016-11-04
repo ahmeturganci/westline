@@ -303,12 +303,12 @@ namespace westline_alfa.Controllers
             }
             else
                 return Json("No access", JsonRequestBehavior.AllowGet);
-
-        
-            return y.InputEkle(metin, metinplace, tur, zorunludurum, sayfanum);
         }
 
-
+        public JsonResult InputSil(string inputid)
+        {
+            return y.InputSil(Convert.ToInt32(inputid));
+        }
 
         public ActionResult RandevuOnay(string kulid, string btnid)
         {

@@ -204,7 +204,7 @@
                     success(function (data) {
                         console.log(data.basari);
                         if (data.basari == 1) {
-                            $window.location.href = '#/isler';
+                            $window.location.href = '#/Dashboard';
                         } else {
                             $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
                         }
