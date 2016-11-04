@@ -296,7 +296,7 @@ namespace westline_alfa.helper
         public JsonResult SonGirisCek(int kisiId)
         {
             List<Object> jsonModelList = new List<object>();
-            foreach (var i in db.KullaniciGiris.Where(x => x.KullaniciId == kisiId).OrderByDescending(y => y.Id))
+            foreach (var i in db.KullaniciGiris.Where(x => x.KullaniciId == kisiId).OrderByDescending(y => y.Id).Take(5))
             {
                 var a = i.GirisLog.Tarih.Value;
                 var jsonModel = new
