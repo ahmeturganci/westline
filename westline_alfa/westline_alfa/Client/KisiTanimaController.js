@@ -124,7 +124,7 @@
                     success(function (data) {
                         console.log(data.basari);
                         if (data.basari == 1) {
-                            $window.location.href = '#/Wat';
+                            $window.location.href = '#/TaksitBilgi';
                         } else {
                             $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
                         }
@@ -138,7 +138,7 @@
                     success(function (data) {
                         console.log(data.basari);
                         if (data.basari == 1) {
-                            $window.location.href = '#/DorduncuSayfa';
+                            $window.location.href = '#/Evrak';
                         } else {
                             $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
                         }
@@ -180,7 +180,7 @@
                     success(function (data) {
                         console.log(data.basari);
                         if (data.basari == 1) {
-                            $window.location.href = '#/isler';
+                            $window.location.href = '#/Cv';
                         } else {
                             $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
                         }
@@ -194,7 +194,7 @@
                     success(function (data) {
                         console.log(data.basari);
                         if (data.basari == 1) {
-                            $window.location.href = '#/isler';
+                            $window.location.href = '#/Egitim';
                         } else {
                             $scope.birinciMesaj = "Yıldızlı(*) alanların doldurulması gerekiyor";
                         }

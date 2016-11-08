@@ -202,14 +202,16 @@ namespace westline_alfa.Controllers
 
         
         [HttpPost]
-        public JsonResult SozlesmeOnay(int sozlesmeId)
+        public ActionResult SozlesmeOnay(int sozlesmeId,int id)
         {
             if (Session["adminId"] != null)
             {
-                return y.SozlesmeOnay(sozlesmeId, Convert.ToInt32(Session["id"]));
+                db.Sozlesmes.FirstOrDefault(x => x.KullaniciId == id && x.SozlesmeTur == 1).Onay = true;
+                db.SaveChanges();
+                return RedirectToAction("OgrenciListele" , "YonetimPanel");
             }
             else
-                return Json("No access",JsonRequestBehavior.AllowGet);
+                return RedirectToAction("Index", "Giris");
         }
 
         [HttpPost]
@@ -323,7 +325,7 @@ namespace westline_alfa.Controllers
                 y.MailGonder(k.Degers.FirstOrDefault(x=>x.InputId==5).Icerik, "Randevunuz Onaylandı!", "Randevunuz onaylanmıştır. Gideceğiniz tarih: " + kr.Randevu.Tarih);
                 helper.smsapi sms = new helper.smsapi("5399706684", "03011995e", "ILETI MRKZI");
                 sms.SendSMS(new string[] { k.Degers.FirstOrDefault(x=>x.InputId==6).Icerik }," Randevunuz onaylanmıştır.Gideceğiniz tarih: " + kr.Randevu.Tarih);
-                db.SayfaDurums.FirstOrDefault(x => x.KullaniciId == kulId && x.SayfaId == btnId).Durum = true;
+                db.SayfaDurums.FirstOrDefault(x => x.KullaniciId == kulId && x.SayfaId == 4).Durum = true;
                 db.SaveChanges();
             }
             else

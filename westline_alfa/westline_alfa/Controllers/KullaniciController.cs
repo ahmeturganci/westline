@@ -143,7 +143,7 @@ namespace westline_alfa.Controllers
                 db.SaveChanges();
 
                 Session["id"] = k.Id;
-                helper.smsapi sms = new helper.smsapi("5399706684","03011995e","ILETI MRKZI");
+                helper.smsapi sms = new helper.smsapi("5303728029","ilme00","WestLine");
                 if (sms.SendSMS(new string[] { tel }, h.AktivasyonEkle(k.Id)))
                 {
                     var jsonModel = new

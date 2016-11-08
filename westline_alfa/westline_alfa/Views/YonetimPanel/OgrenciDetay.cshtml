@@ -196,32 +196,38 @@
 
 
 
-        @if (Model.Sozlesmes.Any(x => x.SozlesmeTur == 1))
-        {
-            if (Model.Sozlesmes.FirstOrDefault(x => x.SozlesmeTur == 1).Onay == false)
-            {
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Wat Sözleşmesi Onayla
-                    </div>
-                    <div class="panel-body">
-                        <a href="~/Images/@Model.Sozlesmes.FirstOrDefault(x=>x.SozlesmeTur==1).Url">PDF'i Görüntüle</a>
-                        @using (Html.BeginForm("SozlesmeOnay", "YonetimPanel", FormMethod.Post))
-                        {
-                            <input type="hidden" name="sozlesmeId" value="@Model.Sozlesmes.FirstOrDefault(x=>x.SozlesmeTur==1).Id" />
+     
+    </div>
+</div>
+
+
+@if (Model.Sozlesmes.Any(x => x.SozlesmeTur == 1))
+{
+    if (Model.Sozlesmes.FirstOrDefault(x => x.SozlesmeTur == 1).Onay == false)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Wat Sözleşmesi Onayla
+            </div>
+            <div class="panel-body">
+                <a href="~/Images/@Model.Sozlesmes.FirstOrDefault(x=>x.SozlesmeTur==1).Url">PDF'i Görüntüle</a>
+                @using (Html.BeginForm("SozlesmeOnay", "YonetimPanel", FormMethod.Post))
+                {
+                    <input type="hidden" name="id" value="@Model.Id"/>
+                    <input type="hidden" name="sozlesmeId" value="@Model.Sozlesmes.FirstOrDefault(x=>x.SozlesmeTur==1).Id" />
                             <input type="submit" name="Submit" id="Submit" value="Sözleşme Onayla" />
-                        }
-                    </div>
-                </div>
-            }
-            else
-            {
-                <p>Kullanıcının Watt'ı Onaylanmış</p>
-            }
-        }
-        else
-        {
-            <h2>Kullanıcı Watt Sözleşmesi Yüklememiş</h2>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <p>Kullanıcının Watt'ı Onaylanmış</p>
+    }
+}
+else
+{
+    <h2>Kullanıcı Watt Sözleşmesi Yüklememiş</h2>
             <div class="panel panel-success">
                 <div class="panel-heading">
                     WAT Sözleşmesi Yükle
@@ -234,10 +240,7 @@
                     }
                 </div>
             </div>
-        }
-    </div>
-</div>
-
+}
 
 <div class="panel panel-success">
     <div class="panel-heading">
