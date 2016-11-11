@@ -24,6 +24,24 @@ namespace westline_alfa.Controllers
                 return RedirectToAction("Index", "Giris");
         }
 
+        public ActionResult Filtrele(int? filter)
+        {
+            if (Session["adminId"] != null)
+            {
+                if (filter != null)
+                {
+                    ViewBag.f = filter;
+                }
+                else
+                {
+                    ViewBag.f = 0;
+                }
+                return View(db.Kullanicis.Where(x => x.AdminOnay == true));
+            }
+            else
+                return RedirectToAction("Index", "Giris");
+        }
+
         public ActionResult KullaniciDosya()
         {
             if (Session["adminId"] != null)

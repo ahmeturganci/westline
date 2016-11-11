@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Filtrele";
+    Layout = "~/Views/Shared/_YonetimLayout.cshtml";
+}
+
+@model IEnumerable<westline_alfa.Models.Kullanici>
+<a href="/YonetimPanel/Filtrele" class="btn btn-info">Tüm Öğrenciler</a>
+<a href="/YonetimPanel/Filtrele?filter=1" class="btn btn-info">Wat Sözleşmesi Olmayanlar</a>
+<a href="/YonetimPanel/Filtrele?filter=2" class="btn btn-info">Fotoğrafı Olmayanlar</a>
+<a href="/YonetimPanel/Filtrele?filter=3" class="btn btn-info">Öğrenci Belgesi Olmayanlar</a>
+<a href="/YonetimPanel/Filtrele?filter=4" class="btn btn-info">Pasaportu Olmayanlar</a>
+<a href="/YonetimPanel/Filtrele?filter=5" class="btn btn-info">Adli Sicili Olmayanlar</a>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Kullanıcı Adı</th>
+            <th>Mail</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            if (ViewBag.f == 0)
+            {
+                <tr>
+                    <td><input type="checkbox" id="@i.Id" /></td>
+                    <td>@i.Id</td>
+                    <td>@i.KullaniciAdi</td>
+                    <td>@i.Degers.FirstOrDefault(x => x.InputId == 5).Icerik</td>
+                </tr>
+            }
+            else if (ViewBag.f == 1)
+            {
+                if (!i.Sozlesmes.Any(x => x.SozlesmeTur == 1))
+                {
+                    <tr>
+                        <td><input type="checkbox" id="@i.Id" /></td>
+                        <td>@i.Id</td>
+                        <td>@i.KullaniciAdi</td>
+                        <td>@i.Degers.FirstOrDefault(x => x.InputId == 5).Icerik</td>
+                    </tr>
+                }
+            }
+            else if (ViewBag.f == 2)
+            {
+                if (!i.Sozlesmes.Any(x => x.SozlesmeTur == 4))
+                {
+                    <tr>
+                        <td><input type="checkbox" id="@i.Id" /></td>
+                        <td>@i.Id</td>
+                        <td>@i.KullaniciAdi</td>
+                        <td>@i.Degers.FirstOrDefault(x => x.InputId == 5).Icerik</td>
+                    </tr>
+                }
+            }
+            else if (ViewBag.f == 3)
+            {
+                if (!i.Sozlesmes.Any(x => x.SozlesmeTur == 5))
+                {
+                    <tr>
+                        <td><input type="checkbox" id="@i.Id" /></td>
+                        <td>@i.Id</td>
+                        <td>@i.KullaniciAdi</td>
+                        <td>@i.Degers.FirstOrDefault(x => x.InputId == 5).Icerik</td>
+                    </tr>
+                }
+            }
+            else if (ViewBag.f == 4)
+            {
+                if (!i.Sozlesmes.Any(x => x.SozlesmeTur == 6))
+                {
+                    <tr>
+                        <td><input type="checkbox" id="@i.Id" /></td>
+                        <td>@i.Id</td>
+                        <td>@i.KullaniciAdi</td>
+                        <td>@i.Degers.FirstOrDefault(x => x.InputId == 5).Icerik</td>
+                    </tr>
+                }
+            }
+            else if (ViewBag.f == 5)
+            {
+                if (!i.Sozlesmes.Any(x => x.SozlesmeTur == 7))
+                {
+                    <tr>
+                        <td><input type="checkbox" id="@i.Id" /></td>
+                        <td>@i.Id</td>
+                        <td>@i.KullaniciAdi</td>
+                        <td>@i.Degers.FirstOrDefault(x => x.InputId == 5).Icerik</td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
