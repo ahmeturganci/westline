@@ -25,9 +25,9 @@ namespace westline_alfa.Controllers
         public JsonResult GirisYap(string kullaniciAdi, string sifre)
         {
             string s = h.MD5Sifrele(sifre);
-            if (db.Kullanicis.Any(x => x.KullaniciAdi == kullaniciAdi && x.Sifre == s))
+            if (db.Kullanicis.Any(x => (x.KullaniciAdi == kullaniciAdi || x.Degers.FirstOrDefault(y=>y.InputId==5).Icerik == kullaniciAdi) && x.Sifre == s))
             {
-                Kullanici a = db.Kullanicis.FirstOrDefault(x => x.KullaniciAdi == kullaniciAdi && x.Sifre ==s);
+                Kullanici a = db.Kullanicis.FirstOrDefault(x => (x.KullaniciAdi == kullaniciAdi || x.Degers.FirstOrDefault(y => y.InputId == 5).Icerik == kullaniciAdi) && x.Sifre ==s);
 
                 GirisLog g = new GirisLog();
                 g.Tarih = DateTime.Now;
