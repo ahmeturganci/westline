@@ -42,6 +42,11 @@ namespace westline_alfa.Controllers
                 return RedirectToAction("Index", "Giris");
         }
 
+        public void OgrGuncelle(int ogrId)
+        {
+            Session["id"] = ogrId;
+        }
+
         public ActionResult KullaniciDosya()
         {
             if (Session["adminId"] != null)
