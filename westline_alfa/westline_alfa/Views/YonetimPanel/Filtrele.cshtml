@@ -26,7 +26,7 @@
             if (ViewBag.f == 0)
             {
                 <tr>
-                    <td><input type="checkbox" id="@i.Id" /></td>
+                    <td><input class="chc" type="checkbox" id="@i.Id" /></td>
                     <td>@i.Id</td>
                     <td>@i.KullaniciAdi</td>
                     <td>@i.Degers.FirstOrDefault(x => x.InputId == 5).Icerik</td>
@@ -37,7 +37,7 @@
                 if (!i.Sozlesmes.Any(x => x.SozlesmeTur == 1))
                 {
                     <tr>
-                        <td><input type="checkbox" id="@i.Id" /></td>
+                        <td><input class="chc" type="checkbox" id="@i.Id" /></td>
                         <td>@i.Id</td>
                         <td>@i.KullaniciAdi</td>
                         <td>@i.Degers.FirstOrDefault(x => x.InputId == 5).Icerik</td>
@@ -49,7 +49,7 @@
                 if (!i.Sozlesmes.Any(x => x.SozlesmeTur == 4))
                 {
                     <tr>
-                        <td><input type="checkbox" id="@i.Id" /></td>
+                        <td><input class="chc" type="checkbox" id="@i.Id" /></td>
                         <td>@i.Id</td>
                         <td>@i.KullaniciAdi</td>
                         <td>@i.Degers.FirstOrDefault(x => x.InputId == 5).Icerik</td>
@@ -61,7 +61,7 @@
                 if (!i.Sozlesmes.Any(x => x.SozlesmeTur == 5))
                 {
                     <tr>
-                        <td><input type="checkbox" id="@i.Id" /></td>
+                        <td><input class="chc" type="checkbox" id="@i.Id" /></td>
                         <td>@i.Id</td>
                         <td>@i.KullaniciAdi</td>
                         <td>@i.Degers.FirstOrDefault(x => x.InputId == 5).Icerik</td>
@@ -73,7 +73,7 @@
                 if (!i.Sozlesmes.Any(x => x.SozlesmeTur == 6))
                 {
                     <tr>
-                        <td><input type="checkbox" id="@i.Id" /></td>
+                        <td><input class="chc" type="checkbox" id="@i.Id" /></td>
                         <td>@i.Id</td>
                         <td>@i.KullaniciAdi</td>
                         <td>@i.Degers.FirstOrDefault(x => x.InputId == 5).Icerik</td>
@@ -85,7 +85,7 @@
                 if (!i.Sozlesmes.Any(x => x.SozlesmeTur == 7))
                 {
                     <tr>
-                        <td><input type="checkbox" id="@i.Id" /></td>
+                        <td><input class="chc" type="checkbox" id="@i.Id" /></td>
                         <td>@i.Id</td>
                         <td>@i.KullaniciAdi</td>
                         <td>@i.Degers.FirstOrDefault(x => x.InputId == 5).Icerik</td>
@@ -95,3 +95,26 @@
         }
     </tbody>
 </table>
+<textarea id="mesaj" rows="4" style="width:100%;border-bottom:10px" placeholder="Gönderilecek mesajı yazınız"></textarea>
+<a id="gonder" style="margin-top: 10px;cursor:pointer" class="btn btn-danger pull-right">Gönder</a>
+
+<script>
+    $(function () {
+        $("#gonder").click(function () {
+            var no = new Array();
+            var i = 0;
+            $(".chc").each(function () {
+                if($(this).is(':checked'))
+                {
+                    no[i] = $(this).attr("id");
+                    i++;
+                }
+            });
+            $.post("../YonetimPanel/TopluMesajAt", { no: no, mesaj: $("#mesaj").val() }, function (data) {
+                if(data.basari == 1){
+                    alert("Mesaj gönderildi");
+                }
+            });
+        });
+    });
+</script>
