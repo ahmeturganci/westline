@@ -424,6 +424,7 @@
     <Content Include="Views\YonetimPanel\OgrenciDetay.cshtml" />
     <Content Include="Views\Kullanici\Kayit.cshtml" />
     <Content Include="Views\WATSozlesme\Index.cshtml" />
+    <Content Include="Views\YonetimPanel\Filtrele.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

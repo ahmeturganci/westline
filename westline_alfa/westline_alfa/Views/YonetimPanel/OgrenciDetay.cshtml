@@ -200,6 +200,15 @@
     </div>
 </div>
 
+<div class="panel panel-success">
+    <div class="panel-heading">
+        Kullanıcı Bilgilerini Güncelle
+    </div>
+    <div class="panel-body">
+            <input type="submit" class="btn btn-default" onclick="guncelle(@Model.Id)" value="Güncelleme Sayfasına Git" />
+    </div>
+</div>
+
 
 @if (Model.Sozlesmes.Any(x => x.SozlesmeTur == 1))
 {
@@ -343,6 +352,12 @@ else
     function onay(kulId, btnId) {
         $.post('../../YonetimPanel/RandevuOnay', { kulid: kulId, btnid: btnId }, function (data) {
             location.href = "../YonetimPanel/OgrenciDetay/" + kulId;
+        });
+    }
+
+    function guncelle(id){
+        $.post('../../YonetimPanel/OgrGuncelle', { ogrId: id }, function (data) {
+            location.href = "../../Home/Index/";
         });
     }
 </script>

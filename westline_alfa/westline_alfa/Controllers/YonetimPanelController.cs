@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using westline_alfa.helper;
 using westline_alfa.Models;
 
 namespace westline_alfa.Controllers
@@ -22,6 +23,29 @@ namespace westline_alfa.Controllers
             }
             else
                 return RedirectToAction("Index", "Giris");
+        }
+
+        public ActionResult Filtrele(int? filter)
+        {
+            if (Session["adminId"] != null)
+            {
+                if (filter != null)
+                {
+                    ViewBag.f = filter;
+                }
+                else
+                {
+                    ViewBag.f = 0;
+                }
+                return View(db.Kullanicis.Where(x => x.AdminOnay == true));
+            }
+            else
+                return RedirectToAction("Index", "Giris");
+        }
+
+        public void OgrGuncelle(int ogrId)
+        {
+            Session["id"] = ogrId;
         }
 
         public ActionResult KullaniciDosya()
@@ -341,6 +365,22 @@ namespace westline_alfa.Controllers
             }
             
             return RedirectToAction("OgrenciDetay/" + kulId, "YonetimPanel");
+        }
+        
+        public JsonResult TopluMesajAt(string[] no,string mesaj)
+        {
+            foreach (string i in no)
+            {
+                int id = Convert.ToInt32(i);
+                string tel = db.Degers.FirstOrDefault(x => x.InputId == 6 && x.KisiId == id).Icerik;
+                smsapi sms = new smsapi("5303728029", "ilme00", "WestLine");
+                sms.SendSMS(new string[] { tel }, mesaj);
+            }
+            var jsonModel = new
+            {
+                basari = 1
+            };
+            return Json(jsonModel,JsonRequestBehavior.AllowGet);
         }
     }
 }
